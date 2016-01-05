@@ -1,0 +1,3 @@
+<car vin="123456789" make="Ford" model="Escort Zx2"/>
+<car type="coupe" material="alumunium"/>
+<car cylinder="6" capacity="4.00"/>
