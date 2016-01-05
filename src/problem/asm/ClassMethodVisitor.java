@@ -25,7 +25,7 @@ public class ClassMethodVisitor extends ClassVisitor {
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
 // TODO: create an internal representation of the current method and pass it to the methods below
-        dotMethod dMethod = new dotMethod(addReturnType(desc), name);
+        dotMethod dMethod = new dotMethod(addAccessLevel(access), addReturnType(desc), name, addArguments(desc));
         this.dClass.addMethod(dMethod);
         addAccessLevel(access);
         addReturnType(desc);

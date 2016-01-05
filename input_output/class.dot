@@ -4,31 +4,31 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 
 node [shape = "record" ]
-HumidityDisplay [label = "{HumidityDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
+HumidityDisplay [label = "{HumidityDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
 
 node [shape = "record" ]
-IDisplay [label = "{IDisplay||+ void dataChanged()\l}" ]
+IDisplay [label = "{IDisplay||+ void dataChanged(oldLab.IWeatherData)\l}" ]
 
 node [shape = "record" ]
 IWeatherData [label = "{IWeatherData||+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l}" ]
 
 node [shape = "record" ]
-IWeatherReporter [label = "{IWeatherReporter||+ void registerDisplay()\l+ void removeDisplay()\l+ void setWeatherData()\l}" ]
+IWeatherReporter [label = "{IWeatherReporter||+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l}" ]
 
 node [shape = "record" ]
-PressureDisplay [label = "{PressureDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
+PressureDisplay [label = "{PressureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
 
 node [shape = "record" ]
-TemperatureDisplay [label = "{TemperatureDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
+TemperatureDisplay [label = "{TemperatureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
 
 node [shape = "record" ]
-WeatherData [label = "{WeatherData|-temperature:double\l-humidity:double\l-pressure:double\l|+ void <init>()\l+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l+ boolean equals()\l+ int hashCode()\l}" ]
+WeatherData [label = "{WeatherData|-temperature:double\l-humidity:double\l-pressure:double\l|+ void <init>(double, double, double)\l+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l+ boolean equals(java.lang.Object)\l+ int hashCode()\l}" ]
 
 node [shape = "record" ]
-WeatherReporter [label = "{WeatherReporter|-displays:java.util.List\l-data:oldLab.IWeatherData\l|+ void <init>()\l+ void registerDisplay()\l+ void removeDisplay()\l+ void setWeatherData()\l+ void notifyDisplays()\l}" ]
+WeatherReporter [label = "{WeatherReporter|-displays:java.util.List\l-data:oldLab.IWeatherData\l|+ void <init>()\l+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l# void notifyDisplays()\l}" ]
 
 node [shape = "record" ]
-WeatherStation [label = "{WeatherStation||+ void <init>()\l+ void main()\l}" ]
+WeatherStation [label = "{WeatherStation||+ void <init>()\l+ void main(java.lang.String[])\l}" ]
 
 edge [arrowhead = "empty" style = solid ]
 HumidityDisplay -> Object
@@ -56,5 +56,20 @@ WeatherReporter -> Object
 
 edge [arrowhead = "empty" style = solid ]
 WeatherStation -> Object
+
+edge [arrowhead = "empty" style = "dashed" ]
+HumidityDisplay -> IDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+PressureDisplay -> IDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+TemperatureDisplay -> IDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+WeatherData -> IWeatherData
+
+edge [arrowhead = "empty" style = "dashed" ]
+WeatherReporter -> IWeatherReporter
 
 }

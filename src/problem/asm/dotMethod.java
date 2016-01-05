@@ -1,14 +1,15 @@
 package problem.asm;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class dotMethod extends plainText {
 	private String level;
 	private String type;
 	private String name;
-	private ArrayList<String> args;
+	private List<String> args;
 	
-	public dotMethod(String le, String ty, String nm, ArrayList<String> ar){
+	public dotMethod(String le, String ty, String nm, List<String> ar){
 		name = nm;
 		type = ty;
 		level = le;
@@ -62,11 +63,11 @@ public class dotMethod extends plainText {
 		this.level = level;
 	}
 
-	public ArrayList<String> getArgs() {
+	public List<String> getArgs() {
 		return args;
 	}
 
-	public void setArgs(ArrayList<String> args) {
+	public void setArgs(List<String> args) {
 		this.args = args;
 	}
 }

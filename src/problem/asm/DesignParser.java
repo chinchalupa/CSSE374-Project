@@ -30,6 +30,7 @@ public class DesignParser {
         String location = in.nextLine();
 
         List<dotExtends> extendCases = new ArrayList<>();
+        List<dotImplements> implementses = new ArrayList<>();
 
         for(String className : DesignParser.getListOfFiles(source, location)) {
 
@@ -65,27 +66,25 @@ public class DesignParser {
 
 //            System.out.println("REFINED:\t\t " + refinedClass);
 //            System.out.println("INHERITS FROM:\t " + refinedSuperClass);
-//            for(String implemented : rawImplements) {
-//                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
-//                System.out.println("IMPLEMENTS:\t\t " + implementedFrom.get(implementedFrom.size() - 1));
-//            }
+            for(String implemented : rawImplements) {
+                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
+            }
 
             god.add(dClass);
-//            for(dotMethod method : dClass.getMethods()) {
-//                System.out.println("METHOD: " + method.getName());
-//            }
 
-            // Create all the classes
-            // Store all the edges
-            // Exclude the Object edges
-
-//            if(!refinedSuperClass.contains("Object")) {
-                extendCases.add(new dotExtends(refinedSuperClass, refinedClass));
+            extendCases.add(new dotExtends(refinedSuperClass, refinedClass));
+            for(String impFrom : implementedFrom) {
+                implementses.add(new dotImplements(impFrom, refinedClass));
+            }
 //            }
         }
 
         for(dotExtends e : extendCases) {
             god.add(e);
+        }
+
+        for(dotImplements d : implementses) {
+            god.add(d);
         }
 
         System.out.println(god.genesis());
