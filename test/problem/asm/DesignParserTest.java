@@ -59,12 +59,12 @@ public class DesignParserTest {
 
     @Test
     public void testClassOutput() {
-        assertEquals("node [shape = \"record\" ]\nTestName [label = \"{TestName||}\" ]", dClass.dotString());
+        assertEquals("node [shape = \"record\" ]\nClassTTestName [label = \"{TestName||}\" ]", dClass.dotString());
     }
 
     @Test
     public void testExtends() {
         dotExtends dExtends = new dotExtends("Small", "Super");
-        assertEquals("edge [arrowhead = \"empty\" style = solid ]\nSuper -> Small", dExtends.dotString());
+        assertEquals("edge [arrowhead = \"empty\" style = solid ]\nClassTSuper -> ClassTSmall", dExtends.dotString());
     }
 }
