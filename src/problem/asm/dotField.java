@@ -1,9 +1,13 @@
-package problem.question1;
+package problem.asm;
 
 public class dotField implements plainText{
 	private String type;
 	private String name;
-	
+
+	public dotField() {
+
+	}
+
 	public dotField(String ty, String nm){
 		name = nm;
 		type = ty;

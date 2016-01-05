@@ -30,34 +30,49 @@ public class DesignParser {
 
         for(String className : DesignParser.getListOfFiles("./src/problem/asm", "problem.asm")) {
             System.out.println("=======================");
+
+
+
 // ASM's ClassReader does the heavy lifting of parsing the compiled Java class
             ClassReader reader = new ClassReader(className);
+
+
+            String rawClass = reader.getClassName();
+            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
+
+            dotClass dClass = new dotClass(refinedClass, new ArrayList<>(), new ArrayList<>());
+
+
+
 // make class declaration visitor to get superclass and interfaces
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
 // DECORATE declaration visitor with field visitor
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor);
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass);
 // TODO: add more DECORATORS here in later milestones to accomplish specific tasks
 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
-            String rawClass = reader.getClassName();
             String rawSuperClass = reader.getSuperName();
             String[] rawImplements = reader.getInterfaces();
 
-            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
             String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 1, rawSuperClass.length());
             List<String> implementedFrom = new ArrayList<>();
 
 
-            System.out.println("REFINED:\t\t " + refinedClass);
-            System.out.println("INHERITS FROM:\t " + refinedSuperClass);
-            for(String implemented : rawImplements) {
-                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
-                System.out.println("IMPLEMENTS:\t\t " + implementedFrom.get(implementedFrom.size() - 1));
-            }
+//            System.out.println("REFINED:\t\t " + refinedClass);
+//            System.out.println("INHERITS FROM:\t " + refinedSuperClass);
+//            for(String implemented : rawImplements) {
+//                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
+//                System.out.println("IMPLEMENTS:\t\t " + implementedFrom.get(implementedFrom.size() - 1));
+//            }
 
+//            for(dotMethod method : dClass.getMethods()) {
+//                System.out.println("METHOD: " + method.getName());
+//            }
+
+            System.out.println(dClass.dotString());
             // Create all the classes
             // Store all the edges
             // Exclude the Object edges
