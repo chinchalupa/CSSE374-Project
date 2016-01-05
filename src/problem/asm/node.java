@@ -1,4 +1,4 @@
-package problem.asm;
+package problem.question1;
 
 public abstract class node implements iShape {
 	private String name;
@@ -9,6 +9,10 @@ public abstract class node implements iShape {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public int getPriority(){
+		return 0;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package problem.asm;
+package problem.question1;
 
 public abstract class UMLBoxNode extends node{
 

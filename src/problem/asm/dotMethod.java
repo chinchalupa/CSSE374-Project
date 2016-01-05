@@ -1,6 +1,6 @@
-package problem.asm;
+package problem.question1;
 
-public class dotMethod implements plainText {
+public class dotMethod extends plainText {
 	private String type;
 	private String name;
 	
