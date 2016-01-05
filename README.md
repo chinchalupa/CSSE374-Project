@@ -1,5 +1,5 @@
 <h1>CSSE 374 Project</h1>
--Milestone 1-
+<strike>Milestone 1</strike>
 
 <h2>General</h2>
 
@@ -8,45 +8,45 @@ To run our project, run DesignParser with no arguments. You will be prompted for
 
 <h3>Milestone 1 Log</h3>
 
-<em>Design</em>
-Our design for this was built by analyzing the structure of graph viz and developing a pattern based off of it. The core design revolves around building the nodes first and then building the edges afterwards.
-Since graph viz appears to parse sequentially, this would be the best approach to ensure that you do not try to route to a class that has not yet been created.
+<strong>Design</strong>
+<p>Our design for this was built by analyzing the structure of graph viz and developing a pattern based off of it. The core design revolves around building the nodes first and then building the edges afterwards.
+Since graph viz appears to parse sequentially, this would be the best approach to ensure that you do not try to route to a class that has not yet been created.</p>
 
-<em>DesignParser</em>
-The class to be ran.
+<strong>DesignParser</strong>
+<p>The class to be ran.</p>
 
-<em>iShape</em>
-Nearly everything that is written within the .dot file extends the iShape. This allows each class to be placed into the .dot file.
+<strong>iShape</strong>
+<p>Nearly everything that is written within the .dot file extends the iShape. This allows each class to be placed into the .dot file.</p>
 
-Node
-A node is used to add more parameters onto an iShape where a name is needed.
+<strong>Node</strong>
+<p>A node is used to add more parameters onto an iShape where a name is needed.</p>
 
-DotClass
-The dotClass class allows us to create a class with the necessary fields, methods, and superclasses that need to be created.
+<strong>DotClass</strong>
+<p>The dotClass class allows us to create a class with the necessary fields, methods, and superclasses that need to be created.</p>
 
-DotField
-A class to be used by dotClass to hold all of the fields that are created.
+<strong>DotField</strong>
+<p>A class to be used by dotClass to hold all of the fields that are created.</p>
 
-DotMethod
-A class to be used by dotClass to hold all the metohds that are created.
+<strong>DotMethod</strong>
+<p>A class to be used by dotClass to hold all the metohds that are created.</p>
 
-DotAbstractMethod
-A class to be used by dotClass to hold abstract methods.
+<strong>DotAbstractMethod</strong>
+<p>A class to be used by dotClass to hold abstract methods.</p>
 
-dotEdge
-An abstract class used for edge-based classes.
+<strong>dotEdge</strong>
+<p>An abstract class used for edge-based classes.</p>
 
-dotImplements / dotExtends / dotAbstractClass
-Concrete classes that are types of edge cases.
+<strong>dotImplements / dotExtends / dotAbstractClass</strong>
+<p>Concrete classes that are types of edge cases.</p>
 
-dotBlurb / dotAssignment
-basic utility classes for formatting.
+<strong>dotBlurb / dotAssignment</strong>
+<p>Basic utility classes for formatting.</p>
 
-FirstASM / Creator
-Barebones testing code. Mostly can be ignored.
+<strong>FirstASM / Creator</strong>
+<p>Barebones testing code. Mostly can be ignored.</p>
 
-UMLBoxNode
-A node that is a UML Box for the .dot file.
+<strong>UMLBoxNode</strong>
+<p>A node that is a UML Box for the .dot file.</p>
 
-plainText
-Placeholder for later use.
+<strong>plainText</strong>
+<p>Placeholder for later use.</p>
