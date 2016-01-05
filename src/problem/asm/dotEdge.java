@@ -4,6 +4,11 @@ public abstract class dotEdge implements iShape {
 	private String to;
 	private String from;
 	
+	public dotEdge(String t, String f){
+		this.setTo(t);
+		this.setFrom(f);
+	}
+	
 	public String getFrom() {
 		return from;
 	}
