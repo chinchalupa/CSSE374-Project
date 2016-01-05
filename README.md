@@ -1,6 +1,9 @@
-General
+<h1>CSSE 374 Project</h1>
+-Milestone 1-
 
-To run our project, run DesignParser with no arguments. You will be prompted for some inputs.
+<h2>General</h2>
+
+To run our project, run DesignParser with no arguments. You will be prompted for some inputs. Once you have read and entered in the inputs, take the dot file and run it using dot.exe
 
 Milestone 1 progress
 
