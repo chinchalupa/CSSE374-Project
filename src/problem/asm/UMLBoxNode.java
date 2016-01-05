@@ -18,7 +18,7 @@ public abstract class UMLBoxNode extends node{
 		s += db.dotString() + "\n";
 		
 		dotBlurb db2 = new dotBlurb(this.getName());
-		db.addLine("label", "\"{" + this.getLabel() + "}\"");
+		db2.addLine("label", "\"{" + this.getLabel() + "}\"");
 		
 		s += db2.dotString();
 		
