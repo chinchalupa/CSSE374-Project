@@ -1,22 +1,60 @@
+digraph G {
 
-digraph observer_example{
-  // arrange graph so arrows tend to point upward
-  rankdir=BT;
+fontname = "Bitstream Vera Sans"
+fontsize = 8
 
-  // draw the Subject interface
-  Subject [
-    shape="record", // "record" makes the UML happen
-    // "label" fills in the UML text. The | separates each section.
-    // The characters \l, \n, \r separate each method/variable name in the UML
-    label = "{\<\<interface\>\>\nSubject|+ notifyObservers() : void\l}"
-  ];
+node [shape = "record" ]
+HumidityDisplay [label = "{HumidityDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
 
-  // draw the WeatherData class
-  WeatherData [
-    shape="record",
-    label = "{WeatherData|- temperature : float\l- humidity : float\l- pressure : float\l|+ measurementsChanged() : void\l}"
-  ];
+node [shape = "record" ]
+IDisplay [label = "{IDisplay||+ void dataChanged()\l}" ]
 
-  // draw the "implements" white dashed arrow
-  WeatherData -> Subject [arrowhead="onormal", style="dashed"];
+node [shape = "record" ]
+IWeatherData [label = "{IWeatherData||+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l}" ]
+
+node [shape = "record" ]
+IWeatherReporter [label = "{IWeatherReporter||+ void registerDisplay()\l+ void removeDisplay()\l+ void setWeatherData()\l}" ]
+
+node [shape = "record" ]
+PressureDisplay [label = "{PressureDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
+
+node [shape = "record" ]
+TemperatureDisplay [label = "{TemperatureDisplay||+ void <init>()\l+ void dataChanged()\l}" ]
+
+node [shape = "record" ]
+WeatherData [label = "{WeatherData|-temperature:double\l-humidity:double\l-pressure:double\l|+ void <init>()\l+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l+ boolean equals()\l+ int hashCode()\l}" ]
+
+node [shape = "record" ]
+WeatherReporter [label = "{WeatherReporter|-displays:java.util.List\l-data:oldLab.IWeatherData\l|+ void <init>()\l+ void registerDisplay()\l+ void removeDisplay()\l+ void setWeatherData()\l+ void notifyDisplays()\l}" ]
+
+node [shape = "record" ]
+WeatherStation [label = "{WeatherStation||+ void <init>()\l+ void main()\l}" ]
+
+edge [arrowhead = "empty" style = solid ]
+HumidityDisplay -> Object
+
+edge [arrowhead = "empty" style = solid ]
+IDisplay -> Object
+
+edge [arrowhead = "empty" style = solid ]
+IWeatherData -> Object
+
+edge [arrowhead = "empty" style = solid ]
+IWeatherReporter -> Object
+
+edge [arrowhead = "empty" style = solid ]
+PressureDisplay -> Object
+
+edge [arrowhead = "empty" style = solid ]
+TemperatureDisplay -> Object
+
+edge [arrowhead = "empty" style = solid ]
+WeatherData -> Object
+
+edge [arrowhead = "empty" style = solid ]
+WeatherReporter -> Object
+
+edge [arrowhead = "empty" style = solid ]
+WeatherStation -> Object
+
 }
