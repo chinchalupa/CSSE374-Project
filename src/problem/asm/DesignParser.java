@@ -1,6 +1,9 @@
 package problem.asm;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,16 +19,22 @@ public class DesignParser {
      * Reads in a list of Java Classes and reverse engineers their design.
      *
      * @param args: the names of the classes, separated by spaces.
-     * For example: java DesignParser java.lang.String edu.rosehulman.csse374.ClassFieldVisitor java.lang.Math
+     * For example: java DesignParser java.lang.String edu.rosehulman.csse374.ClassFieldVisitor 
+
+java.lang.Math
      * @throws IOException
      */
     public static void main(String[] args) throws IOException{
 
         God god = new God();
+        
 
         Scanner in = new Scanner(System.in);
         System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
         String source = in.nextLine();
+        System.out.println("Enter in the full source of the output file e.g. (./src/oldLab)");
+        String oSource = in.nextLine();
+        BufferedWriter out = new BufferedWriter(new FileWriter(new File(oSource)));
         System.out.println("Enter in the full package name e.g. (oldLab)");
         String location = in.nextLine();
 
@@ -41,7 +50,9 @@ public class DesignParser {
 
 
             String rawClass = reader.getClassName();
-            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
+            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, 
+
+rawClass.length());
 
             dotClass dClass = new dotClass(refinedClass, new ArrayList<>(), new ArrayList<>());
 
@@ -52,7 +63,9 @@ public class DesignParser {
 // DECORATE declaration visitor with field visitor
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, 
+
+dClass);
 // TODO: add more DECORATORS here in later milestones to accomplish specific tasks
 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
@@ -60,14 +73,18 @@ public class DesignParser {
             String rawSuperClass = reader.getSuperName();
             String[] rawImplements = reader.getInterfaces();
 
-            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 1, rawSuperClass.length());
+            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 
+
+1, rawSuperClass.length());
             List<String> implementedFrom = new ArrayList<>();
 
 
 //            System.out.println("REFINED:\t\t " + refinedClass);
 //            System.out.println("INHERITS FROM:\t " + refinedSuperClass);
             for(String implemented : rawImplements) {
-                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
+                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, 
+
+implemented.length()));
             }
 
             god.add(dClass);
@@ -87,7 +104,8 @@ public class DesignParser {
             god.add(d);
         }
 
-        System.out.println(god.genesis());
+        out.write(god.genesis());
+        out.close();
 
     }
 

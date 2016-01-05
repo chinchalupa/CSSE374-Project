@@ -27,7 +27,7 @@ public abstract class dotEdge implements iShape {
 		
 		s += this.getBlurbString() + "\n";
 		
-		s += from + " -> " + to;
+		s += "Class-" + from + " -> " + "Class-" + to;
 		
 		return s;
 	}
