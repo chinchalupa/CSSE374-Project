@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>problem.asm</OriginalElement>
+  <nodes>
+    <node x="190.0" y="410.0">problem.asm.ClassFieldVisitor</node>
+    <node x="0.0" y="410.0">problem.asm.DesignParserTest</node>
+    <node x="433.0" y="489.0">problem.asm.Creature</node>
+    <node x="163.0" y="489.0">problem.asm.dotBlurb</node>
+    <node x="229.0" y="331.0">problem.asm.ClassMethodVisitor</node>
+    <node x="384.4198717948718" y="84.0">problem.asm.dotEdge</node>
+    <node x="0.0" y="568.0">problem.asm.Creator</node>
+    <node x="399.25" y="0.0">problem.asm.iShape</node>
+    <node x="126.0" y="568.0">problem.asm.God</node>
+    <node x="0.0" y="489.0">problem.asm.DesignParser</node>
+    <node x="155.1378205128205" y="168.0">problem.asm.UMLBoxNode</node>
+    <node x="163.0" y="252.0">problem.asm.dotInterface</node>
+    <node x="374.0" y="410.0">problem.asm.dotAssignment</node>
+    <node x="759.5" y="84.0">problem.asm.plainText</node>
+    <node x="296.0" y="252.0">problem.asm.dotClass</node>
+    <node x="0.0" y="252.0">problem.asm.dotAbstractClass</node>
+    <node x="184.1378205128205" y="84.0">problem.asm.node</node>
+    <node x="298.0" y="489.0">problem.asm.FirstASM</node>
+    <node x="452.1378205128205" y="168.0">problem.asm.dotExtends</node>
+    <node x="578.1378205128206" y="168.0">problem.asm.dotAbstractMethod</node>
+    <node x="299.1378205128205" y="168.0">problem.asm.dotImplements</node>
+    <node x="867.1378205128204" y="168.0">problem.asm.dotMethod</node>
+    <node x="760.1378205128204" y="168.0">problem.asm.dotField</node>
+    <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
+      <point x="0.0" y="-17.0" />
+      <point x="219.5" y="227.0" />
+      <point x="217.1378205128205" y="227.0" />
+      <point x="0.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.UMLBoxNode" target="problem.asm.node">
+      <point x="0.0" y="-17.0" />
+      <point x="0.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotImplements" target="problem.asm.dotEdge">
+      <point x="0.0" y="-17.0" />
+      <point x="365.6378205128205" y="143.0" />
+      <point x="406.6698717948718" y="143.0" />
+      <point x="-22.25" y="17.0" />
+    </edge>
+    <edge source="problem.asm.plainText" target="problem.asm.iShape">
+      <point x="0.0" y="-17.0" />
+      <point x="806.0" y="59.0" />
+      <point x="463.4166666666667" y="59.0" />
+      <point x="25.666666666666686" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
+      <point x="0.0" y="-17.0" />
+      <point x="71.5" y="227.0" />
+      <point x="175.80448717948718" y="227.0" />
+      <point x="-41.33333333333334" y="17.0" />
+    </edge>
+    <edge source="problem.asm.node" target="problem.asm.iShape">
+      <point x="0.0" y="-17.0" />
+      <point x="217.1378205128205" y="59.0" />
+      <point x="412.0833333333333" y="59.0" />
+      <point x="-25.666666666666686" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
+      <point x="0.0" y="-17.0" />
+      <point x="428.9198717948718" y="59.0" />
+      <point x="437.75" y="59.0" />
+      <point x="0.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
+      <point x="0.0" y="-17.0" />
+      <point x="920.6378205128204" y="143.0" />
+      <point x="837.0" y="143.0" />
+      <point x="31.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
+      <point x="0.0" y="-17.0" />
+      <point x="340.0" y="227.0" />
+      <point x="258.4711538461538" y="227.0" />
+      <point x="41.333333333333314" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotField" target="problem.asm.plainText">
+      <point x="0.0" y="-17.0" />
+      <point x="803.6378205128204" y="143.0" />
+      <point x="806.0" y="143.0" />
+      <point x="0.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
+      <point x="0.0" y="-17.0" />
+      <point x="659.1378205128206" y="143.0" />
+      <point x="775.0" y="143.0" />
+      <point x="-31.0" y="17.0" />
+    </edge>
+    <edge source="problem.asm.dotExtends" target="problem.asm.dotEdge">
+      <point x="5.6843418860808015E-14" y="-17.0" />
+      <point x="505.13782051282055" y="143.0" />
+      <point x="451.1698717948718" y="143.0" />
+      <point x="22.25" y="17.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8987138263665595" x="487.5" y="301.0" />
+  <SelectedNodes>
+    <node>problem.asm.ClassFieldVisitor</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

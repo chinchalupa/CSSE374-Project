@@ -3,73 +3,148 @@ digraph G {
 fontname = "Bitstream Vera Sans"
 fontsize = 8
 
-node [shape = "record" ]
-HumidityDisplay [label = "{HumidityDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+Node [shape = "record" ]
+ClassDeclarationVisitor [label = "{ClassDeclarationVisitor|-name:java.lang.String\l-superName:java.lang.String\l-interfaces:java.lang.String[]\l|+ void <init>(int)\l+ void visit(int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])\l+ java.lang.String getName()\l+ java.lang.String getSuperName()\l+ java.lang.String[] getInterfaces()\l}" ]
 
-node [shape = "record" ]
-IDisplay [label = "{IDisplay||+ void dataChanged(oldLab.IWeatherData)\l}" ]
+Node [shape = "record" ]
+ClassFieldVisitor [label = "{ClassFieldVisitor|-type:java.lang.String\l-name:java.lang.String\l-dClass:problem.asm.dotClass\l|+ java.lang.String getFieldType()\l+ java.lang.String getFieldName()\l+ void <init>(int)\l+ void <init>(int, org.objectweb.asm.ClassVisitor, problem.asm.dotClass)\l+ org.objectweb.asm.FieldVisitor visitField(int, java.lang.String, java.lang.String, java.lang.String, java.lang.Object)\l}" ]
 
-node [shape = "record" ]
-IWeatherData [label = "{IWeatherData||+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l}" ]
+Node [shape = "record" ]
+ClassMethodVisitor [label = "{ClassMethodVisitor|-dClass:problem.asm.dotClass\l|+ void <init>(int)\l+ void <init>(int, org.objectweb.asm.ClassVisitor, problem.asm.dotClass)\l+ org.objectweb.asm.MethodVisitor visitMethod(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])\l+ java.lang.String addAccessLevel(int)\l+ java.lang.String addReturnType(java.lang.String)\l+ java.util.List addArguments(java.lang.String)\l}" ]
 
-node [shape = "record" ]
-IWeatherReporter [label = "{IWeatherReporter||+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l}" ]
+Node [shape = "record" ]
+Creator [label = "{Creator||+ void <init>()\l+ void main(java.lang.String[])\l+ void mouseClicked(java.awt.event.MouseEvent)\l+ void mousePressed(java.awt.event.MouseEvent)\l+ void mouseReleased(java.awt.event.MouseEvent)\l+ void mouseEntered(java.awt.event.MouseEvent)\l+ void mouseExited(java.awt.event.MouseEvent)\l}" ]
 
-node [shape = "record" ]
-PressureDisplay [label = "{PressureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+Node [shape = "record" ]
+DesignParser [label = "{DesignParser||+ void <init>()\l+ void main(java.lang.String[])\l+ java.util.List getListOfFiles(java.lang.String, java.lang.String)\l}" ]
 
-node [shape = "record" ]
-TemperatureDisplay [label = "{TemperatureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+Node [shape = "record" ]
+dotAbstractClass [label = "{dotAbstractClass|-separator:java.lang.String\l-fields:java.util.ArrayList\l-methods:java.util.ArrayList\l-amethods:java.util.ArrayList\l|+ void <init>(java.lang.String, java.util.ArrayList, java.util.ArrayList, java.util.ArrayList)\l+ java.lang.String getLabel()\l}" ]
 
-node [shape = "record" ]
-WeatherData [label = "{WeatherData|-temperature:double\l-humidity:double\l-pressure:double\l|+ void <init>(double, double, double)\l+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l+ boolean equals(java.lang.Object)\l+ int hashCode()\l}" ]
+Node [shape = "record" ]
+dotAbstractMethod [label = "{dotAbstractMethod|-type:java.lang.String\l-name:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ void setName(java.lang.String)\l+ java.lang.String getType()\l+ void setType(java.lang.String)\l+ java.lang.String getName()\l+ java.lang.String dotString()\l}" ]
 
-node [shape = "record" ]
-WeatherReporter [label = "{WeatherReporter|-displays:java.util.List\l-data:oldLab.IWeatherData\l|+ void <init>()\l+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l# void notifyDisplays()\l}" ]
+Node [shape = "record" ]
+dotAssignment [label = "{dotAssignment|-variable:java.lang.String\l-value:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ java.lang.String dotString()\l}" ]
 
-node [shape = "record" ]
-WeatherStation [label = "{WeatherStation||+ void <init>()\l+ void main(java.lang.String[])\l}" ]
+Node [shape = "record" ]
+dotBlurb [label = "{dotBlurb|-lines:java.util.ArrayList\l-name:java.lang.String\l|+ void <init>(java.lang.String)\l+ boolean addLine(java.lang.String, java.lang.String)\l+ void clear()\l+ java.lang.String dotString()\l+ java.lang.String getName()\l+ void setName(java.lang.String)\l}" ]
+
+Node [shape = "record" ]
+dotClass [label = "{dotClass|-separator:java.lang.String\l-fields:java.util.ArrayList\l-methods:java.util.ArrayList\l|+ void <init>(java.lang.String)\l+ void <init>(java.lang.String, java.util.ArrayList, java.util.ArrayList)\l+ void setFields(java.util.ArrayList)\l+ void setMethods(java.util.ArrayList)\l+ java.util.List getMethods()\l+ void addField(problem.asm.dotField)\l+ void addMethod(problem.asm.dotMethod)\l+ java.lang.String getLabel()\l}" ]
+
+Node [shape = "record" ]
+dotEdge [label = "{dotEdge|-to:java.lang.String\l-from:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ java.lang.String getFrom()\l+ void setFrom(java.lang.String)\l+ java.lang.String getTo()\l+ void setTo(java.lang.String)\l+ java.lang.String dotString()\l+ int getPriority()\l+ java.lang.String getBlurbString()\l}" ]
+
+Node [shape = "record" ]
+dotExtends [label = "{dotExtends|-arrowhead:java.lang.String\l-style:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ java.lang.String getBlurbString()\l}" ]
+
+Node [shape = "record" ]
+dotField [label = "{dotField|-type:java.lang.String\l-name:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ void setName(java.lang.String)\l+ java.lang.String getType()\l+ void setType(java.lang.String)\l+ java.lang.String getName()\l+ java.lang.String dotString()\l}" ]
+
+Node [shape = "record" ]
+dotImplements [label = "{dotImplements|-style:java.lang.String\l|+ void <init>(java.lang.String, java.lang.String)\l+ java.lang.String getBlurbString()\l}" ]
+
+Node [shape = "record" ]
+dotInterface [label = "{dotInterface|-separator:java.lang.String\l-fields:java.util.ArrayList\l-methods:java.util.ArrayList\l|+ void <init>(java.lang.String, java.util.ArrayList, java.util.ArrayList)\l+ java.lang.String getLabel()\l}" ]
+
+Node [shape = "record" ]
+dotMethod [label = "{dotMethod|-level:java.lang.String\l-type:java.lang.String\l-name:java.lang.String\l-args:java.util.List\l|+ void <init>(java.lang.String, java.lang.String, java.lang.String, java.util.List)\l+ void setName(java.lang.String)\l+ java.lang.String getType()\l+ void setType(java.lang.String)\l+ java.lang.String getName()\l+ java.lang.String dotString()\l+ java.lang.String getLevel()\l+ void setLevel(java.lang.String)\l+ java.util.List getArgs()\l+ void setArgs(java.util.List)\l}" ]
+
+Node [shape = "record" ]
+FirstASM [label = "{FirstASM|-myField:java.lang.String\l|+ void <init>()\l+ void main(java.lang.String[])\l+ void <clinit>()\l}" ]
+
+Node [shape = "record" ]
+God [label = "{God|-data:java.util.ArrayList\l|+ void <init>()\l+ void add(problem.asm.iShape)\l+ java.lang.String genesis()\l}" ]
+
+Node [shape = "record" ]
+iShape [label = "{iShape||+ java.lang.String dotString()\l+ int getPriority()\l}" ]
+
+Node [shape = "record" ]
+Node [label = "{Node|-name:java.lang.String\l|+ void <init>()\l+ void setName(java.lang.String)\l+ java.lang.String getName()\l+ int getPriority()\l}" ]
+
+Node [shape = "record" ]
+plainText [label = "{plainText||+ void <init>()\l+ int getPriority()\l}" ]
+
+Node [shape = "record" ]
+UMLBoxNode [label = "{UMLBoxNode|-fontname:java.lang.String\l-fontsize:java.lang.String\l-shape:java.lang.String\l|+ void <init>()\l+ java.lang.String dotString()\l+ java.lang.String getLabel()\l}" ]
 
 edge [arrowhead = "empty" style = solid ]
-HumidityDisplay -> Object
+ClassDeclarationVisitor -> ClassVisitor
 
 edge [arrowhead = "empty" style = solid ]
-IDisplay -> Object
+ClassFieldVisitor -> ClassVisitor
 
 edge [arrowhead = "empty" style = solid ]
-IWeatherData -> Object
+ClassMethodVisitor -> ClassVisitor
 
 edge [arrowhead = "empty" style = solid ]
-IWeatherReporter -> Object
+Creator -> Object
 
 edge [arrowhead = "empty" style = solid ]
-PressureDisplay -> Object
+DesignParser -> Object
 
 edge [arrowhead = "empty" style = solid ]
-TemperatureDisplay -> Object
+dotAbstractClass -> UMLBoxNode
 
 edge [arrowhead = "empty" style = solid ]
-WeatherData -> Object
+dotAbstractMethod -> plainText
 
 edge [arrowhead = "empty" style = solid ]
-WeatherReporter -> Object
+dotAssignment -> Object
 
 edge [arrowhead = "empty" style = solid ]
-WeatherStation -> Object
+dotBlurb -> Object
+
+edge [arrowhead = "empty" style = solid ]
+dotClass -> UMLBoxNode
+
+edge [arrowhead = "empty" style = solid ]
+dotEdge -> Object
+
+edge [arrowhead = "empty" style = solid ]
+dotExtends -> dotEdge
+
+edge [arrowhead = "empty" style = solid ]
+dotField -> plainText
+
+edge [arrowhead = "empty" style = solid ]
+dotImplements -> dotEdge
+
+edge [arrowhead = "empty" style = solid ]
+dotInterface -> UMLBoxNode
+
+edge [arrowhead = "empty" style = solid ]
+dotMethod -> plainText
+
+edge [arrowhead = "empty" style = solid ]
+FirstASM -> Object
+
+edge [arrowhead = "empty" style = solid ]
+God -> Object
+
+edge [arrowhead = "empty" style = solid ]
+iShape -> Object
+
+edge [arrowhead = "empty" style = solid ]
+Mode -> Object
+
+edge [arrowhead = "empty" style = solid ]
+plainText -> Object
+
+edge [arrowhead = "empty" style = solid ]
+UMLBoxNode -> Node
 
 edge [arrowhead = "empty" style = "dashed" ]
-HumidityDisplay -> IDisplay
+Creator -> MouseListener
 
 edge [arrowhead = "empty" style = "dashed" ]
-PressureDisplay -> IDisplay
+dotEdge -> iShape
 
 edge [arrowhead = "empty" style = "dashed" ]
-TemperatureDisplay -> IDisplay
+Node -> iShape
 
 edge [arrowhead = "empty" style = "dashed" ]
-WeatherData -> IWeatherData
-
-edge [arrowhead = "empty" style = "dashed" ]
-WeatherReporter -> IWeatherReporter
+plainText -> iShape
 
 }
