@@ -21,12 +21,21 @@ public class DesignParser {
      */
     public static void main(String[] args) throws IOException{
 
-//        List<dotExtends> edgeCases = new ArrayList<>();
+        God god = new God();
 
-        DesignParser.getListOfFiles();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
+        String source = in.nextLine();
+        System.out.println("Enter in the full package name e.g. (oldLab)");
+        String location = in.nextLine();
 
-        for(String className : DesignParser.getListOfFiles()) {
+        List<dotExtends> extendCases = new ArrayList<>();
 
+        for(String className : DesignParser.getListOfFiles(source, location)) {
+
+
+
+// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
             ClassReader reader = new ClassReader(className);
 
 
@@ -61,36 +70,36 @@ public class DesignParser {
 //                System.out.println("IMPLEMENTS:\t\t " + implementedFrom.get(implementedFrom.size() - 1));
 //            }
 
+            god.add(dClass);
 //            for(dotMethod method : dClass.getMethods()) {
 //                System.out.println("METHOD: " + method.getName());
 //            }
 
-            System.out.println(dClass.dotString());
             // Create all the classes
             // Store all the edges
             // Exclude the Object edges
 
-//            if(!reader.getSuperName().contains("java/lang/Object")) {
-//                System.out.println("");
+//            if(!refinedSuperClass.contains("Object")) {
+                extendCases.add(new dotExtends(refinedSuperClass, refinedClass));
 //            }
         }
+
+        for(dotExtends e : extendCases) {
+            god.add(e);
+        }
+
+        System.out.println(god.genesis());
+
     }
 
-    public static List<String> getListOfFiles() {
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
-        String prefix = in.nextLine();
-        System.out.println("Enter in the full package name e.g. (oldLab)");
-        String location = in.nextLine();
 
+    public static List<String> getListOfFiles(String location, String prefix) {
         List<String> filenames = new ArrayList<>();
         File directory = new File(location);
-        System.out.println(directory);
 
         File[] listOfFiles = directory.listFiles();
         List<File> files = Arrays.asList(listOfFiles);
-        System.out.println(files.size());
 
         for(File file : files) {
             String s = file.getName();
@@ -98,7 +107,6 @@ public class DesignParser {
             s = s.replace(".java", "");
             s = s.replace(".", "");
             s = s.replace("\\", ".");
-            System.out.println(s);
             filenames.add(prefix + "." + s);
         }
 

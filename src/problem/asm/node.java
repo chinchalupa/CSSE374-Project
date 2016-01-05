@@ -1,4 +1,4 @@
-package problem.question1;
+package problem.asm;
 
 public abstract class node implements iShape {
 	private String name;

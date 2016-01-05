@@ -4,6 +4,10 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClassMethodVisitor extends ClassVisitor {
 
     private dotClass dClass;
@@ -32,7 +36,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         return toDecorate;
     }
 
-    void addAccessLevel(int access){
+    public String addAccessLevel(int access){
         String level="";
         if((access&Opcodes.ACC_PUBLIC)!=0){
             level="public";
@@ -45,6 +49,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         }
 //        System.out.println("access level: "+level);
 // TODO: ADD this information to your representation of the current method.
+        return level;
     }
 
     public String addReturnType(String desc){
@@ -53,13 +58,15 @@ public class ClassMethodVisitor extends ClassVisitor {
         return returnType;
     }
 
-    void addArguments(String desc){
+    public List<String> addArguments(String desc){
+        ArrayList<String> list = new ArrayList<>();
         Type[] args = Type.getArgumentTypes(desc);
         for(int i=0; i< args.length; i++){
-            String arg=args[i].getClassName();
+            list.add(args[i].getClassName());
 //            System.out.println("arg "+i+": "+arg);
 // TODO: ADD this information to your representation of the current method.
         }
+        return list;
     }
 
 }

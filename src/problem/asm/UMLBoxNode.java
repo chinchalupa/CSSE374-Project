@@ -1,4 +1,4 @@
-package problem.question1;
+package problem.asm;
 
 public abstract class UMLBoxNode extends node{
 
@@ -11,8 +11,8 @@ public abstract class UMLBoxNode extends node{
 		String s = "";
 		
 		dotBlurb db = new dotBlurb("node");
-		db.addLine("fontname", fontname);
-		db.addLine("fontsize", fontsize);
+//		db.addLine("fontname", fontname);
+//		db.addLine("fontsize", fontsize);
 		db.addLine("shape", shape);
 		
 		s += db.dotString() + "\n";

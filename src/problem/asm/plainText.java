@@ -1,4 +1,4 @@
-package problem.question1;
+package problem.asm;
 
 public abstract class plainText implements iShape {
 	public int getPriority(){

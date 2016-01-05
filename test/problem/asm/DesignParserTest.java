@@ -2,6 +2,7 @@ package problem.asm;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -20,10 +21,11 @@ public class DesignParserTest {
 
     }
 
+    @Test
     public void testFileReading() {
-        assertEquals(9, DesignParser.getListOfFiles().size());
+        assertEquals(2, DesignParser.getListOfFiles("./src/TestRunner", "TestRunner").size());
     }
-
+//
     public void testName() {
 
     }
