@@ -4,17 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
 public class DesignParser {
-    public static final String[] classes = {
-            "problem.asm.FirstASM",
-            "problem.asm.DesignParser",
-            "problem.asm.Creator"
-    };
 
     /**
      * Reads in a list of Java Classes and reverse engineers their design.
@@ -24,16 +20,13 @@ public class DesignParser {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException{
-//        System.out.println(DesignParser.getListOfFiles("./src/problem/asm", "problem.asm"));
 
 //        List<dotExtends> edgeCases = new ArrayList<>();
 
-        for(String className : DesignParser.getListOfFiles("./src/problem/asm", "problem.asm")) {
-            System.out.println("=======================");
+        DesignParser.getListOfFiles();
 
+        for(String className : DesignParser.getListOfFiles()) {
 
-
-// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
             ClassReader reader = new ClassReader(className);
 
 
@@ -83,12 +76,21 @@ public class DesignParser {
         }
     }
 
-    public static List<String> getListOfFiles(String location, String prefix) {
+    public static List<String> getListOfFiles() {
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
+        String prefix = in.nextLine();
+        System.out.println("Enter in the full package name e.g. (oldLab)");
+        String location = in.nextLine();
+
         List<String> filenames = new ArrayList<>();
-        File directory = new File("./src/problem/asm");
+        File directory = new File(location);
+        System.out.println(directory);
 
         File[] listOfFiles = directory.listFiles();
         List<File> files = Arrays.asList(listOfFiles);
+        System.out.println(files.size());
 
         for(File file : files) {
             String s = file.getName();
@@ -96,8 +98,8 @@ public class DesignParser {
             s = s.replace(".java", "");
             s = s.replace(".", "");
             s = s.replace("\\", ".");
+            System.out.println(s);
             filenames.add(prefix + "." + s);
-
         }
 
         return filenames;
