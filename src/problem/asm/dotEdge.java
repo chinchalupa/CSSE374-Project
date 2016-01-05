@@ -1,4 +1,4 @@
-package problem.asm;
+package problem.question1;
 
 public abstract class dotEdge implements iShape {
 	private String to;
@@ -30,6 +30,10 @@ public abstract class dotEdge implements iShape {
 		s += from + " -> " + to;
 		
 		return s;
+	}
+	
+	public int getPriority(){
+		return 1;
 	}
 	
 	public abstract String getBlurbString();

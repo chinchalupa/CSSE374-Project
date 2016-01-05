@@ -1,6 +1,6 @@
 package problem.asm;
 
-public class dotAbstractMethod implements plainText{
+public class dotAbstractMethod extends plainText{
 	private String type;
 	private String name;
 	

@@ -1,13 +1,9 @@
-package problem.asm;
+package problem.question1;
 
-public class dotField implements plainText{
+public class dotField extends plainText{
 	private String type;
 	private String name;
-
-	public dotField() {
-
-	}
-
+	
 	public dotField(String ty, String nm){
 		name = nm;
 		type = ty;
