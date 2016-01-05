@@ -3,18 +3,19 @@
 
 <h2>General</h2>
 
-To run our project, run DesignParser with no arguments. You will be prompted for some inputs. Once you have read and entered in the inputs, take the dot file and run it using dot.exe
+To run our project, run DesignParser with no arguments. You will be prompted for some inputs. Once you have read and entered in the inputs, take the dot file and run it using dot.exe.
 
-Milestone 1 progress
 
-Design
+<h3>Milestone 1 Log</h3>
+
+<em>Design</em>
 Our design for this was built by analyzing the structure of graph viz and developing a pattern based off of it. The core design revolves around building the nodes first and then building the edges afterwards.
 Since graph viz appears to parse sequentially, this would be the best approach to ensure that you do not try to route to a class that has not yet been created.
 
-DesignParser
+<em>DesignParser</em>
 The class to be ran.
 
-iShape
+<em>iShape</em>
 Nearly everything that is written within the .dot file extends the iShape. This allows each class to be placed into the .dot file.
 
 Node
