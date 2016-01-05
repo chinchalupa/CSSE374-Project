@@ -1,0 +1,22 @@
+
+digraph observer_example{
+  // arrange graph so arrows tend to point upward
+  rankdir=BT;
+
+  // draw the Subject interface
+  Subject [
+    shape="record", // "record" makes the UML happen
+    // "label" fills in the UML text. The | separates each section.
+    // The characters \l, \n, \r separate each method/variable name in the UML
+    label = "{\<\<interface\>\>\nSubject|+ notifyObservers() : void\l}"
+  ];
+
+  // draw the WeatherData class
+  WeatherData [
+    shape="record",
+    label = "{WeatherData|- temperature : float\l- humidity : float\l- pressure : float\l|+ measurementsChanged() : void\l}"
+  ];
+
+  // draw the "implements" white dashed arrow
+  WeatherData -> Subject [arrowhead="onormal", style="dashed"];
+}
