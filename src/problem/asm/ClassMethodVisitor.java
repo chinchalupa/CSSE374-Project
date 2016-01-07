@@ -11,14 +11,16 @@ import java.util.List;
 public class ClassMethodVisitor extends ClassVisitor {
 
     private dotClass dClass;
+    private List<dotEdge> edges;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, dotClass dClass) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, dotClass dClass, List<dotEdge> edges) {
         super(api, decorated);
         this.dClass = dClass;
+        this.edges = edges;
     }
 
     @Override
@@ -29,7 +31,6 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         this.dClass.addMethod(dMethod);
         // dotAssociates
-//        System.out.println("Arguments" + addArguments(desc));
         for(String arg : addArguments(desc)) {
             System.out.println("Argument: " + arg);
             System.out.println("DESC: " + desc);
@@ -38,6 +39,8 @@ public class ClassMethodVisitor extends ClassVisitor {
             if(arg.contains(".")) {
                 // Contained within package
                 String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
+                dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), association);
+                this.edges.add(dotAssociates);
             }
         }
 

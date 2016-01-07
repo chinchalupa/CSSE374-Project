@@ -38,8 +38,7 @@ java.lang.Math
         System.out.println("Enter in the full package name e.g. (oldLab)");
         String location = in.nextLine();
 
-        List<dotExtends> extendCases = new ArrayList<>();
-        List<dotImplements> implementses = new ArrayList<>();
+        List<dotEdge> edges = new ArrayList<>();
 
         for(String className : DesignParser.getListOfFiles(source, location)) {
 
@@ -50,20 +49,16 @@ java.lang.Math
 
 
             String rawClass = reader.getClassName();
-            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, 
-
-rawClass.length());
+            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
 
             dotClass dClass = new dotClass(refinedClass, new ArrayList<>(), new ArrayList<>());
-
-
 
 // make class declaration visitor to get superclass and interfaces
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
 // DECORATE declaration visitor with field visitor
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass);
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass, edges);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass, edges);
 // TODO: add more DECORATORS here in later milestones to accomplish specific tasks
 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
@@ -71,31 +66,24 @@ rawClass.length());
             String rawSuperClass = reader.getSuperName();
             String[] rawImplements = reader.getInterfaces();
 
-            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 
-
-1, rawSuperClass.length());
+            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 1, rawSuperClass.length());
             List<String> implementedFrom = new ArrayList<>();
 
             for(String implemented : rawImplements) {
-                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1,
-                implemented.length()));
+                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
             }
 
             god.add(dClass);
 
-            extendCases.add(new dotExtends(refinedSuperClass, refinedClass));
+            if(!refinedSuperClass.contains(refinedSuperClass))
+                edges.add(new dotExtends(refinedSuperClass, refinedClass));
             for(String impFrom : implementedFrom) {
-                implementses.add(new dotImplements(impFrom, refinedClass));
+                edges.add(new dotImplements(impFrom, refinedClass));
             }
-//            }
         }
 
-        for(dotExtends e : extendCases) {
+        for(dotEdge e : edges) {
             god.add(e);
-        }
-
-        for(dotImplements d : implementses) {
-            god.add(d);
         }
 
         out.write(god.genesis());

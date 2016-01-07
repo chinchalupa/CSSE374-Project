@@ -27,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="100" selection-start-line="65" selection-start-column="100" selection-end-line="65" selection-end-column="100" />
+              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,198 +35,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassFieldVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+      <file leaf-file-name="ClassReader.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/asm-all-5.0.4.jar!/org/objectweb/asm/ClassReader.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#328#329#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class.dot" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_output/class.dot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8282828">
-              <caret line="135" column="18" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="18" />
+            <state vertical-scroll-proportion="-9.25">
+              <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JAVA/problem.asm" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/problem.asm">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>problem.asm</OriginalElement>
-              <nodes>
-                <node x="190.0" y="410.0">problem.asm.ClassFieldVisitor</node>
-                <node x="0.0" y="410.0">problem.asm.DesignParserTest</node>
-                <node x="433.0" y="489.0">problem.asm.Creature</node>
-                <node x="163.0" y="489.0">problem.asm.dotBlurb</node>
-                <node x="229.0" y="331.0">problem.asm.ClassMethodVisitor</node>
-                <node x="384.4198717948718" y="84.0">problem.asm.dotEdge</node>
-                <node x="0.0" y="568.0">problem.asm.Creator</node>
-                <node x="399.25" y="0.0">problem.asm.iShape</node>
-                <node x="126.0" y="568.0">problem.asm.God</node>
-                <node x="0.0" y="489.0">problem.asm.DesignParser</node>
-                <node x="155.1378205128205" y="168.0">problem.asm.UMLBoxNode</node>
-                <node x="163.0" y="252.0">problem.asm.dotInterface</node>
-                <node x="374.0" y="410.0">problem.asm.dotAssignment</node>
-                <node x="759.5" y="84.0">problem.asm.plainText</node>
-                <node x="296.0" y="252.0">problem.asm.dotClass</node>
-                <node x="0.0" y="252.0">problem.asm.dotAbstractClass</node>
-                <node x="184.1378205128205" y="84.0">problem.asm.node</node>
-                <node x="298.0" y="489.0">problem.asm.FirstASM</node>
-                <node x="452.1378205128205" y="168.0">problem.asm.dotExtends</node>
-                <node x="578.1378205128206" y="168.0">problem.asm.dotAbstractMethod</node>
-                <node x="299.1378205128205" y="168.0">problem.asm.dotImplements</node>
-                <node x="867.1378205128204" y="168.0">problem.asm.dotMethod</node>
-                <node x="760.1378205128204" y="168.0">problem.asm.dotField</node>
-                <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="219.5" y="227.0" />
-                  <point x="217.1378205128205" y="227.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.UMLBoxNode" target="problem.asm.node">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotImplements" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="365.6378205128205" y="143.0" />
-                  <point x="406.6698717948718" y="143.0" />
-                  <point x="-22.25" y="17.0" />
-                </edge>
-                <edge source="problem.asm.plainText" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="806.0" y="59.0" />
-                  <point x="463.4166666666667" y="59.0" />
-                  <point x="25.666666666666686" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="71.5" y="227.0" />
-                  <point x="175.80448717948718" y="227.0" />
-                  <point x="-41.33333333333334" y="17.0" />
-                </edge>
-                <edge source="problem.asm.node" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="217.1378205128205" y="59.0" />
-                  <point x="412.0833333333333" y="59.0" />
-                  <point x="-25.666666666666686" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="428.9198717948718" y="59.0" />
-                  <point x="437.75" y="59.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="920.6378205128204" y="143.0" />
-                  <point x="837.0" y="143.0" />
-                  <point x="31.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="340.0" y="227.0" />
-                  <point x="258.4711538461538" y="227.0" />
-                  <point x="41.333333333333314" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotField" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="803.6378205128204" y="143.0" />
-                  <point x="806.0" y="143.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="659.1378205128206" y="143.0" />
-                  <point x="775.0" y="143.0" />
-                  <point x="-31.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotExtends" target="problem.asm.dotEdge">
-                  <point x="5.6843418860808015E-14" y="-17.0" />
-                  <point x="505.13782051282055" y="143.0" />
-                  <point x="451.1698717948718" y="143.0" />
-                  <point x="22.25" y="17.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.8987138263665595" x="-64.95617173524147" y="257.0483005366726" />
-              <SelectedNodes>
-                <node>problem.asm.ClassFieldVisitor</node>
-              </SelectedNodes>
-              <Categories />
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassMethodVisitor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+      <file leaf-file-name="test.dot" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input_output/test.dot">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6672355">
-              <caret line="39" column="91" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dotFile.dot" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_output/dotFile.dot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="23.375">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassDeclarationVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1007#1008#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DesignParserTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/problem/asm/DesignParserTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bestFile.dot" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_output/bestFile.dot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.875">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.09091">
+              <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -236,6 +59,76 @@
         <entry file="file://$PROJECT_DIR$/input_output/class.png">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PicturesForComparison/class.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherStation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherStation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="God.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/problem/asm/God.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5221843">
+              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+              <folding>
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassDeclarationVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#746#747#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassFieldVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassMethodVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -258,8 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/problem/car/impl/Wheel.java" />
-        <option value="$PROJECT_DIR$/src/problem/car/api/ICarPart.java" />
         <option value="$PROJECT_DIR$/src/problem/car/impl/Body.java" />
         <option value="$PROJECT_DIR$/src/problem/car/impl/Car.java" />
         <option value="$PROJECT_DIR$/src/problem/car/visitor/VisitorAdapter.java" />
@@ -273,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/problem/Lab1-3/src/temp/WeatherData.java" />
         <option value="$PROJECT_DIR$/src/problem/Lab1-3/src/temp/IDisplay.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/Creator.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/FirstASM.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/dotClass.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/dotAbstractClass.java" />
@@ -306,9 +196,12 @@
         <option value="$PROJECT_DIR$/input_output/class.dot" />
         <option value="$PROJECT_DIR$/input_output/bestFile.dot" />
         <option value="$PROJECT_DIR$/test/problem/asm/DesignParserTest.java" />
+        <option value="$PROJECT_DIR$/input_output/dotFile.dot" />
         <option value="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java" />
+        <option value="$PROJECT_DIR$/input_output/test.dot" />
+        <option value="$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" />
       </list>
     </option>
   </component>
@@ -943,12 +836,12 @@
       <workItem from="1450297867837" duration="32000" />
       <workItem from="1451934430991" duration="834000" />
       <workItem from="1451951985052" duration="4046000" />
-      <workItem from="1451958100599" duration="22217000" />
+      <workItem from="1451958100599" duration="26079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31869000" />
+    <option name="totallyTimeSpent" value="35731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -956,13 +849,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.50208336" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32936078" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2328125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1000,34 +893,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/problem/car/visitor/IVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/car/visitor/VisitorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/car/app/CarApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.25">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/problem/car/impl/EngineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/problem/car/impl/CarTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1110,14 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherReporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20307167">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/oldLab/IDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1186,14 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotExtends.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/problem/asm/dotField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1202,14 +1051,6 @@
             <element signature="e#352#353#0" expanded="true" />
             <element signature="e#370#371#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotImplements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,22 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/God.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/IWeatherReporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/oldLab/PressureDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1292,17 +1117,17 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#544#545#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="false" />
+            <element signature="e#442#443#0" expanded="false" />
+            <element signature="e#474#475#0" expanded="false" />
+            <element signature="e#510#511#0" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
+            <element signature="e#599#600#0" expanded="false" />
+            <element signature="e#645#646#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
+            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#743#744#0" expanded="false" />
+            <element signature="e#775#776#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1312,12 +1137,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
           <folding>
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="false" />
+            <element signature="e#208#209#0" expanded="false" />
+            <element signature="e#162#163#0" expanded="false" />
+            <element signature="e#208#209#0" expanded="false" />
+            <element signature="e#314#315#0" expanded="false" />
+            <element signature="e#361#362#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1398,19 +1223,6 @@
           <Categories />
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PicturesForComparison/class.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherStation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1554,10 +1366,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotUses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotAssociates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+          <folding>
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#181#182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotExtends.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotImplements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input_output/dotFile.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.530303">
+          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/oldLab/IWeatherReporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherReporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/asm-all-5.0.4.jar!/org/objectweb/asm/ClassReader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.25">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="100" selection-start-line="65" selection-start-column="100" selection-end-line="65" selection-end-column="100" />
+          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1567,20 +1456,26 @@
     <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input_output/dotFile.dot">
+    <entry file="file://$PROJECT_DIR$/input_output/test.dot">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="23.375">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-20.09091">
+          <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PicturesForComparison/class.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input_output/class.png">
@@ -1588,24 +1483,33 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherStation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
             <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/God.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6672355">
-          <caret line="39" column="91" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.5221843">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
           </folding>
         </state>
       </provider>
