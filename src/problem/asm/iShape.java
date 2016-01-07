@@ -2,5 +2,5 @@ package problem.asm;
 
 public interface iShape {
 	public String dotString();
-	public int hashCode();
+	public int getPriority();
 }
