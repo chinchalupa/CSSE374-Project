@@ -1,0 +1,80 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+
+node [shape = "record" ]
+ClassTHumidityDisplay [label = "{HumidityDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+
+node [shape = "record" ]
+ClassTIDisplay [label = "{IDisplay||+ void dataChanged(oldLab.IWeatherData)\l}" ]
+
+node [shape = "record" ]
+ClassTIWeatherData [label = "{IWeatherData||+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l}" ]
+
+node [shape = "record" ]
+ClassTIWeatherReporter [label = "{IWeatherReporter||+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l}" ]
+
+node [shape = "record" ]
+ClassTPressureDisplay [label = "{PressureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+
+node [shape = "record" ]
+ClassTTemperatureDisplay [label = "{TemperatureDisplay||+ void <init>()\l+ void dataChanged(oldLab.IWeatherData)\l}" ]
+
+node [shape = "record" ]
+ClassTWeatherData [label = "{WeatherData|-temperature:double\l-humidity:double\l-pressure:double\l|+ void <init>(double, double, double)\l+ double getTemperature()\l+ double getHumidity()\l+ double getPressure()\l+ boolean equals(java.lang.Object)\l+ int hashCode()\l}" ]
+
+node [shape = "record" ]
+ClassTWeatherReporter [label = "{WeatherReporter|-displays:java.util.List\l-data:oldLab.IWeatherData\l|+ void <init>()\l+ void registerDisplay(oldLab.IDisplay)\l+ void removeDisplay(oldLab.IDisplay)\l+ void setWeatherData(oldLab.IWeatherData)\l# void notifyDisplays()\l}" ]
+
+node [shape = "record" ]
+ClassTWeatherStation [label = "{WeatherStation||+ void <init>()\l+ void main(java.lang.String[])\l}" ]
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTHumidityDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTHumidityDisplay -> ClassTIDisplay
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTIDisplay
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIDisplay -> ClassTIWeatherReporter
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIDisplay -> ClassTIWeatherReporter
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTIWeatherReporter
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTPressureDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTPressureDisplay -> ClassTIDisplay
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTTemperatureDisplay
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTTemperatureDisplay -> ClassTIDisplay
+
+edge [arrowhead = "vee" style = solid ]
+ClassTObject -> ClassTWeatherData
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTWeatherData -> ClassTIWeatherData
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIDisplay -> ClassTWeatherReporter
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIDisplay -> ClassTWeatherReporter
+
+edge [arrowhead = "vee" style = solid ]
+ClassTIWeatherData -> ClassTWeatherReporter
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTWeatherReporter -> ClassTIWeatherReporter
+}

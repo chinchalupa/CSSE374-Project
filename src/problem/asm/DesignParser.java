@@ -63,9 +63,7 @@ rawClass.length());
 // DECORATE declaration visitor with field visitor
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, 
-
-dClass);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass);
 // TODO: add more DECORATORS here in later milestones to accomplish specific tasks
 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
@@ -78,13 +76,9 @@ dClass);
 1, rawSuperClass.length());
             List<String> implementedFrom = new ArrayList<>();
 
-
-//            System.out.println("REFINED:\t\t " + refinedClass);
-//            System.out.println("INHERITS FROM:\t " + refinedSuperClass);
             for(String implemented : rawImplements) {
-                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, 
-
-implemented.length()));
+                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1,
+                implemented.length()));
             }
 
             god.add(dClass);
@@ -106,7 +100,6 @@ implemented.length()));
 
         out.write(god.genesis());
         out.close();
-
     }
 
 

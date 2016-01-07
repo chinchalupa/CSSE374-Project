@@ -26,10 +26,22 @@ public class ClassMethodVisitor extends ClassVisitor {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
 
         dotMethod dMethod = new dotMethod(addAccessLevel(access), addReturnType(desc), name, addArguments(desc));
+
         this.dClass.addMethod(dMethod);
-        addAccessLevel(access);
-        addReturnType(desc);
-        addArguments(desc);
+        // dotAssociates
+//        System.out.println("Arguments" + addArguments(desc));
+        for(String arg : addArguments(desc)) {
+            System.out.println("Argument: " + arg);
+            System.out.println("DESC: " + desc);
+            System.out.println("Name: " + name);
+
+            if(arg.contains(".")) {
+                // Contained within package
+                String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
+            }
+        }
+
+
 
 // TODO: add the current method to your internal representation of the current class
 // What is a good way for the code to remember what the current class is?
