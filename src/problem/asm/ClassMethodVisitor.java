@@ -27,20 +27,24 @@ public class ClassMethodVisitor extends ClassVisitor {
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
 
-        dotMethod dMethod = new dotMethod(addAccessLevel(access), addReturnType(desc), name, addArguments(desc));
+        if(!name.contains("<init>") && !name.contains("<clinit>")) {
+            dotMethod dMethod = new dotMethod(addAccessLevel(access), addReturnType(desc), name, addArguments(desc));
+            this.dClass.addMethod(dMethod);
+        }
 
-        this.dClass.addMethod(dMethod);
         // dotAssociates
         for(String arg : addArguments(desc)) {
-            System.out.println("Argument: " + arg);
-            System.out.println("DESC: " + desc);
-            System.out.println("Name: " + name);
+//            System.out.println("Argument: " + arg);
+//            System.out.println("DESC: " + desc);
+//            System.out.println("Name: " + name);
 
             if(arg.contains(".")) {
                 // Contained within package
                 String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
-                dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), association);
-                this.edges.add(dotAssociates);
+                if(!association.contains("String[]")) {
+                    dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), association);
+                    this.edges.add(dotAssociates);
+                }
             }
         }
 

@@ -7,9 +7,10 @@ public class ClassDeclarationVisitor extends ClassVisitor {
     public String superName;
     public String[] interfaces;
 
-    public ClassDeclarationVisitor(int api){
+    public ClassDeclarationVisitor(int api) {
         super(api);
     }
+
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces){
 
@@ -19,17 +20,7 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         super.visit(version, access, name, signature, superName, interfaces);
     }
 
-
-
     public String getName() {
         return name;
-    }
-
-    public String getSuperName() {
-        return superName;
-    }
-
-    public String[] getInterfaces() {
-        return interfaces;
     }
 }
