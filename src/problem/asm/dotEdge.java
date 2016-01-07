@@ -36,8 +36,8 @@ public abstract class dotEdge implements iShape {
 		return 1;
 	}
 	
-	public int hashCode(){
-		return (from + to).hashCode();
+	public int getId(){
+		return ((from + to).replaceAll("ZzEdgE", "ZzEdgeEZzEdgE").replaceAll("edge", "ZzEdgE") +"edge").hashCode();
 	}
 	
 	public abstract String getBlurbString();

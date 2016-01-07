@@ -15,4 +15,8 @@ public abstract class node implements iShape {
 		return 0;
 	}
 	
+	public int getId(){
+		return this.name.hashCode();
+	}
+	
 }
