@@ -18,26 +18,26 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <strong>iShape</strong>
 <p>Nearly everything that is written within the .dot file extends the iShape. This allows each class to be placed into the .dot file.</p>
 
-<strong>Node</strong>
+<strong>node</strong>
 <p>A node is used to add more parameters onto an iShape where a name is needed.</p>
 
-<strong>DotClass</strong>
+<strong>dotClass</strong>
 <p>The dotClass class allows us to create a class with the necessary fields, methods, and superclasses that need to be created.</p>
 
-<strong>DotField</strong>
+<strong>dotField</strong>
 <p>A class to be used by dotClass to hold all of the fields that are created.</p>
 
-<strong>DotMethod</strong>
+<strong>dotMethod</strong>
 <p>A class to be used by dotClass to hold all the metohds that are created.</p>
 
-<strong>DotAbstractMethod</strong>
+<strong>dotAbstractMethod</strong>
 <p>A class to be used by dotClass to hold abstract methods.</p>
 
 <strong>dotEdge</strong>
 <p>An abstract class used for edge-based classes.</p>
 
-<strong>dotImplements / dotExtends / dotAbstractClass</strong>
-<p>Concrete classes that are types of edge cases.</p>
+<strong>dotImplements / dotExtends / dotAssociates / dotUses</strong>
+<p>Concrete classes that are types of edge cases; <br> it should be noted that dotAssociates and dotImplements use static data from dotExtends, <br> and that dotUses uses static data from dotAssociates; <br> this is by design.</p>
 
 <strong>dotBlurb / dotAssignment</strong>
 <p>Basic utility classes for formatting.</p>
