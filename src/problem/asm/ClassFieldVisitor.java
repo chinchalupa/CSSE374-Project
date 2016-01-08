@@ -3,6 +3,7 @@ import org.objectweb.asm.Attribute;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;
+import pizza.pizzas.SimplePizzaFactory;
 
 import java.util.List;
 
@@ -25,21 +26,23 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         FieldVisitor toDecorate = super.visitField(access, name, desc, signature, value);
 
-        System.out.println("Name: " + name);
-        System.out.println("DESC: " + desc);
-        System.out.println("SIG: " + signature);
-        System.out.println("Value: " + value);
+//        System.out.println("Name: " + name);
+//        System.out.println("DESC: " + desc);
+//        System.out.println("SIG: " + signature);
+//        System.out.println("Value: " + value);
 
         String type = Type.getType(desc).getClassName();
         type = type.substring(type.lastIndexOf(".") + 1, type.length());
 
         this.dClass.addField(new dotField(type, name));
 
-        if(signature != null) {
+        if(desc.contains(";") && desc.contains("/")) {
+            String association = desc.substring(desc.lastIndexOf("/") + 1, desc.indexOf(";"));
 
-            String association = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
-            System.out.println("Association: " + association);
-            System.out.println("To: " + this.dClass.getName());
+            if(signature != null) {
+                String additionalInfo = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
+                this.edges.add(new dotUses(this.dClass.getName(), additionalInfo));
+            }
             this.edges.add(new dotUses(this.dClass.getName(), association));
         }
 

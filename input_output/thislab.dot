@@ -1,0 +1,246 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+
+node [shape = "record" ]
+ClassTdotBlurb [label = "{dotBlurb|-lines:ArrayList\l-name:String\l|+ boolean addLine(String, String)\l+ void clear()\l+ String dotString()\l+ String getName()\l+ void setName(String)\l}" ]
+
+node [shape = "record" ]
+ClassTdotAbstractMethod [label = "{dotAbstractMethod|-type:String\l-name:String\l|+ void setName(String)\l+ String getType()\l+ void setType(String)\l+ String getName()\l+ String dotString()\l}" ]
+
+node [shape = "record" ]
+ClassTdotAssociates [label = "{dotAssociates|-arrowhead:String\l|+ String getBlurbString()\l}" ]
+
+node [shape = "record" ]
+ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor|-name:String\l-superName:String\l-interfaces:String[]\l|+ void visit(int, int, String, String, String, String[])\l+ String getName()\l}" ]
+
+node [shape = "record" ]
+ClassTnode [label = "{node|-name:String\l|+ void setName(String)\l+ String getName()\l+ int getPriority()\l+ int getId()\l}" ]
+
+node [shape = "record" ]
+ClassTdotAbstractClass [label = "{dotAbstractClass|-separator:String\l-fields:ArrayList\l-methods:ArrayList\l-amethods:ArrayList\l|+ String getLabel()\l}" ]
+
+node [shape = "record" ]
+ClassTdotAssignment [label = "{dotAssignment|-variable:String\l-value:String\l|+ String dotString()\l}" ]
+
+node [shape = "record" ]
+ClassTdotInterface [label = "{dotInterface|-separator:String\l-fields:ArrayList\l-methods:ArrayList\l|+ String getLabel()\l}" ]
+
+node [shape = "record" ]
+ClassTdotClass [label = "{dotClass|-separator:String\l-fields:ArrayList\l-methods:ArrayList\l|+ void setFields(ArrayList)\l+ void setMethods(ArrayList)\l+ List getMethods()\l+ void addField(dotField)\l+ void addMethod(dotMethod)\l+ String getLabel()\l}" ]
+
+node [shape = "record" ]
+ClassTUMLBoxNode [label = "{UMLBoxNode|-fontname:String\l-fontsize:String\l-shape:String\l|+ String dotString()\l+ String getLabel()\l}" ]
+
+node [shape = "record" ]
+ClassTGod [label = "{God|-data:HashSet\l|+ void add(iShape)\l+ String genesis()\l- ArrayList makeList(Set)\l}" ]
+
+node [shape = "record" ]
+ClassTdotExtends [label = "{dotExtends|-arrowhead:String\l-style:String\l|+ String getBlurbString()\l}" ]
+
+node [shape = "record" ]
+ClassTdotImplements [label = "{dotImplements|-style:String\l|+ String getBlurbString()\l}" ]
+
+node [shape = "record" ]
+ClassTClassFieldVisitor [label = "{ClassFieldVisitor|-dClass:dotClass\l-edges:List\l|+ FieldVisitor visitField(int, String, String, String, Object)\l}" ]
+
+node [shape = "record" ]
+ClassTdotUses [label = "{dotUses|-style:String\l|+ String getBlurbString()\l}" ]
+
+node [shape = "record" ]
+ClassTdotMethod [label = "{dotMethod|-level:String\l-type:String\l-name:String\l-args:List\l|+ void setName(String)\l+ String getType()\l+ void setType(String)\l+ String getName()\l+ String dotString()\l+ String getLevel()\l+ void setLevel(String)\l+ List getArgs()\l+ void setArgs(List)\l}" ]
+
+node [shape = "record" ]
+ClassTdotField [label = "{dotField|-type:String\l-name:String\l|+ void setName(String)\l+ String getType()\l+ void setType(String)\l+ String getName()\l+ String dotString()\l}" ]
+
+node [shape = "record" ]
+ClassTplainText [label = "{plainText||+ int getPriority()\l+ int getId()\l}" ]
+
+node [shape = "record" ]
+ClassTFirstASM [label = "{FirstASM|-myField:String\l|+ void main(String[])\l}" ]
+
+node [shape = "record" ]
+ClassTDesignParser [label = "{DesignParser||+ void main(String[])\l+ List getListOfFiles(String, String)\l}" ]
+
+node [shape = "record" ]
+ClassTClassMethodVisitor [label = "{ClassMethodVisitor|-dClass:dotClass\l-edges:List\l|+ MethodVisitor visitMethod(int, String, String, String, String[])\l+ String addAccessLevel(int)\l+ String addReturnType(String)\l+ List addArguments(String)\l}" ]
+
+node [shape = "record" ]
+ClassTdotEdge [label = "{dotEdge|-to:String\l-from:String\l|+ String getFrom()\l+ void setFrom(String)\l+ String getTo()\l+ void setTo(String)\l+ String dotString()\l+ int getPriority()\l+ int getId()\l+ String getBlurbString()\l}" ]
+
+node [shape = "record" ]
+ClassTCreator [label = "{Creator||+ void main(String[])\l+ void mouseClicked(MouseEvent)\l+ void mousePressed(MouseEvent)\l+ void mouseReleased(MouseEvent)\l+ void mouseEntered(MouseEvent)\l+ void mouseExited(MouseEvent)\l}" ]
+
+node [shape = "record" ]
+ClassTiShape [label = "{iShape||+ String dotString()\l+ int getPriority()\l+ int getId()\l}" ]
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotAbstractMethod
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTnode
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotEdge -> ClassTClassMethodVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotUses
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotUses -> ClassTdotEdge
+
+edge [arrowhead = "empty" style = solid ]
+ClassTClassDeclarationVisitor -> ClassTClassVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTArrayList -> ClassTdotClass
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotBlurb
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTUMLBoxNode
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTiShape -> ClassTGod
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotImplements
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTCreator -> ClassTMouseListener
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotMethod
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotClass
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotEdge
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTClassDeclarationVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTArrayList -> ClassTdotAbstractClass
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTList -> ClassTClassFieldVisitor
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTdotEdge -> ClassTiShape
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTList -> ClassTdotMethod
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotAssociates
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTList -> ClassTClassMethodVisitor
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTplainText -> ClassTiShape
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotAbstractClass -> ClassTUMLBoxNode
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTArrayList -> ClassTdotBlurb
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotField -> ClassTplainText
+
+edge [arrowhead = "empty" style = solid ]
+ClassTUMLBoxNode -> ClassTnode
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotInterface -> ClassTUMLBoxNode
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotEdge -> ClassTClassFieldVisitor
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotAbstractMethod -> ClassTplainText
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotAssignment
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotExtends -> ClassTdotEdge
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotClass -> ClassTClassFieldVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotAssignment -> ClassTdotBlurb
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTFirstASM
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotAbstractMethod -> ClassTdotAbstractClass
+
+edge [arrowhead = "empty" style = solid ]
+ClassTClassFieldVisitor -> ClassTClassVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotField -> ClassTdotInterface
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotMethod -> ClassTplainText
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotImplements -> ClassTdotEdge
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTArrayList -> ClassTdotInterface
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotExtends
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotMethod -> ClassTdotAbstractClass
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotInterface
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotField
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotAssociates -> ClassTdotEdge
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTdotAbstractClass
+
+edge [arrowhead = "empty" style = solid ]
+ClassTClassMethodVisitor -> ClassTClassVisitor
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotMethod -> ClassTdotClass
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotField -> ClassTdotAbstractClass
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTnode -> ClassTiShape
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTHashSet -> ClassTGod
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotClass -> ClassTClassMethodVisitor
+
+edge [arrowhead = "empty" style = solid ]
+ClassTdotClass -> ClassTUMLBoxNode
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotAbstractMethod -> ClassTdotInterface
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTdotField -> ClassTdotClass
+
+}

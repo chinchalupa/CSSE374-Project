@@ -73,6 +73,9 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     public String addReturnType(String desc){
         String returnType = Type.getReturnType(desc).getClassName();
+        if(returnType.contains("."))
+            returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
+            dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), returnType);
 //        System.out.println("return type: " + returnType);
         return returnType;
     }
@@ -81,7 +84,8 @@ public class ClassMethodVisitor extends ClassVisitor {
         ArrayList<String> list = new ArrayList<>();
         Type[] args = Type.getArgumentTypes(desc);
         for(int i=0; i< args.length; i++){
-            list.add(args[i].getClassName());
+            String className = args[i].getClassName();
+            list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
 //            System.out.println("arg "+i+": "+arg);
 // TODO: ADD this information to your representation of the current method.
         }

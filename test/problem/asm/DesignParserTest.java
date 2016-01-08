@@ -53,7 +53,7 @@ public class DesignParserTest {
     @Test
     public void fieldTests() {
         dotField dField = new dotField("void", "bestField");
-        dClass.addField(dField);
+         dClass.addField(dField);
         assertEquals("bestField", dField.getName());
     }
 

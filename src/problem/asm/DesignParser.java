@@ -38,6 +38,9 @@ java.lang.Math
         System.out.println("Enter in the full package name e.g. (oldLab)");
         String location = in.nextLine();
 
+
+
+
         List<dotEdge> edges = new ArrayList<>();
 
         for(String className : DesignParser.getListOfFiles(source, location)) {
@@ -74,8 +77,9 @@ java.lang.Math
             }
 
             god.add(dClass);
+            System.out.println(refinedClass + " " + refinedSuperClass);
 
-            if(!refinedSuperClass.contains(refinedSuperClass))
+            if(!refinedSuperClass.contains("Object"))
                 edges.add(new dotExtends(refinedSuperClass, refinedClass));
             for(String impFrom : implementedFrom) {
                 edges.add(new dotImplements(impFrom, refinedClass));
@@ -88,6 +92,8 @@ java.lang.Math
 
         out.write(god.genesis());
         out.close();
+
+
     }
 
 

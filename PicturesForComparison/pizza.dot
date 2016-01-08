@@ -109,84 +109,102 @@ node [shape = "record" ]
 ClassTPepperoniPizza [label = "{PepperoniPizza|-ingredientFactory:PizzaIngredientFactory\l|+ void prepare()\l}" ]
 
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTMozzarellaCheese -> ClassTCheese
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTReggianoCheese -> ClassTCheese
-
-edge [arrowhead = "vee" style = solid ]
-ClassTString -> ClassTPizzaStore
-
-edge [arrowhead = "vee" style = solid ]
-ClassTPizzaIngredientFactory -> ClassTCheesePizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTPlumTomatoSauce -> ClassTSauce
-
-edge [arrowhead = "vee" style = solid ]
-ClassTPizzaIngredientFactory -> ClassTVeggiePizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTFreshClams -> ClassTClams
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTMushroom -> ClassTVeggies
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTParmesanCheese -> ClassTCheese
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTMarinaraSauce -> ClassTSauce
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTThinCrustDough -> ClassTDough
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTNYPizzaIngredientFactory -> ClassTPizzaIngredientFactory
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTOnion -> ClassTVeggies
-
-edge [arrowhead = "vee" style = solid ]
-ClassTPizzaIngredientFactory -> ClassTClamPizza
-
-edge [arrowhead = "vee" style = solid ]
-ClassTString -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTFrozenClams -> ClassTClams
-
-edge [arrowhead = "vee" style = solid ]
-ClassTString -> ClassTNYPizzaStore
-
-edge [arrowhead = "empty" style = "dashed" ]
 ClassTGarlic -> ClassTVeggies
 
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTEggplant -> ClassTVeggies
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTSauce -> ClassTPizza
 
 edge [arrowhead = "vee" style = solid ]
 ClassTPizzaIngredientFactory -> ClassTPepperoniPizza
 
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTChicagoPizzaIngredientFactory -> ClassTPizzaIngredientFactory
+ClassTThickCrustDough -> ClassTDough
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTPizzaIngredientFactory -> ClassTCheesePizza
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTString -> ClassTPizza
+
+edge [arrowhead = "vee" style = solid ]
+ClassTPizzaIngredientFactory -> ClassTClamPizza
+
+edge [arrowhead = "vee" style = solid ]
+ClassTString -> ClassTPizzaStore
 
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTBlackOlives -> ClassTVeggies
+ClassTMarinaraSauce -> ClassTSauce
+
+edge [arrowhead = "vee" style = solid ]
+ClassTString -> ClassTNYPizzaStore
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTFrozenClams -> ClassTClams
 
 edge [arrowhead = "empty" style = "dashed" ]
 ClassTSpinach -> ClassTVeggies
 
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTClams -> ClassTPizza
+
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTSlicedPepperoni -> ClassTPepperoni
+ClassTMozzarellaCheese -> ClassTCheese
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTNYPizzaIngredientFactory -> ClassTPizzaIngredientFactory
 
 edge [arrowhead = "vee" style = solid ]
 ClassTString -> ClassTChicagoPizzaStore
 
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTThickCrustDough -> ClassTDough
+ClassTRedPepper -> ClassTVeggies
 
 edge [arrowhead = "empty" style = "dashed" ]
-ClassTRedPepper -> ClassTVeggies
+ClassTParmesanCheese -> ClassTCheese
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTEggplant -> ClassTVeggies
+
+edge [arrowhead = "vee" style = solid ]
+ClassTPizzaIngredientFactory -> ClassTVeggiePizza
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTThinCrustDough -> ClassTDough
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTMushroom -> ClassTVeggies
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTFreshClams -> ClassTClams
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTPlumTomatoSauce -> ClassTSauce
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTSlicedPepperoni -> ClassTPepperoni
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTOnion -> ClassTVeggies
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTBlackOlives -> ClassTVeggies
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTCheese -> ClassTPizza
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTVeggies -> ClassTPizza
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTChicagoPizzaIngredientFactory -> ClassTPizzaIngredientFactory
+
+edge [arrowhead = "empty" style = "dashed" ]
+ClassTReggianoCheese -> ClassTCheese
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTPepperoni -> ClassTPizza
+
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTDough -> ClassTPizza
 
 }
