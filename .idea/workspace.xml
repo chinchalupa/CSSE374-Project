@@ -57,13 +57,13 @@
                 <node x="271.0" y="252.0">problem.asm.dotInterface</node>
                 <node x="117.5" y="168.0">problem.asm.UMLBoxNode</node>
                 <node x="677.5" y="168.0">problem.asm.dotAssociates</node>
-                <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
                 <node x="423.0" y="84.0">problem.asm.plainText</node>
-                <node x="146.5" y="84.0">problem.asm.node</node>
+                <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
                 <node x="108.0" y="252.0">problem.asm.dotAbstractClass</node>
-                <node x="947.5" y="168.0">problem.asm.dotUses</node>
-                <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
+                <node x="146.5" y="84.0">problem.asm.node</node>
                 <node x="821.5" y="168.0">problem.asm.dotExtends</node>
+                <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
+                <node x="947.5" y="168.0">problem.asm.dotUses</node>
                 <node x="261.5" y="168.0">problem.asm.dotMethod</node>
                 <node x="570.5" y="168.0">problem.asm.dotField</node>
                 <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
@@ -82,11 +82,27 @@
                   <point x="0.0" y="-17.0" />
                   <point x="0.0" y="17.0" />
                 </edge>
+                <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
+                  <point x="0.0" y="-17.0" />
+                  <point x="327.5" y="227.0" />
+                  <point x="220.83333333333337" y="227.0" />
+                  <point x="41.33333333333334" y="17.0" />
+                </edge>
+                <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
+                  <point x="0.0" y="-17.0" />
+                  <point x="0.0" y="17.0" />
+                </edge>
                 <edge source="problem.asm.dotAssociates" target="problem.asm.dotEdge">
                   <point x="0.0" y="-17.0" />
                   <point x="739.5" y="138.0" />
                   <point x="898.875" y="138.0" />
                   <point x="-33.375" y="17.0" />
+                </edge>
+                <edge source="problem.asm.node" target="problem.asm.iShape">
+                  <point x="0.0" y="-17.0" />
+                  <point x="179.5" y="59.0" />
+                  <point x="443.8333333333333" y="59.0" />
+                  <point x="-25.666666666666686" y="17.0" />
                 </edge>
                 <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
                   <point x="0.0" y="-17.0" />
@@ -106,6 +122,16 @@
                   <point x="965.625" y="138.0" />
                   <point x="33.375" y="17.0" />
                 </edge>
+                <edge source="problem.asm.plainText" target="problem.asm.iShape">
+                  <point x="0.0" y="-17.0" />
+                  <point x="0.0" y="17.0" />
+                </edge>
+                <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
+                  <point x="0.0" y="-17.0" />
+                  <point x="990.0" y="148.0" />
+                  <point x="943.375" y="148.0" />
+                  <point x="11.125" y="17.0" />
+                </edge>
                 <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
                   <point x="0.0" y="-17.0" />
                   <point x="315.0" y="148.0" />
@@ -118,44 +144,18 @@
                   <point x="500.5" y="148.0" />
                   <point x="31.0" y="17.0" />
                 </edge>
-                <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="327.5" y="227.0" />
-                  <point x="220.83333333333337" y="227.0" />
-                  <point x="41.33333333333334" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.node" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="179.5" y="59.0" />
-                  <point x="443.8333333333333" y="59.0" />
-                  <point x="-25.666666666666686" y="17.0" />
-                </edge>
-                <edge source="problem.asm.plainText" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="990.0" y="148.0" />
-                  <point x="943.375" y="148.0" />
-                  <point x="11.125" y="17.0" />
-                </edge>
                 <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
                   <point x="0.0" y="-17.0" />
                   <point x="44.0" y="227.0" />
                   <point x="138.16666666666663" y="227.0" />
                   <point x="-41.33333333333334" y="17.0" />
                 </edge>
+                <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
+                  <point x="0.0" y="-17.0" />
+                  <point x="0.0" y="17.0" />
+                </edge>
               </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="21.5" y="70.0" />
+              <settings layout="Hierarchic Group" zoom="1.0" x="22.0" y="70.0" />
               <SelectedNodes>
                 <node>problem.asm.ClassFieldVisitor</node>
               </SelectedNodes>
@@ -182,8 +182,8 @@
       <file leaf-file-name="DesignParserTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/problem/asm/DesignParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7516854">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.23595506">
+              <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -346,9 +346,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -384,32 +381,6 @@
               <option name="myItemId" value="problem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="problem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="asm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -442,10 +413,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="problem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -457,43 +424,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="problem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="asm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lab3-1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PicturesForComparison" />
+              <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -545,6 +476,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -937,40 +871,41 @@
       <workItem from="1451951985052" duration="4046000" />
       <workItem from="1451958100599" duration="31346000" />
       <workItem from="1452139370568" duration="5516000" />
+      <workItem from="1452557410405" duration="284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46514000" />
+    <option name="totallyTimeSpent" value="46798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32271326" sideWeight="0.50572914" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3217768" sideWeight="0.49427083" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1546875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1546875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285834" sideWeight="0.49833333" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3217768" sideWeight="0.49427083" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285834" sideWeight="0.49833333" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1015,7 +950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,7 +1079,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,7 +1086,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1179,7 +1111,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1187,27 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="202" column="0" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10204#0" expanded="false" />
-            <element signature="e#621#622#0" expanded="false" />
-            <element signature="e#704#705#0" expanded="false" />
-            <element signature="e#1410#1411#0" expanded="false" />
-            <element signature="e#1471#1472#0" expanded="false" />
-            <element signature="e#2786#2787#0" expanded="false" />
-            <element signature="e#2837#2838#0" expanded="false" />
-            <element signature="e#3914#3915#0" expanded="false" />
-            <element signature="e#3960#3961#0" expanded="false" />
-            <element signature="e#4400#4401#0" expanded="false" />
-            <element signature="e#4440#4441#0" expanded="false" />
-            <element signature="e#5014#5015#0" expanded="false" />
-            <element signature="e#5077#5078#0" expanded="false" />
-            <element signature="e#5960#5961#0" expanded="false" />
-            <element signature="e#6014#6015#0" expanded="false" />
-            <element signature="e#8380#8381#0" expanded="false" />
-            <element signature="e#8414#8415#0" expanded="false" />
-            <element signature="e#8972#8973#0" expanded="false" />
-            <element signature="e#9006#9007#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,7 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,7 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1247,7 +1154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,10 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding>
-            <element signature="e#127#128#0" expanded="false" />
-            <element signature="e#157#158#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,7 +1168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1274,7 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1282,7 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,10 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#297#298#0" expanded="false" />
-            <element signature="e#362#363#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1301,7 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1309,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1317,7 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1457976">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,7 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11663808">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05831904">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1357,7 +1247,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1365,7 +1254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1966" column="0" selection-start-line="1966" selection-start-column="0" selection-end-line="1966" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1381,7 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1389,7 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1402,7 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="93.34375">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1469,13 +1354,13 @@
             <node x="271.0" y="252.0">problem.asm.dotInterface</node>
             <node x="117.5" y="168.0">problem.asm.UMLBoxNode</node>
             <node x="677.5" y="168.0">problem.asm.dotAssociates</node>
-            <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
             <node x="423.0" y="84.0">problem.asm.plainText</node>
-            <node x="146.5" y="84.0">problem.asm.node</node>
+            <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
             <node x="108.0" y="252.0">problem.asm.dotAbstractClass</node>
-            <node x="947.5" y="168.0">problem.asm.dotUses</node>
-            <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
+            <node x="146.5" y="84.0">problem.asm.node</node>
             <node x="821.5" y="168.0">problem.asm.dotExtends</node>
+            <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
+            <node x="947.5" y="168.0">problem.asm.dotUses</node>
             <node x="261.5" y="168.0">problem.asm.dotMethod</node>
             <node x="570.5" y="168.0">problem.asm.dotField</node>
             <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
@@ -1494,11 +1379,27 @@
               <point x="0.0" y="-17.0" />
               <point x="0.0" y="17.0" />
             </edge>
+            <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
+              <point x="0.0" y="-17.0" />
+              <point x="327.5" y="227.0" />
+              <point x="220.83333333333337" y="227.0" />
+              <point x="41.33333333333334" y="17.0" />
+            </edge>
+            <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
+              <point x="0.0" y="-17.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
             <edge source="problem.asm.dotAssociates" target="problem.asm.dotEdge">
               <point x="0.0" y="-17.0" />
               <point x="739.5" y="138.0" />
               <point x="898.875" y="138.0" />
               <point x="-33.375" y="17.0" />
+            </edge>
+            <edge source="problem.asm.node" target="problem.asm.iShape">
+              <point x="0.0" y="-17.0" />
+              <point x="179.5" y="59.0" />
+              <point x="443.8333333333333" y="59.0" />
+              <point x="-25.666666666666686" y="17.0" />
             </edge>
             <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
               <point x="0.0" y="-17.0" />
@@ -1518,6 +1419,16 @@
               <point x="965.625" y="138.0" />
               <point x="33.375" y="17.0" />
             </edge>
+            <edge source="problem.asm.plainText" target="problem.asm.iShape">
+              <point x="0.0" y="-17.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
+            <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
+              <point x="0.0" y="-17.0" />
+              <point x="990.0" y="148.0" />
+              <point x="943.375" y="148.0" />
+              <point x="11.125" y="17.0" />
+            </edge>
             <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
               <point x="0.0" y="-17.0" />
               <point x="315.0" y="148.0" />
@@ -1530,44 +1441,18 @@
               <point x="500.5" y="148.0" />
               <point x="31.0" y="17.0" />
             </edge>
-            <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
-              <point x="0.0" y="-17.0" />
-              <point x="327.5" y="227.0" />
-              <point x="220.83333333333337" y="227.0" />
-              <point x="41.33333333333334" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.node" target="problem.asm.iShape">
-              <point x="0.0" y="-17.0" />
-              <point x="179.5" y="59.0" />
-              <point x="443.8333333333333" y="59.0" />
-              <point x="-25.666666666666686" y="17.0" />
-            </edge>
-            <edge source="problem.asm.plainText" target="problem.asm.iShape">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
-              <point x="0.0" y="-17.0" />
-              <point x="990.0" y="148.0" />
-              <point x="943.375" y="148.0" />
-              <point x="11.125" y="17.0" />
-            </edge>
             <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
               <point x="0.0" y="-17.0" />
               <point x="44.0" y="227.0" />
               <point x="138.16666666666663" y="227.0" />
               <point x="-41.33333333333334" y="17.0" />
             </edge>
+            <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
+              <point x="0.0" y="-17.0" />
+              <point x="0.0" y="17.0" />
+            </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="21.5" y="70.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="22.0" y="70.0" />
           <SelectedNodes>
             <node>problem.asm.ClassFieldVisitor</node>
           </SelectedNodes>
@@ -1590,8 +1475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/problem/asm/DesignParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7516854">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.23595506">
+          <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
           <folding />
         </state>
       </provider>
