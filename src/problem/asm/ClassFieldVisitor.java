@@ -1,24 +1,22 @@
 package problem.asm;
-import org.objectweb.asm.Attribute;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;
-import pizza.pizzas.SimplePizzaFactory;
 
 import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{
 
-    private dotClass dClass;
-    private List<dotEdge> edges;
+    private ClassNode classNode;
+    private List<IEdge> edges;
 
     public ClassFieldVisitor(int api){
         super(api);
     }
-    public ClassFieldVisitor(int api, ClassVisitor decorated, dotClass dClass, List<dotEdge> edges) {
+    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
         super(api, decorated);
 
-        this.dClass = dClass;
+        this.classNode = node;
         this.edges = edges;
     }
 
@@ -31,19 +29,21 @@ public class ClassFieldVisitor extends ClassVisitor{
 //        System.out.println("SIG: " + signature);
 //        System.out.println("Value: " + value);
 
+
         String type = Type.getType(desc).getClassName();
         type = type.substring(type.lastIndexOf(".") + 1, type.length());
 
-        this.dClass.addField(new dotField(type, name));
+        this.classNode.addField(new NodeField(name, type));
 
-        if(desc.contains(";") && desc.contains("/")) {
+        if(desc.contains(";") && desc.contains("/") && !desc.contains("String")) {
             String association = desc.substring(desc.lastIndexOf("/") + 1, desc.indexOf(";"));
 
             if(signature != null) {
-                String additionalInfo = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
-                this.edges.add(new dotUses(this.dClass.getName(), additionalInfo));
+                String otherClass = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
+                this.edges.add(new DotUses(this.classNode.getName(), otherClass));
             }
-            this.edges.add(new dotUses(this.dClass.getName(), association));
+
+            this.edges.add(new DotUses(this.classNode.getName(), association));
         }
 
         return toDecorate;

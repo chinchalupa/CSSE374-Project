@@ -22,224 +22,178 @@
     <favorites_list name="Lab3-1" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DesignParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pizza.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PicturesForComparison/pizza.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JAVA/problem.asm" pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/problem.asm">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>problem.asm</OriginalElement>
-              <nodes>
-                <node x="0.0" y="410.0">problem.asm.ClassFieldVisitor</node>
-                <node x="887.75" y="84.0">problem.asm.dotEdge</node>
-                <node x="268.0" y="489.0">problem.asm.Creator</node>
-                <node x="431.0" y="0.0">problem.asm.iShape</node>
-                <node x="361.0" y="410.0">problem.asm.DesignParser</node>
-                <node x="271.0" y="252.0">problem.asm.dotInterface</node>
-                <node x="117.5" y="168.0">problem.asm.UMLBoxNode</node>
-                <node x="677.5" y="168.0">problem.asm.dotAssociates</node>
-                <node x="423.0" y="84.0">problem.asm.plainText</node>
-                <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
-                <node x="108.0" y="252.0">problem.asm.dotAbstractClass</node>
-                <node x="146.5" y="84.0">problem.asm.node</node>
-                <node x="821.5" y="168.0">problem.asm.dotExtends</node>
-                <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
-                <node x="947.5" y="168.0">problem.asm.dotUses</node>
-                <node x="261.5" y="168.0">problem.asm.dotMethod</node>
-                <node x="570.5" y="168.0">problem.asm.dotField</node>
-                <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
-                <node x="433.0" y="331.0">problem.asm.DesignParserTest</node>
-                <node x="524.0" y="410.0">problem.asm.dotBlurb</node>
-                <node x="135.0" y="489.0">problem.asm.Creature</node>
-                <node x="229.0" y="331.0">problem.asm.ClassMethodVisitor</node>
-                <node x="394.0" y="489.0">problem.asm.God</node>
-                <node x="0.0" y="252.0">problem.asm.dotClass</node>
-                <node x="0.0" y="489.0">problem.asm.FirstASM</node>
-                <node x="1052.5" y="168.0">problem.asm.dotImplements</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="problem.asm.UMLBoxNode" target="problem.asm.node">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="327.5" y="227.0" />
-                  <point x="220.83333333333337" y="227.0" />
-                  <point x="41.33333333333334" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAssociates" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="739.5" y="138.0" />
-                  <point x="898.875" y="138.0" />
-                  <point x="-33.375" y="17.0" />
-                </edge>
-                <edge source="problem.asm.node" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="179.5" y="59.0" />
-                  <point x="443.8333333333333" y="59.0" />
-                  <point x="-25.666666666666686" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="932.25" y="59.0" />
-                  <point x="495.1666666666667" y="59.0" />
-                  <point x="25.666666666666686" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotExtends" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="874.5" y="148.0" />
-                  <point x="921.125" y="148.0" />
-                  <point x="-11.125" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotImplements" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="1119.0" y="138.0" />
-                  <point x="965.625" y="138.0" />
-                  <point x="33.375" y="17.0" />
-                </edge>
-                <edge source="problem.asm.plainText" target="problem.asm.iShape">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
-                  <point x="0.0" y="-17.0" />
-                  <point x="990.0" y="148.0" />
-                  <point x="943.375" y="148.0" />
-                  <point x="11.125" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="315.0" y="148.0" />
-                  <point x="438.5" y="148.0" />
-                  <point x="-31.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotField" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="614.0" y="148.0" />
-                  <point x="500.5" y="148.0" />
-                  <point x="31.0" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
-                  <point x="0.0" y="-17.0" />
-                  <point x="44.0" y="227.0" />
-                  <point x="138.16666666666663" y="227.0" />
-                  <point x="-41.33333333333334" y="17.0" />
-                </edge>
-                <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
-                  <point x="0.0" y="-17.0" />
-                  <point x="0.0" y="17.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="22.0" y="70.0" />
-              <SelectedNodes>
-                <node>problem.asm.ClassFieldVisitor</node>
-              </SelectedNodes>
-              <Categories />
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="God.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/God.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-              <folding>
-                <element signature="e#288#289#0" expanded="true" />
-                <element signature="e#306#307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DesignParserTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/problem/asm/DesignParserTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23595506">
-              <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="thislab.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_output/thislab.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_output/class.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Veggies.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pizza/pizzaaf/Veggies.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassFieldVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="83" selection-start-line="43" selection-start-column="83" selection-end-line="43" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassMethodVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="95" selection-start-line="77" selection-start-column="95" selection-end-line="77" selection-end-column="95" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="DesignParser.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="INode.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/INode.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="OutputDotFile.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputDotFile.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassDeclarationVisitor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassFieldVisitor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DotAssociates.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DotAssociates.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.76831347">
+                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DotUses.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DotUses.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#944#945#0" expanded="true" />
+                    <element signature="e#984#985#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DotExtends.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DotExtends.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#714#715#0" expanded="true" />
+                    <element signature="e#754#755#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DotImplements.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DotImplements.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#908#909#0" expanded="true" />
+                    <element signature="e#948#949#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassMethodVisitor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="NodeMethod.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/NodeMethod.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CarXmlOutputStream.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/car/impl/CarXmlOutputStream.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test.dot" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/input_output/test.dot">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="5.1124363">
+                  <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="thislab.dot" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/input_output/thislab.dot">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -252,25 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/problem/car/impl/CarXmlOutputStream.java" />
-        <option value="$PROJECT_DIR$/src/problem/Lab1-3/src/headfirst/observer/weather/ForecastDisplay.java" />
-        <option value="$PROJECT_DIR$/src/problem/Lab1-3/src/temp/WeatherData.java" />
-        <option value="$PROJECT_DIR$/src/problem/Lab1-3/src/temp/IDisplay.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/Creator.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/FirstASM.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/dotClass.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/dotAbstractClass.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/dotAbstractMethod.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/dotImplements.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/dotInterface.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/HumidityDisplay.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/IDisplay.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/IWeatherData.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/IWeatherReporter.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/PressureDisplay.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/TemperatureDisplay.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/WeatherData.java" />
-        <option value="$PROJECT_DIR$/src/oldLab/WeatherReporter.java" />
         <option value="$PROJECT_DIR$/src/oldLab/WeatherStation.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/problem/asm/dotField.java" />
@@ -299,10 +234,29 @@
         <option value="$PROJECT_DIR$/bin/pizza/pizzas/PizzaTestDrive.java" />
         <option value="$PROJECT_DIR$/bin/pizza/pizzas/SimplePizzaFactory.java" />
         <option value="$PROJECT_DIR$/bin/pizza/pizzas/VeggiePizza.java" />
+        <option value="$PROJECT_DIR$/test/problem/asm/DesignParserTest.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/ITraversable.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/IEdge.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/INodeElement.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/NodeField.java" />
+        <option value="$PROJECT_DIR$/src/problem/DotUses.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/NodeMethod.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/IVisitor.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/INode.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/InterfaceNode.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/ClassNode.java" />
+        <option value="$PROJECT_DIR$/input_output/thislab.dot" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DotExtends.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DotAssociates.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DotImplements.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DotUses.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
+        <option value="$PROJECT_DIR$/src/pizza/PizzaStore.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/OutputDotFile.java" />
+        <option value="$PROJECT_DIR$/src/pizza/pizzaall/Pizza.java" />
+        <option value="$PROJECT_DIR$/src/pizza/pizzaall/FrozenClams.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
-        <option value="$PROJECT_DIR$/test/problem/asm/DesignParserTest.java" />
       </list>
     </option>
   </component>
@@ -395,8 +349,22 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TestRunner" />
+              <option name="myItemId" value="Lab3-1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3-1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="problem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,6 +379,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="problem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="asm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -499,6 +475,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wrightjt\Documents\All Classwork\CSSE 374\Lab3-1\Lab3-1\src\pizza\pizzaall" />
+      <recent name="C:\Users\wrightjt\Documents\All Classwork\CSSE 374\Lab3-1\Lab3-1\src\pizza" />
       <recent name="C:\Users\wrightjt\Documents\All Classwork\CSSE 374\Lab3-1\Lab3-1\bin\pizza" />
       <recent name="C:\Users\wrightjt\Documents\All Classwork\CSSE 374\Lab3-1\Lab3-1\src\problem\asm" />
     </key>
@@ -510,6 +488,9 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="problem.asm" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="problem.asm" />
@@ -871,42 +852,45 @@
       <workItem from="1451951985052" duration="4046000" />
       <workItem from="1451958100599" duration="31346000" />
       <workItem from="1452139370568" duration="5516000" />
-      <workItem from="1452557410405" duration="284000" />
+      <workItem from="1452557410405" duration="13571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46798000" />
+    <option name="totallyTimeSpent" value="60085000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32271326" sideWeight="0.50572914" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3217768" sideWeight="0.5078125" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32827735" sideWeight="0.4921875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1546875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1546875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827735" sideWeight="0.49833333" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3217768" sideWeight="0.49427083" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285834" sideWeight="0.49833333" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.dot" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -930,258 +914,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/plainText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLBoxNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="16" selection-start-line="13" selection-start-column="15" selection-end-line="14" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/PressureDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestRunner/Animal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestRunner/Dog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.59375">
-          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#372#373#0" expanded="false" />
-            <element signature="e#388#389#0" expanded="false" />
-            <element signature="e#416#417#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#469#470#0" expanded="false" />
-            <element signature="e#485#486#0" expanded="false" />
-            <element signature="e#513#514#0" expanded="false" />
-            <element signature="e#531#532#0" expanded="false" />
-            <element signature="e#942#943#0" expanded="false" />
-            <element signature="e#961#962#0" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1025#1026#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1077#1078#0" expanded="false" />
-            <element signature="e#1120#1121#0" expanded="false" />
-            <element signature="e#1143#1144#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/oldLab">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>oldLab</OriginalElement>
-          <nodes>
-            <node x="2.0" y="410.0">oldLab.WeatherData</node>
-            <node x="0.0" y="163.0">oldLab.IWeatherReporter</node>
-            <node x="169.0" y="326.0">oldLab.WeatherStation</node>
-            <node x="211.0" y="0.0">oldLab.IDisplay</node>
-            <node x="2.0" y="247.0">oldLab.WeatherReporter</node>
-            <node x="341.0" y="84.0">oldLab.HumidityDisplay</node>
-            <node x="186.0" y="84.0">oldLab.PressureDisplay</node>
-            <node x="0.0" y="326.0">oldLab.IWeatherData</node>
-            <node x="0.0" y="84.0">oldLab.TemperatureDisplay</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="oldLab.TemperatureDisplay" target="oldLab.IDisplay">
-              <point x="0.0" y="-17.0" />
-              <point x="83.0" y="59.0" />
-              <point x="225.16666666666666" y="59.0" />
-              <point x="-28.333333333333343" y="17.0" />
-            </edge>
-            <edge source="oldLab.WeatherReporter" target="oldLab.IWeatherReporter">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="oldLab.WeatherData" target="oldLab.IWeatherData">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="oldLab.HumidityDisplay" target="oldLab.IDisplay">
-              <point x="0.0" y="-17.0" />
-              <point x="412.0" y="59.0" />
-              <point x="281.8333333333333" y="59.0" />
-              <point x="28.333333333333314" y="17.0" />
-            </edge>
-            <edge source="oldLab.PressureDisplay" target="oldLab.IDisplay">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-255.0" y="183.0" />
-          <SelectedNodes>
-            <node>oldLab.IWeatherData</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotExtends.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/IWeatherReporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/asm-all-5.0.4.jar!/org/objectweb/asm/ClassReader.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.25">
-          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherStation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/HumidityDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/WeatherReporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotAssociates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding>
-            <element signature="e#163#164#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oldLab/IDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="0" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/FirstASM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="63" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotUses.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/CheesePizza.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/ClamPizza.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/PepperoniPizza.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/PizzaStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/PizzaTestDrive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/SimplePizzaFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pizza/pizzas/VeggiePizza.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1189,6 +926,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#297#298#0" expanded="false" />
+            <element signature="e#362#363#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1196,6 +937,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1203,6 +945,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,27 +960,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11663808">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pizza/pizzafm/ChicagoStylePepperoniPizza.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05831904">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/dotImplements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
@@ -1247,6 +976,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,13 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1966" column="0" selection-start-line="1966" selection-start-column="0" selection-end-line="1966" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1269,6 +992,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,6 +1000,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,45 +1009,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input_output/test.dot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="93.34375">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="95" selection-start-line="77" selection-start-column="95" selection-end-line="77" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input_output/thislab.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="83" selection-start-line="43" selection-start-column="83" selection-end-line="43" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_output/class.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1347,111 +1034,13 @@
           <OriginalElement>problem.asm</OriginalElement>
           <nodes>
             <node x="0.0" y="410.0">problem.asm.ClassFieldVisitor</node>
-            <node x="887.75" y="84.0">problem.asm.dotEdge</node>
             <node x="268.0" y="489.0">problem.asm.Creator</node>
-            <node x="431.0" y="0.0">problem.asm.iShape</node>
-            <node x="361.0" y="410.0">problem.asm.DesignParser</node>
-            <node x="271.0" y="252.0">problem.asm.dotInterface</node>
-            <node x="117.5" y="168.0">problem.asm.UMLBoxNode</node>
-            <node x="677.5" y="168.0">problem.asm.dotAssociates</node>
-            <node x="423.0" y="84.0">problem.asm.plainText</node>
-            <node x="184.0" y="410.0">problem.asm.dotAssignment</node>
-            <node x="108.0" y="252.0">problem.asm.dotAbstractClass</node>
-            <node x="146.5" y="84.0">problem.asm.node</node>
-            <node x="821.5" y="168.0">problem.asm.dotExtends</node>
-            <node x="388.5" y="168.0">problem.asm.dotAbstractMethod</node>
-            <node x="947.5" y="168.0">problem.asm.dotUses</node>
-            <node x="261.5" y="168.0">problem.asm.dotMethod</node>
-            <node x="570.5" y="168.0">problem.asm.dotField</node>
             <node x="0.0" y="331.0">problem.asm.ClassDeclarationVisitor</node>
-            <node x="433.0" y="331.0">problem.asm.DesignParserTest</node>
-            <node x="524.0" y="410.0">problem.asm.dotBlurb</node>
             <node x="135.0" y="489.0">problem.asm.Creature</node>
             <node x="229.0" y="331.0">problem.asm.ClassMethodVisitor</node>
-            <node x="394.0" y="489.0">problem.asm.God</node>
-            <node x="0.0" y="252.0">problem.asm.dotClass</node>
-            <node x="0.0" y="489.0">problem.asm.FirstASM</node>
-            <node x="1052.5" y="168.0">problem.asm.dotImplements</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="problem.asm.UMLBoxNode" target="problem.asm.node">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotInterface" target="problem.asm.UMLBoxNode">
-              <point x="0.0" y="-17.0" />
-              <point x="327.5" y="227.0" />
-              <point x="220.83333333333337" y="227.0" />
-              <point x="41.33333333333334" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotAbstractClass" target="problem.asm.UMLBoxNode">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotAssociates" target="problem.asm.dotEdge">
-              <point x="0.0" y="-17.0" />
-              <point x="739.5" y="138.0" />
-              <point x="898.875" y="138.0" />
-              <point x="-33.375" y="17.0" />
-            </edge>
-            <edge source="problem.asm.node" target="problem.asm.iShape">
-              <point x="0.0" y="-17.0" />
-              <point x="179.5" y="59.0" />
-              <point x="443.8333333333333" y="59.0" />
-              <point x="-25.666666666666686" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotEdge" target="problem.asm.iShape">
-              <point x="0.0" y="-17.0" />
-              <point x="932.25" y="59.0" />
-              <point x="495.1666666666667" y="59.0" />
-              <point x="25.666666666666686" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotExtends" target="problem.asm.dotEdge">
-              <point x="0.0" y="-17.0" />
-              <point x="874.5" y="148.0" />
-              <point x="921.125" y="148.0" />
-              <point x="-11.125" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotImplements" target="problem.asm.dotEdge">
-              <point x="0.0" y="-17.0" />
-              <point x="1119.0" y="138.0" />
-              <point x="965.625" y="138.0" />
-              <point x="33.375" y="17.0" />
-            </edge>
-            <edge source="problem.asm.plainText" target="problem.asm.iShape">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotUses" target="problem.asm.dotEdge">
-              <point x="0.0" y="-17.0" />
-              <point x="990.0" y="148.0" />
-              <point x="943.375" y="148.0" />
-              <point x="11.125" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotMethod" target="problem.asm.plainText">
-              <point x="0.0" y="-17.0" />
-              <point x="315.0" y="148.0" />
-              <point x="438.5" y="148.0" />
-              <point x="-31.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotField" target="problem.asm.plainText">
-              <point x="0.0" y="-17.0" />
-              <point x="614.0" y="148.0" />
-              <point x="500.5" y="148.0" />
-              <point x="31.0" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotClass" target="problem.asm.UMLBoxNode">
-              <point x="0.0" y="-17.0" />
-              <point x="44.0" y="227.0" />
-              <point x="138.16666666666663" y="227.0" />
-              <point x="-41.33333333333334" y="17.0" />
-            </edge>
-            <edge source="problem.asm.dotAbstractMethod" target="problem.asm.plainText">
-              <point x="0.0" y="-17.0" />
-              <point x="0.0" y="17.0" />
-            </edge>
-          </edges>
+          <edges />
           <settings layout="Hierarchic Group" zoom="1.0" x="22.0" y="70.0" />
           <SelectedNodes>
             <node>problem.asm.ClassFieldVisitor</node>
@@ -1462,21 +1051,310 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/God.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/car/api/IBody.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/impl/Wheel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/visitor/ITraverser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/visitor/IVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/visitor/VisitorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/impl/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
           <folding>
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="false" />
+            <element signature="e#409#410#0" expanded="false" />
+            <element signature="e#451#452#0" expanded="false" />
+            <element signature="e#478#479#0" expanded="false" />
+            <element signature="e#518#519#0" expanded="false" />
+            <element signature="e#595#596#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/problem/asm/DesignParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/car/impl/Body.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23595506">
-          <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/INodeElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/api/ICar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/impl/Car.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/app/CarApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/InterfaceNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54468805">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/car/impl/CarXmlOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/NodeMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1169#1170#0" expanded="true" />
+            <element signature="e#1209#1210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="652" column="0" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/IVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ITraversable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="50" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/IEdge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input_output/thislab.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input_output/test.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.1124363">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input_output/class.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/NodeField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/INode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/oldLab/HumidityDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14480409">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DotExtends.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+          <folding>
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DotUses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DotImplements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+          <folding>
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputDotFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DotAssociates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76831347">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>

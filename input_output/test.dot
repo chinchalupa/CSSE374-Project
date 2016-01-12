@@ -2,218 +2,188 @@ digraph G {
 
 fontname = "Bitstream Vera Sans"
 fontsize = 8
-
 node [shape = "record" ]
-ClassTFreshClams [label = "{FreshClams||+ String toString()\l}" ]
-
+ClassTBlackOlives [label = "{BlackOlives||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTVeggiePizza [label = "{VeggiePizza|-ingredientFactory:PizzaIngredientFactory\l|+ void prepare()\l}" ]
-
+ClassTCheese [label = "{Cheese||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTClams [label = "{Clams||+ String toString()\l}" ]
-
+ClassTCheesePizza [label = "{CheesePizza|ingredientFactory : PizzaIngredientFactory\l|prepare() : void\l}"]
 node [shape = "record" ]
-ClassTEggplant [label = "{Eggplant||+ String toString()\l}" ]
-
+ClassTChicagoPizzaIngredientFactory [label = "{ChicagoPizzaIngredientFactory||createDough() : Dough\lcreateSauce() : Sauce\lcreateCheese() : Cheese\lcreateVeggies() : Veggies[]\lcreatePepperoni() : Pepperoni\lcreateClam() : Clams\l}"]
 node [shape = "record" ]
-ClassTReggianoCheese [label = "{ReggianoCheese||+ String toString()\l}" ]
-
+ClassTChicagoPizzaStore [label = "{ChicagoPizzaStore||createPizza(String) : Pizza\l}"]
 node [shape = "record" ]
-ClassTBlackOlives [label = "{BlackOlives||+ String toString()\l}" ]
-
+ClassTClamPizza [label = "{ClamPizza|ingredientFactory : PizzaIngredientFactory\l|prepare() : void\l}"]
 node [shape = "record" ]
-ClassTPizza [label = "{Pizza|-name:String\l-dough:Dough\l-sauce:Sauce\l-veggies:Veggies[]\l-cheese:Cheese\l-pepperoni:Pepperoni\l-clam:Clams\l|+ void prepare()\l+ void bake()\l+ void cut()\l+ void box()\l+ void setName(String)\l+ String getName()\l+ String toString()\l}" ]
-
+ClassTClams [label = "{Clams||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTClamPizza [label = "{ClamPizza|-ingredientFactory:PizzaIngredientFactory\l|+ void prepare()\l}" ]
-
+ClassTDough [label = "{Dough||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTPizzaTestDrive [label = "{PizzaTestDrive||+ void main(String[])\l}" ]
-
+ClassTEggplant [label = "{Eggplant||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTDough [label = "{Dough||+ String toString()\l}" ]
-
+ClassTFreshClams [label = "{FreshClams||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTSpinach [label = "{Spinach||+ String toString()\l}" ]
-
+ClassTFrozenClams [label = "{FrozenClams||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTNYPizzaIngredientFactory [label = "{NYPizzaIngredientFactory||+ Dough createDough()\l+ Sauce createSauce()\l+ Cheese createCheese()\l+ Veggies[] createVeggies()\l+ Pepperoni createPepperoni()\l+ Clams createClam()\l}" ]
-
+ClassTGarlic [label = "{Garlic||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTVeggies [label = "{Veggies||+ String toString()\l}" ]
-
+ClassTMarinaraSauce [label = "{MarinaraSauce||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTFrozenClams [label = "{FrozenClams||+ String toString()\l}" ]
-
+ClassTMozzarellaCheese [label = "{MozzarellaCheese||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTPizzaStore [label = "{PizzaStore||# Pizza createPizza(String)\l+ Pizza orderPizza(String)\l}" ]
-
+ClassTMushroom [label = "{Mushroom||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTPepperoni [label = "{Pepperoni||+ String toString()\l}" ]
-
+ClassTNYPizzaIngredientFactory [label = "{NYPizzaIngredientFactory||createDough() : Dough\lcreateSauce() : Sauce\lcreateCheese() : Cheese\lcreateVeggies() : Veggies[]\lcreatePepperoni() : Pepperoni\lcreateClam() : Clams\l}"]
 node [shape = "record" ]
-ClassTSlicedPepperoni [label = "{SlicedPepperoni||+ String toString()\l}" ]
-
+ClassTNYPizzaStore [label = "{NYPizzaStore||createPizza(String) : Pizza\l}"]
 node [shape = "record" ]
-ClassTMarinaraSauce [label = "{MarinaraSauce||+ String toString()\l}" ]
-
+ClassTOnion [label = "{Onion||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTMushroom [label = "{Mushroom||+ String toString()\l}" ]
-
+ClassTParmesanCheese [label = "{ParmesanCheese||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTCheese [label = "{Cheese||+ String toString()\l}" ]
-
+ClassTPepperoni [label = "{Pepperoni||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTSauce [label = "{Sauce||+ String toString()\l}" ]
-
+ClassTPepperoniPizza [label = "{PepperoniPizza|ingredientFactory : PizzaIngredientFactory\l|prepare() : void\l}"]
 node [shape = "record" ]
-ClassTThickCrustDough [label = "{ThickCrustDough||+ String toString()\l}" ]
-
+ClassTPizza [label = "{Pizza|name : String\ldough : Dough\lsauce : Sauce\lveggies : Veggies[]\lcheese : Cheese\lpepperoni : Pepperoni\lclam : Clams\l|prepare() : void\lbake() : void\lcut() : void\lbox() : void\lsetName(String) : void\lgetName() : java.lang.String\ltoString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTOnion [label = "{Onion||+ String toString()\l}" ]
-
+ClassTPizzaIngredientFactory [label = "{PizzaIngredientFactory||createDough() : Dough\lcreateSauce() : Sauce\lcreateCheese() : Cheese\lcreateVeggies() : Veggies[]\lcreatePepperoni() : Pepperoni\lcreateClam() : Clams\l}"]
 node [shape = "record" ]
-ClassTNYPizzaStore [label = "{NYPizzaStore||# Pizza createPizza(String)\l}" ]
-
+ClassTPizzaStore [label = "{PizzaStore||createPizza(String) : Pizza\lorderPizza(String) : Pizza\l}"]
 node [shape = "record" ]
-ClassTRedPepper [label = "{RedPepper||+ String toString()\l}" ]
-
+ClassTPizzaTestDrive [label = "{PizzaTestDrive||main(String[]) : void\l}"]
 node [shape = "record" ]
-ClassTPlumTomatoSauce [label = "{PlumTomatoSauce||+ String toString()\l}" ]
-
+ClassTPlumTomatoSauce [label = "{PlumTomatoSauce||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTMozzarellaCheese [label = "{MozzarellaCheese||+ String toString()\l}" ]
-
+ClassTRedPepper [label = "{RedPepper||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTPizzaIngredientFactory [label = "{PizzaIngredientFactory||+ Dough createDough()\l+ Sauce createSauce()\l+ Cheese createCheese()\l+ Veggies[] createVeggies()\l+ Pepperoni createPepperoni()\l+ Clams createClam()\l}" ]
-
+ClassTReggianoCheese [label = "{ReggianoCheese||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTThinCrustDough [label = "{ThinCrustDough||+ String toString()\l}" ]
-
+ClassTSauce [label = "{Sauce||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTParmesanCheese [label = "{ParmesanCheese||+ String toString()\l}" ]
-
+ClassTSlicedPepperoni [label = "{SlicedPepperoni||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTChicagoPizzaStore [label = "{ChicagoPizzaStore||# Pizza createPizza(String)\l}" ]
-
+ClassTSpinach [label = "{Spinach||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTCheesePizza [label = "{CheesePizza|-ingredientFactory:PizzaIngredientFactory\l|+ void prepare()\l}" ]
-
+ClassTThickCrustDough [label = "{ThickCrustDough||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTGarlic [label = "{Garlic||+ String toString()\l}" ]
-
+ClassTThinCrustDough [label = "{ThinCrustDough||toString() : java.lang.String\l}"]
 node [shape = "record" ]
-ClassTChicagoPizzaIngredientFactory [label = "{ChicagoPizzaIngredientFactory||+ Dough createDough()\l+ Sauce createSauce()\l+ Cheese createCheese()\l+ Veggies[] createVeggies()\l+ Pepperoni createPepperoni()\l+ Clams createClam()\l}" ]
-
+ClassTVeggiePizza [label = "{VeggiePizza|ingredientFactory : PizzaIngredientFactory\l|prepare() : void\l}"]
 node [shape = "record" ]
-ClassTPepperoniPizza [label = "{PepperoniPizza|-ingredientFactory:PizzaIngredientFactory\l|+ void prepare()\l}" ]
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTGarlic -> ClassTVeggies
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTSauce -> ClassTPizza
-
-edge [arrowhead = "empty" style = solid ]
-ClassTPepperoniPizza -> ClassTPizza
-
-edge [arrowhead = "empty" style = solid ]
-ClassTVeggiePizza -> ClassTPizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTPizzaIngredientFactory -> ClassTCheesePizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTString -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTPlumTomatoSauce -> ClassTSauce
-
-edge [arrowhead = "empty" style = solid ]
-ClassTClamPizza -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTRedPepper -> ClassTVeggies
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTMarinaraSauce -> ClassTSauce
-
-edge [arrowhead = "empty" style = solid ]
-ClassTNYPizzaStore -> ClassTPizzaStore
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTFrozenClams -> ClassTClams
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTPizzaIngredientFactory -> ClassTPepperoniPizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTPizzaIngredientFactory -> ClassTVeggiePizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTClams -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTMozzarellaCheese -> ClassTCheese
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTNYPizzaIngredientFactory -> ClassTPizzaIngredientFactory
-
-edge [arrowhead = "empty" style = solid ]
-ClassTChicagoPizzaStore -> ClassTPizzaStore
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTSpinach -> ClassTVeggies
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTParmesanCheese -> ClassTCheese
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTEggplant -> ClassTVeggies
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTMushroom -> ClassTVeggies
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTReggianoCheese -> ClassTCheese
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTFreshClams -> ClassTClams
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTSlicedPepperoni -> ClassTPepperoni
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTPizzaIngredientFactory -> ClassTClamPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTThinCrustDough -> ClassTDough
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTOnion -> ClassTVeggies
-
-edge [arrowhead = "empty" style = solid ]
-ClassTCheesePizza -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTBlackOlives -> ClassTVeggies
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTCheese -> ClassTPizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTVeggies -> ClassTPizza
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTChicagoPizzaIngredientFactory -> ClassTPizzaIngredientFactory
-
-edge [arrowhead = "empty" style = "dashed" ]
-ClassTThickCrustDough -> ClassTDough
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTPepperoni -> ClassTPizza
-
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTDough -> ClassTPizza
-
+ClassTVeggies [label = "{Veggies||toString() : java.lang.String\l}"]
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTBlackOlives
+edge [arrowhead = vee style = dashed ]
+ClassTCheesePizza -> ClassTPizzaIngredientFactory
+edge [arrowhead = empty style = solid ]
+ClassTPizza -> ClassTCheesePizza
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTDough
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTSauce
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTCheese
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTVeggies[]
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTPepperoni
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaIngredientFactory -> ClassTClams
+edge [arrowhead = empty style = dashed ]
+ClassTPizzaIngredientFactory -> ClassTChicagoPizzaIngredientFactory
+edge [arrowhead = vee style = solid ]
+ClassTChicagoPizzaStore -> ClassTPizza
+edge [arrowhead = empty style = solid ]
+ClassTPizzaStore -> ClassTChicagoPizzaStore
+edge [arrowhead = vee style = dashed ]
+ClassTClamPizza -> ClassTPizzaIngredientFactory
+edge [arrowhead = empty style = solid ]
+ClassTPizza -> ClassTClamPizza
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTEggplant
+edge [arrowhead = empty style = dashed ]
+ClassTClams -> ClassTFreshClams
+edge [arrowhead = empty style = dashed ]
+ClassTClams -> ClassTFrozenClams
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTGarlic
+edge [arrowhead = empty style = dashed ]
+ClassTSauce -> ClassTMarinaraSauce
+edge [arrowhead = empty style = dashed ]
+ClassTCheese -> ClassTMozzarellaCheese
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTMushroom
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTDough
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTSauce
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTCheese
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTVeggies[]
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTPepperoni
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaIngredientFactory -> ClassTClams
+edge [arrowhead = empty style = dashed ]
+ClassTPizzaIngredientFactory -> ClassTNYPizzaIngredientFactory
+edge [arrowhead = vee style = solid ]
+ClassTNYPizzaStore -> ClassTPizza
+edge [arrowhead = empty style = solid ]
+ClassTPizzaStore -> ClassTNYPizzaStore
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTOnion
+edge [arrowhead = empty style = dashed ]
+ClassTCheese -> ClassTParmesanCheese
+edge [arrowhead = vee style = dashed ]
+ClassTPepperoniPizza -> ClassTPizzaIngredientFactory
+edge [arrowhead = empty style = solid ]
+ClassTPizza -> ClassTPepperoniPizza
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTDough
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTSauce
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTVeggies
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTCheese
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTPepperoni
+edge [arrowhead = vee style = dashed ]
+ClassTPizza -> ClassTClams
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTDough
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTSauce
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTCheese
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTVeggies[]
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTPepperoni
+edge [arrowhead = vee style = solid ]
+ClassTPizzaIngredientFactory -> ClassTClams
+edge [arrowhead = vee style = solid ]
+ClassTPizzaStore -> ClassTPizza
+edge [arrowhead = vee style = solid ]
+ClassTPizzaStore -> ClassTPizza
+edge [arrowhead = empty style = dashed ]
+ClassTSauce -> ClassTPlumTomatoSauce
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTRedPepper
+edge [arrowhead = empty style = dashed ]
+ClassTCheese -> ClassTReggianoCheese
+edge [arrowhead = empty style = dashed ]
+ClassTPepperoni -> ClassTSlicedPepperoni
+edge [arrowhead = empty style = dashed ]
+ClassTVeggies -> ClassTSpinach
+edge [arrowhead = empty style = dashed ]
+ClassTDough -> ClassTThickCrustDough
+edge [arrowhead = empty style = dashed ]
+ClassTDough -> ClassTThinCrustDough
+edge [arrowhead = vee style = dashed ]
+ClassTVeggiePizza -> ClassTPizzaIngredientFactory
+edge [arrowhead = empty style = solid ]
+ClassTPizza -> ClassTVeggiePizza
 }

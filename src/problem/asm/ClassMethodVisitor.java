@@ -10,16 +10,16 @@ import java.util.List;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
-    private dotClass dClass;
-    private List<dotEdge> edges;
+    private ClassNode classNode;
+    private List<IEdge> edges;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, dotClass dClass, List<dotEdge> edges) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
         super(api, decorated);
-        this.dClass = dClass;
+        this.classNode = node;
         this.edges = edges;
     }
 
@@ -28,8 +28,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
 
         if(!name.contains("<init>") && !name.contains("<clinit>")) {
-            dotMethod dMethod = new dotMethod(addAccessLevel(access), addReturnType(desc), name, addArguments(desc));
-            this.dClass.addMethod(dMethod);
+            this.classNode.addMethod(new NodeMethod(name, addReturnType(desc), addArguments(desc), addAccessLevel(access)));
         }
 
         // dotAssociates
@@ -41,17 +40,13 @@ public class ClassMethodVisitor extends ClassVisitor {
             if(arg.contains(".")) {
                 // Contained within package
                 String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
-                if(!association.contains("String[]")) {
-                    dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), association);
-                    this.edges.add(dotAssociates);
+                System.out.println("Association: " + association);
+                if(!association.contains("String")) {
+                    this.edges.add(new DotAssociates(this.classNode.getName(), association));
                 }
             }
         }
 
-
-
-// TODO: add the current method to your internal representation of the current class
-// What is a good way for the code to remember what the current class is?
         return toDecorate;
     }
 
@@ -66,16 +61,17 @@ public class ClassMethodVisitor extends ClassVisitor {
         }else{
             level="default";
         }
-//        System.out.println("access level: "+level);
-// TODO: ADD this information to your representation of the current method.
         return level;
     }
 
     public String addReturnType(String desc){
         String returnType = Type.getReturnType(desc).getClassName();
-        if(returnType.contains("."))
+        if(returnType.contains(".") && !returnType.contains("String")) {
             returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
-            dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), returnType);
+//            dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), returnType);
+
+            this.edges.add(new DotAssociates(this.classNode.getName(), returnType));
+        }
 //        System.out.println("return type: " + returnType);
         return returnType;
     }
@@ -86,8 +82,6 @@ public class ClassMethodVisitor extends ClassVisitor {
         for(int i=0; i< args.length; i++){
             String className = args[i].getClassName();
             list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
-//            System.out.println("arg "+i+": "+arg);
-// TODO: ADD this information to your representation of the current method.
         }
         return list;
     }

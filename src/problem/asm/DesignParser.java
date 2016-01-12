@@ -1,9 +1,5 @@
 package problem.asm;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,33 +15,33 @@ public class DesignParser {
      * Reads in a list of Java Classes and reverse engineers their design.
      *
      * @param args: the names of the classes, separated by spaces.
-     * For example: java DesignParser java.lang.String edu.rosehulman.csse374.ClassFieldVisitor 
+     * For example: java DesignParser java.lang.String edu.rosehulman.csse374.ClassFieldVisitor
 
 java.lang.Math
      * @throws IOException
      */
     public static void main(String[] args) throws IOException{
 
-        God god = new God();
-        
-
         Scanner in = new Scanner(System.in);
         System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
         String source = in.nextLine();
-        System.out.println("Enter in the full source of the output file e.g. (./src/oldLab)");
+        if(source.length() < 1) {
+            source = "./src/oldLab";
+        }
+
+        System.out.println("Enter in the full source of the output file e.g. (./input_output/test.dot)");
         String oSource = in.nextLine();
-        BufferedWriter out = new BufferedWriter(new FileWriter(new File(oSource)));
-        System.out.println("Enter in the full package name e.g. (oldLab)");
-        String location = in.nextLine();
+        if(oSource.length() < 1) {
+            oSource = "./input_output/output.dot";
+        }
 
+        String location = source.replace("./src/", "");
+        location = location.replace("/", ".");
 
-
-
-        List<dotEdge> edges = new ArrayList<>();
+        List<IEdge> edges = new ArrayList<>();
+        List<INode> nodes = new ArrayList<>();
 
         for(String className : DesignParser.getListOfFiles(source, location)) {
-
-
 
 // ASM's ClassReader does the heavy lifting of parsing the compiled Java class
             ClassReader reader = new ClassReader(className);
@@ -54,14 +50,14 @@ java.lang.Math
             String rawClass = reader.getClassName();
             String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
 
-            dotClass dClass = new dotClass(refinedClass, new ArrayList<>(), new ArrayList<>());
+            ClassNode classNode = new ClassNode(refinedClass);
 
 // make class declaration visitor to get superclass and interfaces
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
 // DECORATE declaration visitor with field visitor
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, dClass, edges);
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, classNode, edges);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, dClass, edges);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, classNode, edges);
 // TODO: add more DECORATORS here in later milestones to accomplish specific tasks
 // Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
@@ -76,24 +72,31 @@ java.lang.Math
                 implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
             }
 
-            god.add(dClass);
             System.out.println(refinedClass + " " + refinedSuperClass);
 
             if(!refinedSuperClass.contains("Object"))
-                edges.add(new dotExtends(refinedSuperClass, refinedClass));
+                edges.add(new DotExtends(refinedSuperClass, refinedClass));
             for(String impFrom : implementedFrom) {
-                edges.add(new dotImplements(impFrom, refinedClass));
+                edges.add(new DotImplements(impFrom, refinedClass));
             }
+
+            nodes.add(classNode);
         }
 
-        for(dotEdge e : edges) {
-            god.add(e);
+        OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream("input_output/test.dot"));
+
+
+        for(INode node : nodes) {
+            ITraversable iTraversable = (ITraversable) node;
+            iTraversable.accept(outputDotFile);
         }
 
-        out.write(god.genesis());
-        out.close();
+        for(IEdge edge : edges) {
+            ITraversable edgeTraversable = (ITraversable) edge;
+            edgeTraversable.accept(outputDotFile);
+        }
 
-
+        outputDotFile.end();
     }
 
 

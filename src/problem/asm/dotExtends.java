@@ -1,19 +1,44 @@
 package problem.asm;
 
-public class dotExtends extends dotEdge {
+/**
+ * Created by wrightjt on 1/11/2016.
+ */
+public class DotExtends implements IEdge {
 
-	static final String arrowhead = "\"empty\"";
-	static final String style = "solid";
-	public dotExtends(String s, String ss){
-		super(s,ss);
-	}
-	
-	@Override
-	public String getBlurbString() {
-		dotBlurb db = new dotBlurb("edge");
-		db.addLine("arrowhead", arrowhead);
-		db.addLine("style", style);
-		return db.dotString();
-	}
+    private String to;
+    private String from;
+    private String line;
+    private String arrow;
 
+    public DotExtends(String to, String from) {
+        this.to = to;
+        this.from = from;
+        this.arrow = "empty";
+        this.line = "solid";
+    }
+
+    @Override
+    public String getTo() {
+        return to;
+    }
+
+    @Override
+    public String getFrom() {
+        return from;
+    }
+
+    @Override
+    public String getLine() {
+        return line;
+    }
+
+    @Override
+    public String getArrow() {
+        return arrow;
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visitEdges(this);
+    }
 }
