@@ -1,15 +1,18 @@
 package problem.asm;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
+import com.sun.org.apache.bcel.internal.generic.INVOKEVIRTUAL;
+import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
 public class DesignParser {
+
+    public static String pack;
+    private static ExtensionDot extensionDot = null;
+    private static ExtensionSQ extensionSQ = null;
 
     /**
      * Reads in a list of Java Classes and reverse engineers their design.
@@ -22,26 +25,13 @@ java.lang.Math
      */
     public static void main(String[] args) throws IOException{
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter in the full source of the file e.g. (./src/oldLab)");
-        String source = in.nextLine();
-        if(source.length() < 1) {
-            source = "./src/oldLab";
-        }
 
-        System.out.println("Enter in the full source of the output file e.g. (./input_output/test.dot)");
-        String oSource = in.nextLine();
-        if(oSource.length() < 1) {
-            oSource = "./input_output/output.dot";
-        }
-
-        String location = source.replace("./src/", "");
-        location = location.replace("/", ".");
 
         List<IEdge> edges = new ArrayList<>();
-        List<INode> nodes = new ArrayList<>();
+        List<ClassNode> nodes = new ArrayList<>();
 
-        for(String className : DesignParser.getListOfFiles(source, location)) {
+        for(String className : DesignParser.getListOfFiles()) {
+//            System.out.println("Classname: " + className);
 
 // ASM's ClassReader does the heavy lifting of parsing the compiled Java class
             ClassReader reader = new ClassReader(className);
@@ -50,17 +40,35 @@ java.lang.Math
             String rawClass = reader.getClassName();
             String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
 
-            ClassNode classNode = new ClassNode(refinedClass);
+            ClassNode classNode = null;
+
+            for(ClassNode node : nodes) {
+//                System.out.println("Refined Class: " + refinedClass);
+                if(node.getName().equals(refinedClass)) {
+                    classNode = node;
+//                    System.out.println("Found Class" + refinedClass);
+                    break;
+                }
+            }
+
+            if(classNode == null) {
+                classNode = new ClassNode(refinedClass);
+                nodes.add(classNode);
+            }
+
+//            System.out.println(nodes);
+//            System.out.println("Added: " + classNode.getName());
 
 // make class declaration visitor to get superclass and interfaces
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
 // DECORATE declaration visitor with field visitor
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, classNode, edges);
 // DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, classNode, edges);
-// TODO: add more DECORATORS here in later milestones to accomplish specific tasks
-// Tell the Reader to use our (heavily decorated) ClassVisitor to visit the class
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, classNode, edges, nodes);
+
+
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+
 
             String rawSuperClass = reader.getSuperName();
             String[] rawImplements = reader.getInterfaces();
@@ -72,7 +80,7 @@ java.lang.Math
                 implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
             }
 
-            System.out.println(refinedClass + " " + refinedSuperClass);
+//            System.out.println(refinedClass + " " + refinedSuperClass);
 
             if(!refinedSuperClass.contains("Object"))
                 edges.add(new DotExtends(refinedSuperClass, refinedClass));
@@ -80,10 +88,11 @@ java.lang.Math
                 edges.add(new DotImplements(impFrom, refinedClass));
             }
 
-            nodes.add(classNode);
         }
 
-        OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream("input_output/test.dot"));
+        OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream(extensionDot.getOutputLocation()));
+        OutputSDFile outputSDFile = new OutputSDFile(new FileOutputStream(extensionSQ.getOutputLocation()));
+        DesignParser.outputDSFile(nodes, outputSDFile, extensionSQ.getIterations());
 
 
         for(INode node : nodes) {
@@ -101,9 +110,52 @@ java.lang.Math
 
 
 
-    public static List<String> getListOfFiles(String location, String prefix) {
+    public static List<String> getListOfFiles() {
+
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to our CSSE374 Project!");
+        System.out.println("Currently, we can make .dot files and .sd files.");
+        System.out.println("Enter your desired project to use: ");
+
+        String source = in.nextLine();
+        if(source.length() < 1) {
+            source = "./src/oldLab";
+            System.out.println("No location specified. Using Lab3-1.");
+        }
+
+        String savelcation = source;
+        String location = source.replace("./src/", "");
+        location = location.replace("/", ".");
+
+        pack = location.substring(location.lastIndexOf(".") + 1, location.length());
+
+        System.out.println("Enter the output source");
+        String oSource = in.nextLine();
+        System.out.println("Enter the .dot file name");
+        String dotLocation = in.nextLine();
+
+        extensionDot = new ExtensionDot(oSource + "/" + dotLocation);
+
+        System.out.println("Enter the number of iterations: ");
+        int iterations = Integer.parseInt(in.nextLine());
+        System.out.println("Enter the starting class: ");
+        String startClass = in.nextLine();
+        System.out.println("Enter the method name: ");
+        String startMethod = in.nextLine();
+        System.out.println("Enter the SQ file name");
+        String sqLocation = in.nextLine();
+
+        extensionSQ = new ExtensionSQ(iterations, startClass.trim(), pack, startMethod,oSource +"/" + sqLocation);
+        System.out.println(startClass.length());
+        System.out.println("Start: " + startClass.trim());
+
+        if (oSource.length() < 1) {
+            oSource = "./input_output/output.dot";
+        }
+
         List<String> filenames = new ArrayList<>();
-        File directory = new File(location);
+        File directory = new File(savelcation);
 
         File[] listOfFiles = directory.listFiles();
         List<File> files = Arrays.asList(listOfFiles);
@@ -114,9 +166,62 @@ java.lang.Math
             s = s.replace(".java", "");
             s = s.replace(".", "");
             s = s.replace("\\", ".");
-            filenames.add(prefix + "." + s);
+            filenames.add(location + "." + s);
         }
 
         return filenames;
+    }
+
+    public static boolean inPackage(String string) {
+        return string.contains(pack);
+    }
+
+    public static void outputDSFile(List<ClassNode> classNodes, OutputSDFile sdFile, int counter) {
+        NodeMethod startNode = null;
+        for(ClassNode node : classNodes) {
+            if(extensionSQ.getClassName().contains(node.getName())) {
+//                System.out.println("FOUND FILE");
+                for (NodeMethod method : node.getMethods()) {
+//                    System.out.println("Method: " + method.getName());
+                    if (method.getName().contains(extensionSQ.getMethodName())) {
+                        startNode = method;
+                    }
+                }
+            }
+            ITraversable iTraversable = (ITraversable) node;
+            node.accept(sdFile);
+        }
+
+        if(startNode != null) {
+            ITraversable iTraversable = (ITraversable) startNode;
+            startNode.accept(sdFile);
+
+
+            recursiveIterDSFile(startNode, sdFile, counter);
+        }
+        else {
+            System.out.println("ERROR READING FILE");
+        }
+    }
+
+    public static void recursiveIterDSFile(NodeMethod nodeMethod, OutputSDFile sdFile, int counter) {
+        if(counter <= 0) {
+            ITraversable iTraversable = (ITraversable) nodeMethod;
+            iTraversable.accept(sdFile);
+        }
+
+        else {
+            for(NodeField nodeField : nodeMethod.getClassNodeFieldsCreated()) {
+                ITraversable iTraversable = (ITraversable) nodeField;
+                iTraversable.accept(sdFile);
+            }
+
+            for (NodeMethod method : nodeMethod.getMethodsCalled()) {
+                ITraversable iTraversable = (ITraversable) method;
+                iTraversable.accept(sdFile);
+
+                recursiveIterDSFile(method, sdFile, counter--);
+            }
+        }
     }
 }

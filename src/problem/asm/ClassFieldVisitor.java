@@ -24,16 +24,12 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         FieldVisitor toDecorate = super.visitField(access, name, desc, signature, value);
 
-//        System.out.println("Name: " + name);
-//        System.out.println("DESC: " + desc);
-//        System.out.println("SIG: " + signature);
-//        System.out.println("Value: " + value);
-
-
         String type = Type.getType(desc).getClassName();
         type = type.substring(type.lastIndexOf(".") + 1, type.length());
 
         this.classNode.addField(new NodeField(name, type));
+
+//        System.out.println("DESC: " + desc);
 
         if(desc.contains(";") && desc.contains("/") && !desc.contains("String")) {
             String association = desc.substring(desc.lastIndexOf("/") + 1, desc.indexOf(";"));

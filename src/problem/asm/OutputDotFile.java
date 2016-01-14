@@ -26,7 +26,8 @@ public class OutputDotFile implements IVisitor {
 
     public void startUp() {
         String s = "digraph G {\n\n";
-        s += "fontname = \"Bitstream Vera Sans\"\n" + "fontsize = 8";
+        s += "fontname = \"Bitstream Vera Sans\"\n" + "fontsize = 8\n";
+        s += "rankdir=BT\n";
         this.write(s);
     }
 

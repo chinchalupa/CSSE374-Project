@@ -1,0 +1,39 @@
+HumidityDisplay:HumidityDisplay "HumidityDisplay"
+
+IWeatherData:IWeatherData "IWeatherData"
+
+IDisplay:IDisplay "IDisplay"
+
+IWeatherData:IWeatherData "IWeatherData"
+
+IWeatherReporter:IWeatherReporter "IWeatherReporter"
+
+PressureDisplay:PressureDisplay "PressureDisplay"
+
+TemperatureDisplay:TemperatureDisplay "TemperatureDisplay"
+
+WeatherData:WeatherData "WeatherData"
+
+WeatherReporter:WeatherReporter "WeatherReporter"
+
+WeatherStation:WeatherStation "WeatherStation"
+
+<init>
+<init>
+<init>
+<init>
+<init>
+registerDisplay
+registerDisplay
+registerDisplay
+registerDisplay
+registerDisplay
+registerDisplay
+<init>
+<init>
+setWeatherData
+setWeatherData
+<init>
+<init>
+setWeatherData
+setWeatherData

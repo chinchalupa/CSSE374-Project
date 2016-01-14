@@ -2,14 +2,13 @@ digraph G {
 
 fontname = "Bitstream Vera Sans"
 fontsize = 8
+rankdir=BT
 node [shape = "record" ]
 ClassTHumidityDisplay [label = "{HumidityDisplay||dataChanged(IWeatherData) : void\l}"]
 node [shape = "record" ]
 ClassTIWeatherData [label = "{IWeatherData||getHumidity() : double\lgetTemperature() : double\lgetPressure() : double\l}"]
 node [shape = "record" ]
 ClassTIDisplay [label = "{IDisplay||dataChanged(IWeatherData) : void\l}"]
-node [shape = "record" ]
-ClassTIWeatherData [label = "{IWeatherData||getHumidity() : double\lgetTemperature() : double\lgetPressure() : double\l}"]
 node [shape = "record" ]
 ClassTIWeatherReporter [label = "{IWeatherReporter||registerDisplay(IDisplay) : void\lremoveDisplay(IDisplay) : void\lsetWeatherData(IWeatherData) : void\l}"]
 node [shape = "record" ]

@@ -15,6 +15,7 @@ public class ClassNode implements INode {
 
     public ClassNode(String name) {
         this.name = name;
+        this.type = null;
         this.fields = new ArrayList<>();
         this.methods = new ArrayList<>();
     }

@@ -1,0 +1,19 @@
+/HumidityDisplay:HumidityDisplay "HumidityDisplay"
+/IWeatherData:IWeatherData "IWeatherData"
+/IDisplay:IDisplay "IDisplay"
+/IWeatherData:IWeatherData "IWeatherData"
+/IWeatherReporter:IWeatherReporter "IWeatherReporter"
+/PressureDisplay:PressureDisplay "PressureDisplay"
+/TemperatureDisplay:TemperatureDisplay "TemperatureDisplay"
+/WeatherData:WeatherData "WeatherData"
+/WeatherReporter:WeatherReporter "WeatherReporter"
+/WeatherStation:WeatherStation "WeatherStation"
+WeatherReporter:WeatherReporter=WeatherReporter.registerDisplay
+WeatherReporter:WeatherReporter=WeatherReporter.registerDisplay
+WeatherReporter:WeatherReporter=WeatherReporter.registerDisplay
+WeatherReporter:WeatherReporter=WeatherReporter.notifyDisplays
+WeatherReporter:WeatherReporter=IDisplay.dataChanged
+IDisplay:IDisplay=IDisplay.dataChanged
+WeatherReporter:WeatherReporter=WeatherReporter.notifyDisplays
+WeatherReporter:WeatherReporter=IDisplay.dataChanged
+IDisplay:IDisplay=IDisplay.dataChanged

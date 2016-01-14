@@ -12,42 +12,65 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     private ClassNode classNode;
     private List<IEdge> edges;
+    private List<ClassNode> nodes;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<ClassNode> nodes) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;
+        this.nodes = nodes;
     }
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+//        System.out.println("==============METHOD=================");
+//        System.out.println("DESC: " + desc);
+//        System.out.println("Name: " + name);
+//        System.out.println("SIGNATURE: " + signature);
+//        System.out.println("==========METHOD===========");
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
+        MethodVisitor methodDecorator = toDecorate;
+
 
         if(!name.contains("<init>") && !name.contains("<clinit>")) {
-            this.classNode.addMethod(new NodeMethod(name, addReturnType(desc), addArguments(desc), addAccessLevel(access)));
+
+            NodeMethod nodeMethod = null;
+
+            for(NodeMethod method : this.classNode.getMethods()) {
+                if(method.getName().contains(name)) {
+                    nodeMethod = method;
+                }
+            }
+
+            if(nodeMethod == null) {
+                nodeMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), addAccessLevel(access), this.classNode, null);
+                this.classNode.addMethod(nodeMethod);
+            }
+
+//            System.out.println("OVERLORD: " + name + " " +  nodeMethod);
+            methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
         }
+
+//        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
 
         // dotAssociates
         for(String arg : addArguments(desc)) {
-//            System.out.println("Argument: " + arg);
-//            System.out.println("DESC: " + desc);
-//            System.out.println("Name: " + name);
+
 
             if(arg.contains(".")) {
-                // Contained within package
                 String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
-                System.out.println("Association: " + association);
+//                System.out.println("Association: " + association);
                 if(!association.contains("String")) {
                     this.edges.add(new DotAssociates(this.classNode.getName(), association));
                 }
             }
         }
 
-        return toDecorate;
+        return methodDecorator;
     }
 
     public String addAccessLevel(int access){
@@ -68,11 +91,9 @@ public class ClassMethodVisitor extends ClassVisitor {
         String returnType = Type.getReturnType(desc).getClassName();
         if(returnType.contains(".") && !returnType.contains("String")) {
             returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
-//            dotAssociates dotAssociates = new dotAssociates(this.dClass.getName(), returnType);
 
             this.edges.add(new DotAssociates(this.classNode.getName(), returnType));
         }
-//        System.out.println("return type: " + returnType);
         return returnType;
     }
 
@@ -85,5 +106,4 @@ public class ClassMethodVisitor extends ClassVisitor {
         }
         return list;
     }
-
 }
