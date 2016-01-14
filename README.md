@@ -3,7 +3,7 @@
 
 <h2>General</h2>
 
-To run our project, run DesignParser with no arguments. You will be prompted for some inputs. Once you have read and entered in the inputs, take the dot file and run it using dot.exe.
+To run our project, run DesignParser with no arguments. You will be prompted for some inputs, including the input file and the output file path. Once you have read and entered in the inputs, take the dot file and run it using dot.exe.
 
 
 <h3>Milestone 1 Log</h3>
