@@ -41,4 +41,9 @@ public class DotAssociates implements IEdge {
     public void accept(IVisitor visitor) {
         visitor.visitEdges(this);
     }
+
+    @Override
+    public String toString() {
+        return this.to + this.from;
+    }
 }

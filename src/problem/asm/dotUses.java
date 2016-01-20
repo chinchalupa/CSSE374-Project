@@ -43,6 +43,11 @@ public class DotUses implements IEdge {
     }
 
     @Override
+    public String toString() {
+        return this.to + this.from;
+    }
+
+    @Override
     public String getArrow() {
         return arrow;
     }

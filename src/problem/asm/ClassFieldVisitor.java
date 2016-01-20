@@ -26,22 +26,66 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         String type = Type.getType(desc).getClassName();
         type = type.substring(type.lastIndexOf(".") + 1, type.length());
+        signature = getCollectionType(signature);
 
-        this.classNode.addField(new NodeField(name, type));
+        if(signature != null) {
+            NodeField newField = new NodeField(name, type + "<" + signature + ">");
+            this.classNode.addField(newField);
 
-//        System.out.println("DESC: " + desc);
-
-        if(desc.contains(";") && desc.contains("/") && !desc.contains("String")) {
-            String association = desc.substring(desc.lastIndexOf("/") + 1, desc.indexOf(";"));
-
-            if(signature != null) {
-                String otherClass = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
-                this.edges.add(new DotUses(this.classNode.getName(), otherClass));
+            if(DesignParser.inPackage(desc)) {
+                addNewUses(this.classNode.getName(), signature);
             }
+        } else {
+            NodeField newField = new NodeField(name, type);
+            this.classNode.addField(newField);
 
-            this.edges.add(new DotUses(this.classNode.getName(), association));
+            if(DesignParser.inPackage(desc)) {
+                addNewUses(this.classNode.getName(), type);
+            }
         }
 
+//        this.classNode.addField(newEdge);
+
+//        System.out.println("=====METHOD=====");
+//        System.out.println("DESC: " + desc);
+//        System.out.println(Type.getType(signature));
+
+//        if(DesignParser.inPackage(desc)) {
+//            String association = desc.substring(desc.lastIndexOf("/") + 1, desc.indexOf(";"));
+//
+//            if(signature != null) {
+//                String otherClass = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
+//                addNewUses(this.classNode.getName(), otherClass);
+//            }
+//
+////            DotUses usesArrow = new DotUses(this.classNode.getName(), association);
+//            addNewUses(this.classNode.getName(), association);
+////            addNewUses(this.classNode.getName(), association);
+////            this.edges.add(new DotUses(this.classNode.getName(), association));
+//        }
+
         return toDecorate;
+    }
+
+    private void addNewUses(String name, String returnType) {
+        DotUses newArrow = new DotUses(name, returnType);
+        for(IEdge edge : this.edges) {
+            String temp = edge.getTo() + edge.getFrom();
+//            System.out.println(edge.getTo() + edge.getFrom());
+            if(temp.equals(newArrow.toString())) {
+//                System.out.println("Duplicate detected uses");
+                return;
+            }
+        }
+        this.edges.add(newArrow);
+    }
+
+    private String getCollectionType(String sig) {
+        if(sig == null) {
+            return sig;
+        } else {
+            sig = sig.substring(sig.lastIndexOf("/") + 1, sig.indexOf(";"));
+        }
+        return sig;
     }
 }

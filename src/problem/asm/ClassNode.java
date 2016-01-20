@@ -15,6 +15,9 @@ public class ClassNode implements INode {
 
     public ClassNode(String name) {
         this.name = name;
+        if(this.name.contains(";")) {
+            this.name = this.name.replace(";", "");
+        }
         this.type = null;
         this.fields = new ArrayList<>();
         this.methods = new ArrayList<>();
@@ -52,10 +55,26 @@ public class ClassNode implements INode {
     }
 
     public void addField(NodeField field) {
+//        for(NodeField nodeField : this.fields) {
+//            if(nodeField.toString().equals(field.toString())) {
+//                return;
+//            }
+//        }
+//        System.out.println("Field added");
         this.fields.add(field);
     }
 
     public void addMethod(NodeMethod method) {
+//        for(NodeMethod nodeMethod : this.methods) {
+//            if(nodeMethod.toString().equals(method.toString())) {
+//                return;
+//            }
+//        }
         this.methods.add(method);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

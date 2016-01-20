@@ -42,7 +42,7 @@ public class OutputDotFile implements IVisitor {
 
         String s = "node [shape = \"record\" ]\n";
         s += "ClassT" + node.getName() + " [label = \"{" + node.getName() + "|";
-        for(INodeElement field : node.getFields()) {
+        for(NodeField field : node.getFields()) {
             s += field.getName() + " : " + field.getReturnType() + "\\l";
         }
 

@@ -43,6 +43,11 @@ public class NodeField implements INodeElement {
     }
 
     @Override
+    public String toString() {
+        return this.name + this.type;
+    }
+
+    @Override
     public void accept(IVisitor visitor) {
         visitor.visitField(this);
     }

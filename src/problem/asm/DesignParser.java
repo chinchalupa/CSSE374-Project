@@ -29,8 +29,12 @@ java.lang.Math
 
         List<IEdge> edges = new ArrayList<>();
         List<ClassNode> nodes = new ArrayList<>();
+        List<String> files = DesignParser.getListOfFiles();
+        if(files.isEmpty()) {
+            files.add("java.util.Collections");
+        }
 
-        for(String className : DesignParser.getListOfFiles()) {
+        for(String className : files) {
 //            System.out.println("Classname: " + className);
 
 // ASM's ClassReader does the heavy lifting of parsing the compiled Java class
@@ -41,26 +45,26 @@ java.lang.Math
             String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
 
             ClassNode classNode = null;
-
             for(ClassNode node : nodes) {
-//                System.out.println("Refined Class: " + refinedClass);
                 if(node.getName().equals(refinedClass)) {
                     classNode = node;
-//                    System.out.println("Found Class" + refinedClass);
+//                    System.out.println("Found classnode: " + classNode);
                     break;
                 }
             }
 
             if(classNode == null) {
                 classNode = new ClassNode(refinedClass);
+//                System.out.println("\nAdded " + refinedClass);
                 nodes.add(classNode);
             }
+
 
 //            System.out.println(nodes);
 //            System.out.println("Added: " + classNode.getName());
 
 // make class declaration visitor to get superclass and interfaces
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
+            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, classNode, nodes, edges);
 // DECORATE declaration visitor with field visitor
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, classNode, edges);
 // DECORATE field visitor with method visitor
@@ -70,24 +74,24 @@ java.lang.Math
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
 
-            String rawSuperClass = reader.getSuperName();
-            String[] rawImplements = reader.getInterfaces();
-
-            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 1, rawSuperClass.length());
-            List<String> implementedFrom = new ArrayList<>();
-
-            for(String implemented : rawImplements) {
-                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
-            }
-
-//            System.out.println(refinedClass + " " + refinedSuperClass);
-
-            if(!refinedSuperClass.contains("Object"))
-                edges.add(new DotExtends(refinedSuperClass, refinedClass));
-            for(String impFrom : implementedFrom) {
-                edges.add(new DotImplements(impFrom, refinedClass));
-            }
-
+//            String rawSuperClass = reader.getSuperName();
+//            String[] rawImplements = reader.getInterfaces();
+//
+//            String refinedSuperClass = rawSuperClass.substring(rawSuperClass.lastIndexOf("/") + 1, rawSuperClass.length());
+//            List<String> implementedFrom = new ArrayList<>();
+//
+//            for(String implemented : rawImplements) {
+//                implementedFrom.add(implemented.substring(implemented.lastIndexOf("/") + 1, implemented.length()));
+//            }
+//
+////            System.out.println(refinedClass + " " + refinedSuperClass);
+//
+//            if(!refinedSuperClass.contains("Object")) {
+//                edges.add(new DotExtends(refinedSuperClass, refinedClass));
+//            }
+//            for(String impFrom : implementedFrom) {
+//                edges.add(new DotImplements(impFrom, refinedClass));
+//            }
         }
 
         OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream(extensionDot.getOutputLocation()));
@@ -130,6 +134,7 @@ java.lang.Math
 
         pack = location.substring(location.lastIndexOf(".") + 1, location.length());
 
+
         System.out.println("Enter the output source");
         String oSource = in.nextLine();
         System.out.println("Enter the .dot file name");
@@ -147,26 +152,30 @@ java.lang.Math
         String sqLocation = in.nextLine();
 
         extensionSQ = new ExtensionSQ(iterations, startClass.trim(), pack, startMethod,oSource +"/" + sqLocation);
-        System.out.println(startClass.length());
-        System.out.println("Start: " + startClass.trim());
+//        System.out.println(startClass.length());
+//        System.out.println("Start: " + startClass.trim());
 
         if (oSource.length() < 1) {
             oSource = "./input_output/output.dot";
         }
 
         List<String> filenames = new ArrayList<>();
+        System.out.println("Location: " + savelcation);
         File directory = new File(savelcation);
 
-        File[] listOfFiles = directory.listFiles();
-        List<File> files = Arrays.asList(listOfFiles);
+        if(savelcation.contains("/")) {
+            File[] listOfFiles = directory.listFiles();
+            List<File> files = Arrays.asList(listOfFiles);
 
-        for(File file : files) {
-            String s = file.getName();
-            s = s.substring(0, s.indexOf(".") + 1);
-            s = s.replace(".java", "");
-            s = s.replace(".", "");
-            s = s.replace("\\", ".");
-            filenames.add(location + "." + s);
+
+            for (File file : files) {
+                String s = file.getName();
+                s = s.substring(0, s.indexOf(".") + 1);
+                s = s.replace(".java", "");
+                s = s.replace(".", "");
+                s = s.replace("\\", ".");
+                filenames.add(location + "." + s);
+            }
         }
 
         return filenames;
@@ -180,11 +189,14 @@ java.lang.Math
         NodeMethod startNode = null;
         for(ClassNode node : classNodes) {
             if(extensionSQ.getClassName().contains(node.getName())) {
+                System.out.println(node.getName() + " " + extensionSQ.getClassName());
 //                System.out.println("FOUND FILE");
                 for (NodeMethod method : node.getMethods()) {
+                    System.out.println(method.getName() + " " + extensionSQ.getMethodName());
 //                    System.out.println("Method: " + method.getName());
                     if (method.getName().contains(extensionSQ.getMethodName())) {
                         startNode = method;
+                        break;
                     }
                 }
             }
@@ -217,6 +229,7 @@ java.lang.Math
             }
 
             for (NodeMethod method : nodeMethod.getMethodsCalled()) {
+                System.out.println("Added method: " + method);
                 ITraversable iTraversable = (ITraversable) method;
                 iTraversable.accept(sdFile);
 

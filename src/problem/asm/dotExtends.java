@@ -38,6 +38,11 @@ public class DotExtends implements IEdge {
     }
 
     @Override
+    public String toString() {
+        return this.to + this.from;
+    }
+
+    @Override
     public void accept(IVisitor visitor) {
         visitor.visitEdges(this);
     }

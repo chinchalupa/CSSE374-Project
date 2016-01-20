@@ -1,8 +1,10 @@
 package problem.asm;
 
+import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
+import sun.security.krb5.internal.crypto.Des;
 
 import javax.xml.soap.Node;
 import java.util.ArrayList;
@@ -29,21 +31,20 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
 
-        System.out.println("Method: " + this.nodeMethod.getContainingClass().getName());
-        System.out.println("Owner: " + owner);
-        System.out.println("Name of Method: " + name);
-        System.out.println("Description: " + desc + "\n");
 
-        if (!name.contains("<init>")) {
+
+//        ClassDeclarationVisitor toDecorate = new ClassDeclarationVisitor(Opcodes.ASM5);
 
             if (DesignParser.inPackage(owner)) {
+
+//                System.out.println("Method: " + this.nodeMethod.getContainingClass().getName());
+//                System.out.println("Owner: " + owner);
+//                System.out.println("Name of Method: " + name);
+//                System.out.println("Description: " + desc + "\n");
+
                 owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
                 ClassNode tempNode = getAddedClassNode(owner);
                 ClassNode parentNode = null;
-                if(DesignParser.inPackage(desc)) {
-                    desc = desc.substring(owner.lastIndexOf("/") + 1, desc.indexOf(";"));
-                    parentNode = getAddedClassNode(desc);
-                }
 
 
                 NodeMethod tempMethod = null;
@@ -63,6 +64,21 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
                 this.nodeMethod.addMethodCalled(tempMethod);
             }
         }
+
+    @Override
+    public void visitTypeInsn(int i, String s) {
+        s = s.substring(s.lastIndexOf("/") + 1, s.length());
+        for(ClassNode node : this.classNodes) {
+            if(node.getName().equals(s)) {
+                return;
+            }
+        }
+        this.classNodes.add(new ClassNode(s));
+
+//        if(DesignParser.inPackage(s)) {
+//            System.out.println("Created: " + s);
+//        }
+//        super.visitTypeInsn(i, s);
     }
 
     @Override
@@ -124,15 +140,13 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
         for (ClassNode oldNode : this.classNodes) {
             if (owner.contains(oldNode.getName())) {
-                tempNode = oldNode;
+                return oldNode;
 //                this.nodeMethod.addCreatedNode(tempNode);
             }
         }
 
         if (tempNode == null) {
-            tempNode = new ClassNode(owner);
-            this.classNodes.add(tempNode);
-//            this.nodeMethod.addCreatedNode(tempNode);
+            return new ClassNode(owner);
         }
         return tempNode;
     }
