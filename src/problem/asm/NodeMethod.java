@@ -93,7 +93,7 @@ public class NodeMethod implements INodeElement {
 
     @Override
     public String toString() {
-        String s = name + " " + returnType;
+        String s = name + " " + returnType + " ";
         for(String arg : args) {
             s += arg + " ";
         }

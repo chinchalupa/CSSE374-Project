@@ -1,5 +1,6 @@
 package problem.asm;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.objectweb.asm.ClassVisitor;
@@ -18,8 +19,6 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         this.classNodes = classNodes;
         this.edges = edges;
         this.classNode = classNode;
-//        this.classNode = getClassNode(classNode);
-
     }
 
     @Override

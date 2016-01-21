@@ -109,6 +109,18 @@ java.lang.Math
             edgeTraversable.accept(outputDotFile);
         }
 
+        for(ClassNode node : nodes) {
+            System.out.println("Name: " + node.getName());
+            for(NodeMethod method : node.getMethods()) {
+//                System.out.println("Method: " + method);
+                if(method.toString().contains("shuffle")) {
+                    for(NodeMethod methodMethod : method.getMethodsCalled()) {
+                        System.out.println("Has: " + methodMethod.toString());
+                    }
+                }
+            }
+        }
+
         outputDotFile.end();
     }
 
@@ -189,10 +201,10 @@ java.lang.Math
         NodeMethod startNode = null;
         for(ClassNode node : classNodes) {
             if(extensionSQ.getClassName().contains(node.getName())) {
-                System.out.println(node.getName() + " " + extensionSQ.getClassName());
+//                System.out.println(node.getName() + " " + extensionSQ.getClassName());
 //                System.out.println("FOUND FILE");
                 for (NodeMethod method : node.getMethods()) {
-                    System.out.println(method.getName() + " " + extensionSQ.getMethodName());
+//                    System.out.println(method.getName() + " " + extensionSQ.getMethodName());
 //                    System.out.println("Method: " + method.getName());
                     if (method.getName().contains(extensionSQ.getMethodName())) {
                         startNode = method;
@@ -229,7 +241,8 @@ java.lang.Math
             }
 
             for (NodeMethod method : nodeMethod.getMethodsCalled()) {
-                System.out.println("Added method: " + method);
+                System.out.println(method.toString());
+//                System.out.println("Added method: " + method.toString());
                 ITraversable iTraversable = (ITraversable) method;
                 iTraversable.accept(sdFile);
 

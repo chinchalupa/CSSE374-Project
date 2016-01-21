@@ -37,6 +37,8 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         NodeMethod nodeMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), addAccessLevel(access), this.classNode, null);
         nodeMethod = this.getNodeMethod(nodeMethod);
+//        System.out.println(nodeMethod.toString());
+//        System.out.println("=====Has methods=====");
 
 //        if(this.classNode.getName().equals("DesignParser")) {
 //            System.out.println(nodeMethod.getName());

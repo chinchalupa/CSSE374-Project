@@ -36,27 +36,33 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 //        ClassDeclarationVisitor toDecorate = new ClassDeclarationVisitor(Opcodes.ASM5);
 
             if (DesignParser.inPackage(owner)) {
-
-//                System.out.println("Method: " + this.nodeMethod.getContainingClass().getName());
-//                System.out.println("Owner: " + owner);
-//                System.out.println("Name of Method: " + name);
-//                System.out.println("Description: " + desc + "\n");
+//                if(name.equals("shuffle")) {
+//
+//                    System.out.println("=====Method: " + this.nodeMethod.getContainingClass().getName());
+//                    System.out.println("Owner: " + owner);
+//                    System.out.println("Name of Method: " + name);
+//                    System.out.println("Description: " + desc + "\n");
+//                }
 
                 owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
+//                if(owner.contains("$")) {
+//                    owner = owner.substring(0, owner.indexOf("$"));
+//                }
                 ClassNode tempNode = getAddedClassNode(owner);
-                ClassNode parentNode = null;
 
-
-                NodeMethod tempMethod = null;
+                boolean noExists = true;
+                NodeMethod tempMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), null, tempNode, this.nodeMethod.getContainingClass());
+//                System.out.println(tempMethod.toString());
                 for(NodeMethod method : tempNode.getMethods()) {
-                    if(method.getName().contains(name)) {
+                    if(method.toString().equals(tempMethod.toString())) {
                         tempMethod = method;
                         tempMethod.setParentClassNode(this.nodeMethod.getContainingClass());
+                        noExists = false;
                     }
                 }
 
-                if(tempMethod == null) {
-                    tempMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), null, tempNode, this.nodeMethod.getContainingClass());
+                if(noExists) {
+                    System.out.println("Created new method: " + tempMethod.toString());
                     tempNode.addMethod(tempMethod);
                 }
 //                System.out.println("HAS METHOD: " + tempMethod.getName() + " " + tempMethod );
@@ -67,13 +73,13 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
     @Override
     public void visitTypeInsn(int i, String s) {
-        s = s.substring(s.lastIndexOf("/") + 1, s.length());
-        for(ClassNode node : this.classNodes) {
-            if(node.getName().equals(s)) {
-                return;
-            }
-        }
-        this.classNodes.add(new ClassNode(s));
+//        s = s.substring(s.lastIndexOf("/") + 1, s.length());
+//        for(ClassNode node : this.classNodes) {
+//            if(node.getName().equals(s)) {
+//                return;
+//            }
+//        }
+//        this.classNodes.add(new ClassNode(s));
 
 //        if(DesignParser.inPackage(s)) {
 //            System.out.println("Created: " + s);
@@ -146,7 +152,9 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
         }
 
         if (tempNode == null) {
-            return new ClassNode(owner);
+            tempNode = new ClassNode(owner);
+            this.classNodes.add(tempNode);
+            return tempNode;
         }
         return tempNode;
     }
