@@ -1,5 +1,9 @@
 <h1>CSSE 374 Project</h1>
 <strike>Milestone 1</strike>
+<strike>Milestone 2</strike>
+<strike>Milestone 3</strike>
+<p>Milestone 4</p>
+<p>Milestone 5</p>
 
 <h2>General</h2>
 
@@ -50,3 +54,11 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 
 <strong>plainText</strong>
 <p>Placeholder for later use.</p>
+
+<h3> Milestone 3 Log</h3>
+
+<p>Very difficult milestone. Will be revisited at a later point to ensure code quality.</p>
+
+<h3> Milestone 4 Log</h3>
+<h4>New UML Design to accomodate for the requirements of the milestone.</h4>
+
