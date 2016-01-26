@@ -21,7 +21,6 @@ public class UMLGenerator extends FileGenerator {
     public UMLGenerator(String outputLocation, String inputFile) {
         super(outputLocation, inputFile);
         this.pkg = this.inputFile.replace("./src/", "");
-        System.out.println(this.pkg);
         this.startingClassStrings = new ArrayList<>();
     }
 
@@ -53,7 +52,6 @@ public class UMLGenerator extends FileGenerator {
             ClassReader reader = new ClassReader(file);
 
             ClassNode node = new ClassNode(reader.getClassName());
-            System.out.println("Node created " + node.getName());
 
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList, pkg);
 
@@ -70,8 +68,6 @@ public class UMLGenerator extends FileGenerator {
     public void write() throws Exception {
         OutputStream outputStream = new FileOutputStream(this.outputLocation);
         OutputDotFile visitor = new OutputDotFile(outputStream, this.pkg);
-        System.out.println("Writing: " + this.classNodeList.size());
-        System.out.println(this.classNodeList.get(0));
 
         for(ClassNode node : this.classNodeList) {
             node.accept(visitor);

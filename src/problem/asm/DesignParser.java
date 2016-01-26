@@ -10,9 +10,6 @@ import org.objectweb.asm.Opcodes;
 
 public class DesignParser {
 
-    public static String pack;
-    private static ExtensionDot extensionDot = null;
-    private static ExtensionSQ extensionSQ = null;
 
     /**
      * Reads in a list of Java Classes and reverse engineers their design.
@@ -23,20 +20,47 @@ public class DesignParser {
 java.lang.Math
      * @throws IOException
      */
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
-        FileGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "java.lang.Runtime");
-//        umlGenerator.generateClassList();
-//        umlGenerator.generateNodes();
+        boolean generatingFiles = true;
 
-        umlGenerator = new SingletonDetector(umlGenerator);
+        System.out.println("Welcome to our CSSE374 project!");
+        System.out.println("Supported filetypes(.dot, .sq)");
+        Scanner scanner = new Scanner(System.in);
 
-        umlGenerator.generateClassList();
-        umlGenerator.generateNodes();
 
-        umlGenerator.getNodes();
-        umlGenerator.write();
+        while(generatingFiles) {
+            System.out.println("Enter the filetype you would like to create:");
 
+            String filetype = scanner.nextLine();
+
+            switch (filetype) {
+                case ".dot":
+                    FileGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "java.lang.Runtime");
+
+                    System.out.println("Detect Singletons (y/n)?");
+
+                    boolean detectSingletons = scanner.nextLine().trim().equals("y");
+                    if(detectSingletons) {
+                        umlGenerator = new SingletonDetector(umlGenerator);
+                    }
+                    umlGenerator.generateClassList();
+                    umlGenerator.generateNodes();
+
+                    umlGenerator.getNodes();
+                    umlGenerator.write();
+                    break;
+
+                default:
+                    System.out.println("Unsupported filetype. Try again (.dot, .sq)");
+                    break;
+
+            }
+            System.out.println("Would you like to generate a new file (y/n)?");
+            generatingFiles = scanner.nextLine().trim().equals("y");
+
+        }
+    }
 
 
 //        for(String className : files) {
@@ -135,132 +159,132 @@ java.lang.Math
 //        }
 //
 //        outputDotFile.end();
-    }
 
 
 
-    public static List<String> getListOfFiles() {
 
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Welcome to our CSSE374 Project!");
-        System.out.println("Currently, we can make .dot files and .sd files.");
-        System.out.println("Enter your desired project to use: ");
-
-        String source = in.nextLine();
-        if(source.length() < 1) {
-            source = "./src/oldLab";
-            System.out.println("No location specified. Using Lab3-1.");
-        }
-
-        String savelcation = source;
-        String location = source.replace("./src/", "");
-        location = location.replace("/", ".");
-
-        pack = location.substring(location.lastIndexOf(".") + 1, location.length());
-
-
-        System.out.println("Enter the output source");
-        String oSource = in.nextLine();
-        System.out.println("Enter the .dot file name");
-        String dotLocation = in.nextLine();
-
-        extensionDot = new ExtensionDot(oSource + "/" + dotLocation);
-
-        System.out.println("Enter the number of iterations: ");
-        int iterations = Integer.parseInt(in.nextLine());
-        System.out.println("Enter the starting class: ");
-        String startClass = in.nextLine();
-        System.out.println("Enter the method name: ");
-        String startMethod = in.nextLine();
-        System.out.println("Enter the SQ file name");
-        String sqLocation = in.nextLine();
-
-        extensionSQ = new ExtensionSQ(iterations, startClass.trim(), pack, startMethod,oSource +"/" + sqLocation);
-//        System.out.println(startClass.length());
-//        System.out.println("Start: " + startClass.trim());
-
-        if (oSource.length() < 1) {
-            oSource = "./input_output/output.dot";
-        }
-
-        List<String> filenames = new ArrayList<>();
-        System.out.println("Location: " + savelcation);
-        File directory = new File(savelcation);
-
-        if(savelcation.contains("/")) {
-            File[] listOfFiles = directory.listFiles();
-            List<File> files = Arrays.asList(listOfFiles);
-
-
-            for (File file : files) {
-                String s = file.getName();
-                s = s.substring(0, s.indexOf(".") + 1);
-                s = s.replace(".java", "");
-                s = s.replace(".", "");
-                s = s.replace("\\", ".");
-                filenames.add(location + "." + s);
-            }
-        }
-
-        return filenames;
-    }
-
-//    public static boolean inPackage(String string) {
-//        return string.contains(pack);
+//    public static List<String> getListOfFiles() {
+//
+//
+//        Scanner in = new Scanner(System.in);
+//        System.out.println("Welcome to our CSSE374 Project!");
+//        System.out.println("Currently, we can make .dot files and .sd files.");
+//        System.out.println("Enter your desired project to use: ");
+//
+//        String source = in.nextLine();
+//        if(source.length() < 1) {
+//            source = "./src/oldLab";
+//            System.out.println("No location specified. Using Lab3-1.");
+//        }
+//
+//        String savelcation = source;
+//        String location = source.replace("./src/", "");
+//        location = location.replace("/", ".");
+//
+//        pack = location.substring(location.lastIndexOf(".") + 1, location.length());
+//
+//
+//        System.out.println("Enter the output source");
+//        String oSource = in.nextLine();
+//        System.out.println("Enter the .dot file name");
+//        String dotLocation = in.nextLine();
+//
+//        extensionDot = new ExtensionDot(oSource + "/" + dotLocation);
+//
+//        System.out.println("Enter the number of iterations: ");
+//        int iterations = Integer.parseInt(in.nextLine());
+//        System.out.println("Enter the starting class: ");
+//        String startClass = in.nextLine();
+//        System.out.println("Enter the method name: ");
+//        String startMethod = in.nextLine();
+//        System.out.println("Enter the SQ file name");
+//        String sqLocation = in.nextLine();
+//
+//        extensionSQ = new ExtensionSQ(iterations, startClass.trim(), pack, startMethod,oSource +"/" + sqLocation);
+////        System.out.println(startClass.length());
+////        System.out.println("Start: " + startClass.trim());
+//
+//        if (oSource.length() < 1) {
+//            oSource = "./input_output/output.dot";
+//        }
+//
+//        List<String> filenames = new ArrayList<>();
+//        System.out.println("Location: " + savelcation);
+//        File directory = new File(savelcation);
+//
+//        if(savelcation.contains("/")) {
+//            File[] listOfFiles = directory.listFiles();
+//            List<File> files = Arrays.asList(listOfFiles);
+//
+//
+//            for (File file : files) {
+//                String s = file.getName();
+//                s = s.substring(0, s.indexOf(".") + 1);
+//                s = s.replace(".java", "");
+//                s = s.replace(".", "");
+//                s = s.replace("\\", ".");
+//                filenames.add(location + "." + s);
+//            }
+//        }
+//
+//        return filenames;
 //    }
-
-    public static void outputDSFile(List<ClassNode> classNodes, OutputSDFile sdFile, int counter) {
-        NodeMethod startNode = null;
-        for(ClassNode node : classNodes) {
-            if(extensionSQ.getClassName().contains(node.getName())) {
-//                System.out.println(node.getName() + " " + extensionSQ.getClassName());
-//                System.out.println("FOUND FILE");
-                for (NodeMethod method : node.getMethods()) {
-//                    System.out.println(method.getName() + " " + extensionSQ.getMethodName());
-//                    System.out.println("Method: " + method.getName());
-                    if (method.getName().contains(extensionSQ.getMethodName())) {
-                        startNode = method;
-                        break;
-                    }
-                }
-            }
-            ITraversable iTraversable = (ITraversable) node;
-            node.accept(sdFile);
-        }
-
-        if(startNode != null) {
-            ITraversable iTraversable = (ITraversable) startNode;
-            startNode.accept(sdFile);
-
-
-            recursiveIterDSFile(startNode, sdFile, counter);
-        }
-        else {
-            System.out.println("ERROR READING FILE");
-        }
-    }
-
-    public static void recursiveIterDSFile(NodeMethod nodeMethod, OutputSDFile sdFile, int counter) {
-        if(counter <= 0) {
-            ITraversable iTraversable = (ITraversable) nodeMethod;
-            iTraversable.accept(sdFile);
-        }
-
-        else {
-            for(NodeField nodeField : nodeMethod.getClassNodeFieldsCreated()) {
-                ITraversable iTraversable = (ITraversable) nodeField;
-                iTraversable.accept(sdFile);
-            }
-
-            for (NodeMethod method : nodeMethod.getMethodsCalled()) {
-                System.out.println(method.toString());
-//                System.out.println("Added method: " + method.toString());
-                ITraversable iTraversable = (ITraversable) method;
-                iTraversable.accept(sdFile);
-
-                recursiveIterDSFile(method, sdFile, counter--);
-            }
-        }
-    }
+//
+////    public static boolean inPackage(String string) {
+////        return string.contains(pack);
+////    }
+//
+//    public static void outputDSFile(List<ClassNode> classNodes, OutputSDFile sdFile, int counter) {
+//        NodeMethod startNode = null;
+//        for(ClassNode node : classNodes) {
+//            if(extensionSQ.getClassName().contains(node.getName())) {
+////                System.out.println(node.getName() + " " + extensionSQ.getClassName());
+////                System.out.println("FOUND FILE");
+//                for (NodeMethod method : node.getMethods()) {
+////                    System.out.println(method.getName() + " " + extensionSQ.getMethodName());
+////                    System.out.println("Method: " + method.getName());
+//                    if (method.getName().contains(extensionSQ.getMethodName())) {
+//                        startNode = method;
+//                        break;
+//                    }
+//                }
+//            }
+//            ITraversable iTraversable = (ITraversable) node;
+//            node.accept(sdFile);
+//        }
+//
+//        if(startNode != null) {
+//            ITraversable iTraversable = (ITraversable) startNode;
+//            startNode.accept(sdFile);
+//
+//
+//            recursiveIterDSFile(startNode, sdFile, counter);
+//        }
+//        else {
+//            System.out.println("ERROR READING FILE");
+//        }
+//    }
+//
+//    public static void recursiveIterDSFile(NodeMethod nodeMethod, OutputSDFile sdFile, int counter) {
+//        if(counter <= 0) {
+//            ITraversable iTraversable = (ITraversable) nodeMethod;
+//            iTraversable.accept(sdFile);
+//        }
+//
+//        else {
+//            for(NodeField nodeField : nodeMethod.getClassNodeFieldsCreated()) {
+//                ITraversable iTraversable = (ITraversable) nodeField;
+//                iTraversable.accept(sdFile);
+//            }
+//
+//            for (NodeMethod method : nodeMethod.getMethodsCalled()) {
+//                System.out.println(method.toString());
+////                System.out.println("Added method: " + method.toString());
+//                ITraversable iTraversable = (ITraversable) method;
+//                iTraversable.accept(sdFile);
+//
+//                recursiveIterDSFile(method, sdFile, counter--);
+//            }
+//        }
+//    }
 }
