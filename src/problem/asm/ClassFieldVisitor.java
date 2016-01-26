@@ -3,6 +3,7 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;
 
+import java.awt.*;
 import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{

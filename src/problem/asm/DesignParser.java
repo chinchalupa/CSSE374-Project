@@ -25,10 +25,22 @@ java.lang.Math
      */
     public static void main(String[] args) throws Exception{
 
-        UMLGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "./src/problem/asm");
+        FileGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "java.lang.Runtime");
+//        umlGenerator.generateClassList();
+//        umlGenerator.generateNodes();
+
+        umlGenerator = new SingletonDetector(umlGenerator);
+
         umlGenerator.generateClassList();
         umlGenerator.generateNodes();
+
+        umlGenerator.getNodes();
         umlGenerator.write();
+
+
+
+//        for(String className : files) {
+////            System.out.println("
 
 //        List<IEdge> edges = new ArrayList<>();
 //        List<ClassNode> nodes = new ArrayList<>();
@@ -36,9 +48,7 @@ java.lang.Math
 //        if(files.isEmpty()) {
 //            files.add("java.util.Collections");
 //        }
-//
-//        for(String className : files) {
-////            System.out.println("Classname: " + className);
+//Classname: " + className);
 //
 //// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
 //            ClassReader reader = new ClassReader(className);

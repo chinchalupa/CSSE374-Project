@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ public class ClassNode implements INode {
     private String type;
     private List<NodeField> fields;
     private List<NodeMethod> methods;
+    private String color;
 
     public ClassNode(String name) {
         this.name = name;
@@ -21,6 +23,7 @@ public class ClassNode implements INode {
         this.type = null;
         this.fields = new ArrayList<>();
         this.methods = new ArrayList<>();
+        this.color = "#000000";
     }
 
     public ClassNode(String name, String type) {
@@ -71,6 +74,14 @@ public class ClassNode implements INode {
 //            }
 //        }
         this.methods.add(method);
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override

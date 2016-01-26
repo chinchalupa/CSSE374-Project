@@ -44,7 +44,7 @@ public class OutputDotFile implements IVisitor {
         if(this.inOurPackage(node.getName())) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
-            String s = "node [shape = \"record\"]\n";
+            String s = "node [shape = \"record\" color = \"" + node.getColor() + "\"]\n";
             s += "ClassT" + name + " [label = \"{" + name  + "|";
             for (NodeField field : node.getFields()) {
                 s += field.getName() + " : " + field.getReturnType() + "\\l";
@@ -93,7 +93,8 @@ public class OutputDotFile implements IVisitor {
     }
 
     private boolean inOurPackage(String name) {
-        return name.contains(this.pkg);
+        String remodeledName = name.replace("/", ".");
+        return remodeledName.contains(this.pkg);
     }
 
     private boolean hasInvalidCharacters(String field) {
