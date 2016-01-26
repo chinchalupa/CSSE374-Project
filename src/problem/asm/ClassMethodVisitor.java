@@ -13,16 +13,18 @@ public class ClassMethodVisitor extends ClassVisitor {
     private ClassNode classNode;
     private List<IEdge> edges;
     private List<ClassNode> nodes;
+    private String pkg;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<ClassNode> nodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<ClassNode> nodes, String pkg) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;
         this.nodes = nodes;
+        this.pkg = pkg;
     }
 
     @Override
@@ -35,48 +37,47 @@ public class ClassMethodVisitor extends ClassVisitor {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
         MethodVisitor methodDecorator = toDecorate;
 
-        NodeMethod nodeMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), addAccessLevel(access), this.classNode, null);
-        nodeMethod = this.getNodeMethod(nodeMethod);
-//        System.out.println(nodeMethod.toString());
-//        System.out.println("=====Has methods=====");
 
-//        if(this.classNode.getName().equals("DesignParser")) {
-//            System.out.println(nodeMethod.getName());
-//        }
+        String returnType = addReturnType(desc);
+        List<String> arguments = addArguments(desc);
+        String accessLevel = addAccessLevel(access);
+        String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
+        List<String> cleanArgs = new ArrayList<>();
+        for(String arg : arguments) {
+            cleanArgs.add(arg.substring(arg.lastIndexOf("/") + 1, arg.length()));
+        }
+        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode, null);
 
-        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
-
+//        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
 //        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
+        this.classNode.addMethod(nodeMethod);
 
         // dotAssociates
-        for(String arg : addArguments(desc)) {
-
-            if(DesignParser.inPackage(arg)) {
-                String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
-                addNewUses(this.classNode.getName(), association);
+        for(int i = 0; i < arguments.size(); i++) {
+            if(inPackage(arguments.get(i))) {
+                addNewUses(this.classNode.getName(), cleanArgs.get(i));
             }
-
-//            if(arg.contains(".")) {
-//                String association = arg.substring(arg.lastIndexOf(".") + 1, arg.length());
-////                System.out.println("Association: " + association);
-//                if(!association.contains("String")) {
-//                    addNewUses(this.classNode.getName(), association);
-//                }
-//            }
+        }
+        if(inPackage(returnType)) {
+            addNewUses(this.classNode.getName(), cleanReturnType);
         }
 
         return methodDecorator;
     }
 
+
     public String addAccessLevel(int access){
         String level="";
         if((access&Opcodes.ACC_PUBLIC)!=0){
-            level="public";
+            level="+";
         }else if((access&Opcodes.ACC_PROTECTED)!=0){
-            level="protected";
+            level="#";
         }else if((access&Opcodes.ACC_PRIVATE)!=0){
-            level="private";
-        }else{
+            level="-";
+        }else if((access&Opcodes.ACC_STATIC) != 0) {
+            level="&";
+        }
+        else{
             level="default";
         }
         return level;
@@ -84,11 +85,8 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     public String addReturnType(String desc){
         String returnType = Type.getReturnType(desc).getClassName();
-        if(DesignParser.inPackage(returnType)) {
-
-            returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
-            addNewAssociation(this.classNode.getName(), returnType);
-        }
+        returnType = returnType.replace(".", "/");
+        addNewAssociationArrow(this.classNode.getName(), returnType);
         return returnType;
     }
 
@@ -97,46 +95,43 @@ public class ClassMethodVisitor extends ClassVisitor {
         Type[] args = Type.getArgumentTypes(desc);
         for(int i=0; i< args.length; i++){
             String className = args[i].getClassName();
-            list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
+            className = className.replace(".", "/");
+            list.add(className);
         }
         return list;
     }
 
 
     private void addNewUses(String name, String returnType) {
-        DotUses newArrow = new DotUses(name, returnType);
-        for(IEdge edge : this.edges) {
-            String temp = edge.getTo() + edge.getFrom();
-            if(temp.equals(newArrow.toString())) {
+        // Uses
+        if(inPackage(returnType)) {
+            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"");
+            for (IEdge edge : this.edges) {
+                String temp = edge.getTo() + " " + edge.getFrom();
+                if (temp.equals(newArrow.toString())) {
 //                System.out.println("Duplicate detected uses");
-                return;
+                    return;
+                }
             }
+            this.edges.add(newArrow);
         }
-        this.edges.add(newArrow);
     }
 
-    private void addNewAssociation(String name, String returnType) {
-        DotAssociates newArrow = new DotAssociates(name, returnType);
-        for(IEdge edge : this.edges) {
-            String temp = edge.getTo() + edge.getFrom();
-            if(temp.equals(newArrow.toString())) {
-//                System.out.println("Duplicate detected");
-                return;
+    private void addNewAssociationArrow(String name, String returnType) {
+        String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
+        if(inPackage(returnType)) {
+            Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"");
+            for (IEdge edge : this.edges) {
+                String temp = edge.getTo() + " " + edge.getFrom();
+                if (temp.equals(newArrow.toString())) {
+                    return;
+                }
             }
+            this.edges.add(newArrow);
         }
-        this.edges.add(newArrow);
     }
 
-    private NodeMethod getNodeMethod(NodeMethod createdMethod) {
-        for(NodeMethod nodeMethod : this.classNode.getMethods()) {
-            if(nodeMethod.toString().equals(createdMethod.toString())) {
-                return nodeMethod;
-            }
-        }
-        this.classNode.addMethod(createdMethod);
-//        if(this.classNode.getName().equals("DesignParser")) {
-////            System.out.println("ADDED: " + createdMethod.toString());
-//        }
-        return createdMethod;
+    private boolean inPackage(String s) {
+        return s.contains(this.pkg);
     }
 }

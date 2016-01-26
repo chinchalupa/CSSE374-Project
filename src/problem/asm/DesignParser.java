@@ -23,55 +23,58 @@ public class DesignParser {
 java.lang.Math
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws Exception{
 
+        UMLGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "./src/problem/asm");
+        umlGenerator.generateClassList();
+        umlGenerator.generateNodes();
+        umlGenerator.write();
 
-
-        List<IEdge> edges = new ArrayList<>();
-        List<ClassNode> nodes = new ArrayList<>();
-        List<String> files = DesignParser.getListOfFiles();
-        if(files.isEmpty()) {
-            files.add("java.util.Collections");
-        }
-
-        for(String className : files) {
-//            System.out.println("Classname: " + className);
-
-// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
-            ClassReader reader = new ClassReader(className);
-
-
-            String rawClass = reader.getClassName();
-            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
-
-            ClassNode classNode = null;
-            for(ClassNode node : nodes) {
-                if(node.getName().equals(refinedClass)) {
-                    classNode = node;
-//                    System.out.println("Found classnode: " + classNode);
-                    break;
-                }
-            }
-
-            if(classNode == null) {
-                classNode = new ClassNode(refinedClass);
-//                System.out.println("\nAdded " + refinedClass);
-                nodes.add(classNode);
-            }
+//        List<IEdge> edges = new ArrayList<>();
+//        List<ClassNode> nodes = new ArrayList<>();
+//        List<String> files = DesignParser.getListOfFiles();
+//        if(files.isEmpty()) {
+//            files.add("java.util.Collections");
+//        }
+//
+//        for(String className : files) {
+////            System.out.println("Classname: " + className);
+//
+//// ASM's ClassReader does the heavy lifting of parsing the compiled Java class
+//            ClassReader reader = new ClassReader(className);
+//
+//
+//            String rawClass = reader.getClassName();
+//            String refinedClass = rawClass.substring(rawClass.lastIndexOf("/") + 1, rawClass.length());
+//
+//            ClassNode classNode = null;
+//            for(ClassNode node : nodes) {
+//                if(node.getName().equals(refinedClass)) {
+//                    classNode = node;
+////                    System.out.println("Found classnode: " + classNode);
+//                    break;
+//                }
+//            }
+//
+//            if(classNode == null) {
+//                classNode = new ClassNode(refinedClass);
+////                System.out.println("\nAdded " + refinedClass);
+//                nodes.add(classNode);
+//            }
 
 
 //            System.out.println(nodes);
 //            System.out.println("Added: " + classNode.getName());
 
 // make class declaration visitor to get superclass and interfaces
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, classNode, nodes, edges);
-// DECORATE declaration visitor with field visitor
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, classNode, edges);
-// DECORATE field visitor with method visitor
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, classNode, edges, nodes);
-
-
-            reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+//            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, classNode, nodes, edges);
+//// DECORATE declaration visitor with field visitor
+//            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, classNode, edges);
+//// DECORATE field visitor with method visitor
+//            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, classNode, edges, nodes);
+//
+//
+//            reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
 
 //            String rawSuperClass = reader.getSuperName();
@@ -92,36 +95,36 @@ java.lang.Math
 //            for(String impFrom : implementedFrom) {
 //                edges.add(new DotImplements(impFrom, refinedClass));
 //            }
-        }
-
-        OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream(extensionDot.getOutputLocation()));
-        OutputSDFile outputSDFile = new OutputSDFile(new FileOutputStream(extensionSQ.getOutputLocation()));
-        DesignParser.outputDSFile(nodes, outputSDFile, extensionSQ.getIterations());
-
-
-        for(INode node : nodes) {
-            ITraversable iTraversable = (ITraversable) node;
-            iTraversable.accept(outputDotFile);
-        }
-
-        for(IEdge edge : edges) {
-            ITraversable edgeTraversable = (ITraversable) edge;
-            edgeTraversable.accept(outputDotFile);
-        }
-
-        for(ClassNode node : nodes) {
-            System.out.println("Name: " + node.getName());
-            for(NodeMethod method : node.getMethods()) {
-//                System.out.println("Method: " + method);
-                if(method.toString().contains("shuffle")) {
-                    for(NodeMethod methodMethod : method.getMethodsCalled()) {
-                        System.out.println("Has: " + methodMethod.toString());
-                    }
-                }
-            }
-        }
-
-        outputDotFile.end();
+//        }
+//
+//        OutputDotFile outputDotFile = new OutputDotFile(new FileOutputStream(extensionDot.getOutputLocation()));
+//        OutputSDFile outputSDFile = new OutputSDFile(new FileOutputStream(extensionSQ.getOutputLocation()));
+//        DesignParser.outputDSFile(nodes, outputSDFile, extensionSQ.getIterations());
+//
+//
+//        for(INode node : nodes) {
+//            ITraversable iTraversable = (ITraversable) node;
+//            iTraversable.accept(outputDotFile);
+//        }
+//
+//        for(IEdge edge : edges) {
+//            ITraversable edgeTraversable = (ITraversable) edge;
+//            edgeTraversable.accept(outputDotFile);
+//        }
+//
+//        for(ClassNode node : nodes) {
+//            System.out.println("Name: " + node.getName());
+//            for(NodeMethod method : node.getMethods()) {
+////                System.out.println("Method: " + method);
+//                if(method.toString().contains("shuffle")) {
+//                    for(NodeMethod methodMethod : method.getMethodsCalled()) {
+//                        System.out.println("Has: " + methodMethod.toString());
+//                    }
+//                }
+//            }
+//        }
+//
+//        outputDotFile.end();
     }
 
 
@@ -193,9 +196,9 @@ java.lang.Math
         return filenames;
     }
 
-    public static boolean inPackage(String string) {
-        return string.contains(pack);
-    }
+//    public static boolean inPackage(String string) {
+//        return string.contains(pack);
+//    }
 
     public static void outputDSFile(List<ClassNode> classNodes, OutputSDFile sdFile, int counter) {
         NodeMethod startNode = null;

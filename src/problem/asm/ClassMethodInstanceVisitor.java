@@ -35,7 +35,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
 //        ClassDeclarationVisitor toDecorate = new ClassDeclarationVisitor(Opcodes.ASM5);
 
-            if (DesignParser.inPackage(owner)) {
+//            if (DesignParser.inPackage(owner)) {
 //                if(name.equals("shuffle")) {
 //
 //                    System.out.println("=====Method: " + this.nodeMethod.getContainingClass().getName());
@@ -62,14 +62,13 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
                 }
 
                 if(noExists) {
-                    System.out.println("Created new method: " + tempMethod.toString());
                     tempNode.addMethod(tempMethod);
                 }
 //                System.out.println("HAS METHOD: " + tempMethod.getName() + " " + tempMethod );
 
                 this.nodeMethod.addMethodCalled(tempMethod);
             }
-        }
+//        }
 
     @Override
     public void visitTypeInsn(int i, String s) {
@@ -89,7 +88,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
     @Override
     public void visitFieldInsn(int opcode, String owner, String name, String desc) {
-        if(DesignParser.inPackage(owner) && DesignParser.inPackage(desc)) {
+//        if(DesignParser.inPackage(owner) && DesignParser.inPackage(desc)) {
 //            System.out.println("Owner: " + owner);
 //            System.out.println("Name: " + name);
 //            System.out.println("Desc: " + desc);
@@ -106,7 +105,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
             addGeneratedClassNode(fromNode, toNode);
 
-        }
+//        }
     }
 
     public String addAccessLevel(int access){

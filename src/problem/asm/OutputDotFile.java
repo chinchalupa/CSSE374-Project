@@ -9,9 +9,11 @@ import java.io.OutputStream;
 public class OutputDotFile implements IVisitor {
 
     private OutputStream out;
+    private String pkg;
 
-    public OutputDotFile(OutputStream out) {
+    public OutputDotFile(OutputStream out, String pkg) {
         this.out = out;
+        this.pkg = pkg;
         this.startUp();
     }
 
@@ -39,34 +41,44 @@ public class OutputDotFile implements IVisitor {
     @Override
     public void visitNodes(ClassNode node) {
 
+        if(this.inOurPackage(node.getName())) {
+            String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
-        String s = "node [shape = \"record\" ]\n";
-        s += "ClassT" + node.getName() + " [label = \"{" + node.getName() + "|";
-        for(NodeField field : node.getFields()) {
-            s += field.getName() + " : " + field.getReturnType() + "\\l";
-        }
+            String s = "node [shape = \"record\"]\n";
+            s += "ClassT" + name + " [label = \"{" + name  + "|";
+            for (NodeField field : node.getFields()) {
+                s += field.getName() + " : " + field.getReturnType() + "\\l";
+            }
 
-        s += "|";
+            s += "|";
 
-        for(NodeMethod method : node.getMethods()) {
-            s += method.getName() + "(";
+            for (NodeMethod method : node.getMethods()) {
+                String methodName = method.getName();
 
-            for(String arg : method.getArgs()) {
-                s += arg;
-                if(!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
-                    s += ", ";
+                if (hasInvalidCharacters(methodName)) {
+                    s += methodName + "(";
+
+
+                    for (String arg : method.getArgs()) {
+                        s += arg;
+                        if (!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
+                            s += ", ";
+                        }
+                    }
+                    s += ") : " + method.getReturnType() + "\\l";
                 }
             }
-            s += ") : " + method.getReturnType() + "\\l";
+                s += "}\"]";
+                this.write(s);
         }
-        s += "}\"]";
-        this.write(s);
     }
 
     @Override
     public void visitEdges(IEdge edge) {
+        String to = edge.getTo();
+        String parsedTo = to.substring(to.lastIndexOf("/") + 1, to.length());
         String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() + " ]\n";
-        s += "ClassT" + edge.getTo() + " -> ClassT" + edge.getFrom();
+        s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
 
@@ -78,5 +90,15 @@ public class OutputDotFile implements IVisitor {
     @Override
     public void visitField(NodeField nodeField) {
 
+    }
+
+    private boolean inOurPackage(String name) {
+        return name.contains(this.pkg);
+    }
+
+    private boolean hasInvalidCharacters(String field) {
+//        System.out.println("Field: " + field);
+//        System.out.println("Condition: " + (!(field.contains("<") || field.contains(">"))));
+        return !(field.contains("<") || field.contains(">"));
     }
 }
