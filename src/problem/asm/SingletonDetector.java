@@ -8,18 +8,18 @@ import java.util.List;
  */
 public class SingletonDetector extends UMLDecorator {
 
-    private final FileGenerator uml;
+//    private final FileGenerator uml;
 
     public SingletonDetector(FileGenerator uml) {
         super(uml);
-        this.uml = uml;
     }
 
     @Override
     public List<ClassNode> getNodes() {
-        boolean hasSelfField = false;
-        boolean hasReturnMethod = false;
-        for(ClassNode node : this.uml.classNodeList) {
+
+        for(ClassNode node : super.getNodes()) {
+            boolean hasSelfField = false;
+            boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
 
             for(NodeField field : node.getFields()) {
@@ -36,6 +36,7 @@ public class SingletonDetector extends UMLDecorator {
             }
             if(hasReturnMethod && hasSelfField) {
                 node.setColor("#000077");
+                System.out.println(name + " is a Singleton");
             }
         }
 
@@ -46,5 +47,20 @@ public class SingletonDetector extends UMLDecorator {
     @Override
     public List<IEdge> getEdges() {
         return super.getEdges();
+    }
+
+    @Override
+    public void generateClassList() {
+        super.generateClassList();
+    }
+
+    @Override
+    public void generateNodes() throws Exception {
+        super.generateNodes();
+    }
+
+    @Override
+    public void write() throws Exception {
+        super.write();
     }
 }

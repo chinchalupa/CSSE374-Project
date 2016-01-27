@@ -1,9 +1,12 @@
 <h1>CSSE 374 Project</h1>
-<strike>Milestone 1</strike>
-<strike>Milestone 2</strike>
-<strike>Milestone 3</strike>
+<p><strike>Milestone 1</strike></p>
+<p><strike>Milestone 2</strike></p>
+<p><strike>Milestone 3</strike></p>
 <p>Milestone 4</p>
 <p>Milestone 5</p>
+
+<h2>Our design</h2>
+![alt tag](https://raw.githubusercontent.com/chinchalupa/CSSE374-Project/master/UmlDesigns/UML%20Project.png)
 
 <h2>General</h2>
 

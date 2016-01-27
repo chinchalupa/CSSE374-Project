@@ -8,12 +8,10 @@ import java.util.List;
  */
 public class DecoratorDetector extends UMLDecorator {
 
-    private final FileGenerator uml;
     private List<ClassNode> decoratorNodes;
 
     public DecoratorDetector(FileGenerator uml) {
         super(uml);
-        this.uml = uml;
         this.decoratorNodes = new ArrayList<>();
     }
 
@@ -32,19 +30,17 @@ public class DecoratorDetector extends UMLDecorator {
     }
 
     private void findPotentialDecoratorNodes() {
-        for(ClassNode node : this.uml.classNodeList) {
+        for(ClassNode node : super.getNodes()) {
             String name = node.getName();
             String cleanedName = name.substring(name.lastIndexOf("/") + 1, name.length());
             String extension = node.getExtension();
-            System.out.println("Node: " + cleanedName + " " + "Extension: " + extension);
 
             if(extension != null) {
                 // Find a uses edge that goes to the extends
-                for (IEdge edge : this.uml.edgeList) {
+                for (IEdge edge : super.getEdges()) {
 
                     if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
                             && edge.getLineName().equals("USES")) {
-                        System.out.println("Added node: " + node.getName());
                         this.decoratorNodes.add(node);
                         node.setPatternIdentifier("\\<\\<decorator\\>\\>");
 
@@ -57,16 +53,29 @@ public class DecoratorDetector extends UMLDecorator {
     private void findPotentialDecorations() {
         for(ClassNode node : this.decoratorNodes) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
-            for(ClassNode decoration : this.uml.classNodeList) {
+            for(ClassNode decoration : super.getNodes()) {
                 String extension = decoration.getExtension();
                 if(extension != null) {
-                    System.out.println("Potential node: " + name + " " + decoration.getExtension());
                     if (extension.equals(name)) {
-                        System.out.println("FOUND A DECORATION");
                         decoration.setPatternIdentifier("\\<\\<decorator\\>\\>");
                     }
                 }
             }
         }
+    }
+
+    @Override
+    public void generateClassList() {
+       super.generateClassList();
+    }
+
+    @Override
+    public void generateNodes() throws Exception {
+        super.generateNodes();
+    }
+
+    @Override
+    public void write() throws Exception {
+        super.write();
     }
 }

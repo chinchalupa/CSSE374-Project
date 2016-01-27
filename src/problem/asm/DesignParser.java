@@ -27,7 +27,7 @@ java.lang.Math
         System.out.println("Welcome to our CSSE374 project!");
         System.out.println("Supported filetypes(.dot, .sq)");
         Scanner scanner = new Scanner(System.in);
-        Runtime runtime = Runtime.getRuntime();
+//        Runtime runtime = Runtime.getRuntime();
 
 
 
