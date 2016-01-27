@@ -1,22 +1,17 @@
 package problem.asm;
-import java.awt.*;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.objectweb.asm.ClassVisitor;
 public class ClassDeclarationVisitor extends ClassVisitor {
 
     public String name;
-    public String superName;
     public String[] interfaces;
     private List<ClassNode> classNodes;
     private List<IEdge> edges;
-    private ClassNode classNode;
-    private ClassNode superNode;
+    private INode classNode;
     private String pkg;
 
-    public ClassDeclarationVisitor(int api, ClassNode classNode, List<ClassNode> classNodes, List<IEdge> edges, String pkg) {
+    public ClassDeclarationVisitor(int api, INode classNode, List<ClassNode> classNodes, List<IEdge> edges, String pkg) {
         super(api);
         this.classNodes = classNodes;
         this.edges = edges;
@@ -47,7 +42,8 @@ public class ClassDeclarationVisitor extends ClassVisitor {
     private void addExtendsArrow(String nodeName, String superName) {
         String cleanSuperName = superName.substring(superName.lastIndexOf("/") + 1, superName.length());
         if(inPackage(superName)) {
-            IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"");
+            IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"", "EXTENDS");
+            this.classNode.setExtension(cleanSuperName);
             this.edges.add(edge);
         }
     }
@@ -55,8 +51,9 @@ public class ClassDeclarationVisitor extends ClassVisitor {
     private void addInheritanceArrow(String nodeName, String itfName) {
         // Inherits
         String cleanedName = itfName.substring(itfName.lastIndexOf("/") + 1, itfName.length());
-        IEdge edge = new Edge(nodeName, cleanedName, "\"normal\"", "\"dashed\"");
+        IEdge edge = new Edge(nodeName, cleanedName, "\"normal\"", "\"dashed\"", "IMPLEMENTS");
         if(this.inPackage(itfName)) {
+            this.classNode.addInterface(cleanedName);
             this.edges.add(edge);
         }
     }

@@ -13,7 +13,7 @@ public class OutputDotFile implements IVisitor {
 
     public OutputDotFile(OutputStream out, String pkg) {
         this.out = out;
-        this.pkg = pkg;
+        this.pkg = pkg.replace("/", ".");
         this.startUp();
     }
 

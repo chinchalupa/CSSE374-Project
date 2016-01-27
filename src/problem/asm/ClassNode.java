@@ -9,11 +9,13 @@ import java.util.List;
  */
 public class ClassNode implements INode {
 
+    private String extension;
     private String name;
     private String type;
     private List<NodeField> fields;
     private List<NodeMethod> methods;
     private String color;
+    private List<String> interfaces;
 
     public ClassNode(String name) {
         this.name = name;
@@ -23,6 +25,7 @@ public class ClassNode implements INode {
         this.type = null;
         this.fields = new ArrayList<>();
         this.methods = new ArrayList<>();
+        this.interfaces = new ArrayList<>();
         this.color = "#000000";
     }
 
@@ -57,6 +60,17 @@ public class ClassNode implements INode {
         visitor.visitNodes(this);
     }
 
+    @Override
+    public void addInterface(String itf) {
+        this.interfaces.add(itf);
+    }
+
+    @Override
+    public void setExtension(String string) {
+        this.extension = string;
+    }
+
+    @Override
     public void addField(NodeField field) {
 //        for(NodeField nodeField : this.fields) {
 //            if(nodeField.toString().equals(field.toString())) {
@@ -67,6 +81,7 @@ public class ClassNode implements INode {
         this.fields.add(field);
     }
 
+    @Override
     public void addMethod(NodeMethod method) {
 //        for(NodeMethod nodeMethod : this.methods) {
 //            if(nodeMethod.toString().equals(method.toString())) {
@@ -75,6 +90,7 @@ public class ClassNode implements INode {
 //        }
         this.methods.add(method);
     }
+
 
     public String getColor() {
         return color;

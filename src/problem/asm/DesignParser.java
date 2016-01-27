@@ -27,6 +27,8 @@ java.lang.Math
         System.out.println("Welcome to our CSSE374 project!");
         System.out.println("Supported filetypes(.dot, .sq)");
         Scanner scanner = new Scanner(System.in);
+        Runtime runtime = Runtime.getRuntime();
+
 
 
         while(generatingFiles) {
@@ -36,12 +38,19 @@ java.lang.Math
 
             switch (filetype) {
                 case ".dot":
-                    FileGenerator umlGenerator = new UMLGenerator("./input_output/test.dot", "java.lang.Runtime");
+                    System.out.println("Where would you like to save your file to?");
+                    String saveLocation = scanner.nextLine();
+                    System.out.println("What class/directory would you like to read?");
+                    String readClass = scanner.nextLine();
+                    saveLocation = saveLocation.length() > 0 ? saveLocation : "input_output/new_file" + filetype;
+                    readClass = readClass.length() > 0 ? readClass : "./src/problem/asm";
+                    FileGenerator umlGenerator = new UMLGenerator(saveLocation, readClass);
 
                     System.out.println("Detect Singletons (y/n)?");
 
                     boolean detectSingletons = scanner.nextLine().trim().equals("y");
                     if(detectSingletons) {
+                        System.out.println("DETECTING");
                         umlGenerator = new SingletonDetector(umlGenerator);
                     }
                     umlGenerator.generateClassList();
@@ -49,6 +58,10 @@ java.lang.Math
 
                     umlGenerator.getNodes();
                     umlGenerator.write();
+
+                    System.out.println(saveLocation);
+//                    runtime.exec("dot -T png -o generatedImage.png " + saveLocation);
+
                     break;
 
                 default:

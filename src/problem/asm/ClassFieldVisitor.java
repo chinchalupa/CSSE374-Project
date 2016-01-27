@@ -3,7 +3,6 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Type;
 
-import java.awt.*;
 import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{
@@ -30,10 +29,10 @@ public class ClassFieldVisitor extends ClassVisitor{
         String type = Type.getType(desc).getClassName();
         type = type.replace(".", "/");
         if(signature != null) {
-            addFieldToNode(this.classNode.getName(), type, signature);
+            addFieldToNode(name, type, signature);
         }
         else {
-            addFieldToNode(this.classNode.getName(), type);
+            addFieldToNode(name, type);
         }
 //        String type = Type.getType(desc).getInternalName();
 //        type = type.substring(type.lastIndexOf("/") + 1, type.length());
@@ -59,7 +58,7 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturnType);
         this.classNode.addField(nodeField);
 
-        addNewUses(name, returnType);
+        addNewUses(this.classNode.getName(), returnType);
     }
 
     private void addFieldToNode(String name, String returnType, String signature) {
@@ -70,17 +69,21 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturn);
         this.classNode.addField(nodeField);
 
-        addNewUses(name, signature.substring(signature.indexOf(";")));
+        addNewUses(this.classNode.getName(), signature.substring(signature.indexOf(";")));
     }
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
         if(inPackage(returnType)) {
             returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"solid\"");
+            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
                 if (edge.toString().equals(newArrow.toString())) {
-                    return;
+                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
+                        break;
+                    } else {
+                        return;
+                    }
                 }
             }
             this.edges.add(newArrow);

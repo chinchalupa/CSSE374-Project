@@ -5,6 +5,7 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,14 @@ public class ClassMethodVisitor extends ClassVisitor {
         MethodVisitor toDecorate = super.visitMethod(access, name, desc, signature, exceptions);
         MethodVisitor methodDecorator = toDecorate;
 
+        String returnType = null;
+        if(signature != null)
+            returnType = addReturnType(desc );
+        else
+            returnType = addReturnType(desc);
 
-        String returnType = addReturnType(desc);
+
+
         List<String> arguments = addArguments(desc);
         String accessLevel = addAccessLevel(access);
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
@@ -83,8 +90,22 @@ public class ClassMethodVisitor extends ClassVisitor {
         return level;
     }
 
+//    public String addReturnType(String desc, String sig) {
+//        Type type = Type.getReturnType(sig);
+//        String classname = type.getClassName();
+//        System.out.println("CLASSNAME: " + classname);
+//        String collectionType = classname.substring(classname.indexOf("<") + 1, classname.indexOf(">"));
+//        String returnValue = classname.replace(".", "/");
+//        collectionType = collectionType.replace(".", "/");
+//        System.out.println(returnValue + " " + collectionType);
+//        return returnValue;
+//    }
+
     public String addReturnType(String desc){
-        String returnType = Type.getReturnType(desc).getClassName();
+
+        Type returnValue = Type.getReturnType(desc);
+        String returnType = returnValue.getClassName();
+//        System.out.println(returnValue.toString());
         returnType = returnType.replace(".", "/");
         addNewAssociationArrow(this.classNode.getName(), returnType);
         return returnType;
@@ -105,26 +126,38 @@ public class ClassMethodVisitor extends ClassVisitor {
     private void addNewUses(String name, String returnType) {
         // Uses
         if(inPackage(returnType)) {
-            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"");
+            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
-                String temp = edge.getTo() + " " + edge.getFrom();
-                if (temp.equals(newArrow.toString())) {
-//                System.out.println("Duplicate detected uses");
-                    return;
+//                String temp = edge.getTo() + " " + edge.getFrom();
+                if (edge.toString().equals(newArrow.toString())) {
+                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
+                        break;
+                    } else if(edge.getLineName().equals("USES")) {
+                        this.edges.remove(edge);
+                        break;
+                    }
+                    else {
+                        return;
+                    }
                 }
             }
             this.edges.add(newArrow);
         }
     }
 
+
+
     private void addNewAssociationArrow(String name, String returnType) {
         String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
         if(inPackage(returnType)) {
-            Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"");
+            Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
             for (IEdge edge : this.edges) {
-                String temp = edge.getTo() + " " + edge.getFrom();
-                if (temp.equals(newArrow.toString())) {
-                    return;
+                if (edge.toString().equals(newArrow.toString())) {
+                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
+                        break;
+                    } else {
+                        return;
+                    }
                 }
             }
             this.edges.add(newArrow);
@@ -132,6 +165,9 @@ public class ClassMethodVisitor extends ClassVisitor {
     }
 
     private boolean inPackage(String s) {
-        return s.contains(this.pkg);
+        String slashS = s.replace("/", ".");
+        String dotPkg = this.pkg.replace("/", ".");
+//        System.out.println(s + " " + this.pkg);
+        return slashS.contains(dotPkg);
     }
 }

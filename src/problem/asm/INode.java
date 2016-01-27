@@ -12,4 +12,8 @@ public interface INode extends ITraversable{
     public abstract String getName();
     public abstract String getType();
     public abstract List<NodeMethod> getMethods();
+    public abstract void addField(NodeField field);
+    public abstract void addMethod(NodeMethod method);
+    public abstract void addInterface(String string);
+    public abstract void setExtension(String string);
 }
