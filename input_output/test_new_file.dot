@@ -1,0 +1,49 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+edge [arrowhead = "vee" style = "solid" ]
+ClassTClassDeclarationVisitor -> ClassTClassNode
+edge [arrowhead = "vee" style = "solid" ]
+ClassTClassFieldVisitor -> ClassTClassNode
+edge [arrowhead = "vee" style = "solid" ]
+ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
+edge [arrowhead = "vee" style = "solid" ]
+ClassTClassMethodInstanceVisitor -> ClassTClassNode
+edge [arrowhead = "vee" style = "solid" ]
+ClassTClassMethodVisitor -> ClassTClassNode
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTClassNode -> ClassTINode
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTEdge -> ClassTIEdge
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTIEdge -> ClassTITraversable
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTINode -> ClassTITraversable
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTINodeElement -> ClassTITraversable
+edge [arrowhead = "vee" style = "solid" ]
+ClassTINodeElement -> ClassTINode
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTNodeField -> ClassTINodeElement
+edge [arrowhead = "vee" style = "solid" ]
+ClassTNodeField -> ClassTINode
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTNodeMethod -> ClassTINodeElement
+edge [arrowhead = "vee" style = "solid" ]
+ClassTNodeMethod -> ClassTINode
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTOutputDotFile -> ClassTIVisitor
+edge [arrowhead = "normal" style = "dashed" ]
+ClassTOutputSDFile -> ClassTIVisitor
+edge [arrowhead = "normal" style = "solid" ]
+ClassTSingletonDetector -> ClassTUMLDecorator
+edge [arrowhead = "vee" style = "solid" ]
+ClassTSingletonDetector -> ClassTFileGenerator
+edge [arrowhead = "normal" style = "solid" ]
+ClassTUMLDecorator -> ClassTFileGenerator
+edge [arrowhead = "normal" style = "solid" ]
+ClassTUMLGenerator -> ClassTFileGenerator
+}

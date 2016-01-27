@@ -1,0 +1,9 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000"]
+ClassTDesktop [label = "{Desktop|peer : DesktopPeer\l|getDesktop() : Desktop\lisDesktopSupported() : boolean\lisSupported(Desktop$Action) : boolean\lcheckFileValidation(File) : void\lcheckActionSupport(Desktop$Action) : void\lcheckAWTPermission() : void\lopen(File) : void\ledit(File) : void\lprint(File) : void\lbrowse(URI) : void\lmail() : void\lmail(URI) : void\lcheckExec() : void\l}"]
+}

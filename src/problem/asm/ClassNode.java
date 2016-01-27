@@ -16,6 +16,16 @@ public class ClassNode implements INode {
     private List<NodeMethod> methods;
     private String color;
     private List<String> interfaces;
+    private String patternIdentifier;
+
+    public void setPatternIdentifier(String patternIdentifier) {
+        this.patternIdentifier = patternIdentifier;
+    }
+
+    public String getPatternIdentifier() {
+
+        return patternIdentifier;
+    }
 
     public ClassNode(String name) {
         this.name = name;
@@ -68,6 +78,10 @@ public class ClassNode implements INode {
     @Override
     public void setExtension(String string) {
         this.extension = string;
+    }
+
+    public String getExtension() {
+        return extension;
     }
 
     @Override

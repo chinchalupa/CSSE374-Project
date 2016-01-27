@@ -145,8 +145,6 @@ public class ClassMethodVisitor extends ClassVisitor {
         }
     }
 
-
-
     private void addNewAssociationArrow(String name, String returnType) {
         String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
         if(inPackage(returnType)) {

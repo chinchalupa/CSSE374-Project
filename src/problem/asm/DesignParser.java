@@ -50,9 +50,15 @@ java.lang.Math
 
                     boolean detectSingletons = scanner.nextLine().trim().equals("y");
                     if(detectSingletons) {
-                        System.out.println("DETECTING");
                         umlGenerator = new SingletonDetector(umlGenerator);
                     }
+                    System.out.println("Detect decorators (y/n)?");
+                    boolean detectingDecorators = scanner.nextLine().trim().equals("y");
+
+                    if(detectingDecorators) {
+                        umlGenerator = new DecoratorDetector(umlGenerator);
+                    }
+
                     umlGenerator.generateClassList();
                     umlGenerator.generateNodes();
 
