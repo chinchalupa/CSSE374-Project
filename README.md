@@ -63,5 +63,11 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <p>Very difficult milestone. Will be revisited at a later point to ensure code quality.</p>
 
 <h3> Milestone 4 Log</h3>
-<h4>New UML Design to accomodate for the requirements of the milestone.</h4>
+<h5>Evolution of design</h5>
+<ul>
+<li>There was a need for a decorator pattern and a class more designed for UML Generation. Thus we made the UML Generator tab.</li>
+<li>We needed to make a decorator so we made the UML Decorator.</li>
+<li>The decorator has access to all the nodes and can manipulate them as necessary.</li>
+<li>A decorator was made for each type of decoration needed on the UML Diagram.<li>
+</ul>
 
