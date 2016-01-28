@@ -42,7 +42,8 @@ public class DecoratorDetector extends UMLDecorator {
                     if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
                             && edge.getLineName().equals("USES")) {
                         this.decoratorNodes.add(node);
-                        node.setPatternIdentifier("\\<\\<decorator\\>\\>");
+                        node.setPatternIdentifier("\\<\\<Decorator\\>\\>");
+//                        System.out.println(node.getName());
 
                     }
                 }
@@ -57,7 +58,7 @@ public class DecoratorDetector extends UMLDecorator {
                 String extension = decoration.getExtension();
                 if(extension != null) {
                     if (extension.equals(name)) {
-                        decoration.setPatternIdentifier("\\<\\<decorator\\>\\>");
+                        decoration.setPatternIdentifier("\\<\\<Decorator\\>\\>");
                     }
                 }
             }
@@ -78,4 +79,6 @@ public class DecoratorDetector extends UMLDecorator {
     public void write() throws Exception {
         super.write();
     }
+
+
 }

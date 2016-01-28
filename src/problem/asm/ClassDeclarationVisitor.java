@@ -41,9 +41,9 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
     private void addExtendsArrow(String nodeName, String superName) {
         String cleanSuperName = superName.substring(superName.lastIndexOf("/") + 1, superName.length());
-        if(inPackage(superName)) {
             IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"", "EXTENDS");
             this.classNode.setExtension(cleanSuperName);
+        if(inPackage(superName)) {
             this.edges.add(edge);
         }
     }

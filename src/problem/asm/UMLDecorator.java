@@ -24,6 +24,7 @@ public class UMLDecorator extends FileGenerator {
         return uml.getEdges();
     }
 
+
     @Override
     public void generateClassList() {
         this.uml.generateClassList();

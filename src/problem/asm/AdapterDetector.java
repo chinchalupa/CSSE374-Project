@@ -24,11 +24,7 @@ public class AdapterDetector extends UMLDecorator {
                     String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                     List<String> itf = node.getInterfaces();
                     String ext = node.getExtends();
-                    System.out.println("Searching " + nodeName + " for " + edgeName);
-                    System.out.println("Interface ct: " + itf.size());
-                    System.out.println("Extension: " + ext);
                     if(nodeName.equals(edgeName) && (itf.size() > 0 || ext != null)) {
-                        System.out.println("Potential node: " + nodeName);
                         node.setPatternIdentifier("\\<\\<Adapter\\>\\>");
                     }
                 }
