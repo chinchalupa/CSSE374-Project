@@ -68,6 +68,6 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <li>There was a need for a decorator pattern and a class more designed for UML Generation. Thus we made the UML Generator tab.</li>
 <li>We needed to make a decorator so we made the UML Decorator.</li>
 <li>The decorator has access to all the nodes and can manipulate them as necessary.</li>
-<li>A decorator was made for each type of decoration needed on the UML Diagram.<li>
+<li>A decorator was made for each type of decoration needed on the UML Diagram.</li>
 </ul>
 
