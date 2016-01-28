@@ -1,9 +1,12 @@
 <h1>CSSE 374 Project</h1>
-<strike>Milestone 1</strike>
-<strike>Milestone 2</strike>
-<strike>Milestone 3</strike>
+<p><strike>Milestone 1</strike></p>
+<p><strike>Milestone 2</strike></p>
+<p><strike>Milestone 3</strike></p>
 <p>Milestone 4</p>
 <p>Milestone 5</p>
+
+<h2>Our design</h2>
+![alt tag](https://raw.githubusercontent.com/chinchalupa/CSSE374-Project/master/UmlDesigns/UML%20Project.png)
 
 <h2>General</h2>
 
@@ -60,5 +63,11 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <p>Very difficult milestone. Will be revisited at a later point to ensure code quality.</p>
 
 <h3> Milestone 4 Log</h3>
-<h4>New UML Design to accomodate for the requirements of the milestone.</h4>
+<h5>Evolution of design</h5>
+<ul>
+<li>There was a need for a decorator pattern and a class more designed for UML Generation. Thus we made the UML Generator tab.</li>
+<li>We needed to make a decorator so we made the UML Decorator.</li>
+<li>The decorator has access to all the nodes and can manipulate them as necessary.</li>
+<li>A decorator was made for each type of decoration needed on the UML Diagram.</li>
+</ul>
 

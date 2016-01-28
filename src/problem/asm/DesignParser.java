@@ -27,7 +27,7 @@ java.lang.Math
         System.out.println("Welcome to our CSSE374 project!");
         System.out.println("Supported filetypes(.dot, .sq)");
         Scanner scanner = new Scanner(System.in);
-        Runtime runtime = Runtime.getRuntime();
+//        Runtime runtime = Runtime.getRuntime();
 
 
 
@@ -52,11 +52,17 @@ java.lang.Math
                     if(detectSingletons) {
                         umlGenerator = new SingletonDetector(umlGenerator);
                     }
-                    System.out.println("Detect decorators (y/n)?");
+                    System.out.println("Detect Decorators (y/n)?");
                     boolean detectingDecorators = scanner.nextLine().trim().equals("y");
 
                     if(detectingDecorators) {
                         umlGenerator = new DecoratorDetector(umlGenerator);
+                    }
+
+                    System.out.println("Detect Adapters (y/n)?");
+                    boolean detectAdapters = scanner.nextLine().trim().equals("y");
+                    if(detectAdapters) {
+                        umlGenerator = new AdapterDetector(umlGenerator);
                     }
 
                     umlGenerator.generateClassList();

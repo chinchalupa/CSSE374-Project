@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.io.File;
+import java.io.FilterInputStream;
 import java.util.List;
 
 /**
@@ -8,34 +9,40 @@ import java.util.List;
  */
 public class SingletonDetector extends UMLDecorator {
 
-    private final FileGenerator uml;
+//    private final FileGenerator uml;
 
     public SingletonDetector(FileGenerator uml) {
         super(uml);
-        this.uml = uml;
     }
 
     @Override
     public List<ClassNode> getNodes() {
-        boolean hasSelfField = false;
-        boolean hasReturnMethod = false;
-        for(ClassNode node : this.uml.classNodeList) {
+
+        for(ClassNode node : super.getNodes()) {
+            boolean hasSelfField = false;
+            boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
 
             for(NodeField field : node.getFields()) {
 //                System.out.println(field.getReturnType());
-                if(field.getReturnType().equals(name)) {
+                System.out.println(node.getExtension());
+                if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtension())) {
                     hasSelfField = true;
+                    System.out.println("Check");
                     break;
                 }
             }
             for(NodeMethod method : node.getMethods()) {
-                if(method.getReturnType().equals(name)) {
+                System.out.println(method.getReturnType());
+                if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtension())) {
+                    System.out.println("Check");
                     hasReturnMethod = true;
                 }
             }
             if(hasReturnMethod && hasSelfField) {
                 node.setColor("#000077");
+                node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
+//                System.out.println(name + " is a Singleton");
             }
         }
 
@@ -46,5 +53,20 @@ public class SingletonDetector extends UMLDecorator {
     @Override
     public List<IEdge> getEdges() {
         return super.getEdges();
+    }
+
+    @Override
+    public void generateClassList() {
+        super.generateClassList();
+    }
+
+    @Override
+    public void generateNodes() throws Exception {
+        super.generateNodes();
+    }
+
+    @Override
+    public void write() throws Exception {
+        super.write();
     }
 }

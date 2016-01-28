@@ -1,0 +1,9 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000"]
+ClassTFilterInputStream [label = "{FilterInputStream|in : InputStream\l|read() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+}

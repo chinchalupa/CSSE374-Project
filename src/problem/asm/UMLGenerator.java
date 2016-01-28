@@ -79,4 +79,8 @@ public class UMLGenerator extends FileGenerator {
 
         visitor.end();
     }
+
+    public List<String> getClasses() {
+        return this.startingClassStrings;
+    }
 }

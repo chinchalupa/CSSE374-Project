@@ -34,6 +34,7 @@ public abstract class FileGenerator {
 
     public abstract List<IEdge> getEdges();
 
+
     public abstract void generateClassList();
 
     public abstract void generateNodes() throws Exception;

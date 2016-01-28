@@ -105,6 +105,15 @@ public class ClassNode implements INode {
         this.methods.add(method);
     }
 
+    public List<String> getInterfaces() {
+        return this.interfaces;
+    }
+
+    @Override
+    public String getExtends() {
+        return this.extension;
+    }
+
 
     public String getColor() {
         return color;
