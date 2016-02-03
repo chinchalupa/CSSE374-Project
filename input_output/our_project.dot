@@ -33,7 +33,7 @@ ClassTFileOutputType [label = "{FileOutputType||getExtension() : String\lgetOutp
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTFirstASM [label = "{FirstASM|myField : String\l|main(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTIEdge [label = "{IEdge||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lgetText() : String\lgetLineName() : String\ltoString() : String\l}"]
+ClassTIEdge [label = "{IEdge||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTINode [label = "{INode||getName() : String\lgetType() : String\lgetMethods() : List\laddField(NodeField) : void\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
@@ -56,56 +56,56 @@ node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>|uml : FileGenerator\l|getNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTUMLGenerator [label = "{UMLGenerator|startingClassStrings : List\<String\>\lpkg : String\lconfig : Config\l|generateClassList() : void\lgetNodes() : List\lgetEdges() : List\lgenerateNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
-edge [arrowhead = "normal" style = "solid" ]
+edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTAdapterDetector -> ClassTUMLDecorator
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassDeclarationVisitor -> ClassTINode
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassFieldVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodInstanceVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodVisitor -> ClassTClassNode
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTClassNode -> ClassTINode
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTConfig -> ClassTConfig
-edge [arrowhead = "normal" style = "solid" ]
+edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTDecoratorDetector -> ClassTUMLDecorator
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTEdge -> ClassTIEdge
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTFileGenerator -> ClassTConfig
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTIEdge -> ClassTITraversable
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTINode -> ClassTITraversable
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTINodeElement -> ClassTITraversable
-edge [arrowhead = "vee" style = "solid" ]
+edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTINodeElement -> ClassTINode
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTNodeField -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTNodeField -> ClassTINode
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTINode
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTOutputDotFile -> ClassTIVisitor
-edge [arrowhead = "normal" style = "dashed" ]
+edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTOutputSDFile -> ClassTIVisitor
-edge [arrowhead = "normal" style = "solid" ]
+edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTSingletonDetector -> ClassTUMLDecorator
-edge [arrowhead = "normal" style = "solid" ]
+edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTUMLDecorator -> ClassTFileGenerator
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
 ClassTUMLDecorator -> ClassTFileGenerator
-edge [arrowhead = "normal" style = "solid" ]
+edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTUMLGenerator -> ClassTFileGenerator
-edge [arrowhead = "vee" style = "dashed" ]
+edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTUMLGenerator -> ClassTConfig
 }

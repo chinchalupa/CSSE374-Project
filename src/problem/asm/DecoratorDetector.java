@@ -42,6 +42,7 @@ public class DecoratorDetector extends UMLDecorator {
 
                     if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
                             && edge.getLineName().equals("USES")) {
+                        edge.setText("<<decorates>>");
                         this.decoratorNodes.add(node);
                         node.setPatternIdentifier("\\<\\<Decorator\\>\\>");
                         node.setStyle("filled");

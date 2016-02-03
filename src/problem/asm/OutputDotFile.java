@@ -79,7 +79,8 @@ public class OutputDotFile implements IVisitor {
     public void visitEdges(IEdge edge) {
         String to = edge.getTo();
         String parsedTo = to.substring(to.lastIndexOf("/") + 1, to.length());
-        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() + " ]\n";
+        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() +
+                " label = \"" + edge.getText() + "\"]\n";
         s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
