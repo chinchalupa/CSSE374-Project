@@ -14,7 +14,7 @@ public class ClassNode implements INode {
     private List<NodeField> fields;
     private List<NodeMethod> methods;
     private String outlineColor;
-    private String fillColor;
+    private String style;
     private List<String> interfaces;
     private String patternIdentifier;
 
@@ -37,7 +37,7 @@ public class ClassNode implements INode {
         this.methods = new ArrayList<>();
         this.interfaces = new ArrayList<>();
         this.outlineColor = "#000000";
-        this.fillColor = "#000000";
+        this.style = "";
     }
 
     public ClassNode(String name, String type) {
@@ -122,6 +122,14 @@ public class ClassNode implements INode {
 
     public void setOutlineColor(String outlineColor) {
         this.outlineColor = outlineColor;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     @Override
