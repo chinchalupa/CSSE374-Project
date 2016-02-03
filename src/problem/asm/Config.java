@@ -127,4 +127,9 @@ public class Config {
         JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
         return (Boolean) detectors.get("singleton");
     }
+
+    public boolean shouldDetectAdatpers() {
+        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
+        return (Boolean) detectors.get("adapter");
+    }
 }

@@ -16,26 +16,21 @@ import java.util.List;
 public class UMLGenerator extends FileGenerator {
 
     protected List<String> startingClassStrings;
-//    private List<String> pkg;
-    private String pkg;
-    protected Config config;
 
     public UMLGenerator(String outputLocation, String inputFile) {
         super(outputLocation, inputFile);
-        this.pkg = this.inputFile.replace("./src/", "");
         this.startingClassStrings = new ArrayList<>();
     }
 
     public UMLGenerator() {
 //        super(configLocation);
-        this.config = Config.getInstance();
-        this.outputLocation = this.config.getDotFileOutputLocation();
+        this.outputLocation = Config.getInstance().getDotFileOutputLocation();
         this.classNodeList = new ArrayList<>();
         this.edgeList = new ArrayList<>();
     }
 
     public void generateClassList() {
-        this.startingClassStrings = this.config.getClassesAndPackageClassesList();
+        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
     }
 
     @Override

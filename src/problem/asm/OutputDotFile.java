@@ -57,21 +57,19 @@ public class OutputDotFile implements IVisitor {
             for (NodeMethod method : node.getMethods()) {
                 String methodName = method.getName();
 
-                if (hasInvalidCharacters(methodName)) {
-                    s += methodName + "(";
+                s += fixInvalidCharacters(methodName) + "(";
 
-
-                    for (String arg : method.getArgs()) {
-                        s += arg;
-                        if (!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
-                            s += ", ";
-                        }
+                for (String arg : method.getArgs()) {
+                    s += arg;
+                    if (!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
+                        s += ", ";
                     }
-                    s += ") : " + method.getReturnType() + "\\l";
                 }
+                s += ") : " + method.getReturnType() + "\\l";
             }
-                s += "}\"]";
-                this.write(s);
+
+            s += "}\"]";
+            this.write(s);
         }
     }
 
@@ -100,8 +98,8 @@ public class OutputDotFile implements IVisitor {
         return Config.inPackageConfiguration(remodeledName);
     }
 
-    private boolean hasInvalidCharacters(String field) {
+    private String fixInvalidCharacters(String field) {
 
-        return !(field.contains("<") || field.contains(">"));
+        return field.replace("<", "").replace(">", "");
     }
 }

@@ -9,5 +9,8 @@
   "dot_output": "input_output/our_project.dot",
   "packages": [
     "./src/problem/asm"
+  ],
+  "classes": [
+    "org.objectweb.asm.ClassVisitor"
   ]
 }

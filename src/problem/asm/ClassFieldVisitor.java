@@ -27,6 +27,12 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         String type = Type.getType(desc).getClassName();
         type = type.replace(".", "/");
+        type = type.replace("<", "\\<").replace(">", "\\>");
+
+        if(signature != null) {
+            signature = signature.replace("<", "\\<").replace(">", "\\>");
+        }
+
         if(signature != null) {
             addFieldToNode(name, type, signature);
         }
@@ -57,6 +63,7 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturnType);
         this.classNode.addField(nodeField);
 
+//        System.out.println("ReturnType: " + returnType);
         addNewUses(this.classNode.getName(), returnType);
     }
 
@@ -68,7 +75,13 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturn);
         this.classNode.addField(nodeField);
 
-        addNewUses(this.classNode.getName(), signature.substring(signature.indexOf(";")));
+//        System.out.println("RETURN TYPE: " + returnType);
+//        System.out.println("SIGNATURE: " + signature);
+        String sigSub = signature.substring(signature.indexOf("<") + 1, signature.indexOf(";"));
+//        System.out.println("NODE: " + this.classNode.getName());
+//        System.out.println("SIGSUB: " + sigSub);
+        addNewUses(this.classNode.getName(), returnType);
+        addNewUses(this.classNode.getName(), sigSub);
     }
 
     private void addNewUses(String name, String returnType) {

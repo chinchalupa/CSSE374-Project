@@ -1,0 +1,23 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTApp [label = "{App||init() : void\lmain(String[]) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTIteratorToEnumerationAdapter [label = "{IteratorToEnumerationAdapter\l\<\<Adapter\>\>|itr : Iterator\<Iterator\<TE\>\l|init(Iterator) : void\lhasMoreElements() : boolean\lnextElement() : Object\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTLinearTransformer [label = "{LinearTransformer|enumTion : Enumeration\<Enumeration\<TT\>\l|init(Enumeration) : void\ltransform(OutputStream) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTEnumeration [label = "{Enumeration\l\<\<Adaptee\>\>||hasMoreElements() : boolean\lnextElement() : Object\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTIterator [label = "{Iterator\l\<\<Target\>\>||hasNext() : boolean\lnext() : Object\lremove() : void\lforEachRemaining(Consumer) : void\l}"]
+edge [arrowhead = "normal" style = "dashed" label = "\<\<adapts\>\>"]
+ClassTIteratorToEnumerationAdapter -> ClassTEnumeration
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTIteratorToEnumerationAdapter -> ClassTIterator
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTLinearTransformer -> ClassTEnumeration
+}

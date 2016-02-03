@@ -45,6 +45,10 @@ java.lang.Math
                 umlGenerator = new DecoratorDetector(umlGenerator);
             }
 
+            if(config.shouldDetectAdatpers()) {
+                umlGenerator = new AdapterDetector(umlGenerator);
+            }
+
             umlGenerator.generateClassList();
             umlGenerator.generateNodes();
             umlGenerator.getNodes();

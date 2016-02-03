@@ -40,8 +40,9 @@ public class ClassDeclarationVisitor extends ClassVisitor {
     private void addExtendsArrow(String nodeName, String superName) {
         String cleanSuperName = superName.substring(superName.lastIndexOf("/") + 1, superName.length());
             IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"", "EXTENDS");
-            this.classNode.setExtension(cleanSuperName);
+
         if(Config.inPackageConfiguration(superName)) {
+            this.classNode.setExtension(cleanSuperName);
             this.edges.add(edge);
         }
     }

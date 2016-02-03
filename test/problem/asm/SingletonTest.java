@@ -46,6 +46,8 @@ public class SingletonTest {
         String readClass = "./src/SingletonTestClass";
         String saveLocation = "input_output/new_file.dot";
 
+//        Config config
+
         umlGenerate = new UMLGenerator(saveLocation, readClass);
 
         umlGenerate = new SingletonDetector(umlGenerate);

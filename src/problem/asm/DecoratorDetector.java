@@ -42,11 +42,13 @@ public class DecoratorDetector extends UMLDecorator {
 
                     if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
                             && edge.getLineName().equals("USES")) {
-                        edge.setText("<<decorates>>");
+                        if(node.getPatternIdentifier() == null) {
+                            edge.setText("<<decorates>>");
+                            node.setPatternIdentifier("\\<\\<Decorator\\>\\>");
+                            node.setStyle("filled");
+                            node.setOutlineColor("#00ff00");
+                        }
                         this.decoratorNodes.add(node);
-                        node.setPatternIdentifier("\\<\\<Decorator\\>\\>");
-                        node.setStyle("filled");
-                        node.setOutlineColor("#00ff00");
 //                        System.out.println(node.getName());
 
                     }
@@ -74,10 +76,10 @@ public class DecoratorDetector extends UMLDecorator {
     private void findPotentialComponents() {
         for(ClassNode node : this.decoratorNodes) {
             String extensionName = node.getExtension();
-            System.out.println("EXTENSION: " + extensionName);
+//            System.out.println("EXTENSION: " + extensionName);
             for(ClassNode searchingNode : super.getNodes()) {
                 String name = searchingNode.getName().substring(searchingNode.getName().lastIndexOf("/") + 1, searchingNode.getName().length());
-                System.out.println(name + " " + extensionName);
+//                System.out.println(name + " " + extensionName);
                 if(extensionName.equals(name)) {
                     searchingNode.setPatternIdentifier("\\<\\<Component\\>\\>");
                     searchingNode.setStyle("filled");

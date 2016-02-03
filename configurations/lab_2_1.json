@@ -1,0 +1,19 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": false
+  },
+
+  "dot_output": "input_output/lab21.dot",
+  "packages": [
+    "./src/lab21"
+  ],
+
+  "classes": [
+    "java.io.FilterInputStream",
+    "java.io.FilterOutputStream",
+    "java.io.InputStream",
+    "java.io.OutputStream"
+  ]
+}

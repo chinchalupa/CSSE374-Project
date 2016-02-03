@@ -1,0 +1,17 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": false
+  },
+
+  "dot_output": "input_output/lab51.dot",
+  "packages": [
+    "./src/lab51"
+  ],
+
+  "classes": [
+    "java.util.Enumeration",
+    "java.util.Iterator"
+  ]
+}

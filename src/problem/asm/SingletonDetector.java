@@ -34,7 +34,7 @@ public class SingletonDetector extends UMLDecorator {
                 }
             }
             if(hasReturnMethod && hasSelfField) {
-                node.setOutlineColor("#000077");
+                node.setOutlineColor("#0000ff");
                 node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
             }
         }
