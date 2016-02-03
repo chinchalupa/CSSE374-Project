@@ -1,7 +1,5 @@
 package problem.asm;
 
-import java.io.File;
-import java.io.FilterInputStream;
 import java.util.List;
 
 /**
@@ -24,29 +22,22 @@ public class SingletonDetector extends UMLDecorator {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
 
             for(NodeField field : node.getFields()) {
-//                System.out.println(field.getReturnType());
-                System.out.println(node.getExtension());
+
                 if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtension())) {
                     hasSelfField = true;
-                    System.out.println("Check");
                     break;
                 }
             }
             for(NodeMethod method : node.getMethods()) {
-                System.out.println(method.getReturnType());
                 if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtension())) {
-                    System.out.println("Check");
                     hasReturnMethod = true;
                 }
             }
             if(hasReturnMethod && hasSelfField) {
-                node.setColor("#000077");
+                node.setOutlineColor("#000077");
                 node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
-//                System.out.println(name + " is a Singleton");
             }
         }
-
-
         return super.getNodes();
     }
 

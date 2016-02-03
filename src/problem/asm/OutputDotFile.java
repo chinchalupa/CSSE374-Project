@@ -9,11 +9,10 @@ import java.io.OutputStream;
 public class OutputDotFile implements IVisitor {
 
     private OutputStream out;
-    private String pkg;
 
-    public OutputDotFile(OutputStream out, String pkg) {
+    public OutputDotFile(OutputStream out) {
         this.out = out;
-        this.pkg = pkg.replace("/", ".");
+//        this.pkg = pkg.replace("/", ".");
         this.startUp();
     }
 
@@ -44,7 +43,7 @@ public class OutputDotFile implements IVisitor {
         if(this.inOurPackage(node.getName())) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
-            String s = "node [shape = \"record\" color = \"" + node.getColor() + "\"]\n";
+            String s = "node [shape = \"record\" color = \"" + node.getOutlineColor() + "\"]\n";
             s += "ClassT" + name + " [label = \"{" + name;
             if(node.getPatternIdentifier() != null) {
                 s += "\\l" + node.getPatternIdentifier();
@@ -98,7 +97,8 @@ public class OutputDotFile implements IVisitor {
 
     private boolean inOurPackage(String name) {
         String remodeledName = name.replace("/", ".");
-        return remodeledName.contains(this.pkg);
+        return Config.inPackageConfiguration(remodeledName);
+//        return remodeledName.contains(this.pkg);
     }
 
     private boolean hasInvalidCharacters(String field) {

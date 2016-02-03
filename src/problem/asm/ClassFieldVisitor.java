@@ -14,12 +14,11 @@ public class ClassFieldVisitor extends ClassVisitor{
     public ClassFieldVisitor(int api){
         super(api);
     }
-    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, String pkg) {
+    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
         super(api, decorated);
 
         this.classNode = node;
         this.edges = edges;
-        this.pkg = pkg;
     }
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
@@ -74,7 +73,7 @@ public class ClassFieldVisitor extends ClassVisitor{
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
-        if(inPackage(returnType)) {
+        if(Config.inPackageConfiguration(returnType)) {
             returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
@@ -90,7 +89,5 @@ public class ClassFieldVisitor extends ClassVisitor{
         }
     }
 
-    private boolean inPackage(String s) {
-        return s.contains(this.pkg);
-    }
+
 }

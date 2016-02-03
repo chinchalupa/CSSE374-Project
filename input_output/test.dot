@@ -4,11 +4,11 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000"]
+node [shape = "record" outlineColor = "#000000"]
 ClassTAdaptee [label = "{Adaptee||output() : void\l}"]
-node [shape = "record" color = "#000000"]
+node [shape = "record" outlineColor = "#000000"]
 ClassTAdapter [label = "{Adapter|adaptee : Adaptee\l|adapt() : void\l}"]
-node [shape = "record" color = "#000000"]
+node [shape = "record" outlineColor = "#000000"]
 ClassTTemplate [label = "{Template||adapt() : void\l}"]
 edge [arrowhead = "normal" style = "dashed" ]
 ClassTAdapter -> ClassTTemplate

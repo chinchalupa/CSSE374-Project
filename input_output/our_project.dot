@@ -1,0 +1,9 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000"]
+ClassTInputStreamReader [label = "{InputStreamReader|sd : StreamDecoder\l|getEncoding() : String\lread() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\l}"]
+}

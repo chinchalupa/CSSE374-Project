@@ -4,8 +4,26 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000077"]
-ClassTEagerSingleton [label = "{EagerSingleton\l\<\<Singleton\>\>|singleton : EagerSingleton\l|getInstance() : EagerSingleton\l}"]
+node [shape = "record" outlineColor = "#000000"]
+ClassTInputStreamReader [label = "{InputStreamReader\l\<\<Adapter\>\>|sd : StreamDecoder\l|getEncoding() : String\lread() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\l}"]
+edge [arrowhead = "normal" style = "solid" ]
+ClassTInputStreamReader -> ClassTReader
 edge [arrowhead = "vee" style = "dashed" ]
-ClassTEagerSingleton -> ClassTEagerSingleton
+ClassTInputStreamReader -> ClassTStreamDecoder
+edge [arrowhead = "vee" style = "solid" ]
+ClassTInputStreamReader -> ClassTvoid
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTInputStreamReader -> ClassTCharset
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTInputStreamReader -> ClassTInputStream
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTInputStreamReader -> ClassTCharsetDecoder
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTInputStreamReader -> ClassTString
+edge [arrowhead = "vee" style = "solid" ]
+ClassTInputStreamReader -> ClassTint
+edge [arrowhead = "vee" style = "dashed" ]
+ClassTInputStreamReader -> ClassTchar[]
+edge [arrowhead = "vee" style = "solid" ]
+ClassTInputStreamReader -> ClassTboolean
 }

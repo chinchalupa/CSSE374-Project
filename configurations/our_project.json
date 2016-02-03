@@ -1,0 +1,13 @@
+{
+
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": true
+  },
+
+  "dot_output": "input_output/our_project.dot",
+  "packages": [
+    "./src/problem/asm"
+  ]
+}

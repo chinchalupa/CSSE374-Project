@@ -9,14 +9,12 @@ public class ClassDeclarationVisitor extends ClassVisitor {
     private List<ClassNode> classNodes;
     private List<IEdge> edges;
     private INode classNode;
-    private String pkg;
 
-    public ClassDeclarationVisitor(int api, INode classNode, List<ClassNode> classNodes, List<IEdge> edges, String pkg) {
+    public ClassDeclarationVisitor(int api, INode classNode, List<ClassNode> classNodes, List<IEdge> edges) {
         super(api);
         this.classNodes = classNodes;
         this.edges = edges;
         this.classNode = classNode;
-        this.pkg = pkg;
     }
 
     @Override
@@ -43,7 +41,7 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         String cleanSuperName = superName.substring(superName.lastIndexOf("/") + 1, superName.length());
             IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"", "EXTENDS");
             this.classNode.setExtension(cleanSuperName);
-        if(inPackage(superName)) {
+        if(Config.inPackageConfiguration(superName)) {
             this.edges.add(edge);
         }
     }
@@ -52,7 +50,7 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         // Inherits
         String cleanedName = itfName.substring(itfName.lastIndexOf("/") + 1, itfName.length());
         IEdge edge = new Edge(nodeName, cleanedName, "\"normal\"", "\"dashed\"", "IMPLEMENTS");
-        if(this.inPackage(itfName)) {
+        if(Config.inPackageConfiguration(itfName)) {
             this.classNode.addInterface(cleanedName);
             this.edges.add(edge);
         }
@@ -60,7 +58,5 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
 
 
-    private boolean inPackage(String s) {
-        return s.contains(this.pkg);
-    }
+
 }

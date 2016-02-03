@@ -16,7 +16,9 @@ import java.util.List;
 public class UMLGenerator extends FileGenerator {
 
     protected List<String> startingClassStrings;
+//    private List<String> pkg;
     private String pkg;
+    protected Config config;
 
     public UMLGenerator(String outputLocation, String inputFile) {
         super(outputLocation, inputFile);
@@ -24,16 +26,16 @@ public class UMLGenerator extends FileGenerator {
         this.startingClassStrings = new ArrayList<>();
     }
 
+    public UMLGenerator() {
+//        super(configLocation);
+        this.config = Config.getInstance();
+        this.outputLocation = this.config.getDotFileOutputLocation();
+        this.classNodeList = new ArrayList<>();
+        this.edgeList = new ArrayList<>();
+    }
+
     public void generateClassList() {
-        File directory = new File(this.inputFile);
-        File files[] = directory.listFiles();
-        if(files != null) {
-            for (File file : files) {
-                this.startingClassStrings.add(file.getPath().replace(".\\src\\", "").replace("\\", ".").replace(".java", ""));
-            }
-        } else {
-            this.startingClassStrings.add(directory.getPath());
-        }
+        this.startingClassStrings = this.config.getClassesAndPackageClassesList();
     }
 
     @Override
@@ -53,11 +55,11 @@ public class UMLGenerator extends FileGenerator {
 
             ClassNode node = new ClassNode(reader.getClassName());
 
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList, pkg);
+            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList);
 
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList, pkg);
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList);
 
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList, pkg);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList);
 
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
@@ -67,7 +69,7 @@ public class UMLGenerator extends FileGenerator {
 
     public void write() throws Exception {
         OutputStream outputStream = new FileOutputStream(this.outputLocation);
-        OutputDotFile visitor = new OutputDotFile(outputStream, this.pkg);
+        OutputDotFile visitor = new OutputDotFile(outputStream);
 
         for(ClassNode node : this.classNodeList) {
             node.accept(visitor);

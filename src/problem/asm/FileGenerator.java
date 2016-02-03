@@ -17,6 +17,8 @@ public abstract class FileGenerator {
     protected List<ClassNode> classNodeList;
     protected List<IEdge> edgeList;
 
+    protected Config config;
+
     public FileGenerator() {
         this.outputLocation = "./input_output";
         this.inputFile = "./src/problem/asm";
@@ -28,6 +30,10 @@ public abstract class FileGenerator {
 
         this.classNodeList = new ArrayList<>();
         this.edgeList = new ArrayList<>();
+    }
+
+    public FileGenerator(String configLocation) {
+        this.config = Config.newInstance(configLocation);
     }
 
     public abstract List<ClassNode> getNodes();
