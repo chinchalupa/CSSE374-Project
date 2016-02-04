@@ -40,6 +40,7 @@ public class AdapterTest {
 			for(String identifier : node.getPatternIdentifier()) {
 				if(identifier.equals(parameter)) {
 					ss.add(node.getName());
+					System.out.println("Added " + node.getName());
 				}
 			}
 		}
@@ -57,6 +58,8 @@ public class AdapterTest {
 		String toTest = "configurations/testisr.json";
 		Set<String> expected = new HashSet<String>();
 //		expected.add("");
+		expected.add("sun/nio/cs/StreamDecoder");
+		expected.add("java/io/InputStreamReader");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -65,7 +68,8 @@ public class AdapterTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("OutputStreamWriter");
+		expected.add("java/io/OutputStreamWriter");
+		expected.add("sun/nio/cs/StreamEncoder");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -74,8 +78,7 @@ public class AdapterTest {
 	public void testma() throws Exception {
 		String toTest = "configurations/testma.json";
 		Set<String> expected = new HashSet<String>();
-//		expected.add("");
-		
+
 		assertTrue(runTest(toTest,expected));
 	}
 }

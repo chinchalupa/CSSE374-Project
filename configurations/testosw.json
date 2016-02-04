@@ -1,0 +1,18 @@
+{
+
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": true,
+    "composite": true
+  },
+
+  "dot_output": "input_output/output_stream_writer.dot",
+
+  "classes": [
+    "java.io.OutputStream",
+    "java.io.OutputStreamWriter",
+    "java.io.Writer",
+    "sun.nio.cs.StreamEncoder"
+  ]
+}

@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.awt.event.MouseAdapter;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +47,6 @@ public class SingletonTest {
         Config.newInstance(readClass);
 
         umlGenerate = new UMLGenerator();
-
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
