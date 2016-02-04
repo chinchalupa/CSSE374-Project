@@ -1,0 +1,19 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": false
+  },
+
+  "dot_output": "input_output/testM5.dot",
+  "packages": [
+    "./test/problem/testFiles/testM5.dot"
+  ],
+
+  "classes": [
+    "java.io.FilterInputStream",
+    "java.io.FilterOutputStream",
+    "java.io.InputStream",
+    "java.io.OutputStream"
+  ]
+}
