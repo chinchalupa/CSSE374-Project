@@ -16,16 +16,9 @@ public class ClassNode implements INode {
     private String outlineColor;
     private String style;
     private List<String> interfaces;
-    private String patternIdentifier;
+    private List<String> patternIdentifier;
 
-    public void setPatternIdentifier(String patternIdentifier) {
-        this.patternIdentifier = patternIdentifier;
-    }
 
-    public String getPatternIdentifier() {
-
-        return patternIdentifier;
-    }
 
     public ClassNode(String name) {
         this.name = name;
@@ -38,6 +31,8 @@ public class ClassNode implements INode {
         this.interfaces = new ArrayList<>();
         this.outlineColor = "#000000";
         this.style = "";
+
+        this.patternIdentifier = new ArrayList<>();
     }
 
     public ClassNode(String name, String type) {
@@ -130,6 +125,19 @@ public class ClassNode implements INode {
 
     public void setStyle(String style) {
         this.style = style;
+    }
+
+    public void addPatternIdentifier(String patternIdentifier) {
+        for(String identifier : this.getPatternIdentifier()) {
+            if(identifier.equals(patternIdentifier)) {
+                return;
+            }
+        }
+        this.patternIdentifier.add(patternIdentifier);
+    }
+
+    public List<String> getPatternIdentifier() {
+        return this.patternIdentifier;
     }
 
     @Override

@@ -37,7 +37,7 @@ public class SingletonDetector extends UMLDecorator implements ITraversable {
             }
             if(hasReturnMethod && hasSelfField) {
                 node.setOutlineColor("#0000ff");
-                node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
+                node.addPatternIdentifier("\\<\\<Singleton\\>\\>");
             }
         }
         return this.nodes;

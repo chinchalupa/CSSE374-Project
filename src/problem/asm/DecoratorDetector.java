@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -8,12 +9,12 @@ import java.util.List;
  */
 public class DecoratorDetector extends UMLDecorator implements ITraversable{
 
-    private List<ClassNode> decoratorNodes;
+    private HashSet<ClassNode> decoratorNodes;
     private List<ClassNode> nodes;
 
     public DecoratorDetector(FileGenerator uml) {
         super(uml);
-        this.decoratorNodes = new ArrayList<>();
+        this.decoratorNodes = new HashSet<>();
         this.nodes = uml.updateNodes();
     }
 
@@ -43,15 +44,12 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
                 for (IEdge edge : super.getEdges()) {
 
                     if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
-                            && edge.getLineName().equals("USES")) {
-                        if(node.getPatternIdentifier() == null) {
-                            edge.setText("<<decorates>>");
-                            node.setPatternIdentifier("\\<\\<Decorator\\>\\>");
-                            node.setStyle("filled");
-                            node.setOutlineColor("#00ff00");
-                        }
+                        && edge.getLineName().equals("USES")) {
+                        edge.setText("<<decorates>>");
+                        node.addPatternIdentifier("\\<\\<Decorator\\>\\>");
+                        node.setStyle("filled");
+                        node.setOutlineColor("#00ff00");
                         this.decoratorNodes.add(node);
-
                     }
                 }
             }
@@ -65,7 +63,7 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
                 String extension = decoration.getExtension();
                 if(extension != null) {
                     if (extension.equals(name)) {
-                        decoration.setPatternIdentifier("\\<\\<Decorator\\>\\>");
+                        decoration.addPatternIdentifier("\\<\\<Decorator\\>\\>");
                         decoration.setStyle("filled");
                         decoration.setOutlineColor("#00ff00");
                     }
@@ -77,12 +75,10 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     private void findPotentialComponents() {
         for(ClassNode node : this.decoratorNodes) {
             String extensionName = node.getExtension();
-//            System.out.println("EXTENSION: " + extensionName);
             for(ClassNode searchingNode : this.nodes) {
                 String name = searchingNode.getName().substring(searchingNode.getName().lastIndexOf("/") + 1, searchingNode.getName().length());
-//                System.out.println(name + " " + extensionName);
                 if(extensionName.equals(name)) {
-                    searchingNode.setPatternIdentifier("\\<\\<Component\\>\\>");
+                    searchingNode.addPatternIdentifier("\\<\\<Component\\>\\>");
                     searchingNode.setStyle("filled");
                     searchingNode.setOutlineColor("#00ff00");
                 }

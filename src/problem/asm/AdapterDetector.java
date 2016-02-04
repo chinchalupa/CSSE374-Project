@@ -34,20 +34,20 @@ public class AdapterDetector extends UMLDecorator implements ITraversable{
                     List<String> itf = node.getInterfaces();
                     String ext = node.getExtension();
                     if(nodeName.equals(edgeName) && (itf.size() > 0 || ext != null)) {
-                        if(node.getPatternIdentifier() == null) {
-                            node.setPatternIdentifier("\\<\\<Adapter\\>\\>");
-                            node.setOutlineColor("#ff0000");
-                            node.setStyle("filled");
-                        }
+                        node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
+                        node.setOutlineColor("#ff0000");
+                        node.setStyle("filled");
+
                         String edgeFrom = edge.getFrom();
+
                         this.itf.add(edgeFrom);
-                        this.adaptees.add(ext);
-                        if(ext != null) {
-                            addAdaptsArrow(nodeName, ext);
+                        addAdaptsArrow(nodeName, edgeFrom);
+                        if (ext != null) {
+                            this.adaptees.add(ext);
                         }
-                        for(String it : itf) {
-                            addAdaptsArrow(nodeName, it);
+                        for (String it : itf) {
                             this.adaptees.add(it);
+//                    }
                         }
                     }
                 }
@@ -61,12 +61,10 @@ public class AdapterDetector extends UMLDecorator implements ITraversable{
     }
 
     public void addAdaptsArrow(String node, String extension) {
-        System.out.println("DATA: " + node + " " + extension);
+//        System.out.println("DATA: " + node + " " + extension);
         for(IEdge edge : super.getEdges()) {
-            if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-//                System.out.println(edge.getLineName() + " " + edge.getTo() + " " + edge.getFrom());
+            if(edge.getLineName().equals("USES") || edge.getLineName().equals("ASSOCIATES")) {
                 String to = edge.getTo().substring(edge.getTo().lastIndexOf("/") + 1);
-//                System.out.println(to.equals(node) + " " + edge.getFrom().equals(extension));
                 if(to.equals(node) && edge.getFrom().equals(extension))  {
                     edge.setText("\\<\\<adapts\\>\\>");
                 }
@@ -79,16 +77,13 @@ public class AdapterDetector extends UMLDecorator implements ITraversable{
             for(ClassNode node : this.nodes) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
-                    if(node.getPatternIdentifier() == null) {
 
-                        node.setPatternIdentifier("\\<\\<Target\\>\\>");
-                        node.setOutlineColor("#ff0000");
-                        node.setStyle("filled");
+                    node.addPatternIdentifier("\\<\\<Target\\>\\>");
+                    node.setOutlineColor("#ff0000");
+                    node.setStyle("filled");
                     }
                 }
             }
-//            System.out.println("ADAPTEE: " + s);
-        }
     }
 
     private void getExtensions() {
@@ -96,12 +91,10 @@ public class AdapterDetector extends UMLDecorator implements ITraversable{
             for(ClassNode node : this.nodes) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
-                    if(node.getPatternIdentifier() == null) {
 
-                        node.setPatternIdentifier("\\<\\<Adaptee\\>\\>");
-                        node.setOutlineColor("#ff0000");
-                        node.setStyle("filled");
-                    }
+                    node.addPatternIdentifier("\\<\\<Adaptee\\>\\>");
+                    node.setOutlineColor("#ff0000");
+                    node.setStyle("filled");
                 }
             }
         }

@@ -1,5 +1,7 @@
 package problem.asm;
 
+import jdk.internal.org.objectweb.asm.ClassVisitor;
+
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 {
   "detectors": {
-    "decorator": true,
+    "decorator": false,
     "adapter": true,
     "singleton": false
   },

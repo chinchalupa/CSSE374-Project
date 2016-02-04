@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
-    private ClassNode classNode;
+    private INode classNode;
     private List<IEdge> edges;
     private List<ClassNode> nodes;
     private String pkg;

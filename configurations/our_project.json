@@ -2,7 +2,7 @@
 
   "detectors": {
     "decorator": true,
-    "adapter": false,
+    "adapter": true,
     "singleton": true
   },
 

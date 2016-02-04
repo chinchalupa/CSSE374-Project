@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{
 
-    private ClassNode classNode;
+    private INode classNode;
     private List<IEdge> edges;
     private String pkg;
 
