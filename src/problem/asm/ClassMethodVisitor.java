@@ -127,12 +127,8 @@ public class ClassMethodVisitor extends ClassVisitor {
         if(Config.inPackageConfiguration(returnType)) {
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
-//                String temp = edge.getTo() + " " + edge.getFrom();
                 if (edge.toString().equals(newArrow.toString())) {
                     if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    } else if(edge.getLineName().equals("USES")) {
-                        this.edges.remove(edge);
                         break;
                     }
                     else {
@@ -151,6 +147,9 @@ public class ClassMethodVisitor extends ClassVisitor {
             for (IEdge edge : this.edges) {
                 if (edge.toString().equals(newArrow.toString())) {
                     if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
+                        break;
+                    } else if(edge.getLineName().equals("USES")) {
+                        this.edges.remove(edge);
                         break;
                     } else {
                         return;

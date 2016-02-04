@@ -75,9 +75,9 @@ ClassTClassFieldVisitor -> ClassTClassNode
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassFieldVisitor -> ClassTIEdge
 edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassMethodInstanceVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
+edge [arrowhead = "vee" style = "solid" label = ""]
+ClassTClassMethodInstanceVisitor -> ClassTClassNode
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTClassMethodVisitor -> ClassTClassVisitor
 edge [arrowhead = "vee" style = "dashed" label = ""]
@@ -90,7 +90,7 @@ edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassNode -> ClassTNodeField
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassNode -> ClassTNodeMethod
-edge [arrowhead = "vee" style = "dashed" label = ""]
+edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTConfig -> ClassTConfig
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTDecoratorDetector -> ClassTUMLDecorator
@@ -116,16 +116,16 @@ edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTINodeElement -> ClassTINode
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTNodeField -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" label = ""]
+edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTNodeField -> ClassTINode
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTINodeElement
 edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTNodeMethod -> ClassTINode
-edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTNodeMethod
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTNodeField
+edge [arrowhead = "vee" style = "solid" label = ""]
+ClassTNodeMethod -> ClassTINode
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTOutputDotFile -> ClassTIVisitor
 edge [arrowhead = "vee" style = "dashed" label = ""]
