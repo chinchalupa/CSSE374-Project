@@ -1,9 +1,8 @@
 package problem.asm;
 
-import java.awt.*;
-import java.io.FilterInputStream;
+import java.awt.event.MouseAdapter;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import static org.junit.Assert.*;
 public class SingletonTest {
 
     private FileGenerator umlGenerate;
-    private List<ClassNode> singletons;
+    private List<INode> singletons;
     private HashSet<String> expected;
 
     @Before
@@ -43,32 +42,33 @@ public class SingletonTest {
     @Test
     public void testListOfSingletonsInPackage() throws Exception {
 
-        String readClass = "./src/SingletonTestClass";
-        String saveLocation = "input_output/new_file.dot";
+        String readClass = "configurations/singleton_test.json";
 
-        umlGenerate = new UMLGenerator(saveLocation, readClass);
+        Config.newInstance(readClass);
 
-        umlGenerate = new SingletonDetector(umlGenerate);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
-
-        umlGenerate.getNodes();
+        umlGenerate.updateNodes();
         umlGenerate.write();
 
-        singletons = new ArrayList<ClassNode>();
-        for(ClassNode cn : umlGenerate.getNodes()){
+        singletons = new ArrayList<>();
+        for(INode cn : umlGenerate.updateNodes()){
             System.out.println(cn.getName());
-            if(cn.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>")){
-                singletons.add(cn);
+            for(String pattern : cn.getPatternIdentifier()) {
+                if(pattern.equals("\\<\\<Singleton\\>\\>")) {
+                    singletons.add(cn);
+                }
             }
         }
         //the set of strings representing names of singleton nodes we expect to see
         expected.add("SingletonTestClass/EagerSingleton");
         //can add as many nodes as needed
 
-        HashSet<String> actual = new HashSet<String>();
-        for(ClassNode cn : singletons){
+
+        HashSet<String> actual = new HashSet<>();
+        for(INode cn : singletons){
             actual.add(cn.getName());
         }
 
@@ -87,48 +87,57 @@ public class SingletonTest {
 
         singletons = new ArrayList<>();
 
-        String readClass = "./src/problem/asm";
-        String saveLocation = "input_output/new_file.dot";
-
-        umlGenerate = new UMLGenerator(saveLocation, readClass);
-
-        umlGenerate = new SingletonDetector(umlGenerate);
+        String jsonFile = "configurations/our_project.json";
+        Config.newInstance(jsonFile);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        umlGenerate.getNodes();
+        umlGenerate.updateNodes();
         umlGenerate.write();
 
-        singletons = new ArrayList<ClassNode>();
-        for(ClassNode cn : umlGenerate.getNodes()){
+        singletons = new ArrayList<>();
+        for(INode cn : umlGenerate.updateNodes()){
             System.out.println(cn.getName());
             if(cn.getPatternIdentifier() != null) {
-                if (cn.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>")) {
-                    singletons.add(cn);
+                for(String pattern : cn.getPatternIdentifier()) {
+                    if(pattern.equals("\\<\\<Singleton\\>\\>")) {
+                        singletons.add(cn);
+                    }
                 }
             }
         }
 
-        assertEquals(0, singletons.size());
+        assertEquals(1, singletons.size());
+
     }
 
 
     @Test
     public void testRuntime() throws Exception {
 
-        String readClass = "java.lang.Runtime";
-        String saveLocation = "input_output/runtime.dot";
+//        String readClass = "java.lang.Runtime";
+//        String saveLocation = "input_output/runtime.dot";
+        String jsonFile = "configurations/runtime.json";
 
-        umlGenerate = new UMLGenerator(saveLocation, readClass);
+        Config.newInstance(jsonFile);
 
-        umlGenerate = new SingletonDetector(umlGenerate);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
+        umlGenerate.updateNodes();
+        umlGenerate.write();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
-        assertEquals(true, node.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>"));
+        INode node = umlGenerate.updateNodes().get(0);
+        boolean containsSingleton = false;
+        for(String s : node.getPatternIdentifier()) {
+            if(s.equals("\\<\\<Singleton\\>\\>")) {
+                containsSingleton = true;
+            }
+        }
+        assertTrue(containsSingleton);
 
         umlGenerate.write();
     }
@@ -136,18 +145,19 @@ public class SingletonTest {
     @Test
     public void testDesktop() throws Exception {
 
-        String readClass = "java.awt.Desktop";
-        String saveLocation = "input_output/desktop.dot";
+        String jsonFile = "configurations/desktop.json";
 
-        umlGenerate = new UMLGenerator(saveLocation, readClass);
+        Config.newInstance(jsonFile);
+
+        umlGenerate = new UMLGenerator();
 
         umlGenerate = new SingletonDetector(umlGenerate);
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
-        assertNull(node.getPatternIdentifier());
+        INode node = umlGenerate.updateNodes().get(0);
+        assertTrue(node.getPatternIdentifier().size() == 0);
 
         umlGenerate.write();
     }
@@ -164,8 +174,8 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
-        assertNull(node.getPatternIdentifier());
+        INode node = umlGenerate.updateNodes().get(0);
+        assertEquals(0, node.getPatternIdentifier().size());
 
         umlGenerate.write();
     }
@@ -183,8 +193,8 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
-        assertNull(node.getPatternIdentifier());
+        INode node = umlGenerate.updateNodes().get(0);
+        assertEquals(0, node.getPatternIdentifier().size());
 
         umlGenerate.write();
     }

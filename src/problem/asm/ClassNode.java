@@ -1,7 +1,6 @@
 package problem.asm;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -14,19 +13,16 @@ public class ClassNode implements INode {
     private String type;
     private List<NodeField> fields;
     private List<NodeMethod> methods;
-    private String color;
+    private String outlineColor;
+    private String style;
     private List<String> interfaces;
-    private String patternIdentifier;
+    private List<String> patternIdentifier;
 
-    public void setPatternIdentifier(String patternIdentifier) {
-        this.patternIdentifier = patternIdentifier;
-    }
 
-    public String getPatternIdentifier() {
-
-        return patternIdentifier;
-    }
-
+    /**
+     * Implementation of the INode. Used to hold data about a class for a diagrams.
+     * @param name - The name of the class.
+     */
     public ClassNode(String name) {
         this.name = name;
         if(this.name.contains(";")) {
@@ -36,15 +32,12 @@ public class ClassNode implements INode {
         this.fields = new ArrayList<>();
         this.methods = new ArrayList<>();
         this.interfaces = new ArrayList<>();
-        this.color = "#000000";
+        this.outlineColor = "#000000";
+        this.style = "";
+
+        this.patternIdentifier = new ArrayList<>();
     }
 
-    public ClassNode(String name, String type) {
-        this.name = name;
-        this.type = type;
-        this.fields = new ArrayList<>();
-        this.methods = new ArrayList<>();
-    }
 
     @Override
     public String getName() {
@@ -80,9 +73,6 @@ public class ClassNode implements INode {
         this.extension = string;
     }
 
-    public String getExtension() {
-        return extension;
-    }
 
     @Override
     public void addField(NodeField field) {
@@ -105,6 +95,7 @@ public class ClassNode implements INode {
         this.methods.add(method);
     }
 
+    @Override
     public List<String> getInterfaces() {
         return this.interfaces;
     }
@@ -115,12 +106,35 @@ public class ClassNode implements INode {
     }
 
 
-    public String getColor() {
-        return color;
+    public String getOutlineColor() {
+        return outlineColor;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setOutlineColor(String outlineColor) {
+        this.outlineColor = outlineColor;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    @Override
+    public void addPatternIdentifier(String patternIdentifier) {
+        for(String identifier : this.getPatternIdentifier()) {
+            if(identifier.equals(patternIdentifier)) {
+                return;
+            }
+        }
+        this.patternIdentifier.add(patternIdentifier);
+    }
+
+    @Override
+    public List<String> getPatternIdentifier() {
+        return this.patternIdentifier;
     }
 
     @Override

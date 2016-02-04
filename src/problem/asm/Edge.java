@@ -9,13 +9,26 @@ public class Edge implements IEdge {
     private String from;
     private String arrowType;
     private String lineType;
+    private String text;
+
 
     public Edge(String to, String from, String arrowType, String lineType, String lineName) {
         this.to = to;
         this.from = from;
         this.arrowType = arrowType;
         this.lineType = lineType;
+
         this.lineName = lineName;
+        this.text = "";
+    }
+
+    @Override
+    public String getText() {
+        return this.text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override

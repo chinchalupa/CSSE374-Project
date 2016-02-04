@@ -6,9 +6,7 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
@@ -40,37 +38,20 @@ public class UMLGeneratorTest {
     }
 
     @Test
-    public void testClassListSize() throws Exception {
-        assertEquals(3, umlGenerator.getClasses().size());
-    }
-
-    @Test
-    public void testClassNames() throws Exception {
-        HashSet<String> classNames = new HashSet<>();
-        classNames.add("AdapterTestClass.Adaptee");
-        classNames.add("AdapterTestClass.Adapter");
-        classNames.add("AdapterTestClass.Template");
-
-        for(String className : umlGenerator.getClasses()) {
-            assertTrue(classNames.contains(className));
-        }
-    }
-
-    @Test
     public void emptyNodeList() {
-        assertTrue(umlGenerator.getNodes().isEmpty());
+        assertTrue(umlGenerator.updateNodes().isEmpty());
     }
 
     @Test
     public void fillNodeList() throws Exception {
         umlGenerator.generateNodes();
-        assertFalse(umlGenerator.getNodes().isEmpty());
+        assertFalse(umlGenerator.updateNodes().isEmpty());
     }
 
     @Test
     public void nodeListClassListSameSize() throws Exception {
         umlGenerator.generateNodes();
-        assertEquals(umlGenerator.getNodes().size(), umlGenerator.getClasses().size());
+        assertEquals(umlGenerator.updateNodes().size(), umlGenerator.getClasses().size());
     }
 
     @Test

@@ -11,21 +11,20 @@ import java.util.List;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
-    private ClassNode classNode;
+    private INode classNode;
     private List<IEdge> edges;
-    private List<ClassNode> nodes;
+    private List<INode> nodes;
     private String pkg;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<ClassNode> nodes, String pkg) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<INode> nodes) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;
         this.nodes = nodes;
-        this.pkg = pkg;
     }
 
     @Override
@@ -61,11 +60,11 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         // dotAssociates
         for(int i = 0; i < arguments.size(); i++) {
-            if(inPackage(arguments.get(i))) {
+            if(Config.inPackageConfiguration(arguments.get(i))) {
                 addNewUses(this.classNode.getName(), cleanArgs.get(i));
             }
         }
-        if(inPackage(returnType)) {
+        if(Config.inPackageConfiguration(returnType)) {
             addNewUses(this.classNode.getName(), cleanReturnType);
         }
 
@@ -125,15 +124,11 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     private void addNewUses(String name, String returnType) {
         // Uses
-        if(inPackage(returnType)) {
+        if(Config.inPackageConfiguration(returnType)) {
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
-//                String temp = edge.getTo() + " " + edge.getFrom();
                 if (edge.toString().equals(newArrow.toString())) {
                     if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    } else if(edge.getLineName().equals("USES")) {
-                        this.edges.remove(edge);
                         break;
                     }
                     else {
@@ -147,11 +142,14 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     private void addNewAssociationArrow(String name, String returnType) {
         String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-        if(inPackage(returnType)) {
+        if(Config.inPackageConfiguration(returnType)) {
             Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
             for (IEdge edge : this.edges) {
                 if (edge.toString().equals(newArrow.toString())) {
                     if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
+                        break;
+                    } else if(edge.getLineName().equals("USES")) {
+                        this.edges.remove(edge);
                         break;
                     } else {
                         return;
@@ -162,10 +160,5 @@ public class ClassMethodVisitor extends ClassVisitor {
         }
     }
 
-    private boolean inPackage(String s) {
-        String slashS = s.replace("/", ".");
-        String dotPkg = this.pkg.replace("/", ".");
-//        System.out.println(s + " " + this.pkg);
-        return slashS.contains(dotPkg);
-    }
+
 }

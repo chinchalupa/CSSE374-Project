@@ -37,26 +37,27 @@ public class OutputSDFile implements IVisitor {
 
     @Override
     public void visitMethod(NodeMethod nodeMethod) {
-        String s = "";
-        INode containingClass = nodeMethod.getContainingClass();
-//        if(nodeMethod.getMethodsCalled().isEmpty()) {
-        if(nodeMethod.getParentClassNode() != null)
-            s += nodeMethod.getParentClassNode().getName() + ":" + nodeMethod.getParentClassNode().getName() + "=";
-        else
-            s+= containingClass.getName() + ":";
-        s += containingClass.getName();
-        s += "." + nodeMethod.getReturnType() + " " + nodeMethod.getName();
-
-
-        s += "(";
-        for (String arg : nodeMethod.getArgs()) {
-            s += arg;
-            if (!arg.equals(nodeMethod.getArgs().get(nodeMethod.getArgs().size() - 1))) {
-                s += ", ";
-            }
-        }
-
-        s += ")";
+    }
+//        String s = "";
+//        INode containingClass = nodeMethod.getContainingClass();
+////        if(nodeMethod.getMethodsCalled().isEmpty()) {
+//        if(nodeMethod.getParentClassNode() != null)
+//            s += nodeMethod.getParentClassNode().getName() + ":" + nodeMethod.getParentClassNode().getName() + "=";
+//        else
+//            s+= containingClass.getName() + ":";
+//        s += containingClass.getName();
+//        s += "." + nodeMethod.getReturnType() + " " + nodeMethod.getName();
+//
+//
+//        s += "(";
+//        for (String arg : nodeMethod.getArgs()) {
+//            s += arg;
+//            if (!arg.equals(nodeMethod.getArgs().get(nodeMethod.getArgs().size() - 1))) {
+//                s += ", ";
+//            }
+//        }
+//
+//        s += ")";
 
 //        }
 //
@@ -74,8 +75,8 @@ public class OutputSDFile implements IVisitor {
 //                s += ")";
 //                s += "\n";
 //            }
-        this.write(s);
-    }
+//        this.write(s);
+//    }
 
     @Override
     public void visitField(NodeField nodeField) {
@@ -83,5 +84,10 @@ public class OutputSDFile implements IVisitor {
 //      String s = String.format("%s:%s=%s.new", containingClass.getName(), containingClass.getName(),
 //              nodeField.getCreatedClass().getName());
 //        this.write(s);
+    }
+
+    @Override
+    public void visitDecorator(UMLDecorator umlDecorator) {
+        return;
     }
 }

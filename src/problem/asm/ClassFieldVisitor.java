@@ -7,19 +7,18 @@ import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{
 
-    private ClassNode classNode;
+    private INode classNode;
     private List<IEdge> edges;
     private String pkg;
 
     public ClassFieldVisitor(int api){
         super(api);
     }
-    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, String pkg) {
+    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
         super(api, decorated);
 
         this.classNode = node;
         this.edges = edges;
-        this.pkg = pkg;
     }
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
@@ -28,6 +27,12 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         String type = Type.getType(desc).getClassName();
         type = type.replace(".", "/");
+        type = type.replace("<", "\\<").replace(">", "\\>");
+
+        if(signature != null) {
+            signature = signature.replace("<", "\\<").replace(">", "\\>");
+        }
+
         if(signature != null) {
             addFieldToNode(name, type, signature);
         }
@@ -55,7 +60,7 @@ public class ClassFieldVisitor extends ClassVisitor{
     private void addFieldToNode(String name, String returnType) {
         String cleanName = name.substring(name.lastIndexOf("/") + 1, name.length());
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-        NodeField nodeField = new NodeField(cleanName, cleanReturnType);
+        NodeField nodeField = new NodeField(cleanName, cleanReturnType, "");
         this.classNode.addField(nodeField);
 
         addNewUses(this.classNode.getName(), returnType);
@@ -66,15 +71,19 @@ public class ClassFieldVisitor extends ClassVisitor{
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
         String cleanSignature = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
         String cleanReturn = cleanReturnType + "\\<" + cleanSignature + "\\>";
-        NodeField nodeField = new NodeField(cleanName, cleanReturn);
+        NodeField nodeField = new NodeField(cleanName, cleanReturn, cleanSignature);
         this.classNode.addField(nodeField);
 
-        addNewUses(this.classNode.getName(), signature.substring(signature.indexOf(";")));
+        addNewUses(this.classNode.getName(), returnType);
+//        System.out.println("ADDED SIGGY: " + cleanSignature + " FROM: " + this.classNode.getName());
+        addNewUses(this.classNode.getName(), cleanSignature);
     }
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
-        if(inPackage(returnType)) {
+//        System.out.println("RETURN: " + returnType);
+        if(Config.inPackageConfiguration(returnType)) {
+//            System.out.println("RETURN TYPE: " + returnType);
             returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
@@ -88,9 +97,5 @@ public class ClassFieldVisitor extends ClassVisitor{
             }
             this.edges.add(newArrow);
         }
-    }
-
-    private boolean inPackage(String s) {
-        return s.contains(this.pkg);
     }
 }

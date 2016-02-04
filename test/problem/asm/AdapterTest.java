@@ -3,74 +3,82 @@ package problem.asm;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import problem.asm.AdapterDetector;
-import problem.asm.ClassNode;
-import problem.asm.FileGenerator;
-import problem.asm.UMLGenerator;
 
+import java.awt.event.MouseAdapter;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
 /**
- * Created by Jeremy on 1/27/2016.
+ * Created by jared on 2/2/2016.
  */
 public class AdapterTest {
+	private static final String parameter = "\\<\\<Adapter\\>\\>";
 
-    private FileGenerator umlGenerator;
-    private List<ClassNode> adapters;
-    private HashSet<String> set;
-    private HashSet<String> testSet;
+	@Before
+	public void setUp() throws Exception {
+		//do nothing
+	}
 
-    @Before
-    public void setUp() throws Exception {
+	@After
+	public void tearDown() throws Exception {
+		//do nothing
+	}
 
-    }
+	private boolean runTest(String toTest, Set<String> expected) {
+		FileGenerator u;
+		try {
+			u = TestHelper.setUp(toTest);
+		} catch (Exception e) {
+			return false;
+		}
+		List<INode> l = u.updateNodes();
+		Set<String> ss = new HashSet<String>();
+		for(INode node : l){
+			for(String identifier : node.getPatternIdentifier()) {
+				if(identifier.equals(parameter)) {
+					ss.add(node.getName());
+					System.out.println("Added " + node.getName());
+				}
+			}
+		}
+		for(String s : ss){
+			assertTrue(expected.contains(s));
+		}
+		for(String s : expected){
+			assertTrue(ss.contains(s));
+		}
+		return true;
+	}
+	
+	@Test
+	public void testisr() throws Exception {
+		String toTest = "configurations/testisr.json";
+		Set<String> expected = new HashSet<String>();
+//		expected.add("");
+		expected.add("sun/nio/cs/StreamDecoder");
+		expected.add("java/io/InputStreamReader");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testosw() throws Exception {
+		String toTest = "configurations/testosw.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("java/io/OutputStreamWriter");
+		expected.add("sun/nio/cs/StreamEncoder");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testma() throws Exception {
+		String toTest = "configurations/testma.json";
+		Set<String> expected = new HashSet<String>();
 
-    @After
-    public void tearDown() throws Exception {
-        umlGenerator = null;
-        adapters = null;
-
-    }
-
-    @Test
-    public void testAdapter() throws Exception {
-
-        this.set = new HashSet<>();
-        this.testSet = new HashSet<>();
-        this.testSet.add("AdapterTestClass/Adapter");
-
-
-        String input = "./src/AdapterTestClass";
-        String output = "input_output/new_file.dot";
-
-        umlGenerator = new UMLGenerator(output, input);
-        umlGenerator = new AdapterDetector(umlGenerator);
-
-        umlGenerator.generateClassList();
-        umlGenerator.generateNodes();
-        umlGenerator.getNodes();
-//        umlGenerator.write();
-
-        for(ClassNode node : umlGenerator.getNodes()) {
-            if(node.getPatternIdentifier() != null) {
-                if (node.getPatternIdentifier().equals("\\<\\<Adapter\\>\\>")) {
-                    this.set.add(node.getName());
-                }
-            }
-        }
-
-//        assertEquals(1, this.set.size());
-
-        for(String node : this.set) {
-            assertTrue(this.testSet.contains(node));
-        }
-
-        for(String node : this.testSet) {
-            assertTrue(this.set.contains(node));
-        }
-
-    }
+		assertTrue(runTest(toTest,expected));
+	}
 }

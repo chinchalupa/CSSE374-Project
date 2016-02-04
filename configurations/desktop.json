@@ -1,0 +1,15 @@
+{
+  "detectors": {
+    "decorator": false,
+    "adapter": true,
+    "singleton": false,
+    "composite": true
+  },
+
+  "dot_output": "input_output/desktop.dot",
+
+
+  "classes": [
+    "java.awt.Desktop"
+  ]
+}

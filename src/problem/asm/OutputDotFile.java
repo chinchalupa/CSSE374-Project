@@ -9,11 +9,11 @@ import java.io.OutputStream;
 public class OutputDotFile implements IVisitor {
 
     private OutputStream out;
-    private String pkg;
+    private FileGenerator fileGenerator;
 
-    public OutputDotFile(OutputStream out, String pkg) {
+    public OutputDotFile(OutputStream out, FileGenerator fileGenerator) {
         this.out = out;
-        this.pkg = pkg.replace("/", ".");
+        this.fileGenerator = fileGenerator;
         this.startUp();
     }
 
@@ -44,10 +44,13 @@ public class OutputDotFile implements IVisitor {
         if(this.inOurPackage(node.getName())) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
-            String s = "node [shape = \"record\" color = \"" + node.getColor() + "\"]\n";
+            String s = "node [shape = \"record\" color = \"#000000\" fillcolor = \"" + node.getOutlineColor() + "\" style=\"" + node.getStyle() + "\"]\n";
             s += "ClassT" + name + " [label = \"{" + name;
             if(node.getPatternIdentifier() != null) {
-                s += "\\l" + node.getPatternIdentifier();
+                s += "\\l";
+                for(String identifier : node.getPatternIdentifier()) {
+                    s += identifier + "\\l";
+                }
             }
             s += "|";
             for (NodeField field : node.getFields()) {
@@ -59,21 +62,19 @@ public class OutputDotFile implements IVisitor {
             for (NodeMethod method : node.getMethods()) {
                 String methodName = method.getName();
 
-                if (hasInvalidCharacters(methodName)) {
-                    s += methodName + "(";
+                s += fixInvalidCharacters(methodName) + "(";
 
-
-                    for (String arg : method.getArgs()) {
-                        s += arg;
-                        if (!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
-                            s += ", ";
-                        }
+                for (String arg : method.getArgs()) {
+                    s += arg;
+                    if (!arg.equals(method.getArgs().get(method.getArgs().size() - 1))) {
+                        s += ", ";
                     }
-                    s += ") : " + method.getReturnType() + "\\l";
                 }
+                s += ") : " + method.getReturnType() + "\\l";
             }
-                s += "}\"]";
-                this.write(s);
+
+            s += "}\"]";
+            this.write(s);
         }
     }
 
@@ -81,29 +82,34 @@ public class OutputDotFile implements IVisitor {
     public void visitEdges(IEdge edge) {
         String to = edge.getTo();
         String parsedTo = to.substring(to.lastIndexOf("/") + 1, to.length());
-        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() + " ]\n";
+        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() +
+                " label = \"" + edge.getText() + "\"]\n";
         s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
 
     @Override
     public void visitMethod(NodeMethod nodeMethod) {
-
+        return;
     }
 
     @Override
     public void visitField(NodeField nodeField) {
+        return;
+    }
 
+    @Override
+    public void visitDecorator(UMLDecorator umlDecorator) {
+        umlDecorator.updateNodes();
     }
 
     private boolean inOurPackage(String name) {
         String remodeledName = name.replace("/", ".");
-        return remodeledName.contains(this.pkg);
+        return Config.inPackageConfiguration(remodeledName);
     }
 
-    private boolean hasInvalidCharacters(String field) {
-//        System.out.println("Field: " + field);
-//        System.out.println("Condition: " + (!(field.contains("<") || field.contains(">"))));
-        return !(field.contains("<") || field.contains(">"));
+    private String fixInvalidCharacters(String field) {
+
+        return field.replace("<", "").replace(">", "");
     }
 }

@@ -50,10 +50,10 @@ public class DecoratorDetectorTest {
 
         umlGenerator.generateClassList();
         umlGenerator.generateNodes();
-        umlGenerator.getNodes();
+        umlGenerator.updateNodes();
         umlGenerator.write();
 
-        for(ClassNode node : umlGenerator.getNodes()) {
+        for(INode node : umlGenerator.updateNodes()) {
             if(node.getPatternIdentifier() != null) {
                 if (node.getPatternIdentifier().equals("\\<\\<Decorator\\>\\>")) {
                     this.set.add(node.getName());
@@ -79,7 +79,7 @@ public class DecoratorDetectorTest {
 
         umlGenerator.generateClassList();
         umlGenerator.generateNodes();
-        umlGenerator.getNodes();
+        umlGenerator.updateNodes();
         umlGenerator.write();
 
         InputStream stream = new FileInputStream(output);

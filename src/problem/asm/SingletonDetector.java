@@ -1,7 +1,5 @@
 package problem.asm;
 
-import java.io.File;
-import java.io.FilterInputStream;
 import java.util.List;
 
 /**
@@ -9,45 +7,43 @@ import java.util.List;
  */
 public class SingletonDetector extends UMLDecorator {
 
-//    private final FileGenerator uml;
+    private List<INode> nodes;
 
+    /**
+     * Detector for singletons.
+     * @param uml - The uml to modify.
+     */
     public SingletonDetector(FileGenerator uml) {
         super(uml);
+        this.nodes = uml.updateNodes();
     }
 
     @Override
-    public List<ClassNode> getNodes() {
+    public List<INode> updateNodes() {
 
-        for(ClassNode node : super.getNodes()) {
+        for(INode node : this.nodes) {
             boolean hasSelfField = false;
             boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
 
             for(NodeField field : node.getFields()) {
-//                System.out.println(field.getReturnType());
-                System.out.println(node.getExtension());
-                if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtension())) {
+
+                if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtends())) {
                     hasSelfField = true;
-                    System.out.println("Check");
                     break;
                 }
             }
             for(NodeMethod method : node.getMethods()) {
-                System.out.println(method.getReturnType());
-                if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtension())) {
-                    System.out.println("Check");
+                if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtends())) {
                     hasReturnMethod = true;
                 }
             }
             if(hasReturnMethod && hasSelfField) {
-                node.setColor("#000077");
-                node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
-//                System.out.println(name + " is a Singleton");
+                node.setOutlineColor("#0000ff");
+                node.addPatternIdentifier("\\<\\<Singleton\\>\\>");
             }
         }
-
-
-        return super.getNodes();
+        return this.nodes;
     }
 
     @Override
@@ -69,4 +65,5 @@ public class SingletonDetector extends UMLDecorator {
     public void write() throws Exception {
         super.write();
     }
+
 }

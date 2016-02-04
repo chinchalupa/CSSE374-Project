@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Jeremy on 1/26/2016.
  */
-public class UMLDecorator extends FileGenerator {
+public abstract class UMLDecorator extends FileGenerator implements ITraversable{
 
     private final FileGenerator uml;
 
@@ -15,9 +15,7 @@ public class UMLDecorator extends FileGenerator {
     }
 
     @Override
-    public List<ClassNode> getNodes() {
-        return uml.getNodes();
-    }
+    public abstract List<INode> updateNodes();
 
     @Override
     public List<IEdge> getEdges() {
@@ -38,5 +36,10 @@ public class UMLDecorator extends FileGenerator {
     @Override
     public void write() throws Exception {
         this.uml.write();
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visitDecorator(this);
     }
 }

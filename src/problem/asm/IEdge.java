@@ -8,6 +8,8 @@ public interface IEdge extends ITraversable{
     public abstract String getFrom();
     public abstract String getLine();
     public abstract String getArrow();
+    public void setText(String s);
+    public abstract String getText();
     public abstract String getLineName();
     @Override
     public abstract String toString();

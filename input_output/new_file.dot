@@ -4,8 +4,8 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000077"]
-ClassTEagerSingleton [label = "{EagerSingleton\l\<\<Singleton\>\>|singleton : EagerSingleton\l|getInstance() : EagerSingleton\l}"]
-edge [arrowhead = "vee" style = "dashed" ]
-ClassTEagerSingleton -> ClassTEagerSingleton
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTDesktop [label = "{Desktop\l|peer : DesktopPeer\l|init() : void\lgetDesktop() : Desktop\lisDesktopSupported() : boolean\lisSupported(Desktop$Action) : boolean\lcheckFileValidation(File) : void\lcheckActionSupport(Desktop$Action) : void\lcheckAWTPermission() : void\lopen(File) : void\ledit(File) : void\lprint(File) : void\lbrowse(URI) : void\lmail() : void\lmail(URI) : void\lcheckExec() : void\l}"]
+edge [arrowhead = "vee" style = "solid" label = ""]
+ClassTDesktop -> ClassTDesktop
 }

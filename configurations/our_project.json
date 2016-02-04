@@ -1,0 +1,17 @@
+{
+
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": true,
+    "composite": true
+  },
+
+  "dot_output": "input_output/our_project.dot",
+  "packages": [
+    "./src/problem/asm"
+  ],
+  "classes": [
+    "org.objectweb.asm.ClassVisitor"
+  ]
+}

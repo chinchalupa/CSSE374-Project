@@ -1,0 +1,16 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": true,
+    "composite": true
+  },
+
+  "dot_output": "input_output/input_stream_reader.dot",
+  "classes": [
+    "java.io.InputStream",
+    "java.io.InputStreamReader",
+    "java.io.Reader",
+    "sun.nio.cs.StreamDecoder"
+    ]
+}
