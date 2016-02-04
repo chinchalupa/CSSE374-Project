@@ -31,7 +31,7 @@ public class DecoratorTest {
 		FileGenerator u;
 		try {
 			u = TestHelper.setUp(toTest);
-			System.out.println("SETUP");
+//			System.out.println("SETUP");
 		} catch (Exception e) {
 			return false;
 		}
@@ -40,9 +40,8 @@ public class DecoratorTest {
 		Set<String> ss = new HashSet<>();
 		for(INode node : l){
 			for(String identifier : node.getPatternIdentifier()) {
-				System.out.println("IDENTIFIER: " + identifier);
 				if(identifier.equals(parameter)) {
-					System.out.println("TEST NAME: " + node.getName());
+//					System.out.println("TEST NAME: " + node.getName());
 					ss.add(node.getName());
 				}
 			}
@@ -82,7 +81,6 @@ public class DecoratorTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}
