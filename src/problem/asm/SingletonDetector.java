@@ -5,33 +5,36 @@ import java.util.List;
 /**
  * Created by Jeremy on 1/26/2016.
  */
-public class SingletonDetector extends UMLDecorator implements ITraversable {
+public class SingletonDetector extends UMLDecorator {
 
-//    private final FileGenerator uml;
-    private List<ClassNode> nodes;
+    private List<INode> nodes;
 
+    /**
+     * Detector for singletons.
+     * @param uml - The uml to modify.
+     */
     public SingletonDetector(FileGenerator uml) {
         super(uml);
         this.nodes = uml.updateNodes();
     }
 
     @Override
-    public List<ClassNode> updateNodes() {
+    public List<INode> updateNodes() {
 
-        for(ClassNode node : this.nodes) {
+        for(INode node : this.nodes) {
             boolean hasSelfField = false;
             boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
 
             for(NodeField field : node.getFields()) {
 
-                if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtension())) {
+                if(field.getReturnType().equals(name) || field.getReturnType().equals(node.getExtends())) {
                     hasSelfField = true;
                     break;
                 }
             }
             for(NodeMethod method : node.getMethods()) {
-                if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtension())) {
+                if(method.getReturnType().equals(name) || method.getReturnType().equals(node.getExtends())) {
                     hasReturnMethod = true;
                 }
             }
@@ -63,8 +66,4 @@ public class SingletonDetector extends UMLDecorator implements ITraversable {
         super.write();
     }
 
-    @Override
-    public void accept(IVisitor visitor) {
-        visitor.visitDecorator(this);
-    }
 }

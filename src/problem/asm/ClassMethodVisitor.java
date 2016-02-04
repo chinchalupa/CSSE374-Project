@@ -13,14 +13,14 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     private INode classNode;
     private List<IEdge> edges;
-    private List<ClassNode> nodes;
+    private List<INode> nodes;
     private String pkg;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<ClassNode> nodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<INode> nodes) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;

@@ -1,7 +1,5 @@
 package problem.asm;
 
-import jdk.internal.org.objectweb.asm.ClassVisitor;
-
 import java.util.List;
 
 /**
@@ -17,7 +15,7 @@ public abstract class UMLDecorator extends FileGenerator implements ITraversable
     }
 
     @Override
-    public abstract List<ClassNode> updateNodes();
+    public abstract List<INode> updateNodes();
 
     @Override
     public List<IEdge> getEdges() {

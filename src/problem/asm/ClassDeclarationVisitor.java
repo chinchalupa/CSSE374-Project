@@ -6,11 +6,11 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
     public String name;
     public String[] interfaces;
-    private List<ClassNode> classNodes;
+    private List<INode> classNodes;
     private List<IEdge> edges;
     private INode classNode;
 
-    public ClassDeclarationVisitor(int api, INode classNode, List<ClassNode> classNodes, List<IEdge> edges) {
+    public ClassDeclarationVisitor(int api, INode classNode, List<INode> classNodes, List<IEdge> edges) {
         super(api);
         this.classNodes = classNodes;
         this.edges = edges;

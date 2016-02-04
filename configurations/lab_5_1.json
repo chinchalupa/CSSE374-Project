@@ -2,7 +2,8 @@
   "detectors": {
     "decorator": false,
     "adapter": true,
-    "singleton": false
+    "singleton": false,
+    "composite": true
   },
 
   "dot_output": "input_output/lab51.dot",

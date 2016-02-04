@@ -2,7 +2,8 @@
   "detectors": {
     "decorator": true,
     "adapter": true,
-    "singleton": true
+    "singleton": true,
+    "composite": true
   },
 
   "dot_output": "input_output/our_project.dot",

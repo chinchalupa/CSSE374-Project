@@ -75,12 +75,15 @@ public class ClassFieldVisitor extends ClassVisitor{
         this.classNode.addField(nodeField);
 
         addNewUses(this.classNode.getName(), returnType);
+//        System.out.println("ADDED SIGGY: " + cleanSignature + " FROM: " + this.classNode.getName());
         addNewUses(this.classNode.getName(), cleanSignature);
     }
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
+//        System.out.println("RETURN: " + returnType);
         if(Config.inPackageConfiguration(returnType)) {
+//            System.out.println("RETURN TYPE: " + returnType);
             returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {

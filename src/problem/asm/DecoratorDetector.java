@@ -1,16 +1,15 @@
 package problem.asm;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 /**
  * Created by Jeremy on 1/26/2016.
  */
-public class DecoratorDetector extends UMLDecorator implements ITraversable{
+public class DecoratorDetector extends UMLDecorator {
 
-    private HashSet<ClassNode> decoratorNodes;
-    private List<ClassNode> nodes;
+    private HashSet<INode> decoratorNodes;
+    private List<INode> nodes;
 
     public DecoratorDetector(FileGenerator uml) {
         super(uml);
@@ -19,7 +18,7 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     }
 
     @Override
-    public List<ClassNode> updateNodes() {
+    public List<INode> updateNodes() {
 
         findPotentialDecoratorNodes();
         findPotentialDecorations();
@@ -34,10 +33,10 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     }
 
     private void findPotentialDecoratorNodes() {
-        for(ClassNode node : this.nodes) {
+        for(INode node : this.nodes) {
             String name = node.getName();
             String cleanedName = name.substring(name.lastIndexOf("/") + 1, name.length());
-            String extension = node.getExtension();
+            String extension = node.getExtends();
 
             if(extension != null) {
                 // Find a uses edge that goes to the extends
@@ -57,10 +56,10 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     }
 
     private void findPotentialDecorations() {
-        for(ClassNode node : this.decoratorNodes) {
+        for(INode node : this.decoratorNodes) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
-            for(ClassNode decoration : this.nodes) {
-                String extension = decoration.getExtension();
+            for(INode decoration : this.nodes) {
+                String extension = decoration.getExtends();
                 if(extension != null) {
                     if (extension.equals(name)) {
                         decoration.addPatternIdentifier("\\<\\<Decorator\\>\\>");
@@ -73,9 +72,9 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     }
 
     private void findPotentialComponents() {
-        for(ClassNode node : this.decoratorNodes) {
-            String extensionName = node.getExtension();
-            for(ClassNode searchingNode : this.nodes) {
+        for(INode node : this.decoratorNodes) {
+            String extensionName = node.getExtends();
+            for(INode searchingNode : this.nodes) {
                 String name = searchingNode.getName().substring(searchingNode.getName().lastIndexOf("/") + 1, searchingNode.getName().length());
                 if(extensionName.equals(name)) {
                     searchingNode.addPatternIdentifier("\\<\\<Component\\>\\>");
@@ -102,8 +101,4 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     }
 
 
-    @Override
-    public void accept(IVisitor visitor) {
-        visitor.visitDecorator(this);
-    }
 }

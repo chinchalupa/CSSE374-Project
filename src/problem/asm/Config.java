@@ -66,6 +66,20 @@ public class Config {
            }
         }
 
+//TODO: Leave uncommented if you want a summarized document that is legible
+//        if(Config.getInstance().getPackageList() != null) {
+//            for(String pkg : Config.getInstance().getPackageList()) {
+//                File directory = new File(pkg);
+//
+//                for (File file : directory.listFiles()) {
+//                    String name = file.getName().substring(0, file.getName().indexOf("."));
+//                    if (name.equals(incomingClass)) {
+//                        return true;
+//                    }
+//                }
+//            }
+//        }
+
         return false;
     }
 
@@ -128,5 +142,10 @@ public class Config {
     public boolean shouldDetectAdapters() {
         JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
         return (Boolean) detectors.get("adapter");
+    }
+
+    public boolean shouldDetectComposites() {
+        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
+        return (Boolean) detectors.get("composite");
     }
 }

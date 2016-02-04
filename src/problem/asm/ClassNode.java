@@ -76,9 +76,6 @@ public class ClassNode implements INode {
         this.extension = string;
     }
 
-    public String getExtension() {
-        return extension;
-    }
 
     @Override
     public void addField(NodeField field) {
@@ -109,7 +106,6 @@ public class ClassNode implements INode {
     public String getExtends() {
         return this.extension;
     }
-
 
     public String getOutlineColor() {
         return outlineColor;

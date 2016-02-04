@@ -11,7 +11,7 @@ public abstract class FileGenerator {
     protected String outputLocation;
     protected String inputFile;
 
-    protected List<ClassNode> classNodeList;
+    protected List<INode> classNodeList;
     protected List<IEdge> edgeList;
 
     protected Config config;
@@ -33,7 +33,7 @@ public abstract class FileGenerator {
         this.config = Config.newInstance(configLocation);
     }
 
-    public abstract List<ClassNode> updateNodes();
+    public abstract List<INode> updateNodes();
 
     public abstract List<IEdge> getEdges();
 

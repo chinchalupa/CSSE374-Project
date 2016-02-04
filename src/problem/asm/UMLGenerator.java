@@ -33,7 +33,7 @@ public class UMLGenerator extends FileGenerator {
     }
 
     @Override
-    public List<ClassNode> updateNodes() {
+    public List<INode> updateNodes() {
         return this.classNodeList;
     }
 
@@ -79,7 +79,12 @@ public class UMLGenerator extends FileGenerator {
             singletonDetector.accept(visitor);
         }
 
-        for(ClassNode node : this.classNodeList) {
+        if(Config.getInstance().shouldDetectComposites()) {
+            UMLDecorator compositeDecorator = new CompositeDetector(this);
+            compositeDecorator.accept(visitor);
+        }
+
+        for(INode node : this.classNodeList) {
             node.accept(visitor);
         }
 
