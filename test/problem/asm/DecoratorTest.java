@@ -27,19 +27,27 @@ public class DecoratorTest {
 	}
 
 	private boolean runTest(String toTest, Set<String> expected) {
-		UMLGenerator u;
+
+		FileGenerator u;
 		try {
 			u = TestHelper.setUp(toTest);
+			System.out.println("SETUP");
 		} catch (Exception e) {
 			return false;
 		}
-		List<ClassNode> l = u.getNodes();
-		Set<String> ss = new HashSet<String>();
-		for(ClassNode n : l){
-			if(n.getPatternIdentifier().equals(parameter)){
-				ss.add(n.getName());
+		List<INode> l = u.updateNodes();
+		System.out.println(l.size());
+		Set<String> ss = new HashSet<>();
+		for(INode node : l){
+			for(String identifier : node.getPatternIdentifier()) {
+				System.out.println("IDENTIFIER: " + identifier);
+				if(identifier.equals(parameter)) {
+					System.out.println("TEST NAME: " + node.getName());
+					ss.add(node.getName());
+				}
 			}
 		}
+		System.out.println(ss.size() + " " + expected.size());
 		for(String s : ss){
 			assertTrue(expected.contains(s));
 		}
@@ -53,7 +61,7 @@ public class DecoratorTest {
 	public void testlisr() throws Exception {
 		String toTest = "configurations/testisr.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
+//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -62,10 +70,10 @@ public class DecoratorTest {
 	public void testl5() throws Exception {
 		String toTest = "configurations/lab_2_1.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("FileInputStream");
-		expected.add("FileOutputStream");
-		expected.add("EncryptedInputStream");
-		expected.add("EncryptedOutputStream");
+		expected.add("java/io/FilterInputStream");
+		expected.add("java/io/FilterOutputStream");
+		expected.add("lab21/EncryptionOutputStream");
+		expected.add("lab21/DecryptionInputStream");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -74,7 +82,7 @@ public class DecoratorTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
+//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -83,7 +91,7 @@ public class DecoratorTest {
 	public void testma() throws Exception {
 		String toTest = "configurations/testma.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
+//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}

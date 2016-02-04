@@ -1,0 +1,53 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTAbstractSprite [label = "{AbstractSprite\l|dx : double\ldy : double\lshape : Shape\lmultiSprite : MultiSprite\li : int\l|init(doubledoubledoubledouble) : void\lcomputeNewBoundsAfterMoving(Dimension) : Rectangle2D\lgetShape() : Shape\lmove(Dimension) : void\lgetComposingSprites() : ArrayList\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTAnimationPanel [label = "{AnimationPanel\l|serialVersionUID : long\lsprites : List\<ISprite\>\lanimating : boolean\lsleepTime : long\l|init(long) : void\ladd(ISprite) : void\lgetSize() : Dimension\lanimate() : void\lreset() : void\lpaintComponent(Graphics) : void\laccess$000(AnimationPanel) : boolean\laccess$100(AnimationPanel) : List\laccess$200(AnimationPanel) : long\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTAnimatorApp [label = "{AnimatorApp\l||init() : void\lmain(String[]) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTBoxSprite [label = "{BoxSprite\l||init(doubledoubledoubledouble) : void\lmove(Dimension) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTCircleSprite [label = "{CircleSprite\l||init(doubledoubledoubledouble) : void\lmove(Dimension) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTISprite [label = "{ISprite\l||move(Dimension) : void\lgetShape() : Shape\lgetComposingSprites() : ArrayList\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTMainWindow [label = "{MainWindow\l|frame : JFrame\lactionPanel : JPanel\lanimationPanel : AnimationPanel\lmoveButton : JButton\lcreateButton : JButton\lresetButton : JButton\l|init(String, long) : void\lcreateWidgets(String, long) : void\lassignActions() : void\lshow() : void\laccess$000(MainWindow) : AnimationPanel\laccess$100(MainWindow) : JButton\laccess$200(MainWindow) : JButton\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTMultiSprite [label = "{MultiSprite\l|listOfSprites : ArrayList\<ISprite\>\l|init() : void\laddSprite(ISprite) : void\lgetListOfSprites() : ArrayList\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTRectangleSprite [label = "{RectangleSprite\l||init(doubledoubledoubledouble) : void\lmove(Dimension) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTSpriteFactory [label = "{SpriteFactory\l|DX : double\lDY : double\lWIDTH : double\lHEIGHT : double\lrandom : Random\lsprites : List\<ISprite\>\l|init() : void\lcomputeRandomLocation(Dimension) : Point2D\lcreateRandomSprite(Dimension) : ISprite\lclinit() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassTTowerSprite [label = "{TowerSprite\l||init(doubledoubledoubledouble) : void\lmove(Dimension) : void\l}"]
+edge [arrowhead = "normal" style = "dashed" label = ""]
+ClassTAbstractSprite -> ClassTISprite
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTAbstractSprite -> ClassTMultiSprite
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTAnimationPanel -> ClassTISprite
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTAnimationPanel -> ClassTAnimationPanel
+edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTBoxSprite -> ClassTAbstractSprite
+edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTCircleSprite -> ClassTAbstractSprite
+edge [arrowhead = "vee" style = "solid" label = ""]
+ClassTMainWindow -> ClassTAnimationPanel
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTMainWindow -> ClassTMainWindow
+edge [arrowhead = "vee" style = "dashed" label = ""]
+ClassTMultiSprite -> ClassTISprite
+edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTRectangleSprite -> ClassTAbstractSprite
+edge [arrowhead = "vee" style = "solid" label = ""]
+ClassTSpriteFactory -> ClassTISprite
+edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTTowerSprite -> ClassTAbstractSprite
+}

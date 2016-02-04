@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.event.MouseAdapter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,17 +28,19 @@ public class AdapterTest {
 	}
 
 	private boolean runTest(String toTest, Set<String> expected) {
-		UMLGenerator u;
+		FileGenerator u;
 		try {
 			u = TestHelper.setUp(toTest);
 		} catch (Exception e) {
 			return false;
 		}
-		List<ClassNode> l = u.getNodes();
+		List<INode> l = u.updateNodes();
 		Set<String> ss = new HashSet<String>();
-		for(ClassNode n : l){
-			if(n.getPatternIdentifier().equals(parameter)){
-				ss.add(n.getName());
+		for(INode node : l){
+			for(String identifier : node.getPatternIdentifier()) {
+				if(identifier.equals(parameter)) {
+					ss.add(node.getName());
+				}
 			}
 		}
 		for(String s : ss){
@@ -53,7 +56,7 @@ public class AdapterTest {
 	public void testisr() throws Exception {
 		String toTest = "configurations/testisr.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
+//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -71,7 +74,7 @@ public class AdapterTest {
 	public void testma() throws Exception {
 		String toTest = "configurations/testma.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
+//		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}

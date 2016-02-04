@@ -5,7 +5,7 @@ package problem.asm;
  */
 public class TestHelper {
 
-	public static UMLGenerator setUp(String confpath) throws Exception {
+	public static FileGenerator setUp(String confpath) throws Exception {
 		
 		Config config = Config.newInstance(confpath);
 		FileGenerator umlGenerator = new UMLGenerator();
@@ -18,16 +18,16 @@ public class TestHelper {
 			umlGenerator = new DecoratorDetector(umlGenerator);
 		}
 
-		if (config.shouldDetectAdatpers()) {
+		if (config.shouldDetectAdapters()) {
 			umlGenerator = new AdapterDetector(umlGenerator);
 		}
 
 		umlGenerator.generateClassList();
 		umlGenerator.generateNodes();
-		umlGenerator.getNodes();
+		umlGenerator.updateNodes();
 		umlGenerator.write();
 		
-		return (UMLGenerator) umlGenerator;
+		return umlGenerator;
 	}
 	
 	

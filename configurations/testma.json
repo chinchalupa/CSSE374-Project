@@ -2,9 +2,15 @@
   "detectors": {
     "decorator": true,
     "adapter": true,
-    "singleton": true
+    "singleton": true,
+    "composite": true
   },
 
-  "dot_output": "input_output/our_project.dot",
-  "classes": ["java.io.InputStreamReader"]
+  "dot_output": "input_output/mouse_adapter.dot",
+  "classes": ["java.awt.event.MouseAdapter",
+    "java.awt.event.MouseListener",
+    "java.awt.event.MouseWheelListener",
+    "java.awt.event.MouseMotionListener",
+    "java.util.EventListener"
+  ]
 }

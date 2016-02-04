@@ -1,0 +1,13 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": false,
+    "singleton": false,
+    "composite": true
+  },
+
+  "dot_output": "input_output/lab72.dot",
+  "packages": [
+    "./src/lab72"
+  ]
+}

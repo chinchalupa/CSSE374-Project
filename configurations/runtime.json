@@ -1,0 +1,15 @@
+{
+  "detectors": {
+    "decorator": false,
+    "adapter": true,
+    "singleton": true,
+    "composite": true
+  },
+
+  "dot_output": "input_output/runtime.dot",
+
+
+  "classes": [
+    "java.lang.Runtime"
+  ]
+}

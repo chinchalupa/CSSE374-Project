@@ -19,7 +19,10 @@ public class ClassNode implements INode {
     private List<String> patternIdentifier;
 
 
-
+    /**
+     * Implementation of the INode. Used to hold data about a class for a diagrams.
+     * @param name - The name of the class.
+     */
     public ClassNode(String name) {
         this.name = name;
         if(this.name.contains(";")) {
@@ -35,12 +38,6 @@ public class ClassNode implements INode {
         this.patternIdentifier = new ArrayList<>();
     }
 
-    public ClassNode(String name, String type) {
-        this.name = name;
-        this.type = type;
-        this.fields = new ArrayList<>();
-        this.methods = new ArrayList<>();
-    }
 
     @Override
     public String getName() {
@@ -98,6 +95,7 @@ public class ClassNode implements INode {
         this.methods.add(method);
     }
 
+    @Override
     public List<String> getInterfaces() {
         return this.interfaces;
     }
@@ -106,6 +104,7 @@ public class ClassNode implements INode {
     public String getExtends() {
         return this.extension;
     }
+
 
     public String getOutlineColor() {
         return outlineColor;
@@ -123,6 +122,7 @@ public class ClassNode implements INode {
         this.style = style;
     }
 
+    @Override
     public void addPatternIdentifier(String patternIdentifier) {
         for(String identifier : this.getPatternIdentifier()) {
             if(identifier.equals(patternIdentifier)) {
@@ -132,6 +132,7 @@ public class ClassNode implements INode {
         this.patternIdentifier.add(patternIdentifier);
     }
 
+    @Override
     public List<String> getPatternIdentifier() {
         return this.patternIdentifier;
     }

@@ -19,6 +19,7 @@ public interface INode extends ITraversable{
     public abstract List<String> getInterfaces();
     public abstract String getExtends();
 
+    public abstract List<String> getPatternIdentifier();
     public abstract void addPatternIdentifier(String pattern);
     public abstract void setOutlineColor(String color);
     public abstract void setStyle(String style);

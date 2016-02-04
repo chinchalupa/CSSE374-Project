@@ -67,18 +67,18 @@ public class Config {
         }
 
 //TODO: Leave uncommented if you want a summarized document that is legible
-//        if(Config.getInstance().getPackageList() != null) {
-//            for(String pkg : Config.getInstance().getPackageList()) {
-//                File directory = new File(pkg);
-//
-//                for (File file : directory.listFiles()) {
-//                    String name = file.getName().substring(0, file.getName().indexOf("."));
-//                    if (name.equals(incomingClass)) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
+        if(Config.getInstance().getPackageList() != null) {
+            for(String pkg : Config.getInstance().getPackageList()) {
+                File directory = new File(pkg);
+
+                for (File file : directory.listFiles()) {
+                    String name = file.getName().substring(0, file.getName().indexOf("."));
+                    if (name.equals(incomingClass)) {
+                        return true;
+                    }
+                }
+            }
+        }
 
         return false;
     }

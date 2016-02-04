@@ -38,23 +38,6 @@ public class UMLGeneratorTest {
     }
 
     @Test
-    public void testClassListSize() throws Exception {
-        assertEquals(3, umlGenerator.getClasses().size());
-    }
-
-    @Test
-    public void testClassNames() throws Exception {
-        HashSet<String> classNames = new HashSet<>();
-        classNames.add("AdapterTestClass.Adaptee");
-        classNames.add("AdapterTestClass.Adapter");
-        classNames.add("AdapterTestClass.Template");
-
-        for(String className : umlGenerator.getClasses()) {
-            assertTrue(classNames.contains(className));
-        }
-    }
-
-    @Test
     public void emptyNodeList() {
         assertTrue(umlGenerator.updateNodes().isEmpty());
     }

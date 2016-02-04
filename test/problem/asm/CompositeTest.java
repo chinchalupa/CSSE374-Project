@@ -27,17 +27,19 @@ public class CompositeTest {
 	}
 
 	private boolean runTest(String toTest, Set<String> expected) {
-		UMLGenerator u;
+		FileGenerator u;
 		try {
 			u = TestHelper.setUp(toTest);
 		} catch (Exception e) {
 			return false;
 		}
-		List<ClassNode> l = u.getNodes();
+		List<INode> l = u.updateNodes();
 		Set<String> ss = new HashSet<String>();
-		for(ClassNode n : l){
-			if(n.getPatternIdentifier().equals(parameter)){
-				ss.add(n.getName());
+		for(INode node : l){
+			for(String identifier : node.getPatternIdentifier()) {
+				if(identifier.equals(parameter)) {
+					ss.add(node.getName());
+				}
 			}
 		}
 		for(String s : ss){
@@ -53,8 +55,7 @@ public class CompositeTest {
 	public void testlisr() throws Exception {
 		String toTest = "configurations/testisr.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
-		
+
 		assertTrue(runTest(toTest,expected));
 	}
 	
@@ -62,8 +63,7 @@ public class CompositeTest {
 	public void testl5() throws Exception {
 		String toTest = "configurations/lab_2_1.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
-		
+
 		assertTrue(runTest(toTest,expected));
 	}
 	
@@ -71,8 +71,7 @@ public class CompositeTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
-		
+
 		assertTrue(runTest(toTest,expected));
 	}
 	
@@ -80,8 +79,7 @@ public class CompositeTest {
 	public void testma() throws Exception {
 		String toTest = "configurations/testma.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("");
-		
+
 		assertTrue(runTest(toTest,expected));
 	}
 }
