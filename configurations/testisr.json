@@ -1,0 +1,10 @@
+{
+  "detectors": {
+    "decorator": true,
+    "adapter": true,
+    "singleton": true
+  },
+
+  "dot_output": "input_output/our_project.dot",
+  "classes": ["java.awt.MouseAdapter"]
+}

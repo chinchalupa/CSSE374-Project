@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
 /**
  * Created by jared on 2/2/2016.
  */
-public class AdapterTest {
-	private static final String parameter = "\\<\\<Adapter\\>\\>";
+public class CompositeTest {
+	private static final String parameter = "\\<\\<Composite\\>\\>";
 
 	@Before
 	public void setUp() throws Exception {
@@ -50,8 +50,17 @@ public class AdapterTest {
 	}
 	
 	@Test
-	public void testisr() throws Exception {
+	public void testlisr() throws Exception {
 		String toTest = "configurations/testisr.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testl5() throws Exception {
+		String toTest = "configurations/lab_2_1.json";
 		Set<String> expected = new HashSet<String>();
 		expected.add("");
 		
@@ -62,7 +71,7 @@ public class AdapterTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("OutputStreamWriter");
+		expected.add("");
 		
 		assertTrue(runTest(toTest,expected));
 	}
