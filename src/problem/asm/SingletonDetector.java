@@ -5,18 +5,20 @@ import java.util.List;
 /**
  * Created by Jeremy on 1/26/2016.
  */
-public class SingletonDetector extends UMLDecorator {
+public class SingletonDetector extends UMLDecorator implements ITraversable {
 
 //    private final FileGenerator uml;
+    private List<ClassNode> nodes;
 
     public SingletonDetector(FileGenerator uml) {
         super(uml);
+        this.nodes = uml.getNodes();
     }
 
     @Override
     public List<ClassNode> getNodes() {
 
-        for(ClassNode node : super.getNodes()) {
+        for(ClassNode node : this.nodes) {
             boolean hasSelfField = false;
             boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
@@ -38,7 +40,7 @@ public class SingletonDetector extends UMLDecorator {
                 node.setPatternIdentifier("\\<\\<Singleton\\>\\>");
             }
         }
-        return super.getNodes();
+        return this.nodes;
     }
 
     @Override
@@ -59,5 +61,10 @@ public class SingletonDetector extends UMLDecorator {
     @Override
     public void write() throws Exception {
         super.write();
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visitDecorator(this);
     }
 }

@@ -6,27 +6,30 @@ import java.util.List;
 /**
  * Created by Jeremy on 1/27/2016.
  */
-public class AdapterDetector extends UMLDecorator {
+public class AdapterDetector extends UMLDecorator implements ITraversable{
 
     private List<String> itf;
     private List<String> adaptees;
+    private List<ClassNode> nodes;
 
 
     public AdapterDetector(FileGenerator uml) {
         super(uml);
         this.itf = new ArrayList<>();
         this.adaptees = new ArrayList<>();
+        this.nodes = uml.getNodes();
         System.out.println("DETECTING ADAPTERS...");
     }
 
     @Override
     public List<ClassNode> getNodes() {
+        System.out.println("GOT NODES");
         for(IEdge edge : super.getEdges()) {
             if(edge.getLineName().equals("USES")) {
                 String edgeName = edge.getTo();
                 edgeName = edgeName.substring(edgeName.lastIndexOf("/") + 1);
 
-                for(ClassNode node : super.getNodes()) {
+                for(ClassNode node : this.nodes) {
                     String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                     List<String> itf = node.getInterfaces();
                     String ext = node.getExtension();
@@ -54,7 +57,7 @@ public class AdapterDetector extends UMLDecorator {
         getItfs();
         getExtensions();
 
-        return super.getNodes();
+        return this.nodes;
     }
 
     public void addAdaptsArrow(String node, String extension) {
@@ -73,7 +76,7 @@ public class AdapterDetector extends UMLDecorator {
 
     private void getItfs() {
         for(String s : itf) {
-            for(ClassNode node : super.getNodes()) {
+            for(ClassNode node : this.nodes) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
                     if(node.getPatternIdentifier() == null) {
@@ -90,7 +93,7 @@ public class AdapterDetector extends UMLDecorator {
 
     private void getExtensions() {
         for(String s : adaptees) {
-            for(ClassNode node : super.getNodes()) {
+            for(ClassNode node : this.nodes) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
                     if(node.getPatternIdentifier() == null) {
@@ -107,5 +110,10 @@ public class AdapterDetector extends UMLDecorator {
     @Override
     public List<IEdge> getEdges() {
         return super.getEdges();
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visitDecorator(this);
     }
 }

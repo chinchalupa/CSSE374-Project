@@ -9,4 +9,6 @@ public interface IVisitor {
     public abstract void visitMethod(NodeMethod nodeMethod);
     public abstract void visitField(NodeField nodeField);
 
+    public abstract void visitDecorator(UMLDecorator umlDecorator);
+
 }

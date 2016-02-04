@@ -6,13 +6,15 @@ import java.util.List;
 /**
  * Created by Jeremy on 1/26/2016.
  */
-public class DecoratorDetector extends UMLDecorator {
+public class DecoratorDetector extends UMLDecorator implements ITraversable{
 
     private List<ClassNode> decoratorNodes;
+    private List<ClassNode> nodes;
 
     public DecoratorDetector(FileGenerator uml) {
         super(uml);
         this.decoratorNodes = new ArrayList<>();
+        this.nodes = uml.getNodes();
     }
 
     @Override
@@ -22,7 +24,7 @@ public class DecoratorDetector extends UMLDecorator {
         findPotentialDecorations();
         findPotentialComponents();
 
-        return super.getNodes();
+        return this.nodes;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class DecoratorDetector extends UMLDecorator {
     }
 
     private void findPotentialDecoratorNodes() {
-        for(ClassNode node : super.getNodes()) {
+        for(ClassNode node : this.nodes) {
             String name = node.getName();
             String cleanedName = name.substring(name.lastIndexOf("/") + 1, name.length());
             String extension = node.getExtension();
@@ -49,7 +51,6 @@ public class DecoratorDetector extends UMLDecorator {
                             node.setOutlineColor("#00ff00");
                         }
                         this.decoratorNodes.add(node);
-//                        System.out.println(node.getName());
 
                     }
                 }
@@ -60,7 +61,7 @@ public class DecoratorDetector extends UMLDecorator {
     private void findPotentialDecorations() {
         for(ClassNode node : this.decoratorNodes) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
-            for(ClassNode decoration : super.getNodes()) {
+            for(ClassNode decoration : this.nodes) {
                 String extension = decoration.getExtension();
                 if(extension != null) {
                     if (extension.equals(name)) {
@@ -77,7 +78,7 @@ public class DecoratorDetector extends UMLDecorator {
         for(ClassNode node : this.decoratorNodes) {
             String extensionName = node.getExtension();
 //            System.out.println("EXTENSION: " + extensionName);
-            for(ClassNode searchingNode : super.getNodes()) {
+            for(ClassNode searchingNode : this.nodes) {
                 String name = searchingNode.getName().substring(searchingNode.getName().lastIndexOf("/") + 1, searchingNode.getName().length());
 //                System.out.println(name + " " + extensionName);
                 if(extensionName.equals(name)) {
@@ -105,4 +106,8 @@ public class DecoratorDetector extends UMLDecorator {
     }
 
 
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visitDecorator(this);
+    }
 }

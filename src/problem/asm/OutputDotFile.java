@@ -9,9 +9,11 @@ import java.io.OutputStream;
 public class OutputDotFile implements IVisitor {
 
     private OutputStream out;
+    private FileGenerator fileGenerator;
 
-    public OutputDotFile(OutputStream out) {
+    public OutputDotFile(OutputStream out, FileGenerator fileGenerator) {
         this.out = out;
+        this.fileGenerator = fileGenerator;
         this.startUp();
     }
 
@@ -85,12 +87,17 @@ public class OutputDotFile implements IVisitor {
 
     @Override
     public void visitMethod(NodeMethod nodeMethod) {
-
+        return;
     }
 
     @Override
     public void visitField(NodeField nodeField) {
+        return;
+    }
 
+    @Override
+    public void visitDecorator(UMLDecorator umlDecorator) {
+        umlDecorator.getNodes();
     }
 
     private boolean inOurPackage(String name) {

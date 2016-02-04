@@ -2,46 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73fccb27-77ff-4074-9212-fc295635ee07" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/configurations/lab_2_1.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/configurations/lab_5_1.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/DecryptionInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/EncryptionOutputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/IDecryption.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/IEncryption.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/SubstitutionCipher.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab21/TextEditorApp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab51/App.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab51/IteratorToEnumerationAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lab51/LinearTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/problem/asm/ClassMethodInsnVisitor.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/Creator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/Creature.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/FileOutputType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/FirstASM.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/Lines.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/problem/asm/Creator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/problem/asm/FileOutputType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/problem/asm/FirstASM.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input_output/lab51.png" afterPath="$PROJECT_DIR$/input_output/lab51.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input_output/our_project.png" afterPath="$PROJECT_DIR$/input_output/our_project.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/AdapterDetector.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/AdapterDetector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/ClassDeclarationVisitor.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/ClassDeclarationVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/ClassFieldVisitor.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/ClassFieldVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/Config.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/DecoratorDetector.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/DecoratorDetector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/DesignParser.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/DesignParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/OutputDotFile.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/OutputDotFile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/SingletonDetector.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/SingletonDetector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/UMLGenerator.class" afterPath="$PROJECT_DIR$/out/production/Lab3-1/problem/asm/UMLGenerator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/Lab3-1/problem/asm/SingletonTest.class" afterPath="$PROJECT_DIR$/out/test/Lab3-1/problem/asm/SingletonTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configurations/our_project.json" afterPath="$PROJECT_DIR$/configurations/our_project.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input_output/lab51.dot" afterPath="$PROJECT_DIR$/input_output/lab51.dot" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input_output/our_project.dot" afterPath="$PROJECT_DIR$/input_output/our_project.dot" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/AdapterDetector.java" afterPath="$PROJECT_DIR$/src/problem/asm/AdapterDetector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java" afterPath="$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" afterPath="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/Config.java" afterPath="$PROJECT_DIR$/src/problem/asm/Config.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java" afterPath="$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/DesignParser.java" afterPath="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/IVisitor.java" afterPath="$PROJECT_DIR$/src/problem/asm/IVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/OutputDotFile.java" afterPath="$PROJECT_DIR$/src/problem/asm/OutputDotFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/OutputSDFile.java" afterPath="$PROJECT_DIR$/src/problem/asm/OutputSDFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/SingletonDetector.java" afterPath="$PROJECT_DIR$/src/problem/asm/SingletonDetector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/UMLDecorator.java" afterPath="$PROJECT_DIR$/src/problem/asm/UMLDecorator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/problem/asm/UMLGenerator.java" afterPath="$PROJECT_DIR$/src/problem/asm/UMLGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/problem/asm/SingletonTest.java" afterPath="$PROJECT_DIR$/test/problem/asm/SingletonTest.java" />
     </list>
     <ignored path="Lab3-1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,11 +47,57 @@
     <splitter split-orientation="horizontal" split-proportion="0.51111114">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="UMLGenerator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLGenerator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="65" column="70" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="OutputSDFile.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputSDFile.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#2668#2669#0" expanded="true" />
+                    <element signature="e#2690#2691#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="SingletonDetector.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/problem/asm/SingletonDetector.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+                  <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+                  <folding>
+                    <element signature="e#1796#1797#0" expanded="true" />
+                    <element signature="e#1840#1841#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="input_stream_reader.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/configurations/input_stream_reader.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-5.230769">
+                  <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="our_project.json" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/configurations/our_project.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.1095008">
+                  <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -80,93 +107,60 @@
             <entry file="file://$PROJECT_DIR$/src/problem/asm/AdapterDetector.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+                  <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#3953#3954#0" expanded="true" />
-                    <element signature="e#3992#3993#0" expanded="true" />
+                    <element signature="e#4065#4066#0" expanded="true" />
+                    <element signature="e#4104#4105#0" expanded="true" />
+                    <element signature="e#4162#4163#0" expanded="true" />
+                    <element signature="e#4206#4207#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="our_project.dot" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/input_output/our_project.dot">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.444445">
-                  <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="lab_5_1.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/configurations/lab_5_1.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-10.461538">
-                  <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="lab51.dot" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/input_output/lab51.dot">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.481482">
-                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ClassDeclarationVisitor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java">
+          <file leaf-file-name="UMLDecorator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLDecorator.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ClassFieldVisitor.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.568779">
-                  <caret line="70" column="84" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ClassMethodVisitor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IteratorToEnumerationAdapter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/lab51/IteratorToEnumerationAdapter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+                  <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
                   <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="e#414#415#0" expanded="true" />
+                    <element signature="e#451#452#0" expanded="true" />
+                    <element signature="e#505#506#0" expanded="true" />
+                    <element signature="e#549#550#0" expanded="true" />
+                    <element signature="e#803#804#0" expanded="true" />
+                    <element signature="e#847#848#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="LinearTransformer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/lab51/LinearTransformer.java">
+          <file leaf-file-name="DesignParser.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+                  <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FileGenerator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/FileGenerator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/Config.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -178,18 +172,48 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ClassMethodInsnVisitor.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodInsnVisitor.java">
+          <file leaf-file-name="OutputDotFile.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputDotFile.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.21020092">
-                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-                  <folding />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="99" column="20" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#2698#2699#0" expanded="true" />
+                    <element signature="e#2720#2721#0" expanded="true" />
+                    <element signature="e#2785#2786#0" expanded="true" />
+                    <element signature="e#2807#2808#0" expanded="true" />
+                    <element signature="e#2882#2883#0" expanded="true" />
+                    <element signature="e#2921#2922#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DecoratorDetector.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.02782071">
+                  <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#3591#3592#0" expanded="true" />
+                    <element signature="e#3635#3636#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="ITraversable.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/problem/asm/ITraversable.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IVisitor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/problem/asm/IVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
@@ -232,7 +256,6 @@
         <option value="$PROJECT_DIR$/test/problem/asm/AdapterTest.java" />
         <option value="$PROJECT_DIR$/test/problem/asm/DecoratorDetectorTest.java" />
         <option value="$PROJECT_DIR$/input_output/new_file.dot" />
-        <option value="$PROJECT_DIR$/src/problem/asm/UMLDecorator.java" />
         <option value="$PROJECT_DIR$/test/problem/asm/UMLGeneratorTest.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/FileGenerator.java" />
         <option value="$PROJECT_DIR$/configurations/test.json" />
@@ -243,25 +266,28 @@
         <option value="$PROJECT_DIR$/src/problem/asm/Edge.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassNode.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/IEdge.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/SingletonDetector.java" />
         <option value="$PROJECT_DIR$/test/problem/asm/SingletonTest.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/UMLGenerator.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/Config.java" />
         <option value="$PROJECT_DIR$/src/lab21/IDecryption.java" />
         <option value="$PROJECT_DIR$/src/lab21/TextEditorApp.java" />
-        <option value="$PROJECT_DIR$/configurations/our_project.json" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassMethodInsnVisitor.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/OutputDotFile.java" />
         <option value="$PROJECT_DIR$/configurations/lab_2_1.json" />
-        <option value="$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java" />
         <option value="$PROJECT_DIR$/src/lab51/lib/LinearTransformer.java" />
         <option value="$PROJECT_DIR$/src/lab51/client/App.java" />
         <option value="$PROJECT_DIR$/configurations/lab_5_1.json" />
         <option value="$PROJECT_DIR$/input_output/lab51.dot" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassDeclarationVisitor.java" />
-        <option value="$PROJECT_DIR$/src/problem/asm/AdapterDetector.java" />
         <option value="$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/IVisitor.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/Config.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/OutputSDFile.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/UMLGenerator.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/UMLDecorator.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/OutputDotFile.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DesignParser.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/AdapterDetector.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/SingletonDetector.java" />
+        <option value="$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java" />
+        <option value="$PROJECT_DIR$/configurations/our_project.json" />
       </list>
     </option>
   </component>
@@ -1140,7 +1166,7 @@
       <workItem from="1454270679949" duration="19000" />
       <workItem from="1454388687512" duration="3132000" />
       <workItem from="1454445194087" duration="18661000" />
-      <workItem from="1454527445879" duration="10154000" />
+      <workItem from="1454527445879" duration="15178000" />
     </task>
     <servers />
   </component>
@@ -1177,7 +1203,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57222000" />
+    <option name="totallyTimeSpent" value="62246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1228,20 +1254,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/input_output/filterInputStream.dot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_output/desktop.dot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input_output/new_file.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1306,17 +1318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/FileGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78547853">
-          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
-          <folding>
-            <element signature="e#839#840#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input_output/calendar.dot">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.7777777">
@@ -1357,47 +1358,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#546#547#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-          <folding>
-            <element signature="e#1103#1104#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/problem/asm/SingletonTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/input_stream_reader.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2190016">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1446,29 +1411,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configurations/our_project.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/asm-all-5.0.4.jar!/org/objectweb/asm/ClassVisitor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05483871">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6896553">
-          <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,14 +1451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputDotFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lab21/DecryptionInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10510046">
@@ -1531,14 +1470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configurations/lab_2_1.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9615384">
@@ -1552,7 +1483,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1591,6 +1522,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/input_output/our_project.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41129032">
+          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6584235">
+          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ITraversable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodInsnVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21020092">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/lab51/IteratorToEnumerationAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1609,15 +1572,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/SingletonDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ITraversable.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/IVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
@@ -1625,38 +1580,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/AdapterDetector.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3953#3954#0" expanded="true" />
-            <element signature="e#3992#3993#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassMethodInsnVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputSDFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21020092">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+          <folding>
+            <element signature="e#2668#2669#0" expanded="true" />
+            <element signature="e#2690#2691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/FileGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input_output/our_project.dot">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445">
-          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="70" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/problem/asm/ClassFieldVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DesignParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.568779">
-          <caret line="70" column="84" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/UMLDecorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/AdapterDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4065#4066#0" expanded="true" />
+            <element signature="e#4104#4105#0" expanded="true" />
+            <element signature="e#4162#4163#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/OutputDotFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="20" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
+          <folding>
+            <element signature="e#2698#2699#0" expanded="true" />
+            <element signature="e#2720#2721#0" expanded="true" />
+            <element signature="e#2785#2786#0" expanded="true" />
+            <element signature="e#2807#2808#0" expanded="true" />
+            <element signature="e#2882#2883#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/DecoratorDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02782071">
+          <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
+          <folding>
+            <element signature="e#3591#3592#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/problem/asm/SingletonDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+          <folding>
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations/input_stream_reader.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configurations/our_project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1095008">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding />
         </state>
       </provider>

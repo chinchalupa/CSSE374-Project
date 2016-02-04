@@ -6,7 +6,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,12 +47,10 @@ public class Config {
     public String getPackage() {
         String pkg = getPackageList().get(0);
         pkg = pkg.replace("./src/", "").replace("/", ".").replace(".java", "");
-//        System.out.println("Package: " + pkg);
         return pkg;
     }
 
     public static boolean inPackageConfiguration(String classInQuestion) {
-//        System.out.println(classInQuestion);
         String incomingClass = classInQuestion.replace("/", ".");
         if(Config.getInstance().getClassList() != null) {
             for (String cls : Config.getInstance().getClassList()) {
@@ -128,7 +125,7 @@ public class Config {
         return (Boolean) detectors.get("singleton");
     }
 
-    public boolean shouldDetectAdatpers() {
+    public boolean shouldDetectAdapters() {
         JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
         return (Boolean) detectors.get("adapter");
     }

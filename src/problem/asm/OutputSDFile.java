@@ -84,4 +84,9 @@ public class OutputSDFile implements IVisitor {
 //              nodeField.getCreatedClass().getName());
 //        this.write(s);
     }
+
+    @Override
+    public void visitDecorator(UMLDecorator umlDecorator) {
+        return;
+    }
 }

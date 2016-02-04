@@ -4,7 +4,6 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -64,7 +63,21 @@ public class UMLGenerator extends FileGenerator {
 
     public void write() throws Exception {
         OutputStream outputStream = new FileOutputStream(this.outputLocation);
-        OutputDotFile visitor = new OutputDotFile(outputStream);
+        OutputDotFile visitor = new OutputDotFile(outputStream, this);
+
+        if(Config.getInstance().shouldDetectAdapters()) {
+            AdapterDetector adapterDetector = new AdapterDetector(this);
+            adapterDetector.accept(visitor);
+        }
+        if(Config.getInstance().shouldDetectDecorators()) {
+            UMLDecorator decoratorDetector = new DecoratorDetector(this);
+            decoratorDetector.accept(visitor);
+        }
+
+        if(Config.getInstance().shouldDetectSingletons()) {
+            UMLDecorator singletonDetector = new SingletonDetector(this);
+            singletonDetector.accept(visitor);
+        }
 
         for(ClassNode node : this.classNodeList) {
             node.accept(visitor);
