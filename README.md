@@ -2,10 +2,12 @@
 <p><strike>Milestone 1</strike></p>
 <p><strike>Milestone 2</strike></p>
 <p><strike>Milestone 3</strike></p>
-<p>Milestone 4</p>
-<p>Milestone 5</p>
+<p><strike>Milestone 4</strike></p>
+<p><strike>Milestone 5</strike></p>
+<p>Milestone 6</p>
+<p>Milestone 7</p>
 
-<h2>Our design</h2>
+<h2>Our UML Design</h2>
 ![alt tag](https://raw.githubusercontent.com/chinchalupa/CSSE374-Project/master/UmlDesigns/UML%20Project.png)
 
 <h2>General</h2>
@@ -69,5 +71,26 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <li>We needed to make a decorator so we made the UML Decorator.</li>
 <li>The decorator has access to all the nodes and can manipulate them as necessary.</li>
 <li>A decorator was made for each type of decoration needed on the UML Diagram.</li>
+</ul>
+
+<h3> Milestone 5 Log</h3>
+<h5>Evolution of design</h5>
+<ul>
+<li>To meet requirements, one of the first things we did was allow our decorators to function as visitors.</li>
+<li>More decorators were needed, so we added those decorators in.</li>
+<li>We included a config file to make getting packages and classes out much easier.</li>
+<li>Checking for packages that was once scatttered among multiple classes now localized in the Config as a static method.</li>
+</ul>
+
+<h3>Milestone 6 Log</h3>
+<h5>Evolution of design</h5>
+<ul>
+<li>TODO: Expand design to allow for multiple patterns to be listed on a node.</li>
+<li>TODO: Create the composite pattern and create the methods that write it on the object.</li>
+<li>TODO: Review the test cases for the week and create the tests.</li>
+<li>Need to differentiate between a decorator and a composite pattern.</li>
+<li>A leaf node has every method that the component has and is used for implementation.</li>
+<li>A composite node has every method that the component has and a list of components.</li>
+<li>Modified field nodes to include whether it is a list, set, etc.</li>
 </ul>
 

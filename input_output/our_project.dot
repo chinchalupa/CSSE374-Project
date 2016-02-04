@@ -5,7 +5,7 @@ fontsize = 8
 rankdir=BT
 
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTAdapterDetector [label = "{AdapterDetector\l\<\<Decorator\>\>|itf : List\<String\>\ladaptees : List\<String\>\lnodes : List\<ClassNode\>\l|init(FileGenerator) : void\lgetNodes() : List\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\lgetEdges() : List\laccept(IVisitor) : void\l}"]
+ClassTAdapterDetector [label = "{AdapterDetector\l\<\<Decorator\>\>|itf : List\<String\>\ladaptees : List\<String\>\lnodes : List\<ClassNode\>\l|init(FileGenerator) : void\lupdateNodes() : List\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\lgetEdges() : List\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor|name : String\linterfaces : String[]\lclassNodes : List\<ClassNode\>\ledges : List\<IEdge\>\lclassNode : INode\l|init(int, INode, ListList) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
@@ -18,62 +18,56 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassMethodVisitor [label = "{ClassMethodVisitor|classNode : ClassNode\ledges : List\<IEdge\>\lnodes : List\<ClassNode\>\lpkg : String\l|init(int) : void\linit(int, ClassVisitor, ClassNode, ListList) : void\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\laddNewUses(StringString) : void\laddNewAssociationArrow(StringString) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassNode [label = "{ClassNode|extension : String\lname : String\ltype : String\lfields : List\<NodeField\>\lmethods : List\<NodeMethod\>\loutlineColor : String\lstyle : String\linterfaces : List\<String\>\lpatternIdentifier : String\l|setPatternIdentifier(String) : void\lgetPatternIdentifier() : String\linit(String) : void\linit(StringString) : void\lgetName() : String\lgetType() : String\lgetMethods() : List\lgetFields() : List\laccept(IVisitor) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetExtension() : String\laddField(NodeField) : void\laddMethod(NodeMethod) : void\lgetInterfaces() : List\lgetExtends() : String\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\ltoString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>||init(FileGenerator) : void\lupdateNodes() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#0000ff" style=""]
 ClassTConfig [label = "{Config\l\<\<Singleton\>\>|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lgetPackageList() : List\lgetClassList() : List\lgetClassesAndPackageClassesList() : List\lshouldDetectDecorators() : boolean\lshouldDetectSingletons() : boolean\lshouldDetectAdapters() : boolean\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTDecoratorDetector [label = "{DecoratorDetector\l\<\<Decorator\>\>|decoratorNodes : List\<ClassNode\>\lnodes : List\<ClassNode\>\l|init(FileGenerator) : void\lgetNodes() : List\lgetEdges() : List\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+ClassTDecoratorDetector [label = "{DecoratorDetector\l\<\<Decorator\>\>|decoratorNodes : List\<ClassNode\>\lnodes : List\<ClassNode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : List\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTDesignParser [label = "{DesignParser||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTEdge [label = "{Edge|lineName : String\lto : String\lfrom : String\larrowType : String\llineType : String\ltext : String\l|init(StringStringStringStringString) : void\lgetText() : String\lsetText(String) : void\lgetLineName() : String\lgetTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\laccept(IVisitor) : void\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFileGenerator [label = "{FileGenerator\l\<\<Component\>\>|outputLocation : String\linputFile : String\lclassNodeList : List\<ClassNode\>\ledgeList : List\<IEdge\>\lconfig : Config\l|init() : void\linit(StringString) : void\linit(String) : void\lgetNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+ClassTFileGenerator [label = "{FileGenerator\l\<\<Component\>\>|outputLocation : String\linputFile : String\lclassNodeList : List\<ClassNode\>\ledgeList : List\<IEdge\>\lconfig : Config\l|init() : void\linit(StringString) : void\linit(String) : void\lupdateNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTIEdge [label = "{IEdge||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTINode [label = "{INode||getName() : String\lgetType() : String\lgetMethods() : List\laddField(NodeField) : void\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTINodeElement [label = "{INodeElement||getName() : String\lgetReturnType() : String\lgetContainingClass() : INode\l}"]
+ClassTINodeElement [label = "{INodeElement||getName() : String\lgetReturnType() : String\lgetCollectionType() : String\lgetContainingClass() : INode\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTITraversable [label = "{ITraversable||accept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTIVisitor [label = "{IVisitor||visitNodes(ClassNode) : void\lvisitEdges(IEdge) : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTNodeField [label = "{NodeField|name : String\ltype : String\lcontainingClass : INode\lcreatedClass : INode\l|init(StringString) : void\linit(String, String, INodeINode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCreatedClass() : INode\ltoString() : String\laccept(IVisitor) : void\l}"]
+ClassTNodeField [label = "{NodeField|name : String\ltype : String\lcontainingClass : INode\ldStructure : String\l|init(StringStringString) : void\linit(String, String, INode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCollectionType() : String\ltoString() : String\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTNodeMethod [label = "{NodeMethod|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lparentClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INodeINode) : void\lgetParentClassNode() : INode\lsetParentClassNode(INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\laddPotentialDuplicateMethod(NodeMethod, ArrayList) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\laccept(IVisitor) : void\ltoString() : String\l}"]
+ClassTNodeMethod [label = "{NodeMethod|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lparentClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INodeINode) : void\lgetParentClassNode() : INode\lsetParentClassNode(INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\lgetCollectionType() : String\laccept(IVisitor) : void\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTOutputDotFile [label = "{OutputDotFile|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNodes(ClassNode) : void\lvisitEdges(IEdge) : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTOutputSDFile [label = "{OutputSDFile|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNodes(ClassNode) : void\lvisitEdges(IEdge) : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>|nodes : List\<ClassNode\>\l|init(FileGenerator) : void\lgetNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>|nodes : List\<ClassNode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>|uml : FileGenerator\l|init(FileGenerator) : void\lgetNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTUMLGenerator [label = "{UMLGenerator|startingClassStrings : List\<String\>\l|init(StringString) : void\linit() : void\lgenerateClassList() : void\lgetNodes() : List\lgetEdges() : List\lgenerateNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
+ClassTUMLGenerator [label = "{UMLGenerator|startingClassStrings : List\<String\>\l|init(StringString) : void\linit() : void\lgenerateClassList() : void\lupdateNodes() : List\lgetEdges() : List\lgenerateNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassVisitor [label = "{ClassVisitor|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTAdapterDetector -> ClassTUMLDecorator
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTAdapterDetector -> ClassTITraversable
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTAdapterDetector -> ClassTClassNode
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTClassDeclarationVisitor -> ClassTClassVisitor
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassDeclarationVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassDeclarationVisitor -> ClassTIEdge
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassDeclarationVisitor -> ClassTINode
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTClassFieldVisitor -> ClassTClassVisitor
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassFieldVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassFieldVisitor -> ClassTIEdge
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
 edge [arrowhead = "vee" style = "solid" label = ""]
@@ -82,28 +76,18 @@ edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTClassMethodVisitor -> ClassTClassVisitor
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassMethodVisitor -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassMethodVisitor -> ClassTIEdge
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTClassNode -> ClassTINode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassNode -> ClassTNodeField
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTClassNode -> ClassTNodeMethod
+edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTCompositeDetector -> ClassTUMLDecorator
 edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTConfig -> ClassTConfig
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTDecoratorDetector -> ClassTUMLDecorator
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTDecoratorDetector -> ClassTITraversable
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTDecoratorDetector -> ClassTClassNode
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTEdge -> ClassTIEdge
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTFileGenerator -> ClassTClassNode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTFileGenerator -> ClassTIEdge
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTFileGenerator -> ClassTConfig
 edge [arrowhead = "normal" style = "dashed" label = ""]
@@ -120,10 +104,6 @@ edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTNodeField -> ClassTINode
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTNodeMethod -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTNodeMethod -> ClassTNodeMethod
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTNodeMethod -> ClassTNodeField
 edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTNodeMethod -> ClassTINode
 edge [arrowhead = "normal" style = "dashed" label = ""]
@@ -136,8 +116,6 @@ edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTSingletonDetector -> ClassTUMLDecorator
 edge [arrowhead = "normal" style = "dashed" label = ""]
 ClassTSingletonDetector -> ClassTITraversable
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTSingletonDetector -> ClassTClassNode
 edge [arrowhead = "normal" style = "solid" label = ""]
 ClassTUMLDecorator -> ClassTFileGenerator
 edge [arrowhead = "normal" style = "dashed" label = ""]

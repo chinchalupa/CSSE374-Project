@@ -14,11 +14,11 @@ public class DecoratorDetector extends UMLDecorator implements ITraversable{
     public DecoratorDetector(FileGenerator uml) {
         super(uml);
         this.decoratorNodes = new ArrayList<>();
-        this.nodes = uml.getNodes();
+        this.nodes = uml.updateNodes();
     }
 
     @Override
-    public List<ClassNode> getNodes() {
+    public List<ClassNode> updateNodes() {
 
         findPotentialDecoratorNodes();
         findPotentialDecorations();

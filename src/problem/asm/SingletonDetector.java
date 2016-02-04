@@ -12,11 +12,11 @@ public class SingletonDetector extends UMLDecorator implements ITraversable {
 
     public SingletonDetector(FileGenerator uml) {
         super(uml);
-        this.nodes = uml.getNodes();
+        this.nodes = uml.updateNodes();
     }
 
     @Override
-    public List<ClassNode> getNodes() {
+    public List<ClassNode> updateNodes() {
 
         for(ClassNode node : this.nodes) {
             boolean hasSelfField = false;

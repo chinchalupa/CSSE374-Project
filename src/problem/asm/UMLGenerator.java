@@ -33,7 +33,7 @@ public class UMLGenerator extends FileGenerator {
     }
 
     @Override
-    public List<ClassNode> getNodes() {
+    public List<ClassNode> updateNodes() {
         return this.classNodeList;
     }
 

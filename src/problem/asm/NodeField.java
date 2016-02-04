@@ -8,18 +8,26 @@ public class NodeField implements INodeElement {
     private String name;
     private String type;
     private INode containingClass;
-    private INode createdClass;
+    private String dStructure;
 
-    public NodeField(String name, String type) {
+
+
+    /**
+     * A parameter for a field.
+     * @param name - The name of the item.
+     * @param type - The type of the field or the type of the collection.
+     * @param dStructure - The collection type.
+     */
+    public NodeField(String name, String type, String dStructure) {
         this.name = name;
         this.type = type;
+        this.dStructure = dStructure;
     }
 
-    public NodeField(String name, String type, INode containingClass, INode createdClass) {
+    public NodeField(String name, String type, INode containingClass) {
         this.name = name;
         this.type = type;
         this.containingClass = containingClass;
-        this.createdClass = createdClass;
     }
 
     @Override
@@ -38,8 +46,9 @@ public class NodeField implements INodeElement {
         return this.containingClass;
     }
 
-    public INode getCreatedClass() {
-        return createdClass;
+    @Override
+    public String getCollectionType() {
+        return this.dStructure;
     }
 
     @Override

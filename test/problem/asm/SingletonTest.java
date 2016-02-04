@@ -1,9 +1,6 @@
 package problem.asm;
 
-import java.awt.*;
-import java.io.FilterInputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -55,11 +52,11 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        umlGenerate.getNodes();
+        umlGenerate.updateNodes();
         umlGenerate.write();
 
         singletons = new ArrayList<ClassNode>();
-        for(ClassNode cn : umlGenerate.getNodes()){
+        for(ClassNode cn : umlGenerate.updateNodes()){
             System.out.println(cn.getName());
             if(cn.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>")){
                 singletons.add(cn);
@@ -99,11 +96,11 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        umlGenerate.getNodes();
+        umlGenerate.updateNodes();
         umlGenerate.write();
 
         singletons = new ArrayList<ClassNode>();
-        for(ClassNode cn : umlGenerate.getNodes()){
+        for(ClassNode cn : umlGenerate.updateNodes()){
             System.out.println(cn.getName());
             if(cn.getPatternIdentifier() != null) {
                 if (cn.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>")) {
@@ -129,7 +126,7 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
+        ClassNode node = umlGenerate.updateNodes().get(0);
         assertEquals(true, node.getPatternIdentifier().equals("\\<\\<Singleton\\>\\>"));
 
         umlGenerate.write();
@@ -148,7 +145,7 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
+        ClassNode node = umlGenerate.updateNodes().get(0);
         assertNull(node.getPatternIdentifier());
 
         umlGenerate.write();
@@ -166,7 +163,7 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
+        ClassNode node = umlGenerate.updateNodes().get(0);
         assertNull(node.getPatternIdentifier());
 
         umlGenerate.write();
@@ -185,7 +182,7 @@ public class SingletonTest {
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
 
-        ClassNode node = umlGenerate.getNodes().get(0);
+        ClassNode node = umlGenerate.updateNodes().get(0);
         assertNull(node.getPatternIdentifier());
 
         umlGenerate.write();

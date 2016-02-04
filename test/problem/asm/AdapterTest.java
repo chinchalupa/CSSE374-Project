@@ -3,10 +3,6 @@ package problem.asm;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import problem.asm.AdapterDetector;
-import problem.asm.ClassNode;
-import problem.asm.FileGenerator;
-import problem.asm.UMLGenerator;
 
 import java.util.HashSet;
 import java.util.List;
@@ -51,10 +47,10 @@ public class AdapterTest {
 
         umlGenerator.generateClassList();
         umlGenerator.generateNodes();
-        umlGenerator.getNodes();
+        umlGenerator.updateNodes();
 //        umlGenerator.write();
 
-        for(ClassNode node : umlGenerator.getNodes()) {
+        for(ClassNode node : umlGenerator.updateNodes()) {
             if(node.getPatternIdentifier() != null) {
                 if (node.getPatternIdentifier().equals("\\<\\<Adapter\\>\\>")) {
                     this.set.add(node.getName());

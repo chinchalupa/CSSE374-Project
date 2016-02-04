@@ -1,8 +1,5 @@
 package problem.asm;
 
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.Opcodes;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +33,7 @@ public abstract class FileGenerator {
         this.config = Config.newInstance(configLocation);
     }
 
-    public abstract List<ClassNode> getNodes();
+    public abstract List<ClassNode> updateNodes();
 
     public abstract List<IEdge> getEdges();
 

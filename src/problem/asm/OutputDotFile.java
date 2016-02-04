@@ -97,7 +97,7 @@ public class OutputDotFile implements IVisitor {
 
     @Override
     public void visitDecorator(UMLDecorator umlDecorator) {
-        umlDecorator.getNodes();
+        umlDecorator.updateNodes();
     }
 
     private boolean inOurPackage(String name) {

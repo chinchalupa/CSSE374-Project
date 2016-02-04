@@ -1,6 +1,5 @@
 package problem.asm;
 
-import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +17,12 @@ public class AdapterDetector extends UMLDecorator implements ITraversable{
         super(uml);
         this.itf = new ArrayList<>();
         this.adaptees = new ArrayList<>();
-        this.nodes = uml.getNodes();
+        this.nodes = uml.updateNodes();
         System.out.println("DETECTING ADAPTERS...");
     }
 
     @Override
-    public List<ClassNode> getNodes() {
+    public List<ClassNode> updateNodes() {
         System.out.println("GOT NODES");
         for(IEdge edge : super.getEdges()) {
             if(edge.getLineName().equals("USES")) {

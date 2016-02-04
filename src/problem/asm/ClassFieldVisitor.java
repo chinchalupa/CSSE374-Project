@@ -60,10 +60,9 @@ public class ClassFieldVisitor extends ClassVisitor{
     private void addFieldToNode(String name, String returnType) {
         String cleanName = name.substring(name.lastIndexOf("/") + 1, name.length());
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-        NodeField nodeField = new NodeField(cleanName, cleanReturnType);
+        NodeField nodeField = new NodeField(cleanName, cleanReturnType, "");
         this.classNode.addField(nodeField);
 
-//        System.out.println("ReturnType: " + returnType);
         addNewUses(this.classNode.getName(), returnType);
     }
 
@@ -72,16 +71,11 @@ public class ClassFieldVisitor extends ClassVisitor{
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
         String cleanSignature = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
         String cleanReturn = cleanReturnType + "\\<" + cleanSignature + "\\>";
-        NodeField nodeField = new NodeField(cleanName, cleanReturn);
+        NodeField nodeField = new NodeField(cleanName, cleanReturn, cleanSignature);
         this.classNode.addField(nodeField);
 
-//        System.out.println("RETURN TYPE: " + returnType);
-//        System.out.println("SIGNATURE: " + signature);
-        String sigSub = signature.substring(signature.indexOf("<") + 1, signature.indexOf(";"));
-//        System.out.println("NODE: " + this.classNode.getName());
-//        System.out.println("SIGSUB: " + sigSub);
         addNewUses(this.classNode.getName(), returnType);
-        addNewUses(this.classNode.getName(), sigSub);
+        addNewUses(this.classNode.getName(), cleanSignature);
     }
 
     private void addNewUses(String name, String returnType) {
@@ -101,6 +95,4 @@ public class ClassFieldVisitor extends ClassVisitor{
             this.edges.add(newArrow);
         }
     }
-
-
 }

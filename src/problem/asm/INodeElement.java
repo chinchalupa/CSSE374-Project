@@ -6,5 +6,6 @@ package problem.asm;
 public interface INodeElement extends ITraversable {
     public abstract String getName();
     public abstract String getReturnType();
+    public abstract String getCollectionType();
     public abstract INode getContainingClass();
 }

@@ -164,7 +164,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
                 return;
             }
         }
-        NodeField newNodeField = new NodeField(to.getName(), null, owner, to);
+        NodeField newNodeField = new NodeField(to.getName(), null, owner);
         this.nodeMethod.addCreatedNode(newNodeField);
     }
 }

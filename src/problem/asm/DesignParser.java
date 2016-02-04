@@ -46,7 +46,7 @@ java.lang.Math
 
             umlGenerator.generateClassList();
             umlGenerator.generateNodes();
-            umlGenerator.getNodes();
+            umlGenerator.updateNodes();
             umlGenerator.write();
             System.out.println("Would you like to generate a new file (y/n)?");
             generatingFiles = scanner.nextLine().trim().equals("y");

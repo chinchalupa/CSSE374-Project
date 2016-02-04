@@ -1,5 +1,6 @@
 package problem.asm;
 
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +46,13 @@ public class NodeMethod implements INodeElement {
         this.nodesCreated.add(nodeField);
     }
 
-    public void addPotentialDuplicateMethod(NodeMethod nodeMethod, ArrayList<NodeMethod> existingMethods) {
-
-    }
-
     public List<NodeMethod> getMethodsCalled() {
         return this.methodsCalled;
     }
 
     public void addMethodCalled(NodeMethod nodeMethod) {
-//        this.methodsCalled.add(nodeMethod);
         for(NodeMethod method : this.methodsCalled) {
-            if(method.toString() == nodeMethod.toString()) {
+            if(method.toString().equals(nodeMethod.toString())) {
                 return;
             }
         }
@@ -84,6 +80,11 @@ public class NodeMethod implements INodeElement {
     @Override
     public String getReturnType() {
         return this.returnType;
+    }
+
+    @Override
+    public String getCollectionType() {
+        return "";
     }
 
     @Override
