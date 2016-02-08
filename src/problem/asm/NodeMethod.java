@@ -88,11 +88,6 @@ public class NodeMethod implements INodeElement {
     }
 
     @Override
-    public void accept(IVisitor visitor) {
-        visitor.visitMethod(this);
-    }
-
-    @Override
     public String toString() {
         String s = name + " " + returnType + " ";
         for(String arg : args) {

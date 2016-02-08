@@ -7,16 +7,14 @@ import java.util.List;
  */
 public class CompositeDetector extends UMLDecorator {
 
-    private List<INode> nodes;
 
     public CompositeDetector(FileGenerator uml) {
         super(uml);
-        this.nodes = uml.updateNodes();
     }
 
     @Override
     public List<INode> updateNodes() {
-        for(INode node : nodes) {
+        for(INode node : super.getNodes()) {
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
             for(NodeField field : node.getFields()) {
                 System.out.println("NAME: " + name + " " + field.getCollectionType() + " " + field.getReturnType());
@@ -31,7 +29,7 @@ public class CompositeDetector extends UMLDecorator {
                 }
             }
         }
-        return this.nodes;
+        return super.getNodes();
     }
 
     private void markSelfContainingFields(INode node) {
@@ -39,7 +37,7 @@ public class CompositeDetector extends UMLDecorator {
             node.addPatternIdentifier("\\<\\<Composite\\>\\>");
         } else {
             node.addPatternIdentifier("\\<\\<Component\\>\\>");
-            for(INode superNode : this.nodes) {
+            for(INode superNode : super.getNodes()) {
                 String name = superNode.getName().substring(superNode.getName().lastIndexOf("/") + 1);
                 if(name.equals(node.getExtends())) {
                     superNode.addPatternIdentifier("\\<\\<Component\\>\\>");

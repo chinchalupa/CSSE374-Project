@@ -2,27 +2,72 @@ package problem.asm;
 
 import problem.car.visitor.ITraverser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by wrightjt on 1/11/2016.
  */
-public interface INode extends ITraversable{
+public abstract class INode implements ITraversable{
 
-    public abstract String getName();
-    public abstract String getType();
-    public abstract List<NodeMethod> getMethods();
-    public abstract void addField(NodeField field);
-    public abstract void addMethod(NodeMethod method);
-    public abstract void addInterface(String string);
-    public abstract void setExtension(String string);
-    public abstract List<String> getInterfaces();
-    public abstract String getExtends();
+    String name;
+    String type;
+    String extension;
+    List<String> interfaces;
+    List<NodeMethod> methods;
+    List<NodeField> fields;
+
+    public INode(String name) {
+        this.name = name;
+
+        this.interfaces = new ArrayList<>();
+        this.methods = new ArrayList<>();
+        this.fields = new ArrayList<>();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public List<NodeMethod> getMethods() {
+        return methods;
+    }
+
+    public void addField(NodeField field) {
+        this.fields.add(field);
+    }
+
+    public List<NodeField> getFields() {
+        return this.fields;
+    }
+
+    public void addMethod(NodeMethod method) {
+        this.methods.add(method);
+    }
+
+
+    public void addInterface(String string) {
+        this.interfaces.add(string);
+    }
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
+    public List<String> getInterfaces() {
+        return this.interfaces;
+    }
+
+    public String getExtends() {
+        return this.extension;
+    }
 
     public abstract List<String> getPatternIdentifier();
     public abstract void addPatternIdentifier(String pattern);
     public abstract void setOutlineColor(String color);
     public abstract void setStyle(String style);
 
-    public abstract List<NodeField> getFields();
 }

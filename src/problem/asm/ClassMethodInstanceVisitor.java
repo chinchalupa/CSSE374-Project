@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class ClassMethodInstanceVisitor extends MethodVisitor {
 
-    private List<ClassNode> classNodes;
+    private List<INode> classNodes;
     private NodeMethod nodeMethod;
     private ClassNode node;
 
-    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, ClassNode node, List<ClassNode> classNodes) {
+    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, ClassNode node, List<INode> classNodes) {
         super(i, methodVisitor);
 
         this.nodeMethod = nodeMethod;
@@ -48,7 +48,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 //                if(owner.contains("$")) {
 //                    owner = owner.substring(0, owner.indexOf("$"));
 //                }
-                ClassNode tempNode = getAddedClassNode(owner);
+                INode tempNode = getAddedClassNode(owner);
 
                 boolean noExists = true;
                 NodeMethod tempMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), null, tempNode, this.nodeMethod.getContainingClass());
@@ -96,8 +96,8 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
             owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
             String newdesc = desc.substring(desc.lastIndexOf("/") + 1, desc.length());
 
-            ClassNode toNode = getAddedClassNode(newdesc);
-            ClassNode fromNode = getAddedClassNode(owner);
+            INode toNode = getAddedClassNode(newdesc);
+            INode fromNode = getAddedClassNode(owner);
 
             String type = Type.getType(desc).getClassName();
 
@@ -140,10 +140,10 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
         return list;
     }
 
-    private ClassNode getAddedClassNode(String owner) {
+    private INode getAddedClassNode(String owner) {
         ClassNode tempNode = null;
 
-        for (ClassNode oldNode : this.classNodes) {
+        for (INode oldNode : this.classNodes) {
             if (owner.contains(oldNode.getName())) {
                 return oldNode;
 //                this.nodeMethod.addCreatedNode(tempNode);

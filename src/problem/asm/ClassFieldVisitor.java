@@ -14,7 +14,7 @@ public class ClassFieldVisitor extends ClassVisitor{
     public ClassFieldVisitor(int api){
         super(api);
     }
-    public ClassFieldVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges) {
+    public ClassFieldVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges) {
         super(api, decorated);
 
         this.classNode = node;

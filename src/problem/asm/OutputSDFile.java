@@ -35,7 +35,6 @@ public class OutputSDFile implements IVisitor {
 
     }
 
-    @Override
     public void visitMethod(NodeMethod nodeMethod) {
     }
 //        String s = "";
@@ -78,7 +77,6 @@ public class OutputSDFile implements IVisitor {
 //        this.write(s);
 //    }
 
-    @Override
     public void visitField(NodeField nodeField) {
 //        INode containingClass = nodeField.getContainingClass();
 //      String s = String.format("%s:%s=%s.new", containingClass.getName(), containingClass.getName(),

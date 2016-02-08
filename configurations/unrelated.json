@@ -1,0 +1,13 @@
+{
+  "users": {
+    "isEmployee": true,
+    "skillset": "keyjf49898s0dfdf70"
+  },
+
+  "skillsets": {
+    "userId": "43897kl=439refgn+kljt5409",
+    "skill": "Computer Science",
+    "skills": ["Java", "C", "C++", "Ruby", "SQL", "Mongo", "Android", "Python"]
+  }
+}
+

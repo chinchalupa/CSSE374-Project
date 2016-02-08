@@ -87,17 +87,6 @@ public class OutputDotFile implements IVisitor {
         s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
-
-    @Override
-    public void visitMethod(NodeMethod nodeMethod) {
-        return;
-    }
-
-    @Override
-    public void visitField(NodeField nodeField) {
-        return;
-    }
-
     @Override
     public void visitDecorator(UMLDecorator umlDecorator) {
         umlDecorator.updateNodes();

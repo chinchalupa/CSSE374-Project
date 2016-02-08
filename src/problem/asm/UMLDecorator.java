@@ -14,8 +14,14 @@ public abstract class UMLDecorator extends FileGenerator implements ITraversable
         this.uml = uml;
     }
 
+
     @Override
     public abstract List<INode> updateNodes();
+
+    @Override
+    public List<INode> getNodes() {
+        return uml.getNodes();
+    }
 
     @Override
     public List<IEdge> getEdges() {

@@ -128,7 +128,7 @@ public class Config {
         }
         return files;
     }
-
+    //TODO: Remove these detectors and replace with the single detector method
     public boolean shouldDetectDecorators() {
         JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
         return (Boolean) detectors.get("decorator");
@@ -147,5 +147,10 @@ public class Config {
     public boolean shouldDetectComposites() {
         JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
         return (Boolean) detectors.get("composite");
+    }
+
+    public ArrayList<String> detectedPatterns() {
+        ArrayList<String> patterns = (ArrayList<String>) this.jsonObject.get("detectors");
+        return patterns;
     }
 }

@@ -11,14 +11,14 @@ public class AdapterDetector extends UMLDecorator{
 
     private List<String> itf;
     private List<String> adaptees;
-    private List<INode> nodes;
+//    private List<INode> nodes;
 
 
     public AdapterDetector(FileGenerator uml) {
         super(uml);
         this.itf = new ArrayList<>();
         this.adaptees = new ArrayList<>();
-        this.nodes = uml.updateNodes();
+//        this.nodes = uml.updateNodes();
         System.out.println("DETECTING ADAPTERS...");
     }
 
@@ -30,7 +30,7 @@ public class AdapterDetector extends UMLDecorator{
                 String edgeName = edge.getTo();
                 edgeName = edgeName.substring(edgeName.lastIndexOf("/") + 1);
 
-                for(INode node : this.nodes) {
+                for(INode node : super.getNodes()) {
                     String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                     List<String> itf = node.getInterfaces();
                     String ext = node.getExtends();
@@ -58,7 +58,7 @@ public class AdapterDetector extends UMLDecorator{
         getItfs();
         getExtensions();
 
-        return this.nodes;
+        return super.getNodes();
     }
 
     public void addAdaptsArrow(String node, String extension) {
@@ -75,7 +75,7 @@ public class AdapterDetector extends UMLDecorator{
 
     private void getItfs() {
         for(String s : itf) {
-            for(INode node : this.nodes) {
+            for(INode node : super.getNodes()) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
 
@@ -89,7 +89,7 @@ public class AdapterDetector extends UMLDecorator{
 
     private void getExtensions() {
         for(String s : adaptees) {
-            for(INode node : this.nodes) {
+            for(INode node : super.getNodes()) {
                 String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                 if(nodeName.equals(s)) {
 
@@ -100,11 +100,4 @@ public class AdapterDetector extends UMLDecorator{
             }
         }
     }
-
-    @Override
-    public List<IEdge> getEdges() {
-        return super.getEdges();
-    }
-
-
 }

@@ -6,6 +6,7 @@ import org.objectweb.asm.Opcodes;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,11 +44,14 @@ public class UMLGenerator extends FileGenerator {
     }
 
     public void generateNodes() throws Exception {
+
         for(String file : startingClassStrings) {
+
+            System.out.println(file);
 
             ClassReader reader = new ClassReader(file);
 
-            ClassNode node = new ClassNode(reader.getClassName());
+            INode node = new ClassNode(reader.getClassName());
 
             ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList);
 
@@ -65,23 +69,11 @@ public class UMLGenerator extends FileGenerator {
         OutputStream outputStream = new FileOutputStream(this.outputLocation);
         OutputDotFile visitor = new OutputDotFile(outputStream, this);
 
-        if(Config.getInstance().shouldDetectAdapters()) {
-            AdapterDetector adapterDetector = new AdapterDetector(this);
-            adapterDetector.accept(visitor);
-        }
-        if(Config.getInstance().shouldDetectDecorators()) {
-            UMLDecorator decoratorDetector = new DecoratorDetector(this);
-            decoratorDetector.accept(visitor);
-        }
-
-        if(Config.getInstance().shouldDetectSingletons()) {
-            UMLDecorator singletonDetector = new SingletonDetector(this);
-            singletonDetector.accept(visitor);
-        }
-
-        if(Config.getInstance().shouldDetectComposites()) {
-            UMLDecorator compositeDecorator = new CompositeDetector(this);
-            compositeDecorator.accept(visitor);
+        ArrayList<String> patterns = Config.getInstance().detectedPatterns();
+        for(String pattern : patterns) {
+            Constructor detector = Class.forName(pattern).getConstructor(FileGenerator.class);
+            UMLDecorator decorator = (UMLDecorator) detector.newInstance(this);
+            visitor.visitDecorator(decorator);
         }
 
         for(INode node : this.classNodeList) {

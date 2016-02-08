@@ -37,6 +37,10 @@ public abstract class FileGenerator {
 
     public abstract List<IEdge> getEdges();
 
+    public List<INode> getNodes() {
+        return this.classNodeList;
+    }
+
 
     public abstract void generateClassList();
 
