@@ -19,7 +19,16 @@ public class NodeMethod implements INodeElement {
     private List<NodeMethod> methodsCalled;
     private List<NodeField> nodesCreated;
 
-    public NodeMethod(String name, String returnType, List<String> args, String security, INode containingClassNode, INode parentClassNode) {
+    /**
+     *
+     * @param name - The name of the method called.
+     * @param returnType - The return type of the method called.
+     * @param args - The list of arguments in the method.
+     * @param security - The package level of the method.
+     * @param containingClassNode - The node that contains the method.
+     * @param parentClassNode - The parent of the node.
+     */
+    public NodeMethod(String name, String returnType, List<String> args, String security, INode containingClassNode) {
         this.name = name;
         this.returnType = returnType;
         this.args = args;

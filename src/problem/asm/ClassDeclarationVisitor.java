@@ -6,13 +6,11 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
     public String name;
     public String[] interfaces;
-    private List<INode> classNodes;
     private List<IEdge> edges;
     private INode classNode;
 
-    public ClassDeclarationVisitor(int api, INode classNode, List<INode> classNodes, List<IEdge> edges) {
+    public ClassDeclarationVisitor(int api, INode classNode, List<IEdge> edges) {
         super(api);
-        this.classNodes = classNodes;
         this.edges = edges;
         this.classNode = classNode;
     }
@@ -24,11 +22,11 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         this.interfaces = interfaces;
 //        this.superName = this.superName.substring(this.superName.lastIndexOf("/") + 1, this.superName.length());
 
-        addExtendsArrow(this.classNode.getName(), superName);
+        addExtendsArrow(this.classNode.getMiniName(), superName);
 
 //        }
         for(String itf : this.interfaces)
-            addInheritanceArrow(this.classNode.getName(), itf);
+            addInheritanceArrow(this.classNode.getMiniName(), itf);
 
         super.visit(version, access, name, signature, superName, interfaces);
     }

@@ -2,6 +2,7 @@ package problem.asm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by Jeremy on 1/25/2016.
@@ -11,7 +12,8 @@ public abstract class FileGenerator {
     protected String outputLocation;
     protected String inputFile;
 
-    protected List<INode> classNodeList;
+    protected Stack<INode> classNodeList;
+    protected ArrayList<INode> finishedClassNodeList;
     protected List<IEdge> edgeList;
 
     protected Config config;
@@ -25,20 +27,27 @@ public abstract class FileGenerator {
         this.outputLocation = outputLocation;
         this.inputFile = inputFile;
 
-        this.classNodeList = new ArrayList<>();
+        this.classNodeList = new Stack<>();
         this.edgeList = new ArrayList<>();
+        this.finishedClassNodeList = new ArrayList<>();
     }
 
     public FileGenerator(String configLocation) {
         this.config = Config.newInstance(configLocation);
+
+        this.classNodeList = new Stack<>();
+        this.edgeList = new ArrayList<>();
+        this.finishedClassNodeList = new ArrayList<>();
     }
 
     public abstract List<INode> updateNodes();
 
-    public abstract List<IEdge> getEdges();
+    public List<IEdge> getEdges() {
+        return this.edgeList;
+    }
 
     public List<INode> getNodes() {
-        return this.classNodeList;
+        return this.finishedClassNodeList;
     }
 
 

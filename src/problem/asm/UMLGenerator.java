@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by Jeremy on 1/25/2016.
@@ -22,11 +23,9 @@ public class UMLGenerator extends FileGenerator {
         this.startingClassStrings = new ArrayList<>();
     }
 
-    public UMLGenerator() {
-//        super(configLocation);
+    public UMLGenerator(String configurationLocation) {
+        super(configurationLocation);
         this.outputLocation = Config.getInstance().getDotFileOutputLocation();
-        this.classNodeList = new ArrayList<>();
-        this.edgeList = new ArrayList<>();
     }
 
     public void generateClassList() {
@@ -45,15 +44,15 @@ public class UMLGenerator extends FileGenerator {
 
     public void generateNodes() throws Exception {
 
-        for(String file : startingClassStrings) {
+        this.createAllClassNodes();
 
-            System.out.println(file);
+        while(!this.classNodeList.isEmpty()) {
 
-            ClassReader reader = new ClassReader(file);
+            INode node = this.classNodeList.pop();
 
-            INode node = new ClassNode(reader.getClassName());
+            ClassReader reader = new ClassReader(node.getName());
 
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList);
+            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, edgeList);
 
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList);
 
@@ -61,8 +60,20 @@ public class UMLGenerator extends FileGenerator {
 
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
-            this.classNodeList.add(node);
+            this.finishedClassNodeList.add(node);
         }
+
+    }
+
+    public List<INode> createAllClassNodes() {
+
+        for(String file : this.startingClassStrings) {
+            INode node = new ClassNode(file);
+            String miniName = file.substring(file.lastIndexOf(".") + 1);
+            node.setMiniName(miniName);
+            this.classNodeList.push(node);
+        }
+        return this.classNodeList;
     }
 
     public void write() throws Exception {
@@ -76,7 +87,7 @@ public class UMLGenerator extends FileGenerator {
             visitor.visitDecorator(decorator);
         }
 
-        for(INode node : this.classNodeList) {
+        for(INode node : this.finishedClassNodeList) {
             node.accept(visitor);
         }
 

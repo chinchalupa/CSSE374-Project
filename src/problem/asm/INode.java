@@ -11,6 +11,10 @@ import java.util.List;
 public abstract class INode implements ITraversable{
 
     String name;
+    String miniName;
+
+
+
     String type;
     String extension;
     List<String> interfaces;
@@ -31,6 +35,14 @@ public abstract class INode implements ITraversable{
 
     public String getType() {
         return this.type;
+    }
+
+    public void setMiniName(String miniName) {
+        this.miniName = miniName;
+    }
+
+    public String getMiniName() {
+        return miniName;
     }
 
     public List<NodeMethod> getMethods() {

@@ -9,17 +9,18 @@ import sun.security.krb5.internal.crypto.Des;
 import javax.xml.soap.Node;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by wrightjt on 1/13/2016.
  */
 public class ClassMethodInstanceVisitor extends MethodVisitor {
 
-    private List<INode> classNodes;
+    private Stack<INode> classNodes;
     private NodeMethod nodeMethod;
-    private ClassNode node;
+    private INode node;
 
-    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, ClassNode node, List<INode> classNodes) {
+    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, INode node, Stack<INode> classNodes) {
         super(i, methodVisitor);
 
         this.nodeMethod = nodeMethod;
@@ -31,7 +32,7 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
 
-
+        System.out.println(name + " " + owner);
 
 //        ClassDeclarationVisitor toDecorate = new ClassDeclarationVisitor(Opcodes.ASM5);
 
@@ -44,34 +45,34 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 //                    System.out.println("Description: " + desc + "\n");
 //                }
 
-                owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
+//                owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
 //                if(owner.contains("$")) {
 //                    owner = owner.substring(0, owner.indexOf("$"));
 //                }
-                INode tempNode = getAddedClassNode(owner);
+//                INode tempNode = getAddedClassNode(owner);
 
-                boolean noExists = true;
-                NodeMethod tempMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), null, tempNode, this.nodeMethod.getContainingClass());
-//                System.out.println(tempMethod.toString());
-                for(NodeMethod method : tempNode.getMethods()) {
-                    if(method.toString().equals(tempMethod.toString())) {
-                        tempMethod = method;
-                        tempMethod.setParentClassNode(this.nodeMethod.getContainingClass());
-                        noExists = false;
-                    }
-                }
-
-                if(noExists) {
-                    tempNode.addMethod(tempMethod);
-                }
-//                System.out.println("HAS METHOD: " + tempMethod.getName() + " " + tempMethod );
-
-                this.nodeMethod.addMethodCalled(tempMethod);
+//                boolean noExists = true;
+////                NodeMethod tempMethod = new NodeMethod(name, addReturnType(desc), addArguments(desc), null, tempNode, this.nodeMethod.getContainingClass());
+////                System.out.println(tempMethod.toString());
+//                for(NodeMethod method : tempNode.getMethods()) {
+//                    if(method.toString().equals(tempMethod.toString())) {
+//                        tempMethod = method;
+//                        tempMethod.setParentClassNode(this.nodeMethod.getContainingClass());
+//                        noExists = false;
+//                    }
+//                }
+//
+//                if(noExists) {
+//                    tempNode.addMethod(tempMethod);
+//                }
+////                System.out.println("HAS METHOD: " + tempMethod.getName() + " " + tempMethod );
+//
+//                this.nodeMethod.addMethodCalled(tempMethod);
             }
 //        }
 
-    @Override
-    public void visitTypeInsn(int i, String s) {
+//    @Override
+//    public void visitTypeInsn(int i, String s) {
 //        s = s.substring(s.lastIndexOf("/") + 1, s.length());
 //        for(ClassNode node : this.classNodes) {
 //            if(node.getName().equals(s)) {
@@ -84,87 +85,87 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 //            System.out.println("Created: " + s);
 //        }
 //        super.visitTypeInsn(i, s);
-    }
-
-    @Override
-    public void visitFieldInsn(int opcode, String owner, String name, String desc) {
-//        if(DesignParser.inPackage(owner) && DesignParser.inPackage(desc)) {
-//            System.out.println("Owner: " + owner);
-//            System.out.println("Name: " + name);
-//            System.out.println("Desc: " + desc);
-
-            owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
-            String newdesc = desc.substring(desc.lastIndexOf("/") + 1, desc.length());
-
-            INode toNode = getAddedClassNode(newdesc);
-            INode fromNode = getAddedClassNode(owner);
-
-            String type = Type.getType(desc).getClassName();
-
-            type = type.substring(type.lastIndexOf("/") + 1, type.length());
-
-            addGeneratedClassNode(fromNode, toNode);
-
+//    }
+//
+//    @Override
+//    public void visitFieldInsn(int opcode, String owner, String name, String desc) {
+////        if(DesignParser.inPackage(owner) && DesignParser.inPackage(desc)) {
+////            System.out.println("Owner: " + owner);
+////            System.out.println("Name: " + name);
+////            System.out.println("Desc: " + desc);
+//
+//            owner = owner.substring(owner.lastIndexOf("/") + 1, owner.length());
+//            String newdesc = desc.substring(desc.lastIndexOf("/") + 1, desc.length());
+//
+//            INode toNode = getAddedClassNode(newdesc);
+//            INode fromNode = getAddedClassNode(owner);
+//
+//            String type = Type.getType(desc).getClassName();
+//
+//            type = type.substring(type.lastIndexOf("/") + 1, type.length());
+//
+//            addGeneratedClassNode(fromNode, toNode);
+//
+////        }
+//    }
+//
+//    public String addAccessLevel(int access){
+//        String level="";
+//        if((access& Opcodes.ACC_PUBLIC)!=0){
+//            level="public";
+//        }else if((access&Opcodes.ACC_PROTECTED)!=0){
+//            level="protected";
+//        }else if((access&Opcodes.ACC_PRIVATE)!=0){
+//            level="private";
+//        }else{
+//            level="default";
 //        }
-    }
-
-    public String addAccessLevel(int access){
-        String level="";
-        if((access& Opcodes.ACC_PUBLIC)!=0){
-            level="public";
-        }else if((access&Opcodes.ACC_PROTECTED)!=0){
-            level="protected";
-        }else if((access&Opcodes.ACC_PRIVATE)!=0){
-            level="private";
-        }else{
-            level="default";
-        }
-        return level;
-    }
-
-    public String addReturnType(String desc){
-        String returnType = Type.getReturnType(desc).getClassName();
-        if(returnType.contains(".") && !returnType.contains("String")) {
-            returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
-        }
-        return returnType;
-    }
-
-    public List<String> addArguments(String desc){
-        ArrayList<String> list = new ArrayList<>();
-        Type[] args = Type.getArgumentTypes(desc);
-        for(int i=0; i< args.length; i++){
-            String className = args[i].getClassName();
-            list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
-        }
-        return list;
-    }
-
-    private INode getAddedClassNode(String owner) {
-        ClassNode tempNode = null;
-
-        for (INode oldNode : this.classNodes) {
-            if (owner.contains(oldNode.getName())) {
-                return oldNode;
-//                this.nodeMethod.addCreatedNode(tempNode);
-            }
-        }
-
-        if (tempNode == null) {
-            tempNode = new ClassNode(owner);
-            this.classNodes.add(tempNode);
-            return tempNode;
-        }
-        return tempNode;
-    }
-
-    public void addGeneratedClassNode(INode owner, INode to) {
-        for(NodeField nodeField : this.nodeMethod.getClassNodeFieldsCreated()) {
-            if(nodeField.getName().contains(to.getName())) {
-                return;
-            }
-        }
-        NodeField newNodeField = new NodeField(to.getName(), null, owner);
-        this.nodeMethod.addCreatedNode(newNodeField);
-    }
+//        return level;
+//    }
+//
+//    public String addReturnType(String desc){
+//        String returnType = Type.getReturnType(desc).getClassName();
+//        if(returnType.contains(".") && !returnType.contains("String")) {
+//            returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
+//        }
+//        return returnType;
+//    }
+//
+//    public List<String> addArguments(String desc){
+//        ArrayList<String> list = new ArrayList<>();
+//        Type[] args = Type.getArgumentTypes(desc);
+//        for(int i=0; i< args.length; i++){
+//            String className = args[i].getClassName();
+//            list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
+//        }
+//        return list;
+//    }
+//
+//    private INode getAddedClassNode(String owner) {
+//        ClassNode tempNode = null;
+//
+//        for (INode oldNode : this.classNodes) {
+//            if (owner.contains(oldNode.getName())) {
+//                return oldNode;
+////                this.nodeMethod.addCreatedNode(tempNode);
+//            }
+//        }
+//
+//        if (tempNode == null) {
+//            tempNode = new ClassNode(owner);
+//            this.classNodes.add(tempNode);
+//            return tempNode;
+//        }
+//        return tempNode;
+//    }
+//
+//    public void addGeneratedClassNode(INode owner, INode to) {
+//        for(NodeField nodeField : this.nodeMethod.getClassNodeFieldsCreated()) {
+//            if(nodeField.getName().contains(to.getName())) {
+//                return;
+//            }
+//        }
+//        NodeField newNodeField = new NodeField(to.getName(), null, owner);
+//        this.nodeMethod.addCreatedNode(newNodeField);
+//    }
 }

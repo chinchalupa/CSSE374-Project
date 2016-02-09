@@ -31,10 +31,9 @@ public class AdapterDetector extends UMLDecorator{
                 edgeName = edgeName.substring(edgeName.lastIndexOf("/") + 1);
 
                 for(INode node : super.getNodes()) {
-                    String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
                     List<String> itf = node.getInterfaces();
                     String ext = node.getExtends();
-                    if(nodeName.equals(edgeName) && (itf.size() > 0 || ext != null)) {
+                    if(node.getMiniName().equals(edgeName) && (itf.size() > 0 || ext != null)) {
                         node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
                         node.setOutlineColor("#ff0000");
                         node.setStyle("filled");
@@ -42,7 +41,7 @@ public class AdapterDetector extends UMLDecorator{
                         String edgeFrom = edge.getFrom();
 
                         this.itf.add(edgeFrom);
-                        addAdaptsArrow(nodeName, edgeFrom);
+                        addAdaptsArrow(node.getMiniName(), edgeFrom);
                         if (ext != null) {
                             this.adaptees.add(ext);
                         }
@@ -64,8 +63,8 @@ public class AdapterDetector extends UMLDecorator{
     public void addAdaptsArrow(String node, String extension) {
         for(IEdge edge : super.getEdges()) {
             if(!edge.getLineName().equals("EXTENDS")) {
-                String to = edge.getTo().substring(edge.getTo().lastIndexOf("/") + 1);
-                if(to.equals(node) && edge.getFrom().equals(extension))  {
+//                String to = edge.getTo().substring(edge.getTo().lastIndexOf("/") + 1);
+                if(edge.getTo().equals(node) && edge.getFrom().equals(extension))  {
                     edge.setText("\\<\\<adapts\\>\\>");
                     return;
                 }
@@ -76,8 +75,7 @@ public class AdapterDetector extends UMLDecorator{
     private void getItfs() {
         for(String s : itf) {
             for(INode node : super.getNodes()) {
-                String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
-                if(nodeName.equals(s)) {
+                if(node.getMiniName().equals(s)) {
 
                     node.addPatternIdentifier("\\<\\<Target\\>\\>");
                     node.setOutlineColor("#ff0000");
@@ -90,8 +88,7 @@ public class AdapterDetector extends UMLDecorator{
     private void getExtensions() {
         for(String s : adaptees) {
             for(INode node : super.getNodes()) {
-                String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
-                if(nodeName.equals(s)) {
+                if(node.getMiniName().equals(s)) {
 
                     node.addPatternIdentifier("\\<\\<Adaptee\\>\\>");
                     node.setOutlineColor("#ff0000");

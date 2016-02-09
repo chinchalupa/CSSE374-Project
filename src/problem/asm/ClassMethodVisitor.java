@@ -8,20 +8,23 @@ import org.objectweb.asm.Type;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
     private INode classNode;
     private List<IEdge> edges;
+    private Stack<INode> nodes;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges, List<INode> nodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges, Stack<INode> nodes) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;
+        this.nodes = nodes;
     }
 
     @Override
@@ -49,20 +52,20 @@ public class ClassMethodVisitor extends ClassVisitor {
         for(String arg : arguments) {
             cleanArgs.add(arg.substring(arg.lastIndexOf("/") + 1, arg.length()));
         }
-        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode, null);
+        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode);
 
-//        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
+        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
 //        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
         this.classNode.addMethod(nodeMethod);
 
         // dotAssociates
         for(int i = 0; i < arguments.size(); i++) {
             if(Config.inPackageConfiguration(arguments.get(i))) {
-                addNewUses(this.classNode.getName(), cleanArgs.get(i));
+                addNewUses(this.classNode.getMiniName(), cleanArgs.get(i));
             }
         }
         if(Config.inPackageConfiguration(returnType)) {
-            addNewUses(this.classNode.getName(), cleanReturnType);
+            addNewUses(this.classNode.getMiniName(), cleanReturnType);
         }
 
         return methodDecorator;
@@ -103,7 +106,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         String returnType = returnValue.getClassName();
 //        System.out.println(returnValue.toString());
         returnType = returnType.replace(".", "/");
-        addNewAssociationArrow(this.classNode.getName(), returnType);
+        addNewAssociationArrow(this.classNode.getMiniName(), returnType);
         return returnType;
     }
 

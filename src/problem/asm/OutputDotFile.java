@@ -42,10 +42,9 @@ public class OutputDotFile implements IVisitor {
     public void visitNodes(ClassNode node) {
 
         if(this.inOurPackage(node.getName())) {
-            String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
             String s = "node [shape = \"record\" color = \"#000000\" fillcolor = \"" + node.getOutlineColor() + "\" style=\"" + node.getStyle() + "\"]\n";
-            s += "ClassT" + name + " [label = \"{" + name;
+            s += "ClassT" + node.getMiniName() + " [label = \"{" + node.getMiniName();
             if(node.getPatternIdentifier() != null) {
                 s += "\\l";
                 for(String identifier : node.getPatternIdentifier()) {

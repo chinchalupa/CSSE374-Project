@@ -7,20 +7,7 @@ public class TestHelper {
 
 	public static FileGenerator setUp(String confpath) throws Exception {
 		
-		Config config = Config.newInstance(confpath);
-		FileGenerator umlGenerator = new UMLGenerator();
-
-		if (config.shouldDetectSingletons()) {
-			umlGenerator = new SingletonDetector(umlGenerator);
-		}
-
-		if (config.shouldDetectDecorators()) {
-			umlGenerator = new DecoratorDetector(umlGenerator);
-		}
-
-		if (config.shouldDetectAdapters()) {
-			umlGenerator = new AdapterDetector(umlGenerator);
-		}
+		FileGenerator umlGenerator = new UMLGenerator(confpath);
 
 		umlGenerator.generateClassList();
 		umlGenerator.generateNodes();

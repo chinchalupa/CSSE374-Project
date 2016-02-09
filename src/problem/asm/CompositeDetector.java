@@ -15,14 +15,13 @@ public class CompositeDetector extends UMLDecorator {
     @Override
     public List<INode> updateNodes() {
         for(INode node : super.getNodes()) {
-            String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
             for(NodeField field : node.getFields()) {
-                System.out.println("NAME: " + name + " " + field.getCollectionType() + " " + field.getReturnType());
+//                System.out.println("NAME: " + name + " " + field.getCollectionType() + " " + field.getReturnType());
                 String returnType = field.getReturnType();
                 if(!field.getCollectionType().equals("")) {
                     returnType = returnType.substring(returnType.indexOf("<") + 1, returnType.lastIndexOf("\\"));
                 }
-                if(!(field.getCollectionType()).equals("") && (returnType.equals(name))) {
+                if(!(field.getCollectionType()).equals("") && (returnType.equals(node.getMiniName()))) {
                     node.setStyle("filled");
                     node.setOutlineColor("#ffff00");
                     markSelfContainingFields(node);

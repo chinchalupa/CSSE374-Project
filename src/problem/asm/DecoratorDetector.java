@@ -33,15 +33,13 @@ public class DecoratorDetector extends UMLDecorator {
 
     private void findPotentialDecoratorNodes() {
         for(INode node : super.getNodes()) {
-            String name = node.getName();
-            String cleanedName = name.substring(name.lastIndexOf("/") + 1, name.length());
             String extension = node.getExtends();
 
             if(extension != null) {
                 // Find a uses edge that goes to the extends
                 for (IEdge edge : super.getEdges()) {
 
-                    if (edge.getTo().equals(name) && edge.getFrom().equals(extension)
+                    if (edge.getTo().equals(node.getMiniName()) && edge.getFrom().equals(extension)
                         && edge.getLineName().equals("USES")) {
                         edge.setText("<<decorates>>");
                         node.addPatternIdentifier("\\<\\<Decorator\\>\\>");
@@ -56,11 +54,10 @@ public class DecoratorDetector extends UMLDecorator {
 
     private void findPotentialDecorations() {
         for(INode node : this.decoratorNodes) {
-            String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
             for(INode decoration : super.getNodes()) {
                 String extension = decoration.getExtends();
                 if(extension != null) {
-                    if (extension.equals(name)) {
+                    if (extension.equals(node.getMiniName())) {
                         decoration.addPatternIdentifier("\\<\\<Decorator\\>\\>");
                         decoration.setStyle("filled");
                         decoration.setOutlineColor("#00ff00");
@@ -74,8 +71,7 @@ public class DecoratorDetector extends UMLDecorator {
         for(INode node : this.decoratorNodes) {
             String extensionName = node.getExtends();
             for(INode searchingNode : super.getNodes()) {
-                String name = searchingNode.getName().substring(searchingNode.getName().lastIndexOf("/") + 1, searchingNode.getName().length());
-                if(extensionName.equals(name)) {
+                if(extensionName.equals(node.getMiniName())) {
                     searchingNode.addPatternIdentifier("\\<\\<Component\\>\\>");
                     searchingNode.setStyle("filled");
                     searchingNode.setOutlineColor("#00ff00");

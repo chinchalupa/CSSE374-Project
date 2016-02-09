@@ -63,7 +63,7 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturnType, "");
         this.classNode.addField(nodeField);
 
-        addNewUses(this.classNode.getName(), returnType);
+        addNewUses(this.classNode.getMiniName(), returnType);
     }
 
     private void addFieldToNode(String name, String returnType, String signature) {
@@ -74,16 +74,14 @@ public class ClassFieldVisitor extends ClassVisitor{
         NodeField nodeField = new NodeField(cleanName, cleanReturn, cleanSignature);
         this.classNode.addField(nodeField);
 
-        addNewUses(this.classNode.getName(), returnType);
+        addNewUses(this.classNode.getMiniName(), returnType);
 //        System.out.println("ADDED SIGGY: " + cleanSignature + " FROM: " + this.classNode.getName());
-        addNewUses(this.classNode.getName(), cleanSignature);
+        addNewUses(this.classNode.getMiniName(), cleanSignature);
     }
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
-//        System.out.println("RETURN: " + returnType);
         if(Config.inPackageConfiguration(returnType)) {
-//            System.out.println("RETURN TYPE: " + returnType);
             returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
             Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
             for (IEdge edge : this.edges) {
