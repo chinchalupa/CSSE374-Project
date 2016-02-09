@@ -15,7 +15,6 @@ public class NodeMethod implements INodeElement {
     private List<String> args;
     private String security;
     private INode containingClassNode;
-    private INode parentClassNode;
     private List<NodeMethod> methodsCalled;
     private List<NodeField> nodesCreated;
 
@@ -26,7 +25,6 @@ public class NodeMethod implements INodeElement {
      * @param args - The list of arguments in the method.
      * @param security - The package level of the method.
      * @param containingClassNode - The node that contains the method.
-     * @param parentClassNode - The parent of the node.
      */
     public NodeMethod(String name, String returnType, List<String> args, String security, INode containingClassNode) {
         this.name = name;
@@ -36,15 +34,6 @@ public class NodeMethod implements INodeElement {
         this.containingClassNode = containingClassNode;
         this.methodsCalled = new ArrayList<>();
         this.nodesCreated = new ArrayList<>();
-        this.parentClassNode = parentClassNode;
-    }
-
-    public INode getParentClassNode() {
-        return parentClassNode;
-    }
-
-    public void setParentClassNode(INode parentClassNode) {
-        this.parentClassNode = parentClassNode;
     }
 
     public List<NodeField> getClassNodeFieldsCreated() {
@@ -62,6 +51,7 @@ public class NodeMethod implements INodeElement {
     public void addMethodCalled(NodeMethod nodeMethod) {
         for(NodeMethod method : this.methodsCalled) {
             if(method.toString().equals(nodeMethod.toString())) {
+                System.out.println("DUPLICATE METHOD: " + method);
                 return;
             }
         }

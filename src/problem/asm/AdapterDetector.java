@@ -24,30 +24,37 @@ public class AdapterDetector extends UMLDecorator{
 
     @Override
     public List<INode> updateNodes() {
-        System.out.println("GOT NODES");
         for(IEdge edge : super.getEdges()) {
             if(edge.getLineName().equals("USES")) {
                 String edgeName = edge.getTo();
                 edgeName = edgeName.substring(edgeName.lastIndexOf("/") + 1);
 
                 for(INode node : super.getNodes()) {
-                    List<String> itf = node.getInterfaces();
+                    List<String> itfs = node.getInterfaces();
                     String ext = node.getExtends();
-                    if(node.getMiniName().equals(edgeName) && (itf.size() > 0 || ext != null)) {
-                        node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
-                        node.setOutlineColor("#ff0000");
-                        node.setStyle("filled");
+                    if(node.getMiniName().equals(edgeName) && (itfs.size() > 0 || ext != null)) {
+
+
+
+
 
                         String edgeFrom = edge.getFrom();
+                        if(checkIfNodeReallyIsAdapterOfClass(node, edgeFrom)) {
 
-                        this.itf.add(edgeFrom);
-                        addAdaptsArrow(node.getMiniName(), edgeFrom);
-                        if (ext != null) {
-                            this.adaptees.add(ext);
-                        }
-                        for (String it : itf) {
-                            this.adaptees.add(it);
-//                    }
+                            node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
+                            node.setOutlineColor("#ff0000");
+                            node.setStyle("filled");
+
+                            if (ext != null) {
+                                this.adaptees.add(ext);
+                            }
+                            this.itf.add(edgeFrom);
+                            addAdaptsArrow(node.getMiniName(), edgeFrom);
+
+                            for (String it : itfs) {
+                                this.adaptees.add(it);
+
+                            }
                         }
                     }
                 }
@@ -58,6 +65,27 @@ public class AdapterDetector extends UMLDecorator{
         getExtensions();
 
         return super.getNodes();
+    }
+
+    /**
+     * Checks if the node REALLY is an adapter
+     */
+    private boolean checkIfNodeReallyIsAdapterOfClass(INode node, String adaptee) {
+
+        int counter = 0;
+
+        System.out.println("NODE METHOD NAME: " + node.getMiniName() + "\t" + adaptee);
+        for(NodeMethod method : node.getMethods()) {
+            for(NodeMethod calledMethod : method.getMethodsCalled()) {
+                String containingClass = calledMethod.getContainingClass().getMiniName();
+//                System.out.println("CALLED METHOD: " + calledMethod.toString() + "  " + calledMethod.getContainingClass());
+                if(containingClass.equals(adaptee)) {
+                    counter++;
+                }
+            }
+        }
+
+        return (counter >= Config.getInstance().getAdapterMinimumCount());
     }
 
     public void addAdaptsArrow(String node, String extension) {

@@ -8,6 +8,7 @@ import sun.security.krb5.internal.crypto.Des;
 
 import javax.xml.soap.Node;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -16,25 +17,69 @@ import java.util.Stack;
  */
 public class ClassMethodInstanceVisitor extends MethodVisitor {
 
-    private Stack<INode> classNodes;
+    private LinkedList<INode> classNodes;
     private NodeMethod nodeMethod;
     private INode node;
+    private List<INode> finishedNodes;
 
-    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, INode node, Stack<INode> classNodes) {
+    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, INode node, LinkedList<INode> classNodes, List<INode> finishedNodes) {
         super(i, methodVisitor);
 
         this.nodeMethod = nodeMethod;
         this.classNodes = classNodes;
         this.node = node;
+        this.finishedNodes = finishedNodes;
     }
 
 
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
 
-        System.out.println(name + " " + owner);
+//        System.out.println(name + " " + owner);
+        String fullOwner = owner.replace("/", ".");
+        String miniOwner = owner.substring(owner.lastIndexOf("/") + 1);
 
-//        ClassDeclarationVisitor toDecorate = new ClassDeclarationVisitor(Opcodes.ASM5);
+        //Check if owner is an existing class
+        INode node = new ClassNode(fullOwner);
+        node.setMiniName(miniOwner);
+        boolean nodeAlreadyExists = false;
+
+        for(INode finishedNode : finishedNodes) {
+            if(finishedNode.toString().equals(node.toString())) {
+                nodeAlreadyExists = true;
+                break;
+            }
+        }
+        for(INode inProgressNode : classNodes){
+            if(inProgressNode.toString().equals(node.toString())) {
+                nodeAlreadyExists = true;
+                break;
+            }
+        }
+
+        String returnType = addReturnType(desc);
+        returnType = returnType.substring(returnType.lastIndexOf("/") + 1);
+
+        List<String> cleanArgs = new ArrayList<>();
+        for(String arg : addArguments(desc)) {
+            cleanArgs.add(arg.substring(arg.lastIndexOf("/") + 1));
+        }
+
+        NodeMethod nodeMethod = new NodeMethod(name, returnType, cleanArgs, null, node);
+
+
+        if(!nodeAlreadyExists) {
+            classNodes.offer(node);
+            node.addMethod(nodeMethod);
+            this.nodeMethod.addMethodCalled(nodeMethod);
+            System.out.println("Added called method: " + this.node.getName() + " " + this.nodeMethod.getName());
+        }
+        else {
+            this.nodeMethod.addMethodCalled(nodeMethod);
+            System.out.println("Added method on existing method: " + nodeMethod.getName() + " " + this.node.getName());
+        }
+
+
 
 //            if (DesignParser.inPackage(owner)) {
 //                if(name.equals("shuffle")) {
@@ -109,63 +154,36 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 ////        }
 //    }
 //
-//    public String addAccessLevel(int access){
-//        String level="";
-//        if((access& Opcodes.ACC_PUBLIC)!=0){
-//            level="public";
-//        }else if((access&Opcodes.ACC_PROTECTED)!=0){
-//            level="protected";
-//        }else if((access&Opcodes.ACC_PRIVATE)!=0){
-//            level="private";
-//        }else{
-//            level="default";
-//        }
-//        return level;
-//    }
-//
-//    public String addReturnType(String desc){
-//        String returnType = Type.getReturnType(desc).getClassName();
-//        if(returnType.contains(".") && !returnType.contains("String")) {
-//            returnType = returnType.substring(returnType.lastIndexOf(".") + 1, returnType.length());
-//        }
-//        return returnType;
-//    }
-//
-//    public List<String> addArguments(String desc){
-//        ArrayList<String> list = new ArrayList<>();
-//        Type[] args = Type.getArgumentTypes(desc);
-//        for(int i=0; i< args.length; i++){
-//            String className = args[i].getClassName();
-//            list.add(className.substring(className.lastIndexOf(".") + 1, className.length()));
-//        }
-//        return list;
-//    }
-//
-//    private INode getAddedClassNode(String owner) {
-//        ClassNode tempNode = null;
-//
-//        for (INode oldNode : this.classNodes) {
-//            if (owner.contains(oldNode.getName())) {
-//                return oldNode;
-////                this.nodeMethod.addCreatedNode(tempNode);
-//            }
-//        }
-//
-//        if (tempNode == null) {
-//            tempNode = new ClassNode(owner);
-//            this.classNodes.add(tempNode);
-//            return tempNode;
-//        }
-//        return tempNode;
-//    }
-//
-//    public void addGeneratedClassNode(INode owner, INode to) {
-//        for(NodeField nodeField : this.nodeMethod.getClassNodeFieldsCreated()) {
-//            if(nodeField.getName().contains(to.getName())) {
-//                return;
-//            }
-//        }
-//        NodeField newNodeField = new NodeField(to.getName(), null, owner);
-//        this.nodeMethod.addCreatedNode(newNodeField);
-//    }
+    public String addAccessLevel(int access){
+        String level="";
+        if((access& Opcodes.ACC_PUBLIC)!=0){
+            level="+";
+        }else if((access&Opcodes.ACC_PROTECTED)!=0){
+            level="#";
+        }else if((access&Opcodes.ACC_PRIVATE)!=0){
+            level="-";
+        }else if((access&Opcodes.ACC_STATIC) != 0){
+            level="&";
+        } else {
+            level = "default";
+        }
+        return level;
+    }
+
+    public String addReturnType(String desc){
+        Type returnValue = Type.getReturnType(desc);
+        String returnType = returnValue.getClassName();
+        returnType = returnType.replace(".", "/");
+        return returnType;
+    }
+    public List<String> addArguments(String desc){
+        ArrayList<String> list = new ArrayList<>();
+        Type[] args = Type.getArgumentTypes(desc);
+        for(int i=0; i< args.length; i++){
+            String className = args[i].getClassName();
+            className = className.replace(".", "/");
+            list.add(className);
+        }
+        return list;
+    }
 }

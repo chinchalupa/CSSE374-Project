@@ -7,6 +7,7 @@ import org.objectweb.asm.Type;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -14,17 +15,19 @@ public class ClassMethodVisitor extends ClassVisitor {
 
     private INode classNode;
     private List<IEdge> edges;
-    private Stack<INode> nodes;
+    private LinkedList<INode> nodes;
+    private List<INode> finishedNodes;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges, Stack<INode> nodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges, LinkedList<INode> nodes, List<INode> finishedNodes) {
         super(api, decorated);
         this.classNode = node;
         this.edges = edges;
         this.nodes = nodes;
+        this.finishedNodes = finishedNodes;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         String returnType = null;
         if(signature != null)
-            returnType = addReturnType(desc );
+            returnType = addReturnType(desc);
         else
             returnType = addReturnType(desc);
 
@@ -54,7 +57,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         }
         NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode);
 
-        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
+        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes, finishedNodes);
 //        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
         this.classNode.addMethod(nodeMethod);
 
@@ -89,17 +92,11 @@ public class ClassMethodVisitor extends ClassVisitor {
         return level;
     }
 
-//    public String addReturnType(String desc, String sig) {
-//        Type type = Type.getReturnType(sig);
-//        String classname = type.getClassName();
-//        System.out.println("CLASSNAME: " + classname);
-//        String collectionType = classname.substring(classname.indexOf("<") + 1, classname.indexOf(">"));
-//        String returnValue = classname.replace(".", "/");
-//        collectionType = collectionType.replace(".", "/");
-//        System.out.println(returnValue + " " + collectionType);
-//        return returnValue;
-//    }
-
+    /**
+     * Adds a return value.
+     * @param desc - The descriptor for the method.
+     * @return The return type.
+     */
     public String addReturnType(String desc){
 
         Type returnValue = Type.getReturnType(desc);

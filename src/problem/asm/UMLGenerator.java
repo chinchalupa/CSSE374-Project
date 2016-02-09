@@ -3,24 +3,21 @@ package problem.asm;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.LineNumberNode;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Jeremy on 1/25/2016.
  */
 public class UMLGenerator extends FileGenerator {
 
-    protected List<String> startingClassStrings;
 
     public UMLGenerator(String outputLocation, String inputFile) {
         super(outputLocation, inputFile);
-        this.startingClassStrings = new ArrayList<>();
     }
 
     public UMLGenerator(String configurationLocation) {
@@ -28,12 +25,8 @@ public class UMLGenerator extends FileGenerator {
         this.outputLocation = Config.getInstance().getDotFileOutputLocation();
     }
 
-    public void generateClassList() {
-        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
-    }
-
     @Override
-    public List<INode> updateNodes() {
+    public LinkedList<INode> updateNodes() {
         return this.classNodeList;
     }
 
@@ -46,9 +39,15 @@ public class UMLGenerator extends FileGenerator {
 
         this.createAllClassNodes();
 
-        while(!this.classNodeList.isEmpty()) {
+        int maxNodes = getTotalStartingClassSize();
 
-            INode node = this.classNodeList.pop();
+        while(!this.classNodeList.isEmpty() && maxNodes != 0) {
+
+            for(INode node : this.classNodeList) {
+                System.out.println("LIST NODE: " + node);
+            }
+
+            INode node = this.classNodeList.poll();
 
             ClassReader reader = new ClassReader(node.getName());
 
@@ -56,13 +55,17 @@ public class UMLGenerator extends FileGenerator {
 
             ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList);
 
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList, finishedClassNodeList);
 
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
             this.finishedClassNodeList.add(node);
-        }
+            System.out.println("ADDED: " + node);
 
+            maxNodes--;
+
+            System.out.println("NODE: " + node + " " + maxNodes);
+        }
     }
 
     public List<INode> createAllClassNodes() {
@@ -71,7 +74,7 @@ public class UMLGenerator extends FileGenerator {
             INode node = new ClassNode(file);
             String miniName = file.substring(file.lastIndexOf(".") + 1);
             node.setMiniName(miniName);
-            this.classNodeList.push(node);
+            this.classNodeList.offer(node);
         }
         return this.classNodeList;
     }
@@ -97,6 +100,8 @@ public class UMLGenerator extends FileGenerator {
 
         visitor.end();
     }
+
+
 
     public List<String> getClasses() {
         return this.startingClassStrings;

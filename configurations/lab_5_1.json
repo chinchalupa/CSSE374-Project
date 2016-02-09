@@ -14,5 +14,9 @@
   "classes": [
     "java.util.Enumeration",
     "java.util.Iterator"
-  ]
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 2
+  }
 }

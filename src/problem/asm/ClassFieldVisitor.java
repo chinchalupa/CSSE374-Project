@@ -23,6 +23,7 @@ public class ClassFieldVisitor extends ClassVisitor{
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
 
+
         FieldVisitor toDecorate = super.visitField(access, name, desc, signature, value);
 
         String type = Type.getType(desc).getClassName();
@@ -34,6 +35,7 @@ public class ClassFieldVisitor extends ClassVisitor{
         }
 
         if(signature != null) {
+            System.out.println("NAME: " + name + " " + signature + " " + type);
             addFieldToNode(name, type, signature);
         }
         else {
@@ -58,8 +60,8 @@ public class ClassFieldVisitor extends ClassVisitor{
     }
 
     private void addFieldToNode(String name, String returnType) {
-        String cleanName = name.substring(name.lastIndexOf("/") + 1, name.length());
-        String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
+        String cleanName = name.substring(name.lastIndexOf("/") + 1);
+        String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1);
         NodeField nodeField = new NodeField(cleanName, cleanReturnType, "");
         this.classNode.addField(nodeField);
 

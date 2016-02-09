@@ -4,44 +4,44 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTDecryptionInputStream [label = "{DecryptionInputStream\l\<\<Decorator\>\>\l|decryptor : IDecryption\l|init(InputStream, IDecryption) : void\lread() : int\lread(byte[], intint) : int\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTEncryptionOutputStream [label = "{EncryptionOutputStream\l\<\<Decorator\>\>\l|encryptor : IEncryption\l|init(OutputStream, IEncryption) : void\lwrite(int) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassT.DecryptionInputStream [label = "{.DecryptionInputStream\l\<\<Adapter\>\>\l|decryptor : IDecryption\l|init(InputStream, IDecryption) : void\lread() : int\lread(byte[], intint) : int\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassT.EncryptionOutputStream [label = "{.EncryptionOutputStream\l\<\<Adapter\>\>\l|encryptor : IEncryption\l|init(OutputStream, IEncryption) : void\lwrite(int) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTIDecryption [label = "{IDecryption\l||decrypt(char) : char\l}"]
+ClassT.IDecryption [label = "{.IDecryption\l||decrypt(char) : char\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTIEncryption [label = "{IEncryption\l||encrypt(char) : char\l}"]
+ClassT.IEncryption [label = "{.IEncryption\l||encrypt(char) : char\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTSubstitutionCipher [label = "{SubstitutionCipher\l|encryptionKey : char[]\ldecryptionKey : char[]\l|init() : void\lencrypt(char) : char\ldecrypt(char) : char\l}"]
+ClassT.SubstitutionCipher [label = "{.SubstitutionCipher\l|encryptionKey : char[]\ldecryptionKey : char[]\l|init() : void\lencrypt(char) : char\ldecrypt(char) : char\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTTextEditorApp [label = "{TextEditorApp\l||init() : void\lmain(String[]) : void\l}"]
+ClassT.TextEditorApp [label = "{.TextEditorApp\l||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterInputStream [label = "{FilterInputStream\l\<\<Decorator\>\>\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+ClassT.FilterInputStream [label = "{.FilterInputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterOutputStream [label = "{FilterOutputStream\l\<\<Decorator\>\>\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTInputStream [label = "{InputStream\l\<\<Component\>\>\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTOutputStream [label = "{OutputStream\l\<\<Component\>\>\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+ClassT.FilterOutputStream [label = "{.FilterOutputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassT.InputStream [label = "{.InputStream\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+ClassT.OutputStream [label = "{.OutputStream\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
 edge [arrowhead = "normal" style = "solid" label = ""]
-ClassTDecryptionInputStream -> ClassTFilterInputStream
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTDecryptionInputStream -> ClassTIDecryption
+ClassT.DecryptionInputStream -> ClassTFilterInputStream
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
+ClassT.DecryptionInputStream -> ClassTIDecryption
 edge [arrowhead = "normal" style = "solid" label = ""]
-ClassTEncryptionOutputStream -> ClassTFilterOutputStream
-edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTEncryptionOutputStream -> ClassTIEncryption
+ClassT.EncryptionOutputStream -> ClassTFilterOutputStream
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
+ClassT.EncryptionOutputStream -> ClassTIEncryption
 edge [arrowhead = "normal" style = "dashed" label = ""]
-ClassTSubstitutionCipher -> ClassTIEncryption
+ClassT.SubstitutionCipher -> ClassTIEncryption
 edge [arrowhead = "normal" style = "dashed" label = ""]
-ClassTSubstitutionCipher -> ClassTIDecryption
+ClassT.SubstitutionCipher -> ClassTIDecryption
 edge [arrowhead = "normal" style = "solid" label = ""]
-ClassTFilterInputStream -> ClassTInputStream
+ClassT.FilterInputStream -> ClassTInputStream
 edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
-ClassTFilterInputStream -> ClassTInputStream
+ClassT.FilterInputStream -> ClassTInputStream
 edge [arrowhead = "normal" style = "solid" label = ""]
-ClassTFilterOutputStream -> ClassTOutputStream
+ClassT.FilterOutputStream -> ClassTOutputStream
 edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
-ClassTFilterOutputStream -> ClassTOutputStream
+ClassT.FilterOutputStream -> ClassTOutputStream
 }

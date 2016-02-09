@@ -61,7 +61,6 @@ public abstract class INode implements ITraversable{
         this.methods.add(method);
     }
 
-
     public void addInterface(String string) {
         this.interfaces.add(string);
     }

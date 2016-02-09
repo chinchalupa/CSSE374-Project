@@ -1,10 +1,10 @@
 {
-  "detectors": {
-    "decorator": true,
-    "adapter": false,
-    "singleton": false,
-    "composite": true
-  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
 
   "dot_output": "input_output/lab21.dot",
   "packages": [

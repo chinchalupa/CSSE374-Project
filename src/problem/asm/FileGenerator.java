@@ -1,8 +1,6 @@
 package problem.asm;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Jeremy on 1/25/2016.
@@ -12,9 +10,10 @@ public abstract class FileGenerator {
     protected String outputLocation;
     protected String inputFile;
 
-    protected Stack<INode> classNodeList;
+    protected LinkedList<INode> classNodeList;
     protected ArrayList<INode> finishedClassNodeList;
     protected List<IEdge> edgeList;
+    protected List<String> startingClassStrings;
 
     protected Config config;
 
@@ -27,7 +26,7 @@ public abstract class FileGenerator {
         this.outputLocation = outputLocation;
         this.inputFile = inputFile;
 
-        this.classNodeList = new Stack<>();
+        this.classNodeList = new LinkedList<>();
         this.edgeList = new ArrayList<>();
         this.finishedClassNodeList = new ArrayList<>();
     }
@@ -35,9 +34,10 @@ public abstract class FileGenerator {
     public FileGenerator(String configLocation) {
         this.config = Config.newInstance(configLocation);
 
-        this.classNodeList = new Stack<>();
+        this.classNodeList = new LinkedList<>();
         this.edgeList = new ArrayList<>();
         this.finishedClassNodeList = new ArrayList<>();
+        this.startingClassStrings = new ArrayList<>();
     }
 
     public abstract List<INode> updateNodes();
@@ -50,8 +50,15 @@ public abstract class FileGenerator {
         return this.finishedClassNodeList;
     }
 
+    public int getTotalStartingClassSize() {
+        return this.startingClassStrings.size();
+    }
 
-    public abstract void generateClassList();
+
+    public void generateClassList() {
+        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
+        System.out.println(this.startingClassStrings.size());
+    }
 
     public abstract void generateNodes() throws Exception;
 

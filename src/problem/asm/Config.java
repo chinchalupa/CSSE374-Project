@@ -133,4 +133,9 @@ public class Config {
         ArrayList<String> patterns = (ArrayList<String>) this.jsonObject.get("detectors");
         return patterns;
     }
+
+    public long getAdapterMinimumCount() {
+        JSONObject adapterSettings = (JSONObject) this.jsonObject.get("adapterSettings");
+        return (long) adapterSettings.get("minimumMethodCalls");
+    }
 }
