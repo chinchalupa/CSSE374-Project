@@ -9,46 +9,22 @@ public abstract class FileGenerator {
 
     protected String outputLocation;
     protected String inputFile;
+    protected ItemHandler itemHandler;
 
-    protected LinkedList<INode> classNodeList;
-    protected ArrayList<INode> finishedClassNodeList;
-    protected List<IEdge> edgeList;
     protected List<String> startingClassStrings;
 
-    protected Config config;
-
-    public FileGenerator() {
-        this.outputLocation = "./input_output";
-        this.inputFile = "./src/problem/asm";
-    }
 
     public FileGenerator(String outputLocation, String inputFile) {
         this.outputLocation = outputLocation;
         this.inputFile = inputFile;
-
-        this.classNodeList = new LinkedList<>();
-        this.edgeList = new ArrayList<>();
-        this.finishedClassNodeList = new ArrayList<>();
     }
 
-    public FileGenerator(String configLocation) {
-        this.config = Config.newInstance(configLocation);
-
-        this.classNodeList = new LinkedList<>();
-        this.edgeList = new ArrayList<>();
-        this.finishedClassNodeList = new ArrayList<>();
+    public FileGenerator() {
         this.startingClassStrings = new ArrayList<>();
+        this.itemHandler = new ItemHandler();
     }
 
     public abstract List<INode> updateNodes();
-
-    public List<IEdge> getEdges() {
-        return this.edgeList;
-    }
-
-    public List<INode> getNodes() {
-        return this.finishedClassNodeList;
-    }
 
     public int getTotalStartingClassSize() {
         return this.startingClassStrings.size();

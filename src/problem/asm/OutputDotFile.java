@@ -39,7 +39,7 @@ public class OutputDotFile implements IVisitor {
     }
 
     @Override
-    public void visitNodes(ClassNode node) {
+    public void visitNodes(INode node) {
 
         if(this.inOurPackage(node.getName())) {
 

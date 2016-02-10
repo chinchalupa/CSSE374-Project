@@ -7,18 +7,15 @@ import java.util.List;
 
 public class ClassFieldVisitor extends ClassVisitor{
 
-    private INode classNode;
-    private List<IEdge> edges;
-    private String pkg;
+    private ItemHandler itemHandler;
 
     public ClassFieldVisitor(int api){
         super(api);
     }
-    public ClassFieldVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges) {
+    public ClassFieldVisitor(int api, ClassVisitor decorated, ItemHandler itemHandler) {
         super(api, decorated);
 
-        this.classNode = node;
-        this.edges = edges;
+        this.itemHandler = itemHandler;
     }
 
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
@@ -60,42 +57,44 @@ public class ClassFieldVisitor extends ClassVisitor{
     }
 
     private void addFieldToNode(String name, String returnType) {
+        INode activeNode = this.itemHandler.getActiveNode();
+
         String cleanName = name.substring(name.lastIndexOf("/") + 1);
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1);
         NodeField nodeField = new NodeField(cleanName, cleanReturnType, "");
-        this.classNode.addField(nodeField);
+        activeNode.addField(nodeField);
 
-        addNewUses(this.classNode.getMiniName(), returnType);
+        addNewUses(activeNode.getMiniName(), returnType);
     }
 
     private void addFieldToNode(String name, String returnType, String signature) {
+        INode activeNode = this.itemHandler.getActiveNode();
+
         String cleanName = name.substring(name.lastIndexOf("/") + 1, name.length());
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-        String cleanSignature = signature.substring(signature.lastIndexOf("/") + 1, signature.indexOf(";"));
+        System.out.println("SIGNATURE: " + signature);
+        String cleanSignature = signature.substring(signature.lastIndexOf("/") + 1, signature.lastIndexOf(";") - 3);
         String cleanReturn = cleanReturnType + "\\<" + cleanSignature + "\\>";
         NodeField nodeField = new NodeField(cleanName, cleanReturn, cleanSignature);
-        this.classNode.addField(nodeField);
+        activeNode.addField(nodeField);
 
-        addNewUses(this.classNode.getMiniName(), returnType);
-//        System.out.println("ADDED SIGGY: " + cleanSignature + " FROM: " + this.classNode.getName());
-        addNewUses(this.classNode.getMiniName(), cleanSignature);
+        addNewUses(activeNode.getMiniName(), returnType);
+        addNewAggregates(activeNode.getMiniName(), cleanSignature);
     }
 
     private void addNewUses(String name, String returnType) {
         // Uses arrow
         if(Config.inPackageConfiguration(returnType)) {
-            returnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
-            for (IEdge edge : this.edges) {
-                if (edge.toString().equals(newArrow.toString())) {
-                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    } else {
-                        return;
-                    }
-                }
-            }
-            this.edges.add(newArrow);
+            this.itemHandler.createEdge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
+        }
+    }
+
+    private void addNewAggregates(String name, String returnType) {
+        // Aggregates arrow
+        System.out.println("Return type " + returnType);
+        if(Config.inPackageConfiguration(returnType)) {
+            System.out.println("PUSHING AGGREGATES ARROW");
+            this.itemHandler.createEdge(name, returnType, "\"odiamond\"", "\"solid\"", "AGGREGATES");
         }
     }
 }

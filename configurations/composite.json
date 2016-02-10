@@ -1,0 +1,17 @@
+{
+
+  "detectors": [
+    "problem.asm.CompositeDetector"
+  ],
+
+  "dot_output": "input_output/composite_test.dot",
+  "packages": [
+    "./src/composite"
+  ],
+  "classes": [
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  }
+}

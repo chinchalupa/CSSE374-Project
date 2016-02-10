@@ -13,21 +13,15 @@ import java.util.Stack;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
-    private INode classNode;
-    private List<IEdge> edges;
-    private LinkedList<INode> nodes;
-    private List<INode> finishedNodes;
+    private ItemHandler itemHandler;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, INode node, List<IEdge> edges, LinkedList<INode> nodes, List<INode> finishedNodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ItemHandler itemHandler) {
         super(api, decorated);
-        this.classNode = node;
-        this.edges = edges;
-        this.nodes = nodes;
-        this.finishedNodes = finishedNodes;
+        this.itemHandler = itemHandler;
     }
 
     @Override
@@ -46,7 +40,7 @@ public class ClassMethodVisitor extends ClassVisitor {
         else
             returnType = addReturnType(desc);
 
-
+        INode activeNode = this.itemHandler.getActiveNode();
 
         List<String> arguments = addArguments(desc);
         String accessLevel = addAccessLevel(access);
@@ -55,20 +49,19 @@ public class ClassMethodVisitor extends ClassVisitor {
         for(String arg : arguments) {
             cleanArgs.add(arg.substring(arg.lastIndexOf("/") + 1, arg.length()));
         }
-        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode);
+        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, activeNode);
 
-        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes, finishedNodes);
-//        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
-        this.classNode.addMethod(nodeMethod);
+        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, itemHandler);
+        activeNode.addMethod(nodeMethod);
 
         // dotAssociates
         for(int i = 0; i < arguments.size(); i++) {
             if(Config.inPackageConfiguration(arguments.get(i))) {
-                addNewUses(this.classNode.getMiniName(), cleanArgs.get(i));
+                addNewUses(activeNode.getMiniName(), cleanArgs.get(i));
             }
         }
         if(Config.inPackageConfiguration(returnType)) {
-            addNewUses(this.classNode.getMiniName(), cleanReturnType);
+            addNewUses(activeNode.getMiniName(), cleanReturnType);
         }
 
         return methodDecorator;
@@ -101,9 +94,8 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         Type returnValue = Type.getReturnType(desc);
         String returnType = returnValue.getClassName();
-//        System.out.println(returnValue.toString());
         returnType = returnType.replace(".", "/");
-        addNewAssociationArrow(this.classNode.getMiniName(), returnType);
+        addNewAssociationArrow(this.itemHandler.getActiveNode().getMiniName(), returnType);
         return returnType;
     }
 
@@ -122,38 +114,14 @@ public class ClassMethodVisitor extends ClassVisitor {
     private void addNewUses(String name, String returnType) {
         // Uses
         if(Config.inPackageConfiguration(returnType)) {
-            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
-            for (IEdge edge : this.edges) {
-                if (edge.toString().equals(newArrow.toString())) {
-                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    }
-                    else {
-                        return;
-                    }
-                }
-            }
-            this.edges.add(newArrow);
+            this.itemHandler.createEdge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
         }
     }
 
     private void addNewAssociationArrow(String name, String returnType) {
-        String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
+        String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1);
         if(Config.inPackageConfiguration(returnType)) {
-            Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
-            for (IEdge edge : this.edges) {
-                if (edge.toString().equals(newArrow.toString())) {
-                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    } else if(edge.getLineName().equals("USES")) {
-                        this.edges.remove(edge);
-                        break;
-                    } else {
-                        return;
-                    }
-                }
-            }
-            this.edges.add(newArrow);
+            this.itemHandler.createEdge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
         }
     }
 

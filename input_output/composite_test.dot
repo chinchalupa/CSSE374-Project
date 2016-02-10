@@ -1,0 +1,25 @@
+digraph G {
+
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+rankdir=BT
+
+node [shape = "record" color = "#000000" fillcolor = "#ffff00" style="filled"]
+ClassTCompositeItem [label = "{CompositeItem\l\<\<Composite\>\>\l|items : List\<Item\>\l|init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ffff00" style="filled"]
+ClassTCoolItem [label = "{CoolItem\l\<\<Leaf\>\>\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ffff00" style="filled"]
+ClassTItem [label = "{Item\l\<\<Component\>\>\l||init() : void\ldoOp() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ffff00" style="filled"]
+ClassTSuperCompositeItem [label = "{SuperCompositeItem\l\<\<Composite\>\>\l|masterItems : List\<CompositeItem\>\l|init() : void\l}"]
+edge [arrowhead = "onormal" style = "solid" label = ""]
+ClassTCompositeItem -> ClassTItem
+edge [arrowhead = "odiamond" style = "solid" label = ""]
+ClassTCompositeItem -> ClassTItem
+edge [arrowhead = "onormal" style = "solid" label = ""]
+ClassTCoolItem -> ClassTItem
+edge [arrowhead = "onormal" style = "solid" label = ""]
+ClassTSuperCompositeItem -> ClassTCompositeItem
+edge [arrowhead = "odiamond" style = "solid" label = ""]
+ClassTSuperCompositeItem -> ClassTCompositeItem
+}

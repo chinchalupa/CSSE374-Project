@@ -13,4 +13,5 @@ public interface IEdge extends ITraversable{
     public abstract String getLineName();
     @Override
     public abstract String toString();
+    public abstract boolean equals(IEdge edge);
 }

@@ -28,7 +28,8 @@ java.lang.Math
 
 
             String configLocation = scanner.nextLine();
-            FileGenerator umlGenerator = new UMLGenerator(configLocation);
+            Config.newInstance(configLocation);
+            FileGenerator umlGenerator = new UMLGenerator();
 
 //            if(config.shouldDetectSingletons()) {
 //

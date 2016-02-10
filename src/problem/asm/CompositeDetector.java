@@ -1,5 +1,6 @@
 package problem.asm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,44 +8,67 @@ import java.util.List;
  */
 public class CompositeDetector extends UMLDecorator {
 
+    private List<String> compositeNodeNames = new ArrayList<>();
+    private List<INode> compositeObjects = new ArrayList<>();
 
     public CompositeDetector(FileGenerator uml) {
         super(uml);
     }
 
-    @Override
-    public List<INode> updateNodes() {
+    /**
+     * Find all the composites from their properties.
+     */
+    private void findComposites() {
         for(INode node : super.getNodes()) {
             for(NodeField field : node.getFields()) {
-//                System.out.println("NAME: " + name + " " + field.getCollectionType() + " " + field.getReturnType());
-                String returnType = field.getReturnType();
-                if(!field.getCollectionType().equals("")) {
-                    returnType = returnType.substring(returnType.indexOf("<") + 1, returnType.lastIndexOf("\\"));
-                }
-                if(!(field.getCollectionType()).equals("") && (returnType.equals(node.getMiniName()))) {
-                    node.setStyle("filled");
+                if(field.getCollectionType().equals(node.getExtends())) {
+                    this.compositeNodeNames.add(node.getExtends());
+                    this.compositeObjects.add(node);
+                    node.addPatternIdentifier("\\<\\<Composite\\>\\>");
                     node.setOutlineColor("#ffff00");
-                    markSelfContainingFields(node);
+                    node.setStyle("filled");
                 }
             }
         }
+    }
+
+    /**
+     * Find all the components from the composites.
+     */
+    private void findComponents() {
+        for(INode node : super.getNodes()) {
+            if(compositeNodeNames.contains(node.getMiniName()) && !node.getPatternIdentifier().contains("\\<\\<Composite\\>\\>")) {
+                this.compositeObjects.add(node);
+                node.addPatternIdentifier("\\<\\<Component\\>\\>");
+                node.setOutlineColor("#ffff00");
+                node.setStyle("filled");
+            }
+        }
+    }
+
+    /**
+     * Find all the leaves from the composite objects.
+     */
+    private void findLeaves() {
+        for(INode node : super.getNodes()) {
+            for(INode compositeNode : this.compositeObjects) {
+                System.out.println(compositeNode.getMiniName() + " " + node.getExtends() + " " + node.getMiniName());
+                if(compositeNode.getMiniName().equals(node.getExtends()) && !this.compositeObjects.contains(node)) {
+                    node.addPatternIdentifier("\\<\\<Leaf\\>\\>");
+                    node.setOutlineColor("#ffff00");
+                    node.setStyle("filled");
+                }
+            }
+        }
+    }
+
+    @Override
+    public List<INode> updateNodes() {
+        System.out.println("DETECTING COMPOSITES...");
+        findComposites();
+        findComponents();
+        findLeaves();
         return super.getNodes();
     }
 
-    private void markSelfContainingFields(INode node) {
-        if(node.getExtends() != null) {
-            node.addPatternIdentifier("\\<\\<Composite\\>\\>");
-        } else {
-            node.addPatternIdentifier("\\<\\<Component\\>\\>");
-            for(INode superNode : super.getNodes()) {
-                String name = superNode.getName().substring(superNode.getName().lastIndexOf("/") + 1);
-                if(name.equals(node.getExtends())) {
-                    superNode.addPatternIdentifier("\\<\\<Component\\>\\>");
-                    superNode.setStyle("filled");
-                    superNode.setOutlineColor("#ffff00");
-                }
-            }
-        }
-
-    }
 }

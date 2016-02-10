@@ -6,8 +6,9 @@ package problem.asm;
 public class TestHelper {
 
 	public static FileGenerator setUp(String confpath) throws Exception {
-		
-		FileGenerator umlGenerator = new UMLGenerator(confpath);
+
+		Config.newInstance(confpath);
+		FileGenerator umlGenerator = new UMLGenerator();
 
 		umlGenerator.generateClassList();
 		umlGenerator.generateNodes();

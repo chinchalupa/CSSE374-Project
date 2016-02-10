@@ -17,18 +17,14 @@ import java.util.Stack;
  */
 public class ClassMethodInstanceVisitor extends MethodVisitor {
 
-    private LinkedList<INode> classNodes;
     private NodeMethod nodeMethod;
-    private INode node;
-    private List<INode> finishedNodes;
+    private ItemHandler itemHandler;
 
-    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, INode node, LinkedList<INode> classNodes, List<INode> finishedNodes) {
+    public ClassMethodInstanceVisitor(int i, MethodVisitor methodVisitor, NodeMethod nodeMethod, ItemHandler itemHandler) {
         super(i, methodVisitor);
 
         this.nodeMethod = nodeMethod;
-        this.classNodes = classNodes;
-        this.node = node;
-        this.finishedNodes = finishedNodes;
+        this.itemHandler = itemHandler;
     }
 
 
@@ -44,13 +40,13 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
         node.setMiniName(miniOwner);
         boolean nodeAlreadyExists = false;
 
-        for(INode finishedNode : finishedNodes) {
+        for(INode finishedNode : this.itemHandler.getCreatedNodes()) {
             if(finishedNode.toString().equals(node.toString())) {
                 nodeAlreadyExists = true;
                 break;
             }
         }
-        for(INode inProgressNode : classNodes){
+        for(INode inProgressNode : this.itemHandler.getNodeStack()){
             if(inProgressNode.toString().equals(node.toString())) {
                 nodeAlreadyExists = true;
                 break;
@@ -69,14 +65,14 @@ public class ClassMethodInstanceVisitor extends MethodVisitor {
 
 
         if(!nodeAlreadyExists) {
-            classNodes.offer(node);
+            this.itemHandler.offer(node);
             node.addMethod(nodeMethod);
             this.nodeMethod.addMethodCalled(nodeMethod);
-            System.out.println("Added called method: " + this.node.getName() + " " + this.nodeMethod.getName());
+//            System.out.println("Added called method: " + this.itemHandler.getActiveNode().getName() + " " + this.nodeMethod.getName());
         }
         else {
             this.nodeMethod.addMethodCalled(nodeMethod);
-            System.out.println("Added method on existing method: " + nodeMethod.getName() + " " + this.node.getName());
+//            System.out.println("Added method on existing method: " + nodeMethod.getName() + " " + this.itemHandler.getActiveNode().getName());
         }
 
 

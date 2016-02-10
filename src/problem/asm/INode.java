@@ -81,4 +81,7 @@ public abstract class INode implements ITraversable{
     public abstract void setOutlineColor(String color);
     public abstract void setStyle(String style);
 
+    public abstract String getOutlineColor();
+    public abstract String getStyle();
+
 }

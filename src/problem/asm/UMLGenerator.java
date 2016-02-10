@@ -3,7 +3,6 @@ package problem.asm;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.LineNumberNode;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -20,19 +19,14 @@ public class UMLGenerator extends FileGenerator {
         super(outputLocation, inputFile);
     }
 
-    public UMLGenerator(String configurationLocation) {
-        super(configurationLocation);
+    public UMLGenerator() {
+        super();
         this.outputLocation = Config.getInstance().getDotFileOutputLocation();
     }
 
     @Override
     public LinkedList<INode> updateNodes() {
-        return this.classNodeList;
-    }
-
-    @Override
-    public List<IEdge> getEdges() {
-        return this.edgeList;
+        return this.itemHandler.getNodeStack();
     }
 
     public void generateNodes() throws Exception {
@@ -41,42 +35,37 @@ public class UMLGenerator extends FileGenerator {
 
         int maxNodes = getTotalStartingClassSize();
 
-        while(!this.classNodeList.isEmpty() && maxNodes != 0) {
+        while(!this.itemHandler.getNodeStack().isEmpty() && maxNodes != 0) {
 
-            for(INode node : this.classNodeList) {
-                System.out.println("LIST NODE: " + node);
-            }
-
-            INode node = this.classNodeList.poll();
+            INode node = this.itemHandler.poll();
 
             ClassReader reader = new ClassReader(node.getName());
 
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, edgeList);
+            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, this.itemHandler);
 
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList);
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, this.itemHandler);
 
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList, finishedClassNodeList);
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, this.itemHandler);
 
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
-            this.finishedClassNodeList.add(node);
-            System.out.println("ADDED: " + node);
+            this.itemHandler.getCreatedNodes().add(node);
+//            System.out.println("ADDED: " + node);
 
             maxNodes--;
 
-            System.out.println("NODE: " + node + " " + maxNodes);
+//            System.out.println("NODE: " + node + " " + maxNodes);
         }
     }
 
-    public List<INode> createAllClassNodes() {
+    public void createAllClassNodes() {
 
         for(String file : this.startingClassStrings) {
             INode node = new ClassNode(file);
             String miniName = file.substring(file.lastIndexOf(".") + 1);
             node.setMiniName(miniName);
-            this.classNodeList.offer(node);
+            this.itemHandler.offer(node);
         }
-        return this.classNodeList;
     }
 
     public void write() throws Exception {
@@ -90,11 +79,11 @@ public class UMLGenerator extends FileGenerator {
             visitor.visitDecorator(decorator);
         }
 
-        for(INode node : this.finishedClassNodeList) {
+        for(INode node : this.itemHandler.getCreatedNodes()) {
             node.accept(visitor);
         }
 
-        for(IEdge edge : this.edgeList) {
+        for(IEdge edge : this.itemHandler.getEdges()) {
             edge.accept(visitor);
         }
 

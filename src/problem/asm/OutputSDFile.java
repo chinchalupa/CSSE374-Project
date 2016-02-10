@@ -25,7 +25,7 @@ public class OutputSDFile implements IVisitor {
 
 
     @Override
-    public void visitNodes(ClassNode node) {
+    public void visitNodes(INode node) {
         String s = String.format("%s:%s \"%s\"", node.getName(), node.getName(), node.getName());
         this.write(s);
     }

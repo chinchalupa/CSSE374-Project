@@ -65,4 +65,9 @@ public class Edge implements IEdge {
     public String toString() {
         return this.to + this.from;
     }
+
+    @Override
+    public boolean equals(IEdge edge) {
+        return (this.getTo().equals(edge.getTo()) && this.getFrom().equals(edge.getFrom()));
+    }
 }

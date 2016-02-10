@@ -11,9 +11,12 @@ public class AdapterDetector extends UMLDecorator{
 
     private List<String> itf;
     private List<String> adaptees;
-//    private List<INode> nodes;
 
 
+    /**
+     * Detector for adapters on the UML Diagram.
+     * @param uml - The UML Diagram.
+     */
     public AdapterDetector(FileGenerator uml) {
         super(uml);
         this.itf = new ArrayList<>();
@@ -68,17 +71,15 @@ public class AdapterDetector extends UMLDecorator{
     }
 
     /**
-     * Checks if the node REALLY is an adapter
+     * Checks if the node REALLY is an adapter.
      */
     private boolean checkIfNodeReallyIsAdapterOfClass(INode node, String adaptee) {
 
         int counter = 0;
 
-        System.out.println("NODE METHOD NAME: " + node.getMiniName() + "\t" + adaptee);
         for(NodeMethod method : node.getMethods()) {
             for(NodeMethod calledMethod : method.getMethodsCalled()) {
                 String containingClass = calledMethod.getContainingClass().getMiniName();
-//                System.out.println("CALLED METHOD: " + calledMethod.toString() + "  " + calledMethod.getContainingClass());
                 if(containingClass.equals(adaptee)) {
                     counter++;
                 }

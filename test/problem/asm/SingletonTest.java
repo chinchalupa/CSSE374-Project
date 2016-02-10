@@ -44,8 +44,8 @@ public class SingletonTest {
 
         String readClass = "configurations/singleton_test.json";
 
-
-        umlGenerate = new UMLGenerator(readClass);
+        Config.newInstance(readClass);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
@@ -87,7 +87,9 @@ public class SingletonTest {
         singletons = new ArrayList<>();
 
         String jsonFile = "configurations/our_project.json";
-        umlGenerate = new UMLGenerator(jsonFile);
+
+        Config.newInstance(jsonFile);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
@@ -119,8 +121,8 @@ public class SingletonTest {
 //        String saveLocation = "input_output/runtime.dot";
         String jsonFile = "configurations/runtime.json";
 
-
-        umlGenerate = new UMLGenerator(jsonFile);
+        Config.newInstance(jsonFile);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
         umlGenerate.generateNodes();
@@ -146,7 +148,7 @@ public class SingletonTest {
 
         Config.newInstance(jsonFile);
 
-        umlGenerate = new UMLGenerator(jsonFile);
+        umlGenerate = new UMLGenerator();
 
         umlGenerate = new SingletonDetector(umlGenerate);
 

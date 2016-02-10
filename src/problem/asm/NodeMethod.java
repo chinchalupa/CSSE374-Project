@@ -51,7 +51,6 @@ public class NodeMethod implements INodeElement {
     public void addMethodCalled(NodeMethod nodeMethod) {
         for(NodeMethod method : this.methodsCalled) {
             if(method.toString().equals(nodeMethod.toString())) {
-                System.out.println("DUPLICATE METHOD: " + method);
                 return;
             }
         }

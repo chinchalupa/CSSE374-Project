@@ -6,13 +6,12 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
     public String name;
     public String[] interfaces;
-    private List<IEdge> edges;
-    private INode classNode;
 
-    public ClassDeclarationVisitor(int api, INode classNode, List<IEdge> edges) {
+    private ItemHandler itemHandler;
+
+    public ClassDeclarationVisitor(int api, ItemHandler itemHandler) {
         super(api);
-        this.edges = edges;
-        this.classNode = classNode;
+        this.itemHandler = itemHandler;
     }
 
     @Override
@@ -20,13 +19,13 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 
         this.name = name;
         this.interfaces = interfaces;
-//        this.superName = this.superName.substring(this.superName.lastIndexOf("/") + 1, this.superName.length());
+        INode activeNode = this.itemHandler.getActiveNode();
 
-        addExtendsArrow(this.classNode.getMiniName(), superName);
+        addExtendsArrow(activeNode.getMiniName(), superName);
 
 //        }
         for(String itf : this.interfaces)
-            addInheritanceArrow(this.classNode.getMiniName(), itf);
+            addInheritanceArrow(activeNode.getMiniName(), itf);
 
         super.visit(version, access, name, signature, superName, interfaces);
     }
@@ -35,23 +34,30 @@ public class ClassDeclarationVisitor extends ClassVisitor {
         return name;
     }
 
+    /**
+     * Adds an extends arrow to the list of edges.
+     * @param nodeName - The name of the node.
+     * @param superName - The name of the class that is being extended from.
+     */
     private void addExtendsArrow(String nodeName, String superName) {
         String cleanSuperName = superName.substring(superName.lastIndexOf("/") + 1, superName.length());
-            IEdge edge = new Edge(nodeName, cleanSuperName, "\"normal\"", "\"solid\"", "EXTENDS");
 
         if(Config.inPackageConfiguration(superName)) {
-            this.classNode.setExtension(cleanSuperName);
-            this.edges.add(edge);
+            this.itemHandler.getActiveNode().setExtension(cleanSuperName);
+            this.itemHandler.createEdge(nodeName, cleanSuperName, "\"onormal\"", "\"solid\"", "EXTENDS");
         }
     }
 
+    /**
+     * Adds an inheritance arrow to the list of edges.
+     * @param nodeName - The name of the node.
+     * @param itfName - The name of the interface that is being inherited from.
+     */
     private void addInheritanceArrow(String nodeName, String itfName) {
-        // Inherits
         String cleanedName = itfName.substring(itfName.lastIndexOf("/") + 1, itfName.length());
-        IEdge edge = new Edge(nodeName, cleanedName, "\"normal\"", "\"dashed\"", "IMPLEMENTS");
         if(Config.inPackageConfiguration(itfName)) {
-            this.classNode.addInterface(cleanedName);
-            this.edges.add(edge);
+            this.itemHandler.getActiveNode().addInterface(cleanedName);
+            this.itemHandler.createEdge(nodeName, cleanedName, "\"onormal\"", "\"dashed\"", "IMPLEMENTS");
         }
     }
 

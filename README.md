@@ -94,3 +94,11 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <li>Modified field nodes to include whether it is a list, set, etc.</li>
 </ul>
 
+<h3>Milestone 7 Log</h3>
+<h5>Evolution of design</h5>
+<ul>
+<li>Modified the way arrows are added. The ItemHandler class now handles the addition of arrows and
+the logic for how to handle duplicates. This localizes the logic of adding arrows and allows the user
+to build his/her own class to determine how arrows are produced for different circumstances.</li>
+<li>ItemHandler is now passed into all the visitors to simplify the design.</li>
+</ul>
