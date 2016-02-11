@@ -82,4 +82,48 @@ public class CompositeTest {
 
 		assertTrue(runTest(toTest,expected));
 	}
+	
+	@Test
+	public void testcmp() throws Exception {
+		String toTest = "configurations/composite.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("CompositeItem");
+		expected.add("SuperCompositeItem");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testcmp2() throws Exception {
+		String toTest = "configurations/composite2.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("CompositeItem");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testswing() throws Exception {
+		String toTest = "configurations/swing.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("Container");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testswing2() throws Exception {
+		String toTest = "configurations/swing2.json";
+		Set<String> expected = new HashSet<String>();
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testM5() throws Exception {
+		String toTest = "configurations/testM5.json";
+		Set<String> expected = new HashSet<String>();
+		
+		assertTrue(runTest(toTest,expected));
+	}
 }
