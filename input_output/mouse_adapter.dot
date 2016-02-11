@@ -14,16 +14,16 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTMouseMotionListener [label = "{MouseMotionListener\l||mouseDragged(MouseEvent) : void\lmouseMoved(MouseEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTEventListener [label = "{EventListener\l||}"]
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseAdapter -> ClassTMouseListener
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseAdapter -> ClassTMouseWheelListener
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseAdapter -> ClassTMouseMotionListener
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseListener -> ClassTEventListener
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseWheelListener -> ClassTEventListener
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTMouseMotionListener -> ClassTEventListener
 }

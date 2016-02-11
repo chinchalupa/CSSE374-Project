@@ -1,13 +1,14 @@
 {
-  "detectors": {
-    "decorator": true,
-    "adapter": true,
-    "singleton": false
-  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
 
   "dot_output": "input_output/testM5.dot",
   "packages": [
-    "./test/problem/testFiles/testM5.dot"
+    "./src/lab51"
   ],
 
   "classes": [
@@ -15,5 +16,9 @@
     "java.io.FilterOutputStream",
     "java.io.InputStream",
     "java.io.OutputStream"
-  ]
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 0
+  }
 }

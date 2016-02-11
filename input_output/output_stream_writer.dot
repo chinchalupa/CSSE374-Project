@@ -12,13 +12,15 @@ node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
 ClassTWriter [label = "{Writer\l\<\<Adaptee\>\>\l|writeBuffer : char[]\lWRITE_BUFFER_SIZE : int\llock : Object\l|init() : void\linit(Object) : void\lwrite(int) : void\lwrite(char[]) : void\lwrite(char[], intint) : void\lwrite(String) : void\lwrite(String, intint) : void\lappend(CharSequence) : Writer\lappend(CharSequence, intint) : Writer\lappend(char) : Writer\lflush() : void\lclose() : void\lappend(char) : Appendable\lappend(CharSequence, intint) : Appendable\lappend(CharSequence) : Appendable\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
 ClassTStreamEncoder [label = "{StreamEncoder\l\<\<Adapter\>\>\l\<\<Target\>\>\l|DEFAULT_BYTE_BUFFER_SIZE : int\lisOpen : boolean\lcs : Charset\lencoder : CharsetEncoder\lbb : ByteBuffer\lout : OutputStream\lch : WritableByteChannel\lhaveLeftoverChar : boolean\lleftoverChar : char\llcb : CharBuffer\l$assertionsDisabled : boolean\l|ensureOpen() : void\lforOutputStreamWriter(OutputStream, Object, String) : StreamEncoder\lforOutputStreamWriter(OutputStream, Object, Charset) : StreamEncoder\lforOutputStreamWriter(OutputStream, Object, CharsetEncoder) : StreamEncoder\lforEncoder(WritableByteChannel, CharsetEncoder, int) : StreamEncoder\lgetEncoding() : String\lflushBuffer() : void\lwrite(int) : void\lwrite(char[], intint) : void\lwrite(String, intint) : void\lflush() : void\lclose() : void\lisOpen() : boolean\linit(OutputStream, Object, Charset) : void\linit(OutputStream, Object, CharsetEncoder) : void\linit(WritableByteChannel, CharsetEncoder, int) : void\lwriteBytes() : void\lflushLeftoverChar(CharBuffer, boolean) : void\limplWrite(char[], intint) : void\limplFlushBuffer() : void\limplFlush() : void\limplClose() : void\lencodingName() : String\lclinit() : void\l}"]
-edge [arrowhead = "normal" style = "solid" label = ""]
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTOutputStreamWriter -> ClassTWriter
 edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
 ClassTOutputStreamWriter -> ClassTStreamEncoder
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
+ClassTOutputStreamWriter -> ClassTOutputStream
 edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTWriter -> ClassTWriter
-edge [arrowhead = "normal" style = "solid" label = ""]
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTStreamEncoder -> ClassTWriter
 edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
 ClassTStreamEncoder -> ClassTOutputStream

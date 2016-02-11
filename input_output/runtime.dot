@@ -4,8 +4,3 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000" fillcolor = "#0000ff" style=""]
-ClassTRuntime [label = "{Runtime\l\<\<Singleton\>\>\l|currentRuntime : Runtime\l|getRuntime() : Runtime\linit() : void\lexit(int) : void\laddShutdownHook(Thread) : void\lremoveShutdownHook(Thread) : boolean\lhalt(int) : void\lrunFinalizersOnExit(boolean) : void\lexec(String) : Process\lexec(String, String[]) : Process\lexec(String, String[], File) : Process\lexec(String[]) : Process\lexec(String[]String[]) : Process\lexec(String[], String[], File) : Process\lavailableProcessors() : int\lfreeMemory() : long\ltotalMemory() : long\lmaxMemory() : long\lgc() : void\lrunFinalization0() : void\lrunFinalization() : void\ltraceInstructions(boolean) : void\ltraceMethodCalls(boolean) : void\lload(String) : void\lload0(Class, String) : void\lloadLibrary(String) : void\lloadLibrary0(Class, String) : void\lgetLocalizedInputStream(InputStream) : InputStream\lgetLocalizedOutputStream(OutputStream) : OutputStream\lclinit() : void\l}"]
-edge [arrowhead = "vee" style = "solid" label = ""]
-ClassTRuntime -> ClassTRuntime
-}

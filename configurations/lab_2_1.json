@@ -16,5 +16,9 @@
     "java.io.FilterOutputStream",
     "java.io.InputStream",
     "java.io.OutputStream"
-  ]
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 0
+  }
 }

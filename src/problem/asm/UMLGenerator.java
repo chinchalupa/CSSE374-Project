@@ -25,8 +25,8 @@ public class UMLGenerator extends FileGenerator {
     }
 
     @Override
-    public LinkedList<INode> updateNodes() {
-        return this.itemHandler.getNodeStack();
+    public List<INode> updateNodes() {
+        return this.itemHandler.getCreatedNodes();
     }
 
     public void generateNodes() throws Exception {

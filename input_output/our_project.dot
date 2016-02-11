@@ -17,7 +17,7 @@ ClassTClassMethodVisitor [label = "{ClassMethodVisitor\l\<\<Decorator\>\>\l|item
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|extendedNodes : ArrayList\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lmarkComponent(String) : void\lmarkLeaves(INode) : void\lmarkSelfContainingFields(INode) : void\l}"]
+ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lgetPackageList() : List\lgetClassList() : List\lgetClassesAndPackageClassesList() : List\ldetectedPatterns() : ArrayList\lgetAdapterMinimumCount() : long\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
@@ -53,7 +53,7 @@ ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Adaptee\>\>\l\<\<Decorator\>\>\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTUMLGenerator [label = "{UMLGenerator\l||init(StringString) : void\linit() : void\lupdateNodes() : LinkedList\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\lupdateNodes() : List\l}"]
+ClassTUMLGenerator [label = "{UMLGenerator\l||init(StringString) : void\linit() : void\lupdateNodes() : List\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
 edge [arrowhead = "onormal" style = "solid" label = ""]
@@ -88,10 +88,10 @@ edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTClassNode -> ClassTIVisitor
 edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTCompositeDetector -> ClassTUMLDecorator
+edge [arrowhead = "odiamond" style = "solid" label = ""]
+ClassTCompositeDetector -> ClassTINode
 edge [arrowhead = "vee" style = "dashed" label = ""]
 ClassTCompositeDetector -> ClassTFileGenerator
-edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
-ClassTCompositeDetector -> ClassTINode
 edge [arrowhead = "vee" style = "solid" label = ""]
 ClassTConfig -> ClassTConfig
 edge [arrowhead = "onormal" style = "solid" label = ""]

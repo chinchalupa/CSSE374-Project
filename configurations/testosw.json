@@ -1,11 +1,11 @@
 {
 
-  "detectors": {
-    "decorator": true,
-    "adapter": true,
-    "singleton": true,
-    "composite": true
-  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
 
   "dot_output": "input_output/output_stream_writer.dot",
 
@@ -14,5 +14,9 @@
     "java.io.OutputStreamWriter",
     "java.io.Writer",
     "sun.nio.cs.StreamEncoder"
-  ]
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 0
+  }
 }
