@@ -45,8 +45,11 @@ public class Config {
     }
 
     public String getPackage() {
-        String pkg = getPackageList().get(0);
-        pkg = pkg.replace("./src/", "").replace("/", ".").replace(".java", "");
+        String pkg = null;
+        if(getPackageList().size() > 0) {
+            pkg = getPackageList().get(0);
+            pkg = pkg.replace("./src/", "").replace("/", ".").replace(".java", "");
+        }
         return pkg;
     }
 
@@ -54,16 +57,19 @@ public class Config {
         String incomingClass = classInQuestion.replace("/", ".");
         if(Config.getInstance().getClassList() != null) {
             for (String cls : Config.getInstance().getClassList()) {
-                if (cls.equals(incomingClass)) {
+                String shortCls = cls.substring(cls.lastIndexOf(".") + 1);
+                if (cls.equals(incomingClass) || shortCls.equals(incomingClass)) {
                     return true;
                 }
             }
         }
 
         if(Config.getInstance().getPackageList() != null) {
-           if(incomingClass.contains(Config.getInstance().getPackage())) {
-               return true;
-           }
+            if(Config.getInstance().getPackage() != null) {
+                if (incomingClass.contains(Config.getInstance().getPackage())) {
+                    return true;
+                }
+            }
         }
 
 //TODO: Leave uncommented if you want a summarized document that is legible
@@ -129,23 +135,13 @@ public class Config {
         return files;
     }
 
-    public boolean shouldDetectDecorators() {
-        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
-        return (Boolean) detectors.get("decorator");
+    public ArrayList<String> detectedPatterns() {
+        ArrayList<String> patterns = (ArrayList<String>) this.jsonObject.get("detectors");
+        return patterns;
     }
 
-    public boolean shouldDetectSingletons() {
-        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
-        return (Boolean) detectors.get("singleton");
-    }
-
-    public boolean shouldDetectAdapters() {
-        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
-        return (Boolean) detectors.get("adapter");
-    }
-
-    public boolean shouldDetectComposites() {
-        JSONObject detectors = (JSONObject) this.jsonObject.get("detectors");
-        return (Boolean) detectors.get("composite");
+    public long getAdapterMinimumCount() {
+        JSONObject adapterSettings = (JSONObject) this.jsonObject.get("adapterSettings");
+        return (long) adapterSettings.get("minimumMethodCalls");
     }
 }

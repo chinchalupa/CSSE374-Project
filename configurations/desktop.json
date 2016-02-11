@@ -1,10 +1,9 @@
 {
-  "detectors": {
-    "decorator": false,
-    "adapter": true,
-    "singleton": false,
-    "composite": true
-  },
+  "detectors": [
+    "problem.asm.DecoratorDetector",
+    "problem.asm.AdapterDetector",
+    "problem.asm.SingletonDetector"
+  ],
 
   "dot_output": "input_output/desktop.dot",
 

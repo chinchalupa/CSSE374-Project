@@ -1,0 +1,21 @@
+{
+
+  "detectors": [
+    "problem.asm.CompositeDetector"
+  ],
+
+  "dot_output": "input_output/swing.dot",
+  "packages": [
+  ],
+  "classes": [
+    "java.awt.Container",
+    "java.awt.Component",
+    "javax.swing.CellRendererPane",
+    "javax.swing.JComponent",
+    "java.awt.Button"
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  }
+}

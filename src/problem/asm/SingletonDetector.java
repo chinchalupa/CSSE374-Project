@@ -7,7 +7,6 @@ import java.util.List;
  */
 public class SingletonDetector extends UMLDecorator {
 
-    private List<INode> nodes;
 
     /**
      * Detector for singletons.
@@ -15,13 +14,12 @@ public class SingletonDetector extends UMLDecorator {
      */
     public SingletonDetector(FileGenerator uml) {
         super(uml);
-        this.nodes = uml.updateNodes();
     }
 
     @Override
     public List<INode> updateNodes() {
 
-        for(INode node : this.nodes) {
+        for(INode node : super.getNodes()) {
             boolean hasSelfField = false;
             boolean hasReturnMethod = false;
             String name = node.getName().substring(node.getName().lastIndexOf("/") + 1);
@@ -43,7 +41,7 @@ public class SingletonDetector extends UMLDecorator {
                 node.addPatternIdentifier("\\<\\<Singleton\\>\\>");
             }
         }
-        return this.nodes;
+        return super.getNodes();
     }
 
     @Override

@@ -45,7 +45,6 @@ public class SingletonTest {
         String readClass = "configurations/singleton_test.json";
 
         Config.newInstance(readClass);
-
         umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();
@@ -88,6 +87,7 @@ public class SingletonTest {
         singletons = new ArrayList<>();
 
         String jsonFile = "configurations/our_project.json";
+
         Config.newInstance(jsonFile);
         umlGenerate = new UMLGenerator();
 
@@ -122,7 +122,6 @@ public class SingletonTest {
         String jsonFile = "configurations/runtime.json";
 
         Config.newInstance(jsonFile);
-
         umlGenerate = new UMLGenerator();
 
         umlGenerate.generateClassList();

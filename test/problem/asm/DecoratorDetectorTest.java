@@ -74,9 +74,9 @@ public class DecoratorDetectorTest {
     @Test
     public void testForDecoratorInOutput() throws Exception {
 
-        umlGenerator = new UMLGenerator(output, input);
-        umlGenerator = new DecoratorDetector(umlGenerator);
+        Config.newInstance("configurations/our_project.json");
 
+        umlGenerator = new UMLGenerator();
         umlGenerator.generateClassList();
         umlGenerator.generateNodes();
         umlGenerator.updateNodes();

@@ -5,42 +5,46 @@ fontsize = 8
 rankdir=BT
 
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTDecryptionInputStream [label = "{DecryptionInputStream\l\<\<Decorator\>\>\l|decryptor : IDecryption\l|init(InputStream, IDecryption) : void\lread() : int\lread(byte[], intint) : int\l}"]
+ClassTDecryptionInputStream [label = "{DecryptionInputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|decryptor : IDecryption\l|init(InputStream, IDecryption) : void\lread() : int\lread(byte[], intint) : int\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTEncryptionOutputStream [label = "{EncryptionOutputStream\l\<\<Decorator\>\>\l|encryptor : IEncryption\l|init(OutputStream, IEncryption) : void\lwrite(int) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTIDecryption [label = "{IDecryption\l||decrypt(char) : char\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-ClassTIEncryption [label = "{IEncryption\l||encrypt(char) : char\l}"]
+ClassTEncryptionOutputStream [label = "{EncryptionOutputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|encryptor : IEncryption\l|init(OutputStream, IEncryption) : void\lwrite(int) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTIDecryption [label = "{IDecryption\l\<\<Target\>\>\l||decrypt(char) : char\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTIEncryption [label = "{IEncryption\l\<\<Target\>\>\l||encrypt(char) : char\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTSubstitutionCipher [label = "{SubstitutionCipher\l|encryptionKey : char[]\ldecryptionKey : char[]\l|init() : void\lencrypt(char) : char\ldecrypt(char) : char\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTTextEditorApp [label = "{TextEditorApp\l||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterInputStream [label = "{FilterInputStream\l\<\<Decorator\>\>\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+ClassTFilterInputStream [label = "{FilterInputStream\l\<\<Adapter\>\>\l\<\<Adaptee\>\>\l\<\<Decorator\>\>\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterOutputStream [label = "{FilterOutputStream\l\<\<Decorator\>\>\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTInputStream [label = "{InputStream\l\<\<Component\>\>\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTOutputStream [label = "{OutputStream\l\<\<Component\>\>\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
-edge [arrowhead = "normal" style = "solid" label = ""]
+ClassTFilterOutputStream [label = "{FilterOutputStream\l\<\<Adapter\>\>\l\<\<Adaptee\>\>\l\<\<Decorator\>\>\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTInputStream [label = "{InputStream\l\<\<Target\>\>\l\<\<Adaptee\>\>\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
+ClassTOutputStream [label = "{OutputStream\l\<\<Target\>\>\l\<\<Adaptee\>\>\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTDecryptionInputStream -> ClassTFilterInputStream
-edge [arrowhead = "vee" style = "dashed" label = ""]
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
 ClassTDecryptionInputStream -> ClassTIDecryption
-edge [arrowhead = "normal" style = "solid" label = ""]
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
+ClassTDecryptionInputStream -> ClassTInputStream
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTEncryptionOutputStream -> ClassTFilterOutputStream
-edge [arrowhead = "vee" style = "dashed" label = ""]
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
 ClassTEncryptionOutputStream -> ClassTIEncryption
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
+ClassTEncryptionOutputStream -> ClassTOutputStream
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTSubstitutionCipher -> ClassTIEncryption
-edge [arrowhead = "normal" style = "dashed" label = ""]
+edge [arrowhead = "onormal" style = "dashed" label = ""]
 ClassTSubstitutionCipher -> ClassTIDecryption
-edge [arrowhead = "normal" style = "solid" label = ""]
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTFilterInputStream -> ClassTInputStream
 edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
 ClassTFilterInputStream -> ClassTInputStream
-edge [arrowhead = "normal" style = "solid" label = ""]
+edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTFilterOutputStream -> ClassTOutputStream
 edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
 ClassTFilterOutputStream -> ClassTOutputStream

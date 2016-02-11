@@ -7,24 +7,21 @@ import org.objectweb.asm.Type;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 public class ClassMethodVisitor extends ClassVisitor {
 
-    private INode classNode;
-    private List<IEdge> edges;
-    private List<INode> nodes;
-    private String pkg;
+    private ItemHandler itemHandler;
 
     public ClassMethodVisitor(int api) {
         super(api);
     }
 
-    public ClassMethodVisitor(int api, ClassVisitor decorated, ClassNode node, List<IEdge> edges, List<INode> nodes) {
+    public ClassMethodVisitor(int api, ClassVisitor decorated, ItemHandler itemHandler) {
         super(api, decorated);
-        this.classNode = node;
-        this.edges = edges;
-        this.nodes = nodes;
+        this.itemHandler = itemHandler;
     }
 
     @Override
@@ -39,11 +36,11 @@ public class ClassMethodVisitor extends ClassVisitor {
 
         String returnType = null;
         if(signature != null)
-            returnType = addReturnType(desc );
+            returnType = addReturnType(desc);
         else
             returnType = addReturnType(desc);
 
-
+        INode activeNode = this.itemHandler.getActiveNode();
 
         List<String> arguments = addArguments(desc);
         String accessLevel = addAccessLevel(access);
@@ -52,20 +49,19 @@ public class ClassMethodVisitor extends ClassVisitor {
         for(String arg : arguments) {
             cleanArgs.add(arg.substring(arg.lastIndexOf("/") + 1, arg.length()));
         }
-        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, this.classNode, null);
+        NodeMethod nodeMethod = new NodeMethod(name, cleanReturnType, cleanArgs, accessLevel, activeNode);
 
-//        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, this.classNode, this.nodes);
-//        MethodVisitor toDecorateMore = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate);
-        this.classNode.addMethod(nodeMethod);
+        methodDecorator = new ClassMethodInstanceVisitor(Opcodes.ASM5, toDecorate, nodeMethod, itemHandler);
+        activeNode.addMethod(nodeMethod);
 
         // dotAssociates
         for(int i = 0; i < arguments.size(); i++) {
             if(Config.inPackageConfiguration(arguments.get(i))) {
-                addNewUses(this.classNode.getName(), cleanArgs.get(i));
+                addNewUses(activeNode.getMiniName(), cleanArgs.get(i));
             }
         }
         if(Config.inPackageConfiguration(returnType)) {
-            addNewUses(this.classNode.getName(), cleanReturnType);
+            addNewUses(activeNode.getMiniName(), cleanReturnType);
         }
 
         return methodDecorator;
@@ -89,24 +85,17 @@ public class ClassMethodVisitor extends ClassVisitor {
         return level;
     }
 
-//    public String addReturnType(String desc, String sig) {
-//        Type type = Type.getReturnType(sig);
-//        String classname = type.getClassName();
-//        System.out.println("CLASSNAME: " + classname);
-//        String collectionType = classname.substring(classname.indexOf("<") + 1, classname.indexOf(">"));
-//        String returnValue = classname.replace(".", "/");
-//        collectionType = collectionType.replace(".", "/");
-//        System.out.println(returnValue + " " + collectionType);
-//        return returnValue;
-//    }
-
+    /**
+     * Adds a return value.
+     * @param desc - The descriptor for the method.
+     * @return The return type.
+     */
     public String addReturnType(String desc){
 
         Type returnValue = Type.getReturnType(desc);
         String returnType = returnValue.getClassName();
-//        System.out.println(returnValue.toString());
         returnType = returnType.replace(".", "/");
-        addNewAssociationArrow(this.classNode.getName(), returnType);
+        addNewAssociationArrow(this.itemHandler.getActiveNode().getMiniName(), returnType);
         return returnType;
     }
 
@@ -125,38 +114,14 @@ public class ClassMethodVisitor extends ClassVisitor {
     private void addNewUses(String name, String returnType) {
         // Uses
         if(Config.inPackageConfiguration(returnType)) {
-            Edge newArrow = new Edge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
-            for (IEdge edge : this.edges) {
-                if (edge.toString().equals(newArrow.toString())) {
-                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    }
-                    else {
-                        return;
-                    }
-                }
-            }
-            this.edges.add(newArrow);
+            this.itemHandler.createEdge(name, returnType, "\"vee\"", "\"dashed\"", "USES");
         }
     }
 
     private void addNewAssociationArrow(String name, String returnType) {
-        String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
+        String cleanReturnType =  returnType.substring(returnType.lastIndexOf("/") + 1);
         if(Config.inPackageConfiguration(returnType)) {
-            Edge newArrow = new Edge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
-            for (IEdge edge : this.edges) {
-                if (edge.toString().equals(newArrow.toString())) {
-                    if(edge.getLineName().equals("EXTENDS") || edge.getLineName().equals("IMPLEMENTS")) {
-                        break;
-                    } else if(edge.getLineName().equals("USES")) {
-                        this.edges.remove(edge);
-                        break;
-                    } else {
-                        return;
-                    }
-                }
-            }
-            this.edges.add(newArrow);
+            this.itemHandler.createEdge(name, cleanReturnType, "\"vee\"", "\"solid\"", "ASSOCIATES");
         }
     }
 

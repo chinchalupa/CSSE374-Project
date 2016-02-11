@@ -4,8 +4,3 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000" fillcolor = "#0000ff" style=""]
-ClassTEagerSingleton [label = "{EagerSingleton\l\<\<Singleton\>\>\l|singleton : EagerSingleton\l|init() : void\lgetInstance() : EagerSingleton\lclinit() : void\l}"]
-edge [arrowhead = "vee" style = "solid" label = ""]
-ClassTEagerSingleton -> ClassTEagerSingleton
-}

@@ -6,58 +6,65 @@ import org.objectweb.asm.Opcodes;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Constructor;
+import java.util.*;
 
 /**
  * Created by Jeremy on 1/25/2016.
  */
 public class UMLGenerator extends FileGenerator {
 
-    protected List<String> startingClassStrings;
 
     public UMLGenerator(String outputLocation, String inputFile) {
         super(outputLocation, inputFile);
-        this.startingClassStrings = new ArrayList<>();
     }
 
     public UMLGenerator() {
-//        super(configLocation);
+        super();
         this.outputLocation = Config.getInstance().getDotFileOutputLocation();
-        this.classNodeList = new ArrayList<>();
-        this.edgeList = new ArrayList<>();
-    }
-
-    public void generateClassList() {
-        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
     }
 
     @Override
     public List<INode> updateNodes() {
-        return this.classNodeList;
-    }
-
-    @Override
-    public List<IEdge> getEdges() {
-        return this.edgeList;
+        return this.itemHandler.getCreatedNodes();
     }
 
     public void generateNodes() throws Exception {
-        for(String file : startingClassStrings) {
 
-            ClassReader reader = new ClassReader(file);
+        this.createAllClassNodes();
 
-            ClassNode node = new ClassNode(reader.getClassName());
+        int maxNodes = getTotalStartingClassSize();
 
-            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, node, classNodeList, edgeList);
+        while(!this.itemHandler.getNodeStack().isEmpty() && maxNodes != 0) {
 
-            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, node, edgeList);
+            INode node = this.itemHandler.poll();
 
-            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, node, edgeList, classNodeList);
+            ClassReader reader = new ClassReader(node.getName());
+
+            ClassVisitor decVisitor = new ClassDeclarationVisitor(Opcodes.ASM5, this.itemHandler);
+
+            ClassVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5, decVisitor, this.itemHandler);
+
+            ClassVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor, this.itemHandler);
 
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
-            this.classNodeList.add(node);
+            this.itemHandler.getCreatedNodes().add(node);
+//            System.out.println("ADDED: " + node);
+
+            maxNodes--;
+
+//            System.out.println("NODE: " + node + " " + maxNodes);
+        }
+    }
+
+    public void createAllClassNodes() {
+
+        for(String file : this.startingClassStrings) {
+            INode node = new ClassNode(file);
+            String miniName = file.substring(file.lastIndexOf(".") + 1);
+            node.setMiniName(miniName);
+            this.itemHandler.offer(node);
         }
     }
 
@@ -65,35 +72,25 @@ public class UMLGenerator extends FileGenerator {
         OutputStream outputStream = new FileOutputStream(this.outputLocation);
         OutputDotFile visitor = new OutputDotFile(outputStream, this);
 
-        if(Config.getInstance().shouldDetectAdapters()) {
-            AdapterDetector adapterDetector = new AdapterDetector(this);
-            adapterDetector.accept(visitor);
-        }
-        if(Config.getInstance().shouldDetectDecorators()) {
-            UMLDecorator decoratorDetector = new DecoratorDetector(this);
-            decoratorDetector.accept(visitor);
+        ArrayList<String> patterns = Config.getInstance().detectedPatterns();
+        for(String pattern : patterns) {
+            Constructor detector = Class.forName(pattern).getConstructor(FileGenerator.class);
+            UMLDecorator decorator = (UMLDecorator) detector.newInstance(this);
+            visitor.visitDecorator(decorator);
         }
 
-        if(Config.getInstance().shouldDetectSingletons()) {
-            UMLDecorator singletonDetector = new SingletonDetector(this);
-            singletonDetector.accept(visitor);
-        }
-
-        if(Config.getInstance().shouldDetectComposites()) {
-            UMLDecorator compositeDecorator = new CompositeDetector(this);
-            compositeDecorator.accept(visitor);
-        }
-
-        for(INode node : this.classNodeList) {
+        for(INode node : this.itemHandler.getCreatedNodes()) {
             node.accept(visitor);
         }
 
-        for(IEdge edge : this.edgeList) {
+        for(IEdge edge : this.itemHandler.getEdges()) {
             edge.accept(visitor);
         }
 
         visitor.end();
     }
+
+
 
     public List<String> getClasses() {
         return this.startingClassStrings;

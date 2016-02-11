@@ -27,20 +27,23 @@ public class AdapterTest {
 		//do nothing
 	}
 
-	private boolean runTest(String toTest, Set<String> expected) {
+	private boolean runTest(String toTest, Set<String> expected) throws Exception {
 		FileGenerator u;
 		try {
 			u = TestHelper.setUp(toTest);
 		} catch (Exception e) {
+			System.out.println("ERROR");
+			e.printStackTrace();
 			return false;
 		}
 		List<INode> l = u.updateNodes();
+
 		Set<String> ss = new HashSet<String>();
 		for(INode node : l){
+			System.out.println("NODE " + node);
 			for(String identifier : node.getPatternIdentifier()) {
 				if(identifier.equals(parameter)) {
 					ss.add(node.getName());
-					System.out.println("Added " + node.getName());
 				}
 			}
 		}
@@ -58,8 +61,8 @@ public class AdapterTest {
 		String toTest = "configurations/testisr.json";
 		Set<String> expected = new HashSet<String>();
 //		expected.add("");
-		expected.add("sun/nio/cs/StreamDecoder");
-		expected.add("java/io/InputStreamReader");
+		expected.add("sun.nio.cs.StreamDecoder");
+		expected.add("java.io.InputStreamReader");
 		
 		assertTrue(runTest(toTest,expected));
 	}
@@ -68,8 +71,8 @@ public class AdapterTest {
 	public void testosw() throws Exception {
 		String toTest = "configurations/testosw.json";
 		Set<String> expected = new HashSet<String>();
-		expected.add("java/io/OutputStreamWriter");
-		expected.add("sun/nio/cs/StreamEncoder");
+		expected.add("java.io.OutputStreamWriter");
+		expected.add("sun.nio.cs.StreamEncoder");
 		
 		assertTrue(runTest(toTest,expected));
 	}

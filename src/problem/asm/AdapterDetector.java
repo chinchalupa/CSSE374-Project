@@ -11,44 +11,53 @@ public class AdapterDetector extends UMLDecorator{
 
     private List<String> itf;
     private List<String> adaptees;
-    private List<INode> nodes;
 
 
+    /**
+     * Detector for adapters on the UML Diagram.
+     * @param uml - The UML Diagram.
+     */
     public AdapterDetector(FileGenerator uml) {
         super(uml);
         this.itf = new ArrayList<>();
         this.adaptees = new ArrayList<>();
-        this.nodes = uml.updateNodes();
+//        this.nodes = uml.updateNodes();
         System.out.println("DETECTING ADAPTERS...");
     }
 
     @Override
     public List<INode> updateNodes() {
-        System.out.println("GOT NODES");
         for(IEdge edge : super.getEdges()) {
             if(edge.getLineName().equals("USES")) {
                 String edgeName = edge.getTo();
                 edgeName = edgeName.substring(edgeName.lastIndexOf("/") + 1);
 
-                for(INode node : this.nodes) {
-                    String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
-                    List<String> itf = node.getInterfaces();
+                for(INode node : super.getNodes()) {
+                    List<String> itfs = node.getInterfaces();
                     String ext = node.getExtends();
-                    if(nodeName.equals(edgeName) && (itf.size() > 0 || ext != null)) {
-                        node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
-                        node.setOutlineColor("#ff0000");
-                        node.setStyle("filled");
+                    if(node.getMiniName().equals(edgeName) && (itfs.size() > 0 || ext != null)) {
+
+
+
+
 
                         String edgeFrom = edge.getFrom();
+                        if(checkIfNodeReallyIsAdapterOfClass(node, edgeFrom)) {
 
-                        this.itf.add(edgeFrom);
-                        addAdaptsArrow(nodeName, edgeFrom);
-                        if (ext != null) {
-                            this.adaptees.add(ext);
-                        }
-                        for (String it : itf) {
-                            this.adaptees.add(it);
-//                    }
+                            node.addPatternIdentifier("\\<\\<Adapter\\>\\>");
+                            node.setOutlineColor("#ff0000");
+                            node.setStyle("filled");
+
+                            if (ext != null) {
+                                this.adaptees.add(ext);
+                            }
+                            this.itf.add(edgeFrom);
+                            addAdaptsArrow(node.getMiniName(), edgeFrom);
+
+                            for (String it : itfs) {
+                                this.adaptees.add(it);
+
+                            }
                         }
                     }
                 }
@@ -58,14 +67,33 @@ public class AdapterDetector extends UMLDecorator{
         getItfs();
         getExtensions();
 
-        return this.nodes;
+        return super.getNodes();
+    }
+
+    /**
+     * Checks if the node REALLY is an adapter.
+     */
+    private boolean checkIfNodeReallyIsAdapterOfClass(INode node, String adaptee) {
+
+        int counter = 0;
+
+        for(NodeMethod method : node.getMethods()) {
+            for(NodeMethod calledMethod : method.getMethodsCalled()) {
+                String containingClass = calledMethod.getContainingClass().getMiniName();
+                if(containingClass.equals(adaptee)) {
+                    counter++;
+                }
+            }
+        }
+
+        return (counter >= Config.getInstance().getAdapterMinimumCount());
     }
 
     public void addAdaptsArrow(String node, String extension) {
         for(IEdge edge : super.getEdges()) {
             if(!edge.getLineName().equals("EXTENDS")) {
-                String to = edge.getTo().substring(edge.getTo().lastIndexOf("/") + 1);
-                if(to.equals(node) && edge.getFrom().equals(extension))  {
+//                String to = edge.getTo().substring(edge.getTo().lastIndexOf("/") + 1);
+                if(edge.getTo().equals(node) && edge.getFrom().equals(extension))  {
                     edge.setText("\\<\\<adapts\\>\\>");
                     return;
                 }
@@ -75,9 +103,8 @@ public class AdapterDetector extends UMLDecorator{
 
     private void getItfs() {
         for(String s : itf) {
-            for(INode node : this.nodes) {
-                String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
-                if(nodeName.equals(s)) {
+            for(INode node : super.getNodes()) {
+                if(node.getMiniName().equals(s)) {
 
                     node.addPatternIdentifier("\\<\\<Target\\>\\>");
                     node.setOutlineColor("#ff0000");
@@ -89,9 +116,8 @@ public class AdapterDetector extends UMLDecorator{
 
     private void getExtensions() {
         for(String s : adaptees) {
-            for(INode node : this.nodes) {
-                String nodeName = node.getName().substring(node.getName().lastIndexOf("/") + 1);
-                if(nodeName.equals(s)) {
+            for(INode node : super.getNodes()) {
+                if(node.getMiniName().equals(s)) {
 
                     node.addPatternIdentifier("\\<\\<Adaptee\\>\\>");
                     node.setOutlineColor("#ff0000");
@@ -100,11 +126,4 @@ public class AdapterDetector extends UMLDecorator{
             }
         }
     }
-
-    @Override
-    public List<IEdge> getEdges() {
-        return super.getEdges();
-    }
-
-
 }

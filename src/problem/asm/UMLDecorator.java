@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by Jeremy on 1/26/2016.
@@ -14,12 +15,16 @@ public abstract class UMLDecorator extends FileGenerator implements ITraversable
         this.uml = uml;
     }
 
+
     @Override
     public abstract List<INode> updateNodes();
 
-    @Override
+    public List<INode> getNodes() {
+        return uml.itemHandler.getCreatedNodes();
+    }
+
     public List<IEdge> getEdges() {
-        return uml.getEdges();
+        return uml.itemHandler.getEdges();
     }
 
 

@@ -1,7 +1,6 @@
 package problem.asm;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Jeremy on 1/25/2016.
@@ -10,35 +9,32 @@ public abstract class FileGenerator {
 
     protected String outputLocation;
     protected String inputFile;
+    protected ItemHandler itemHandler;
 
-    protected List<INode> classNodeList;
-    protected List<IEdge> edgeList;
+    protected List<String> startingClassStrings;
 
-    protected Config config;
-
-    public FileGenerator() {
-        this.outputLocation = "./input_output";
-        this.inputFile = "./src/problem/asm";
-    }
 
     public FileGenerator(String outputLocation, String inputFile) {
         this.outputLocation = outputLocation;
         this.inputFile = inputFile;
-
-        this.classNodeList = new ArrayList<>();
-        this.edgeList = new ArrayList<>();
     }
 
-    public FileGenerator(String configLocation) {
-        this.config = Config.newInstance(configLocation);
+    public FileGenerator() {
+        this.startingClassStrings = new ArrayList<>();
+        this.itemHandler = new ItemHandler();
     }
 
     public abstract List<INode> updateNodes();
 
-    public abstract List<IEdge> getEdges();
+    public int getTotalStartingClassSize() {
+        return this.startingClassStrings.size();
+    }
 
 
-    public abstract void generateClassList();
+    public void generateClassList() {
+        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
+        System.out.println(this.startingClassStrings.size());
+    }
 
     public abstract void generateNodes() throws Exception;
 

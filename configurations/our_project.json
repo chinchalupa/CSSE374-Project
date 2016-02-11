@@ -1,11 +1,11 @@
 {
 
-  "detectors": {
-    "decorator": true,
-    "adapter": true,
-    "singleton": true,
-    "composite": true
-  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
 
   "dot_output": "input_output/our_project.dot",
   "packages": [
@@ -13,5 +13,9 @@
   ],
   "classes": [
     "org.objectweb.asm.ClassVisitor"
-  ]
+  ],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  }
 }

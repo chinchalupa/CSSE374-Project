@@ -15,11 +15,18 @@ public class NodeMethod implements INodeElement {
     private List<String> args;
     private String security;
     private INode containingClassNode;
-    private INode parentClassNode;
     private List<NodeMethod> methodsCalled;
     private List<NodeField> nodesCreated;
 
-    public NodeMethod(String name, String returnType, List<String> args, String security, INode containingClassNode, INode parentClassNode) {
+    /**
+     *
+     * @param name - The name of the method called.
+     * @param returnType - The return type of the method called.
+     * @param args - The list of arguments in the method.
+     * @param security - The package level of the method.
+     * @param containingClassNode - The node that contains the method.
+     */
+    public NodeMethod(String name, String returnType, List<String> args, String security, INode containingClassNode) {
         this.name = name;
         this.returnType = returnType;
         this.args = args;
@@ -27,15 +34,6 @@ public class NodeMethod implements INodeElement {
         this.containingClassNode = containingClassNode;
         this.methodsCalled = new ArrayList<>();
         this.nodesCreated = new ArrayList<>();
-        this.parentClassNode = parentClassNode;
-    }
-
-    public INode getParentClassNode() {
-        return parentClassNode;
-    }
-
-    public void setParentClassNode(INode parentClassNode) {
-        this.parentClassNode = parentClassNode;
     }
 
     public List<NodeField> getClassNodeFieldsCreated() {
@@ -85,11 +83,6 @@ public class NodeMethod implements INodeElement {
     @Override
     public String getCollectionType() {
         return "";
-    }
-
-    @Override
-    public void accept(IVisitor visitor) {
-        visitor.visitMethod(this);
     }
 
     @Override

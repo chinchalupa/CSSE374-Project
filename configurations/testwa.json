@@ -1,10 +1,15 @@
 {
-  "detectors": {
-    "decorator": true,
-    "adapter": true,
-    "singleton": true
-  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
 
   "dot_output": "input_output/our_project.dot",
-  "classes": ["java.io.InputStreamReader"]
+  "classes": ["java.io.InputStreamReader"],
+
+  "adapterSettings": {
+    "minimumMethodCalls": 0
+  }
 }

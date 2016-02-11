@@ -85,12 +85,19 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 <h3>Milestone 6 Log</h3>
 <h5>Evolution of design</h5>
 <ul>
-<li>TODO: Expand design to allow for multiple patterns to be listed on a node.</li>
-<li>TODO: Create the composite pattern and create the methods that write it on the object.</li>
-<li>TODO: Review the test cases for the week and create the tests.</li>
 <li>Need to differentiate between a decorator and a composite pattern.</li>
 <li>A leaf node has every method that the component has and is used for implementation.</li>
 <li>A composite node has every method that the component has and a list of components.</li>
 <li>Modified field nodes to include whether it is a list, set, etc.</li>
+<li>Added adapter minimum method detector.</li>
+<li>Detects composites, components, and leaves.</li>
 </ul>
 
+<h3>Milestone 7 Log</h3>
+<h5>Evolution of design</h5>
+<ul>
+<li>Modified the way arrows are added. The ItemHandler class now handles the addition of arrows and
+the logic for how to handle duplicates. This localizes the logic of adding arrows and allows the user
+to build his/her own class to determine how arrows are produced for different circumstances.</li>
+<li>ItemHandler is now passed into all the visitors to simplify the design.</li>
+</ul>

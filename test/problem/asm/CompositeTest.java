@@ -31,11 +31,13 @@ public class CompositeTest {
 		try {
 			u = TestHelper.setUp(toTest);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		List<INode> l = u.updateNodes();
 		Set<String> ss = new HashSet<String>();
 		for(INode node : l){
+			System.out.println(node);
 			for(String identifier : node.getPatternIdentifier()) {
 				if(identifier.equals(parameter)) {
 					ss.add(node.getName());
@@ -80,6 +82,51 @@ public class CompositeTest {
 		String toTest = "configurations/testma.json";
 		Set<String> expected = new HashSet<String>();
 
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testcmp() throws Exception {
+		String toTest = "configurations/composite.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("composite.CompositeItem");
+		expected.add("composite.SuperCompositeItem");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testcmp2() throws Exception {
+		String toTest = "configurations/composite2.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("composite.CompositeItem");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testswing() throws Exception {
+		String toTest = "configurations/swing.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("java.awt.Container");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testswing2() throws Exception {
+		String toTest = "configurations/swing2.json";
+		Set<String> expected = new HashSet<String>();
+		expected.add("java.awt.Container");
+		
+		assertTrue(runTest(toTest,expected));
+	}
+	
+	@Test
+	public void testM5() throws Exception {
+		String toTest = "configurations/testM5.json";
+		Set<String> expected = new HashSet<String>();
+		
 		assertTrue(runTest(toTest,expected));
 	}
 }

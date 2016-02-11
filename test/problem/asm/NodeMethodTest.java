@@ -22,7 +22,7 @@ public class NodeMethodTest {
         this.arguments = new ArrayList<>();
         this.arguments.add("String");
         this.arguments.add("Integer");
-        this.nodeMethod = new NodeMethod("testMethod", "void", this.arguments, "public", null, null);
+        this.nodeMethod = new NodeMethod("testMethod", "void", this.arguments, "public", null);
     }
 
     @After

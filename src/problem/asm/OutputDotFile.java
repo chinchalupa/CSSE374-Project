@@ -39,13 +39,12 @@ public class OutputDotFile implements IVisitor {
     }
 
     @Override
-    public void visitNodes(ClassNode node) {
+    public void visitNodes(INode node) {
 
         if(this.inOurPackage(node.getName())) {
-            String name = node.getName().substring(node.getName().lastIndexOf("/") + 1, node.getName().length());
 
             String s = "node [shape = \"record\" color = \"#000000\" fillcolor = \"" + node.getOutlineColor() + "\" style=\"" + node.getStyle() + "\"]\n";
-            s += "ClassT" + name + " [label = \"{" + name;
+            s += "ClassT" + node.getMiniName() + " [label = \"{" + node.getMiniName();
             if(node.getPatternIdentifier() != null) {
                 s += "\\l";
                 for(String identifier : node.getPatternIdentifier()) {
@@ -87,17 +86,6 @@ public class OutputDotFile implements IVisitor {
         s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
-
-    @Override
-    public void visitMethod(NodeMethod nodeMethod) {
-        return;
-    }
-
-    @Override
-    public void visitField(NodeField nodeField) {
-        return;
-    }
-
     @Override
     public void visitDecorator(UMLDecorator umlDecorator) {
         umlDecorator.updateNodes();
