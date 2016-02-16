@@ -45,7 +45,7 @@ public class DecoratorDetectorTest {
         this.testSet.add("problem/asm/UMLDecorator");
         this.testSet.add("problem/asm/AdapterDetector");
 
-        umlGenerator = new UMLGenerator(output, input);
+//        umlGenerator = new UMLGenerator(output, input);
         umlGenerator = new DecoratorDetector(umlGenerator);
 
         umlGenerator.generateClassList();

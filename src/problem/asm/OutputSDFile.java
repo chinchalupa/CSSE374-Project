@@ -25,13 +25,38 @@ public class OutputSDFile implements IVisitor {
 
 
     @Override
-    public void visitNodes(INode node) {
+    public void visitNode(INode node) {
         String s = String.format("%s:%s \"%s\"", node.getName(), node.getName(), node.getName());
         this.write(s);
     }
 
     @Override
-    public void visitEdges(IEdge edge) {
+    public void visitEdge(IEdge edge) {
+
+    }
+
+    @Override
+    public void preVisitNode(INode node) {
+
+    }
+
+    @Override
+    public void postVisitEdge(IEdge edge) {
+
+    }
+
+    @Override
+    public void preVisitEdge(IEdge edge) {
+
+    }
+
+    @Override
+    public void postVisitNode(INode node) {
+
+    }
+
+    @Override
+    public void separateNodeEdges() {
 
     }
 
@@ -87,5 +112,10 @@ public class OutputSDFile implements IVisitor {
     @Override
     public void visitDecorator(UMLDecorator umlDecorator) {
         return;
+    }
+
+    @Override
+    public void end() {
+
     }
 }

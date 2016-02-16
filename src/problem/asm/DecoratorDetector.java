@@ -38,7 +38,6 @@ public class DecoratorDetector extends UMLDecorator {
                 // Find a uses edge that goes to the extends
                 for (IEdge edge : super.getEdges()) {
 
-                    System.out.println("EDGE: " + edge.getLineName());
 
                     if (edge.getTo().equals(node.getMiniName()) && edge.getFrom().equals(extension)
                         && edge.getLineName().equals("USES")) {

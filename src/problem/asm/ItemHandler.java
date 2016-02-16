@@ -90,7 +90,6 @@ public class ItemHandler {
             }
         }
         else if(name.equals("AGGREGATES")) {
-            System.out.println("ADDED AGGREGATES");
             for(IEdge oldEdge : this.getEdges()) {
                 if(oldEdge.equals(edge)) {
                     if(oldEdge.getLineName().equals("ASSOCIATES") || oldEdge.getLineName().equals("USES")) {

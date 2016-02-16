@@ -1,5 +1,8 @@
 package problem.asm;
+
+import javax.swing.*;
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 public class DesignParser {
@@ -18,6 +21,22 @@ java.lang.Math
 
         boolean generatingFiles = true;
 
+        FileGenerator umlGenerator = new UMLGenerator();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                ScreenFrame frame = new ScreenFrame("THE BEST CSSE374 PROJECT EVER!");
+                JLabel label = frame.addLabel(100, 150, "Waiting for user input...");
+                frame.addButton(180, 100, new ButtonLoadConfig("Load Config", umlGenerator, label), null);
+                frame.addButton(300, 100, new ButtonAnalyze("Analyze", umlGenerator, label, frame.getContentPanel(), frame), null);
+//                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                frame.setVisible(true);
+            }
+        });
+
+
         System.out.println("Welcome to our CSSE374 project!");
         System.out.println("Supported filetypes(.dot, .sq)");
         Scanner scanner = new Scanner(System.in);
@@ -28,26 +47,9 @@ java.lang.Math
 
 
             String configLocation = scanner.nextLine();
-            Config.newInstance(configLocation);
-            FileGenerator umlGenerator = new UMLGenerator();
+            Config config = Config.newInstance(configLocation);
 
-//            if(config.shouldDetectSingletons()) {
-//
-//                umlGenerator = new SingletonDetector(umlGenerator);
-//            }
-//
-//            if(config.shouldDetectDecorators()) {
-//                umlGenerator = new DecoratorDetector(umlGenerator);
-//            }
-//
-//            if(config.shouldDetectAdapters()) {
-//                umlGenerator = new AdapterDetector(umlGenerator);
-//            }
 
-            umlGenerator.generateClassList();
-            umlGenerator.generateNodes();
-            umlGenerator.updateNodes();
-            umlGenerator.write();
             System.out.println("Would you like to generate a new file (y/n)?");
             generatingFiles = scanner.nextLine().trim().equals("y");
 

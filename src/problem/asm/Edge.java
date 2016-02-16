@@ -58,7 +58,9 @@ public class Edge implements IEdge {
 
     @Override
     public void accept(IVisitor visitor) {
-        visitor.visitEdges(this);
+        visitor.preVisitEdge(this);
+        visitor.visitEdge(this);
+        visitor.postVisitEdge(this);
     }
 
     @Override

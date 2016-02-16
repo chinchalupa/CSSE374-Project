@@ -17,5 +17,12 @@
 
   "adapterSettings": {
     "minimumMethodCalls": 6
-  }
+  },
+
+  "phases": [
+    "problem.asm.PhaseClassGeneration",
+    "problem.asm.PhaseNodeGeneration",
+    "problem.asm.PhaseDecoration",
+    "problem.asm.PhaseWrite"
+  ]
 }

@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +134,15 @@ public class Config {
             }
         }
         return files;
+    }
+
+    /**
+     * Returns the phases defined in the config file.
+     * @return - A list of the phases.
+     */
+    public List<String> getPhases() {
+        List<String> phases = (List<String>) this.jsonObject.get("phases");
+        return phases;
     }
 
     public ArrayList<String> detectedPatterns() {

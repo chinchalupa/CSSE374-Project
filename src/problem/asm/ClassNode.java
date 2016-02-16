@@ -69,6 +69,8 @@ public class ClassNode extends INode {
 
     @Override
     public void accept(IVisitor visitor) {
-        visitor.visitNodes(this);
+        visitor.preVisitNode(this);
+        visitor.visitNode(this);
+        visitor.postVisitNode(this);
     }
 }

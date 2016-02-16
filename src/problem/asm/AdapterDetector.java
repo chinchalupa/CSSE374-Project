@@ -21,7 +21,6 @@ public class AdapterDetector extends UMLDecorator{
         super(uml);
         this.itf = new ArrayList<>();
         this.adaptees = new ArrayList<>();
-//        this.nodes = uml.updateNodes();
         System.out.println("DETECTING ADAPTERS...");
     }
 

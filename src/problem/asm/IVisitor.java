@@ -4,9 +4,14 @@ package problem.asm;
  * Created by wrightjt on 1/11/2016.
  */
 public interface IVisitor {
-    public abstract void visitNodes(INode node);
-    public abstract void visitEdges(IEdge edge);
-
+    public abstract void visitNode(INode node);
+    public abstract void visitEdge(IEdge edge);
+    public abstract void preVisitNode(INode node);
+    public abstract void postVisitEdge(IEdge edge);
+    public abstract void preVisitEdge(IEdge edge);
+    public abstract void postVisitNode(INode node);
+    public abstract void separateNodeEdges();
     public abstract void visitDecorator(UMLDecorator umlDecorator);
+    public abstract void end();
 
 }
