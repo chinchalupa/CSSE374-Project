@@ -12,8 +12,17 @@
 
 <h2>General</h2>
 
-To run our project, run DesignParser with no arguments. You will be prompted for some inputs, including the input file and the output file path. Once you have read and entered in the inputs, take the dot file and run it using dot.exe.
-
+To run our project, run DesignParser with no arguments. A GUI should appear with the option to load a config file from the project's config directory.
+Whence a config is loaded, pressing the 'analyze' button will analyze the code determined by the config file and create an image to display the results.
+There are currently three distinct 'phases' to the program: Class Generation, Node Generatoin, Detection, Write, and Run Executable.
+<hr>
+<ul>
+<li>In the Class Generation phase, the files specified by the config file are loaded into the project.
+<li>In the Node Generation phase, the classes/objects in the files being analyzed will be turned into node objects and their connecting edge objects, which will later be displayed in the resulting image.</li>
+<li>In the Detection phase, the detectors specified by the config file are added to the parser and used to find whatever patterns they are to detect.</li>
+<li>In the Write phase, the generated data is output in a format specified by the config file to the specified destination.</li>
+<li>In the Run Executable phase, an image file is built from the output file, and the GUI displays the generated image file to the screen.</li>
+</ul>
 
 <h3>Milestone 1 Log</h3>
 
@@ -100,4 +109,9 @@ Since graph viz appears to parse sequentially, this would be the best approach t
 the logic for how to handle duplicates. This localizes the logic of adding arrows and allows the user
 to build his/her own class to determine how arrows are produced for different circumstances.</li>
 <li>ItemHandler is now passed into all the visitors to simplify the design.</li>
+<li>Added GUI, which loads when the program starts and can load config files at runtime</li>
+<li>Added framework for phases of loading/processing</li>
+<li>Added framework for phases of loading/processing</li>
+<li>Added framework for phases of loading/processing</li>
+<li>Added framework for phases of loading/processing</li>
 </ul>
