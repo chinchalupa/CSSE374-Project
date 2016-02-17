@@ -30,7 +30,6 @@ public class ButtonAnalyze extends Button implements Observer {
 
     @Override
     public void execute() {
-        System.out.println(Config.getInstance().getPhases());
         for(String phase : Config.getInstance().getPhases()) {
             try {
                 Constructor detector = Class.forName(phase).getConstructor(FileGenerator.class);

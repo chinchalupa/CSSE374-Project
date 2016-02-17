@@ -25,6 +25,7 @@
     "problem.asm.PhaseClassGeneration",
     "problem.asm.PhaseNodeGeneration",
     "problem.asm.PhaseDecoration",
-    "problem.asm.PhaseWrite"
+    "problem.asm.PhaseWrite",
+    "problem.asm.RunDotExecutable"
   ]
 }

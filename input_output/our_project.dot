@@ -105,7 +105,7 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTPhaseWrite [label = "{PhaseWrite\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTRunDotExecutable [label = "{RunDotExecutable\l||init() : void\l}"]
+ClassTRunDotExecutable [label = "{RunDotExecutable\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
@@ -331,6 +331,12 @@ ClassTPhaseWrite -> ClassTExecuteCapable
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
 ClassTPhaseWrite -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTRunDotExecutable -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTRunDotExecutable -> ClassTFileGenerator
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
 ClassTScreenFrame -> ClassTButton

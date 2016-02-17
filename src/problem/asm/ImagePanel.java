@@ -42,6 +42,7 @@ public class ImagePanel extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         String imageLocation = Config.getInstance().getImageLocation();
+        System.out.println(imageLocation);
         System.out.println("UPDATED IMAGE LOCATION");
         try {
             this.image = ImageIO.read(new File(imageLocation));
