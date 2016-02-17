@@ -36,9 +36,12 @@ public class UMLGenerator extends FileGenerator {
 
         int maxNodes = getTotalStartingClassSize();
 
+        System.out.println(this.itemHandler.getNodeStack());
+
         while(!this.itemHandler.getNodeStack().isEmpty() && maxNodes != 0) {
 
             INode node = this.itemHandler.poll();
+            System.out.println("Error on node: " + node.getName());
 
             ClassReader reader = new ClassReader(node.getName());
 
@@ -58,7 +61,16 @@ public class UMLGenerator extends FileGenerator {
 
     public void createAllClassNodes() {
 
+        this.itemHandler.clearEdges();
+
+        while(!this.itemHandler.getNodeStack().isEmpty()) {
+            this.itemHandler.poll();
+        }
+
+
+
         for(String file : this.startingClassStrings) {
+            System.out.println(file);
             INode node = new ClassNode(file);
             String miniName = file.substring(file.lastIndexOf(".") + 1);
             node.setMiniName(miniName);

@@ -1,6 +1,7 @@
 package problem.asm;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Jeremy on 1/26/2016.
@@ -45,7 +46,7 @@ public class SingletonDetector extends UMLDecorator {
     }
 
     @Override
-    public List<IEdge> getEdges() {
+    public Set<IEdge> getEdges() {
         return super.getEdges();
     }
 

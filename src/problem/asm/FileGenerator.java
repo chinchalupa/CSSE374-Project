@@ -36,7 +36,7 @@ public abstract class FileGenerator {
 
 
     public void generateClassList() {
-        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
+        this.startingClassStrings = Config.getInstance().getFormattedListOfClasses();
         System.out.println(this.startingClassStrings.size());
     }
 

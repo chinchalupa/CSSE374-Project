@@ -1,0 +1,15 @@
+{
+  "dot_output": "input_output\/composite_test.dot",
+  "excludes": [
+    "composite.CoolItem"
+  ],
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  },
+  "detectors": [
+    "problem.asm.CompositeDetector"
+  ],
+  "packages": [
+    ".\/src\/composite"
+  ]
+}

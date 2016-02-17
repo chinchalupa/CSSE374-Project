@@ -8,8 +8,7 @@
   "packages": [
     "./src/composite"
   ],
-  "classes": [
-  ],
+
 
   "adapterSettings": {
     "minimumMethodCalls": 6

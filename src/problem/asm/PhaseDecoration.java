@@ -17,7 +17,7 @@ public class PhaseDecoration implements ExecuteCapable {
 
     @Override
     public void execute() {
-        List<String> patterns = Config.getInstance().detectedPatterns();
+        List<String> patterns = Config.getInstance().getStringList("detectors");
         for(String pattern : patterns) {
             Constructor detector = null;
             try {

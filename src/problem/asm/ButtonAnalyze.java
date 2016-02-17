@@ -29,22 +29,11 @@ public class ButtonAnalyze extends Button implements Observer {
 
     @Override
     public void execute() {
-        for(String phase : Config.getInstance().getPhases()) {
-            try {
-                Constructor detector = Class.forName(phase).getConstructor(FileGenerator.class);
-                ExecuteCapable newExecuteCapable = (ExecuteCapable) detector.newInstance(this.fileGenerator);
-                this.label.setText(newExecuteCapable.getExecutionString());
-//                this.label.revalidate();
-//                this.label.repaint();
-//                this.panel.revalidate();
-//                this.panel.repaint();
-                newExecuteCapable.execute();
-                this.info = newExecuteCapable.getExecutionString();
-                System.out.println(label.getText());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        PhaseMaker phaseMaker = new PhaseMaker(this.fileGenerator);
+        try {
+            phaseMaker.runPhases();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         CheckboxPanel panel = new CheckboxPanel();

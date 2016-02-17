@@ -46,6 +46,10 @@ public class ImagePanel extends JPanel implements Observer {
         System.out.println("UPDATED IMAGE LOCATION");
         try {
             this.image = ImageIO.read(new File(imageLocation));
+            if(this.image != null) {
+                this.revalidate();
+                this.repaint();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

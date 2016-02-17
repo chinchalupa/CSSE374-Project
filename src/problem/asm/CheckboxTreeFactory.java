@@ -5,14 +5,18 @@ import org.scijava.swing.checkboxtree.CheckBoxNodeEditor;
 import org.scijava.swing.checkboxtree.CheckBoxNodeRenderer;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Jeremy on 2/16/2016.
  */
-public class CheckboxTreeFactory implements ExecuteCapable {
+public class CheckboxTreeFactory implements ExecuteCapable, TreeSelectionListener {
 
     DefaultMutableTreeNode root = new DefaultMutableTreeNode("Class Nodes");
     DefaultTreeModel model;
@@ -24,10 +28,6 @@ public class CheckboxTreeFactory implements ExecuteCapable {
         this.fileGenerator = fileGenerator;
     }
 
-
-    public void addTreeNode() {
-
-    }
 
     @Override
     public void execute() {
@@ -69,8 +69,6 @@ public class CheckboxTreeFactory implements ExecuteCapable {
             }
             CheckBoxNodeData data = new CheckBoxNodeData(node.getName(), true);
             sectionNode.add(new DefaultMutableTreeNode(data));
-
-
         }
 
         this.model = new DefaultTreeModel(root);
@@ -79,6 +77,8 @@ public class CheckboxTreeFactory implements ExecuteCapable {
         tree.setCellRenderer(new CheckBoxNodeRenderer());
         tree.setCellEditor(new CheckBoxNodeEditor(getTree()));
         tree.setEditable(true);
+
+        tree.addTreeSelectionListener(this);
 
     }
 
@@ -93,5 +93,29 @@ public class CheckboxTreeFactory implements ExecuteCapable {
 
     public void setTree(JTree tree) {
         this.tree = tree;
+    }
+
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+        System.out.println(e.getPath().getLastPathComponent().toString());
+        Pattern p = Pattern.compile("\\[[^/]*");
+        Matcher m = p.matcher(e.getPath().getLastPathComponent().toString());
+
+        if(m.find()) {
+            String entry = m.group(0).replace("[", "");
+            System.out.println(entry);
+            Config.getInstance().addToStringList("excludes", entry);
+            System.out.println("Configing");
+            Config.newInstance(Config.getInstance().getConfigurationLocation().getPath());
+            System.out.println("Making phases");
+            PhaseMaker phaseMaker = new PhaseMaker(this.fileGenerator);
+            try {
+                phaseMaker.runPhases();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            Config.getInstance().callbothshits();
+        }
+
     }
 }
