@@ -26,6 +26,7 @@
     "problem.asm.PhaseNodeGeneration",
     "problem.asm.PhaseDecoration",
     "problem.asm.PhaseWrite",
-    "problem.asm.RunDotExecutable"
+    "problem.asm.RunDotExecutable",
+    "problem.asm.CheckboxTreeFactory"
   ]
 }

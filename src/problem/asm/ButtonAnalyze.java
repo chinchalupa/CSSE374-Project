@@ -1,6 +1,7 @@
 package problem.asm;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -14,15 +15,13 @@ public class ButtonAnalyze extends Button implements Observer {
 
     private String info;
     private JLabel label;
-    private JPanel panel;
     private JFrame frame;
-    private JFrame newFrame;
+    private ScreenFrame newFrame;
 
-    public ButtonAnalyze(String text, FileGenerator fileGenerator, JLabel label, JPanel panel, JFrame frame, JFrame newFrame) {
+    public ButtonAnalyze(String text, FileGenerator fileGenerator, JLabel label, JPanel panel, JFrame frame, ScreenFrame newFrame) {
         super(text, fileGenerator);
         this.info = "Waiting for user input...";
         this.label = label;
-        this.panel = panel;
         this.frame = frame;
         this.newFrame = newFrame;
         this.setEnabled(false);
@@ -35,10 +34,10 @@ public class ButtonAnalyze extends Button implements Observer {
                 Constructor detector = Class.forName(phase).getConstructor(FileGenerator.class);
                 ExecuteCapable newExecuteCapable = (ExecuteCapable) detector.newInstance(this.fileGenerator);
                 this.label.setText(newExecuteCapable.getExecutionString());
-                this.label.revalidate();
-                this.label.repaint();
-                this.panel.revalidate();
-                this.panel.repaint();
+//                this.label.revalidate();
+//                this.label.repaint();
+//                this.panel.revalidate();
+//                this.panel.repaint();
                 newExecuteCapable.execute();
                 this.info = newExecuteCapable.getExecutionString();
                 System.out.println(label.getText());
@@ -47,6 +46,14 @@ public class ButtonAnalyze extends Button implements Observer {
                 e.printStackTrace();
             }
         }
+
+        CheckboxPanel panel = new CheckboxPanel();
+        CheckboxTreeFactory treeFactory = new CheckboxTreeFactory(this.fileGenerator);
+        treeFactory.execute();
+
+        panel.add(treeFactory.getTree());
+        this.newFrame.addPanel(panel, BorderLayout.LINE_START);
+
         this.frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         System.out.println("ENABLED");
         Config config = Config.getInstance();

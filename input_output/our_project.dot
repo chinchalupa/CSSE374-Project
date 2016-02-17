@@ -12,13 +12,19 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lpanel : JPanel\lframe : JFrame\lnewFrame : JFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrameJFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
+ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lframe : JFrame\lnewFrame : ScreenFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrame, ScreenFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTButtonFactory [label = "{ButtonFactory\l||init() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTButtonLoadConfig [label = "{ButtonLoadConfig\l|label : JLabel\l|init(String, FileGenerator, JLabel) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxPanel [label = "{CheckboxPanel\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\laddTreeNode() : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor\l|name : String\linterfaces : String[]\litemHandler : ItemHandler\l|init(int, ItemHandler) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
@@ -141,6 +147,9 @@ edge [arrowhead = "onormal" style = "solid" label = ""]
 ClassTButtonAnalyze -> ClassTButton
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
+ClassTButtonAnalyze -> ClassTScreenFrame
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
 ClassTButtonAnalyze -> ClassTFileGenerator
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
@@ -148,6 +157,12 @@ ClassTButtonLoadConfig -> ClassTButton
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
 ClassTButtonLoadConfig -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTCheckboxTreeFactory -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTCheckboxTreeFactory -> ClassTFileGenerator
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
 ClassTClassDeclarationVisitor -> ClassTClassVisitor

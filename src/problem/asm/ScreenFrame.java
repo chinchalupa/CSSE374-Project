@@ -53,7 +53,7 @@ public class ScreenFrame extends JFrame {
      * @param location - The direction to add the panel.
      */
     public void addPanel(JPanel panel, String location) {
-        this.contentPanel.add(panel);
+        this.contentPanel.add(panel, location);
         this.contentPanel.revalidate();
         this.contentPanel.repaint();
     }

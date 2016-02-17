@@ -55,5 +55,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/jars/swing-checkbox-tree-master.zip!/swing-checkbox-tree-master/src/main/java" />
+          <root url="jar://$MODULE_DIR$/jars/swing-checkbox-tree-master.zip!/swing-checkbox-tree-master/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
