@@ -1,8 +1,9 @@
 package problem.asm;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.util.*;
 
 public class DesignParser {
@@ -26,11 +27,21 @@ java.lang.Math
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ScreenFrame frame = new ScreenFrame("THE BEST CSSE374 PROJECT EVER!");
-                JLabel label = frame.addLabel(100, 150, "Waiting for user input...");
-                frame.addButton(180, 100, new ButtonLoadConfig("Load Config", umlGenerator, label), null);
-                frame.addButton(300, 100, new ButtonAnalyze("Analyze", umlGenerator, label, frame.getContentPanel(), frame), null);
-//                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Config config = Config.getInstance();
+                ScreenFrame frame = new ScreenFrame("THE BEST CSSE374 PROJECT EVER!", 600, 400);
+                ScreenFrame fullFrame = new ScreenFrame("I WANT THIS PROJECT TO END", 1920, 1080);
+
+                ImagePanel imagePanel = new ImagePanel(Config.getInstance().getImageLocation());
+                config.addObserver(imagePanel);
+                fullFrame.addPanel(imagePanel, BorderLayout.CENTER);
+
+                JLabel label = frame.addLabel("Waiting for user input...", BorderLayout.PAGE_END);
+                frame.addButton(new ButtonLoadConfig("Load Config", umlGenerator, label), null, BorderLayout.PAGE_START);
+                ButtonAnalyze analyzeButton = new ButtonAnalyze("Analyze", umlGenerator, label, frame.getContentPanel(), frame, fullFrame);
+                config.addObserver(analyzeButton);
+                frame.addButton(analyzeButton, null, BorderLayout.CENTER);
+//                fullFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
                 frame.setVisible(true);
             }

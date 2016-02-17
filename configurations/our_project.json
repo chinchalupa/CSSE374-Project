@@ -8,6 +8,8 @@
   ],
 
   "dot_output": "input_output/our_project.dot",
+  "png_output": "input_output/our_project.png",
+
   "packages": [
     "./src/problem/asm"
   ],

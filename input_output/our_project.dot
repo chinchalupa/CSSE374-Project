@@ -12,7 +12,7 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lpanel : JPanel\lframe : JFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrame) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lpanel : JPanel\lframe : JFrame\lnewFrame : JFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrameJFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTButtonFactory [label = "{ButtonFactory\l||init() : void\l}"]
@@ -39,7 +39,7 @@ node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lgetPackageList() : List\lgetClassList() : List\lgetClassesAndPackageClassesList() : List\lgetPhases() : List\ldetectedPatterns() : ArrayList\lgetAdapterMinimumCount() : long\lclinit() : void\l}"]
+ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lcallbothshits() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lgetPackageList() : List\lgetClassList() : List\lgetClassesAndPackageClassesList() : List\lgetPhases() : List\ldetectedPatterns() : ArrayList\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
 ClassTDecoratorDetector [label = "{DecoratorDetector\l\<\<Decorator\>\>\l|decoratorNodes : HashSet\<INode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : List\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
@@ -61,6 +61,9 @@ ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTIEdge [label = "{IEdge\l||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\lequals(IEdge) : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
 
 ClassTINode [label = "{INode\l\<\<Target\>\>\l|name : String\lminiName : String\ltype : String\lextension : String\linterfaces : List\<String\>\lmethods : List\<NodeMethod\>\lfields : List\<NodeField\>\l|init(String) : void\lgetName() : String\lgetType() : String\lsetMiniName(String) : void\lgetMiniName() : String\lgetMethods() : List\laddField(NodeField) : void\lgetFields() : List\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\lgetPatternIdentifier() : List\laddPatternIdentifier(String) : void\lsetOutlineColor(String) : void\lsetStyle(String) : void\lgetOutlineColor() : String\lgetStyle() : String\l}"]
@@ -102,7 +105,10 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTPhaseWrite [label = "{PhaseWrite\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String) : void\lupdateLabel() : void\laddButton(int, int, Button, JPanel) : void\laddPanel(intintintint) : JPanel\laddLabel(int, int, String) : JLabel\lgetContentPanel() : JPanel\l}"]
+ClassTRunDotExecutable [label = "{RunDotExecutable\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
 ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : List\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]

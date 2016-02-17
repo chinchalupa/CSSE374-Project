@@ -11,33 +11,27 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by Jeremy on 2/2/2016.
  */
-public class Config {
+public class Config extends Observable {
 
-    private static Config instance = null;
+    private static Config instance = new Config("configurations/our_project.json");
 
     private JSONParser parser;
     private JSONObject jsonObject;
 
     private Config(String s) {
-        parser = new JSONParser();
-        Object obj = null;
-        try {
-            obj = parser.parse(new FileReader(s));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        jsonObject = (JSONObject) obj;
+        this.setNewJsonObject(s);
     }
 
     public static Config newInstance(String s) {
-        instance = new Config(s);
+        if(instance == null) {
+        } else {
+            instance.setNewJsonObject(s);
+        }
         return instance;
     }
 
@@ -52,6 +46,25 @@ public class Config {
             pkg = pkg.replace("./src/", "").replace("/", ".").replace(".java", "");
         }
         return pkg;
+    }
+
+    public void callbothshits() {
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    private void setNewJsonObject(String fileLocation) {
+        try {
+            parser = new JSONParser();
+            this.jsonObject = (JSONObject) parser.parse(new FileReader(fileLocation));
+            this.setChanged();
+            this.notifyObservers();
+            System.out.println("Notified observers");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public static boolean inPackageConfiguration(String classInQuestion) {
@@ -153,5 +166,10 @@ public class Config {
     public long getAdapterMinimumCount() {
         JSONObject adapterSettings = (JSONObject) this.jsonObject.get("adapterSettings");
         return (long) adapterSettings.get("minimumMethodCalls");
+    }
+
+    public String getImageLocation() {
+        String imageLocation = (String) this.jsonObject.get("png_output");
+        return imageLocation;
     }
 }

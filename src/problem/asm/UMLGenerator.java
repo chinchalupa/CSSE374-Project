@@ -19,6 +19,7 @@ public class UMLGenerator extends FileGenerator {
     /**
      * UML Generators take in an ItemHandler that handles added nodes and edges.
      */
+    //TODO: Get item handler in.
     public UMLGenerator() {
 
         super();

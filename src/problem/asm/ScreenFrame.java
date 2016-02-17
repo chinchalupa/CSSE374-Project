@@ -11,11 +11,18 @@ public class ScreenFrame extends JFrame {
     private JLabel label;
     private JPanel contentPanel;
 
-    public ScreenFrame(String title) throws HeadlessException {
+    /**
+     * Draws a screen with a title, a certain size, and a Layout.
+     * @param title - The title of the window.
+     * @param sizeX - The X size of the window.
+     * @param sizeY - The Y size of the window.
+     * @throws HeadlessException - No header.
+     */
+    public ScreenFrame(String title, int sizeX, int sizeY) throws HeadlessException {
         super(title);
-        this.setSize(new Dimension(600, 400));
+        this.setSize(new Dimension(sizeX, sizeY));
         this.contentPanel = new JPanel();
-        contentPanel.setLayout(null);
+        this.contentPanel.setLayout(new BorderLayout());
         this.getContentPane().add(this.contentPanel);
     }
 
@@ -24,17 +31,12 @@ public class ScreenFrame extends JFrame {
 
     /**
      * Add a button to the frame.
-     * @param x - The x coordinate of the button.
-     * @param y - The y coordinate of the button.
      * @param button - The button to add to the frame.
      * @param panel - The panel to add the button to. If null, the item will be added to the content frame.
      */
-    public void addButton(int x, int y, Button button, JPanel panel) {
+    public void addButton(Button button, JPanel panel, String location) {
         if(panel == null) {
-            this.contentPanel.add(button);
-//            button.setLayout(null);
-//            button.setLocation(x, y);
-            button.setBounds(x, y, 120, 40);
+            this.contentPanel.add(button, location);
             contentPanel.revalidate();
             contentPanel.repaint();
         }
@@ -44,11 +46,23 @@ public class ScreenFrame extends JFrame {
         JPanel newPanel = new JPanel();
         return newPanel;
     }
-    public JLabel addLabel(int startX, int startY, String startingText) {
+
+    /**
+     * Adds a panel to the screen.
+     * @param panel - The panel to add.
+     * @param location - The direction to add the panel.
+     */
+    public void addPanel(JPanel panel, String location) {
+        this.contentPanel.add(panel);
+        this.contentPanel.revalidate();
+        this.contentPanel.repaint();
+    }
+
+    public JLabel addLabel(String startingText, String location) {
         JLabel label = new JLabel(startingText);
-        label.setBounds(startX, startY, 400, 40);
-        label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        this.contentPanel.add(label);
+//        label.setBounds(startX, startY, 400, 40);
+//        label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        this.contentPanel.add(label, location);
         contentPanel.revalidate();
         contentPanel.repaint();
         return label;

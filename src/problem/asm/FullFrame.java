@@ -10,5 +10,6 @@ public class FullFrame extends JFrame {
     
     public FullFrame(String title) throws HeadlessException {
         super(title);
+        this.setSize(new Dimension(1920, 1080));
     }
 }
