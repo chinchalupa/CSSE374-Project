@@ -12,7 +12,7 @@
 
 <h2>General</h2>
 <script>
-alert("HAIL SATAN!!!");
+HAIL SATAN LORD OF DARKNESS!
 </script>
 To run our project, run DesignParser with no arguments. A GUI should appear with the option to load a config file from the project's config directory.
 Whence a config is loaded, pressing the 'analyze' button will analyze the code determined by the config file and create an image to display the results.
