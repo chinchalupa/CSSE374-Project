@@ -3,6 +3,12 @@ package problem.asm;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import problem.asm.detectors.DecoratorDetector;
+import problem.asm.file_elements.ClassNode;
+import problem.asm.file_elements.INode;
+import problem.asm.structures.Config;
+import problem.asm.structures.FileGenerator;
+import problem.asm.structures.UMLGenerator;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

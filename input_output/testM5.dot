@@ -5,27 +5,36 @@ fontsize = 8
 rankdir=BT
 
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTApp [label = "{App\l||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTIteratorToEnumerationAdapter [label = "{IteratorToEnumerationAdapter\l|itr : Iterator\<Iterator\<TE\>\l|init(Iterator) : void\lhasMoreElements() : boolean\lnextElement() : Object\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTLinearTransformer [label = "{LinearTransformer\l|enumTion : Enumeration\<Enumeration\<TT\>\l|init(Enumeration) : void\ltransform(OutputStream) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterInputStream [label = "{FilterInputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-ClassTFilterOutputStream [label = "{FilterOutputStream\l\<\<Adapter\>\>\l\<\<Decorator\>\>\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTInputStream [label = "{InputStream\l\<\<Target\>\>\l\<\<Adaptee\>\>\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTOutputStream [label = "{OutputStream\l\<\<Target\>\>\l\<\<Adaptee\>\>\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFilterInputStream [label = "{FilterInputStream\l|in : InputStream\l|init(InputStream) : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFilterOutputStream [label = "{FilterOutputStream\l|out : OutputStream\l|init(OutputStream) : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTInputStream [label = "{InputStream\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputStream [label = "{OutputStream\l||init() : void\lwrite(int) : void\lwrite(byte[]) : void\lwrite(byte[], intint) : void\lflush() : void\lclose() : void\l}"]
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTFilterInputStream -> ClassTInputStream
 edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTLinearTransformer -> ClassTOutputStream
-edge [arrowhead = "onormal" style = "solid" label = ""]
-ClassTFilterInputStream -> ClassTInputStream
-edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
+
 ClassTFilterInputStream -> ClassTInputStream
 edge [arrowhead = "onormal" style = "solid" label = ""]
+
 ClassTFilterOutputStream -> ClassTOutputStream
-edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
 ClassTFilterOutputStream -> ClassTOutputStream
 }

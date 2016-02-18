@@ -1,8 +1,7 @@
 {
   "dot_output": "input_output\/our_project.dot",
   "excludes": [
-    "problem.asm.FileGenerator",
-    "problem.asm.ExecuteCapable"
+    "problem.asm.detectors.DecoratorDetector"
   ],
   "png_output": "input_output\/our_project.png",
   "classes": [
@@ -12,19 +11,19 @@
     "minimumMethodCalls": 6
   },
   "detectors": [
-    "problem.asm.AdapterDetector",
-    "problem.asm.DecoratorDetector",
-    "problem.asm.SingletonDetector",
-    "problem.asm.CompositeDetector"
+    "problem.asm.detectors.AdapterDetector",
+    "problem.asm.detectors.DecoratorDetector",
+    "problem.asm.detectors.SingletonDetector",
+    "problem.asm.detectors.CompositeDetector"
   ],
   "packages": [
     ".\/src\/problem\/asm"
   ],
   "phases": [
-    "problem.asm.PhaseClassGeneration",
-    "problem.asm.PhaseNodeGeneration",
-    "problem.asm.PhaseDecoration",
-    "problem.asm.PhaseWrite",
-    "problem.asm.RunDotExecutable"
+    "problem.asm.phases.PhaseClassGeneration",
+    "problem.asm.phases.PhaseNodeGeneration",
+    "problem.asm.phases.PhaseDecoration",
+    "problem.asm.phases.PhaseWrite",
+    "problem.asm.phases.RunDotExecutable"
   ]
 }

@@ -4,3 +4,19 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCompositeItem [label = "{CompositeItem\l|items : List\<Item\>\l|init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCoolItem [label = "{CoolItem\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTItem [label = "{Item\l||init() : void\ldoOp() : void\l}"]
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTCompositeItem -> ClassTItem
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTCoolItem -> ClassTItem
+}

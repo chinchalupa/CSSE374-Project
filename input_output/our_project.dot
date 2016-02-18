@@ -4,24 +4,6 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
-
-ClassTAdapterDetector [label = "{AdapterDetector\l\<\<Decorator\>\>\l|itf : List\<String\>\ladaptees : List\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lcheckIfNodeReallyIsAdapterOfClass(INode, String) : boolean\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lframe : JFrame\lnewFrame : ScreenFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrame, ScreenFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTButtonLoadConfig [label = "{ButtonLoadConfig\l|label : JLabel\l|init(String, FileGenerator, JLabel) : void\lexecute() : void\lgetExecutionString() : String\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTCheckboxPanel [label = "{CheckboxPanel\l||init() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\lvalueChanged(TreeSelectionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor\l|name : String\linterfaces : String[]\litemHandler : ItemHandler\l|init(int, ItemHandler) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
@@ -34,37 +16,26 @@ ClassTClassMethodInstanceVisitor [label = "{ClassMethodInstanceVisitor\l|nodeMet
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassMethodVisitor [label = "{ClassMethodVisitor\l|itemHandler : ItemHandler\l|init(int) : void\linit(int, ClassVisitor, ItemHandler) : void\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\laddNewUses(StringString) : void\laddNewAssociationArrow(StringString) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
-ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
+ClassTAdapterDetector [label = "{AdapterDetector\l\<\<Decorator\>\>\l|itf : List\<String\>\ladaptees : List\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lcheckIfNodeReallyIsAdapterOfClass(INode, String) : boolean\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
 ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
-ClassTDecoratorDetector [label = "{DecoratorDetector\l\<\<Decorator\>\>\l|decoratorNodes : HashSet\<INode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
+ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTEdge [label = "{Edge\l|lineName : String\lto : String\lfrom : String\larrowType : String\llineType : String\ltext : String\l|init(StringStringStringStringString) : void\lgetText() : String\lsetText(String) : void\lgetLineName() : String\lgetTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\laccept(IVisitor) : void\ltoString() : String\lequals(IEdge) : boolean\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTIEdge [label = "{IEdge\l||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\lequals(IEdge) : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTINode [label = "{INode\l|name : String\lminiName : String\ltype : String\lextension : String\linterfaces : List\<String\>\lmethods : List\<NodeMethod\>\lfields : List\<NodeField\>\l|init(String) : void\lgetName() : String\lgetType() : String\lsetMiniName(String) : void\lgetMiniName() : String\lgetMethods() : List\laddField(NodeField) : void\lgetFields() : List\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\lgetPatternIdentifier() : List\laddPatternIdentifier(String) : void\lsetOutlineColor(String) : void\lsetStyle(String) : void\lgetOutlineColor() : String\lgetStyle() : String\l}"]
@@ -73,25 +44,13 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTINodeElement [label = "{INodeElement\l||getName() : String\lgetReturnType() : String\lgetCollectionType() : String\lgetContainingClass() : INode\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTNodeField [label = "{NodeField\l|name : String\ltype : String\lcontainingClass : INode\ldStructure : String\l|init(StringStringString) : void\linit(String, String, INode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTNodeMethod [label = "{NodeMethod\l|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+ClassTExecuteCapable [label = "{ExecuteCapable\l||execute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTPhaseClassGeneration [label = "{PhaseClassGeneration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
@@ -112,10 +71,16 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTRunDotExecutable [label = "{RunDotExecutable\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFileGenerator [label = "{FileGenerator\l|outputLocation : String\linputFile : String\litemHandler : ItemHandler\lstartingClassStrings : List\<String\>\lvisitor : IVisitor\l|init() : void\lupdateNodes() : List\lgetTotalStartingClassSize() : int\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\lgetVisitor() : IVisitor\lsetVisitor(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
 
 ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
@@ -124,12 +89,6 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTUMLGenerator [label = "{UMLGenerator\l||init() : void\lupdateNodes() : List\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTAdapterDetector [label = "{AdapterDetector\l|itf : List\<String\>\ladaptees : List\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lcheckIfNodeReallyIsAdapterOfClass(INode, String) : boolean\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
@@ -145,6 +104,30 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\lvalueChanged(TreeSelectionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
+ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor\l|name : String\linterfaces : String[]\litemHandler : ItemHandler\l|init(int, ItemHandler) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
@@ -155,35 +138,23 @@ ClassTClassMethodInstanceVisitor [label = "{ClassMethodInstanceVisitor\l|nodeMet
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassMethodVisitor [label = "{ClassMethodVisitor\l|itemHandler : ItemHandler\l|init(int) : void\linit(int, ClassVisitor, ItemHandler) : void\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\laddNewUses(StringString) : void\laddNewAssociationArrow(StringString) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTCompositeDetector [label = "{CompositeDetector\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTDecoratorDetector [label = "{DecoratorDetector\l|decoratorNodes : HashSet\<INode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTEdge [label = "{Edge\l|lineName : String\lto : String\lfrom : String\larrowType : String\llineType : String\ltext : String\l|init(StringStringStringStringString) : void\lgetText() : String\lsetText(String) : void\lgetLineName() : String\lgetTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\laccept(IVisitor) : void\ltoString() : String\lequals(IEdge) : boolean\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTIEdge [label = "{IEdge\l||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\lequals(IEdge) : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTINode [label = "{INode\l|name : String\lminiName : String\ltype : String\lextension : String\linterfaces : List\<String\>\lmethods : List\<NodeMethod\>\lfields : List\<NodeField\>\l|init(String) : void\lgetName() : String\lgetType() : String\lsetMiniName(String) : void\lgetMiniName() : String\lgetMethods() : List\laddField(NodeField) : void\lgetFields() : List\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\lgetPatternIdentifier() : List\laddPatternIdentifier(String) : void\lsetOutlineColor(String) : void\lsetStyle(String) : void\lgetOutlineColor() : String\lgetStyle() : String\l}"]
@@ -192,25 +163,13 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTINodeElement [label = "{INodeElement\l||getName() : String\lgetReturnType() : String\lgetCollectionType() : String\lgetContainingClass() : INode\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTNodeField [label = "{NodeField\l|name : String\ltype : String\lcontainingClass : INode\ldStructure : String\l|init(StringStringString) : void\linit(String, String, INode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTNodeMethod [label = "{NodeMethod\l|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+ClassTExecuteCapable [label = "{ExecuteCapable\l||execute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTPhaseClassGeneration [label = "{PhaseClassGeneration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
@@ -231,22 +190,22 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTRunDotExecutable [label = "{RunDotExecutable\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTSingletonDetector [label = "{SingletonDetector\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTUMLDecorator [label = "{UMLDecorator\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+ClassTFileGenerator [label = "{FileGenerator\l|outputLocation : String\linputFile : String\litemHandler : ItemHandler\lstartingClassStrings : List\<String\>\lvisitor : IVisitor\l|init() : void\lupdateNodes() : List\lgetTotalStartingClassSize() : int\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\lgetVisitor() : IVisitor\lsetVisitor(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTUMLGenerator [label = "{UMLGenerator\l||init() : void\lupdateNodes() : List\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTAdapterDetector [label = "{AdapterDetector\l|itf : List\<String\>\ladaptees : List\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lcheckIfNodeReallyIsAdapterOfClass(INode, String) : boolean\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
@@ -264,6 +223,30 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\lvalueChanged(TreeSelectionEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
+ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor\l|name : String\linterfaces : String[]\litemHandler : ItemHandler\l|init(int, ItemHandler) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
@@ -274,33 +257,21 @@ ClassTClassMethodInstanceVisitor [label = "{ClassMethodInstanceVisitor\l|nodeMet
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassMethodVisitor [label = "{ClassMethodVisitor\l|itemHandler : ItemHandler\l|init(int) : void\linit(int, ClassVisitor, ItemHandler) : void\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\laddNewUses(StringString) : void\laddNewAssociationArrow(StringString) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTCompositeDetector [label = "{CompositeDetector\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTDecoratorDetector [label = "{DecoratorDetector\l|decoratorNodes : HashSet\<INode\>\l|init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lfindPotentialDecoratorNodes() : void\lfindPotentialDecorations() : void\lfindPotentialComponents() : void\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTEdge [label = "{Edge\l|lineName : String\lto : String\lfrom : String\larrowType : String\llineType : String\ltext : String\l|init(StringStringStringStringString) : void\lgetText() : String\lsetText(String) : void\lgetLineName() : String\lgetTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\laccept(IVisitor) : void\ltoString() : String\lequals(IEdge) : boolean\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTIEdge [label = "{IEdge\l||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\lequals(IEdge) : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTINode [label = "{INode\l|name : String\lminiName : String\ltype : String\lextension : String\linterfaces : List\<String\>\lmethods : List\<NodeMethod\>\lfields : List\<NodeField\>\l|init(String) : void\lgetName() : String\lgetType() : String\lsetMiniName(String) : void\lgetMiniName() : String\lgetMethods() : List\laddField(NodeField) : void\lgetFields() : List\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\lgetPatternIdentifier() : List\laddPatternIdentifier(String) : void\lsetOutlineColor(String) : void\lsetStyle(String) : void\lgetOutlineColor() : String\lgetStyle() : String\l}"]
@@ -309,25 +280,13 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTINodeElement [label = "{INodeElement\l||getName() : String\lgetReturnType() : String\lgetCollectionType() : String\lgetContainingClass() : INode\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
 ClassTNodeField [label = "{NodeField\l|name : String\ltype : String\lcontainingClass : INode\ldStructure : String\l|init(StringStringString) : void\linit(String, String, INode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTNodeMethod [label = "{NodeMethod\l|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\lgetCollectionType() : String\ltoString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
-
-ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+ClassTExecuteCapable [label = "{ExecuteCapable\l||execute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTPhaseClassGeneration [label = "{PhaseClassGeneration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
@@ -348,110 +307,332 @@ node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 ClassTRunDotExecutable [label = "{RunDotExecutable\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTSingletonDetector [label = "{SingletonDetector\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
-ClassTUMLDecorator [label = "{UMLDecorator\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+ClassTFileGenerator [label = "{FileGenerator\l|outputLocation : String\linputFile : String\litemHandler : ItemHandler\lstartingClassStrings : List\<String\>\lvisitor : IVisitor\l|init() : void\lupdateNodes() : List\lgetTotalStartingClassSize() : int\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\lgetVisitor() : IVisitor\lsetVisitor(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
 ClassTUMLGenerator [label = "{UMLGenerator\l||init() : void\lupdateNodes() : List\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
 
+ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lframe : JFrame\lnewFrame : ScreenFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrame, ScreenFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTButtonLoadConfig [label = "{ButtonLoadConfig\l|label : JLabel\l|init(String, FileGenerator, JLabel) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxPanel [label = "{CheckboxPanel\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\lvalueChanged(TreeSelectionEvent) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassDeclarationVisitor [label = "{ClassDeclarationVisitor\l|name : String\linterfaces : String[]\litemHandler : ItemHandler\l|init(int, ItemHandler) : void\lvisit(int, int, String, String, String, String[]) : void\lgetName() : String\laddExtendsArrow(StringString) : void\laddInheritanceArrow(StringString) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassFieldVisitor [label = "{ClassFieldVisitor\l|itemHandler : ItemHandler\l|init(int) : void\linit(int, ClassVisitor, ItemHandler) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\laddFieldToNode(StringString) : void\laddFieldToNode(StringStringString) : void\laddNewUses(StringString) : void\laddNewAggregates(StringString) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassMethodInstanceVisitor [label = "{ClassMethodInstanceVisitor\l|nodeMethod : NodeMethod\litemHandler : ItemHandler\l|init(int, MethodVisitor, NodeMethod, ItemHandler) : void\lvisitMethodInsn(int, String, String, String, boolean) : void\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassMethodVisitor [label = "{ClassMethodVisitor\l|itemHandler : ItemHandler\l|init(int) : void\linit(int, ClassVisitor, ItemHandler) : void\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\laddAccessLevel(int) : String\laddReturnType(String) : String\laddArguments(String) : List\laddNewUses(StringString) : void\laddNewAssociationArrow(StringString) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTAdapterDetector [label = "{AdapterDetector\l\<\<Decorator\>\>\l|itf : List\<String\>\ladaptees : List\<String\>\l|init(FileGenerator) : void\lupdateNodes() : List\lcheckIfNodeReallyIsAdapterOfClass(INode, String) : boolean\laddAdaptsArrow(StringString) : void\lgetItfs() : void\lgetExtensions() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTCompositeDetector [label = "{CompositeDetector\l\<\<Decorator\>\>\l|compositeNodeNames : List\<String\>\lcompositeObjects : List\<INode\>\l|init(FileGenerator) : void\lfindComposites() : void\lfindComponents() : void\lfindLeaves() : void\lupdateNodes() : List\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTSingletonDetector [label = "{SingletonDetector\l\<\<Decorator\>\>\l||init(FileGenerator) : void\lupdateNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassNode [label = "{ClassNode\l|name : String\loutlineColor : String\lstyle : String\lpatternIdentifier : List\<String\>\l|init(String) : void\lgetOutlineColor() : String\lsetOutlineColor(String) : void\lgetStyle() : String\lsetStyle(String) : void\laddPatternIdentifier(String) : void\lgetPatternIdentifier() : List\ltoString() : String\laccept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTEdge [label = "{Edge\l|lineName : String\lto : String\lfrom : String\larrowType : String\llineType : String\ltext : String\l|init(StringStringStringStringString) : void\lgetText() : String\lsetText(String) : void\lgetLineName() : String\lgetTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\laccept(IVisitor) : void\ltoString() : String\lequals(IEdge) : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTIEdge [label = "{IEdge\l||getTo() : String\lgetFrom() : String\lgetLine() : String\lgetArrow() : String\lsetText(String) : void\lgetText() : String\lgetLineName() : String\ltoString() : String\lequals(IEdge) : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTINode [label = "{INode\l|name : String\lminiName : String\ltype : String\lextension : String\linterfaces : List\<String\>\lmethods : List\<NodeMethod\>\lfields : List\<NodeField\>\l|init(String) : void\lgetName() : String\lgetType() : String\lsetMiniName(String) : void\lgetMiniName() : String\lgetMethods() : List\laddField(NodeField) : void\lgetFields() : List\laddMethod(NodeMethod) : void\laddInterface(String) : void\lsetExtension(String) : void\lgetInterfaces() : List\lgetExtends() : String\lgetPatternIdentifier() : List\laddPatternIdentifier(String) : void\lsetOutlineColor(String) : void\lsetStyle(String) : void\lgetOutlineColor() : String\lgetStyle() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTINodeElement [label = "{INodeElement\l||getName() : String\lgetReturnType() : String\lgetCollectionType() : String\lgetContainingClass() : INode\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTNodeField [label = "{NodeField\l|name : String\ltype : String\lcontainingClass : INode\ldStructure : String\l|init(StringStringString) : void\linit(String, String, INode) : void\lgetName() : String\lgetReturnType() : String\lgetContainingClass() : INode\lgetCollectionType() : String\ltoString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTNodeMethod [label = "{NodeMethod\l|name : String\lreturnType : String\largs : List\<String\>\lsecurity : String\lcontainingClassNode : INode\lmethodsCalled : List\<NodeMethod\>\lnodesCreated : List\<NodeField\>\l|init(String, String, List, String, INode) : void\lgetClassNodeFieldsCreated() : List\laddCreatedNode(NodeField) : void\lgetMethodsCalled() : List\laddMethodCalled(NodeMethod) : void\lgetContainingClass() : INode\lgetArgs() : List\lgetSecurity() : String\lgetName() : String\lgetReturnType() : String\lgetCollectionType() : String\ltoString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTExecuteCapable [label = "{ExecuteCapable\l||execute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTPhaseClassGeneration [label = "{PhaseClassGeneration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTPhaseDecoration [label = "{PhaseDecoration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTPhaseMaker [label = "{PhaseMaker\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lrunPhases() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTPhaseNodeGeneration [label = "{PhaseNodeGeneration\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTPhaseWrite [label = "{PhaseWrite\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTRunDotExecutable [label = "{RunDotExecutable\l|fileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTConfig [label = "{Config\l|instance : Config\lparser : JSONParser\ljsonObject : JSONObject\lallclasses : List\<String\>\lconfiguration : File\l|init(String) : void\lnewInstance(String) : Config\lgetInstance() : Config\lgetPackage() : String\lnotifyOthers() : void\lsetNewJsonObject(String) : void\linPackageConfiguration(String) : boolean\lgetDotFileOutputLocation() : String\lrecurseFilesInDirectory(File, List) : List\lgetFormattedListOfClasses() : List\laddToStringList(StringString) : void\lwriteObject() : void\lremoveFromStringList(StringString) : void\lremoveListFromStringList(String, List) : void\lgetStringList(String) : List\lgetAdapterMinimumCount() : long\lgetImageLocation() : String\lgetConfigurationLocation() : File\lclinit() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTDesignParser [label = "{DesignParser\l||init() : void\lmain(String[]) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFileGenerator [label = "{FileGenerator\l|outputLocation : String\linputFile : String\litemHandler : ItemHandler\lstartingClassStrings : List\<String\>\lvisitor : IVisitor\l|init() : void\lupdateNodes() : List\lgetTotalStartingClassSize() : int\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\lgetVisitor() : IVisitor\lsetVisitor(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTItemHandler [label = "{ItemHandler\l|edges : Set\<IEdge\>\lnodes : LinkedList\<INode\>\lcreatedNodes : List\<INode\>\lactiveNode : INode\l|init(Set, LinkedList) : void\linit() : void\lgetNodeStack() : LinkedList\lpoll() : INode\lgetActiveNode() : INode\loffer(INode) : void\lgetEdges() : Set\lgetCreatedNodes() : List\lcreateEdge(StringStringStringStringString) : IEdge\lcreateNode(StringString) : INode\lisNotScannedNode(INode) : boolean\lclearEdges() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#00ff00" style="filled"]
+
+ClassTUMLDecorator [label = "{UMLDecorator\l\<\<Decorator\>\>\l|uml : FileGenerator\l|init(FileGenerator) : void\lupdateNodes() : List\lgetNodes() : List\lgetEdges() : Set\lgenerateClassList() : void\lgenerateNodes() : void\lwrite() : void\laccept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTUMLGenerator [label = "{UMLGenerator\l||init() : void\lupdateNodes() : List\lgenerateNodes() : void\lcreateAllClassNodes() : void\lwrite() : void\lgetClasses() : List\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTButton [label = "{Button\l|fileGenerator : FileGenerator\l|init(String, FileGenerator) : void\lsetComputing(String) : void\lsetFinished() : void\lactionPerformed(ActionEvent) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTButtonAnalyze [label = "{ButtonAnalyze\l|info : String\llabel : JLabel\lframe : JFrame\lnewFrame : ScreenFrame\l|init(String, FileGenerator, JLabel, JPanel, JFrame, ScreenFrame) : void\lexecute() : void\lgetExecutionString() : String\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTButtonLoadConfig [label = "{ButtonLoadConfig\l|label : JLabel\l|init(String, FileGenerator, JLabel) : void\lexecute() : void\lgetExecutionString() : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxPanel [label = "{CheckboxPanel\l||init() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTCheckboxTreeFactory [label = "{CheckboxTreeFactory\l|root : DefaultMutableTreeNode\lmodel : DefaultTreeModel\ltree : JTree\lfileGenerator : FileGenerator\l|init(FileGenerator) : void\lexecute() : void\lgetExecutionString() : String\lgetTree() : JTree\lsetTree(JTree) : void\lvalueChanged(TreeSelectionEvent) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTFullFrame [label = "{FullFrame\l||init(String) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTImagePanel [label = "{ImagePanel\l|image : BufferedImage\l|init(String) : void\lpaintComponent(Graphics) : void\lupdate(Observable, Object) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTScreenFrame [label = "{ScreenFrame\l|label : JLabel\lcontentPanel : JPanel\l|init(String, intint) : void\lupdateLabel() : void\laddButton(Button, JPanel, String) : void\laddPanel(intintintint) : JPanel\laddPanel(JPanel, String) : void\laddLabel(StringString) : JLabel\lgetContentPanel() : JPanel\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTITraversable [label = "{ITraversable\l||accept(IVisitor) : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTIVisitor [label = "{IVisitor\l||visitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputDotFile [label = "{OutputDotFile\l|out : OutputStream\lfileGenerator : FileGenerator\l|init(OutputStream, FileGenerator) : void\lwrite(String) : void\lstartUp() : void\lend() : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitDecorator(UMLDecorator) : void\linOurPackage(String) : boolean\lfixInvalidCharacters(String) : String\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTOutputSDFile [label = "{OutputSDFile\l|outputStream : OutputStream\l|init(OutputStream) : void\lwrite(String) : void\lvisitNode(INode) : void\lvisitEdge(IEdge) : void\lpreVisitNode(INode) : void\lpostVisitEdge(IEdge) : void\lpreVisitEdge(IEdge) : void\lpostVisitNode(INode) : void\lseparateNodeEdges() : void\lvisitMethod(NodeMethod) : void\lvisitField(NodeField) : void\lvisitDecorator(UMLDecorator) : void\lend() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTClassVisitor [label = "{ClassVisitor\l|api : int\lcv : ClassVisitor\l|init(int) : void\linit(int, ClassVisitor) : void\lvisit(int, int, String, String, String, String[]) : void\lvisitSource(StringString) : void\lvisitOuterClass(StringStringString) : void\lvisitAnnotation(String, boolean) : AnnotationVisitor\lvisitTypeAnnotation(int, TypePath, String, boolean) : AnnotationVisitor\lvisitAttribute(Attribute) : void\lvisitInnerClass(String, String, String, int) : void\lvisitField(int, String, String, String, Object) : FieldVisitor\lvisitMethod(int, String, String, String, String[]) : MethodVisitor\lvisitEnd() : void\l}"]
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTClassMethodVisitor -> ClassTClassVisitor
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTPhaseWrite -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTRunDotExecutable -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTPhaseNodeGeneration -> ClassTExecuteCapable
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTPhaseDecoration -> ClassTExecuteCapable
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTPhaseClassGeneration -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTFileGenerator -> ClassTItemHandler
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
 ClassTAdapterDetector -> ClassTUMLDecorator
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTEdge -> ClassTIEdge
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTOutputDotFile -> ClassTIVisitor
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTCompositeDetector -> ClassTUMLDecorator
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTNodeMethod -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" label = ""]
-
-ClassTClassDeclarationVisitor -> ClassTItemHandler
-edge [arrowhead = "vee" style = "solid" label = ""]
-
-ClassTItemHandler -> ClassTINode
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
 ClassTClassNode -> ClassTINode
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTNodeField -> ClassTINodeElement
-edge [arrowhead = "vee" style = "dashed" label = ""]
-
-ClassTButtonAnalyze -> ClassTScreenFrame
-edge [arrowhead = "vee" style = "dashed" label = ""]
-
-ClassTClassMethodInstanceVisitor -> ClassTItemHandler
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTIEdge -> ClassTITraversable
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTUMLDecorator -> ClassTITraversable
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTClassFieldVisitor -> ClassTClassVisitor
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-
-ClassTOutputSDFile -> ClassTIVisitor
 edge [arrowhead = "vee" style = "solid" label = ""]
 
-ClassTItemHandler -> ClassTIEdge
+ClassTNodeField -> ClassTINode
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassDeclarationVisitor -> ClassTItemHandler
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTUMLGenerator -> ClassTFileGenerator
 edge [arrowhead = "vee" style = "solid" label = ""]
 
 ClassTNodeMethod -> ClassTINode
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
-ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
-edge [arrowhead = "vee" style = "dashed" label = ""]
-
-ClassTClassMethodVisitor -> ClassTItemHandler
-edge [arrowhead = "vee" style = "solid" label = ""]
-
-ClassTNodeField -> ClassTINode
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTButtonAnalyze -> ClassTButton
+ClassTButtonAnalyze -> ClassTScreenFrame
 edge [arrowhead = "onormal" style = "dashed" label = ""]
 
-ClassTINode -> ClassTITraversable
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTSingletonDetector -> ClassTUMLDecorator
-edge [arrowhead = "vee" style = "solid" label = ""]
-
-ClassTConfig -> ClassTConfig
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTDecoratorDetector -> ClassTUMLDecorator
-edge [arrowhead = "onormal" style = "solid" label = ""]
-
-ClassTButtonLoadConfig -> ClassTButton
-edge [arrowhead = "vee" style = "solid" label = ""]
-
-ClassTINodeElement -> ClassTINode
-edge [arrowhead = "vee" style = "dashed" label = ""]
-
-ClassTClassFieldVisitor -> ClassTItemHandler
+ClassTOutputSDFile -> ClassTIVisitor
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
 ClassTClassDeclarationVisitor -> ClassTClassVisitor
 edge [arrowhead = "vee" style = "dashed" label = ""]
 
-ClassTClassVisitor -> ClassTClassVisitor
+ClassTCheckboxTreeFactory -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassFieldVisitor -> ClassTItemHandler
 edge [arrowhead = "onormal" style = "solid" label = ""]
 
-ClassTClassMethodVisitor -> ClassTClassVisitor
+ClassTButtonAnalyze -> ClassTButton
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTOutputDotFile -> ClassTIVisitor
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTNodeField -> ClassTINodeElement
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTPhaseMaker -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTINode -> ClassTITraversable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassMethodInstanceVisitor -> ClassTItemHandler
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTButtonLoadConfig -> ClassTButton
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTIEdge -> ClassTITraversable
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTNodeMethod -> ClassTINodeElement
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTPhaseNodeGeneration -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "solid" label = ""]
+
+ClassTItemHandler -> ClassTINode
+edge [arrowhead = "vee" style = "solid" label = ""]
+
+ClassTINodeElement -> ClassTINode
+edge [arrowhead = "vee" style = "solid" label = ""]
+
+ClassTItemHandler -> ClassTIEdge
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTOutputDotFile -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassVisitor -> ClassTClassVisitor
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTPhaseClassGeneration -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTButton -> ClassTExecuteCapable
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTUMLDecorator -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTSingletonDetector -> ClassTUMLDecorator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTUMLDecorator -> ClassTITraversable
+edge [arrowhead = "vee" style = "solid" label = ""]
+
+ClassTConfig -> ClassTConfig
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTClassFieldVisitor -> ClassTClassVisitor
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTButton -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassMethodVisitor -> ClassTItemHandler
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTEdge -> ClassTIEdge
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTPhaseDecoration -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTPhaseWrite -> ClassTFileGenerator
+edge [arrowhead = "vee" style = "dashed" label = "<<decorates>>"]
+
+ClassTUMLDecorator -> ClassTFileGenerator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTCheckboxTreeFactory -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "solid" label = ""]
+
+ClassTFileGenerator -> ClassTIVisitor
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTCompositeDetector -> ClassTUMLDecorator
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTRunDotExecutable -> ClassTExecuteCapable
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTClassMethodInstanceVisitor -> ClassTNodeMethod
 }

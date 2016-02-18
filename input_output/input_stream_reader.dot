@@ -4,24 +4,31 @@ fontname = "Bitstream Vera Sans"
 fontsize = 8
 rankdir=BT
 
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTInputStream [label = "{InputStream\l\<\<Target\>\>\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTInputStreamReader [label = "{InputStreamReader\l\<\<Adapter\>\>\l|sd : StreamDecoder\l|init(InputStream) : void\linit(InputStream, String) : void\linit(InputStream, Charset) : void\linit(InputStream, CharsetDecoder) : void\lgetEncoding() : String\lread() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTReader [label = "{Reader\l\<\<Adaptee\>\>\l|lock : Object\lmaxSkipBufferSize : int\lskipBuffer : char[]\l|init() : void\linit(Object) : void\lread(CharBuffer) : int\lread() : int\lread(char[]) : int\lread(char[], intint) : int\lskip(long) : long\lready() : boolean\lmarkSupported() : boolean\lmark(int) : void\lreset() : void\lclose() : void\l}"]
-node [shape = "record" color = "#000000" fillcolor = "#ff0000" style="filled"]
-ClassTStreamDecoder [label = "{StreamDecoder\l\<\<Adapter\>\>\l\<\<Target\>\>\l|MIN_BYTE_BUFFER_SIZE : int\lDEFAULT_BYTE_BUFFER_SIZE : int\lisOpen : boolean\lhaveLeftoverChar : boolean\lleftoverChar : char\lchannelsAvailable : boolean\lcs : Charset\ldecoder : CharsetDecoder\lbb : ByteBuffer\lin : InputStream\lch : ReadableByteChannel\l$assertionsDisabled : boolean\l|ensureOpen() : void\lforInputStreamReader(InputStream, Object, String) : StreamDecoder\lforInputStreamReader(InputStream, Object, Charset) : StreamDecoder\lforInputStreamReader(InputStream, Object, CharsetDecoder) : StreamDecoder\lforDecoder(ReadableByteChannel, CharsetDecoder, int) : StreamDecoder\lgetEncoding() : String\lread() : int\lread0() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\lisOpen() : boolean\lgetChannel(FileInputStream) : FileChannel\linit(InputStream, Object, Charset) : void\linit(InputStream, Object, CharsetDecoder) : void\linit(ReadableByteChannel, CharsetDecoder, int) : void\lreadBytes() : int\limplRead(char[], intint) : int\lencodingName() : String\linReady() : boolean\limplReady() : boolean\limplClose() : void\lclinit() : void\l}"]
-edge [arrowhead = "onormal" style = "solid" label = ""]
-ClassTInputStreamReader -> ClassTReader
-edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
-ClassTInputStreamReader -> ClassTStreamDecoder
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTInputStream [label = "{InputStream\l|MAX_SKIP_BUFFER_SIZE : int\l|init() : void\lread() : int\lread(byte[]) : int\lread(byte[], intint) : int\lskip(long) : long\lavailable() : int\lclose() : void\lmark(int) : void\lreset() : void\lmarkSupported() : boolean\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTInputStreamReader [label = "{InputStreamReader\l|sd : StreamDecoder\l|init(InputStream) : void\linit(InputStream, String) : void\linit(InputStream, Charset) : void\linit(InputStream, CharsetDecoder) : void\lgetEncoding() : String\lread() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTReader [label = "{Reader\l|lock : Object\lmaxSkipBufferSize : int\lskipBuffer : char[]\l|init() : void\linit(Object) : void\lread(CharBuffer) : int\lread() : int\lread(char[]) : int\lread(char[], intint) : int\lskip(long) : long\lready() : boolean\lmarkSupported() : boolean\lmark(int) : void\lreset() : void\lclose() : void\l}"]
+node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
+ClassTStreamDecoder [label = "{StreamDecoder\l|MIN_BYTE_BUFFER_SIZE : int\lDEFAULT_BYTE_BUFFER_SIZE : int\lisOpen : boolean\lhaveLeftoverChar : boolean\lleftoverChar : char\lchannelsAvailable : boolean\lcs : Charset\ldecoder : CharsetDecoder\lbb : ByteBuffer\lin : InputStream\lch : ReadableByteChannel\l$assertionsDisabled : boolean\l|ensureOpen() : void\lforInputStreamReader(InputStream, Object, String) : StreamDecoder\lforInputStreamReader(InputStream, Object, Charset) : StreamDecoder\lforInputStreamReader(InputStream, Object, CharsetDecoder) : StreamDecoder\lforDecoder(ReadableByteChannel, CharsetDecoder, int) : StreamDecoder\lgetEncoding() : String\lread() : int\lread0() : int\lread(char[], intint) : int\lready() : boolean\lclose() : void\lisOpen() : boolean\lgetChannel(FileInputStream) : FileChannel\linit(InputStream, Object, Charset) : void\linit(InputStream, Object, CharsetDecoder) : void\linit(ReadableByteChannel, CharsetDecoder, int) : void\lreadBytes() : int\limplRead(char[], intint) : int\lencodingName() : String\linReady() : boolean\limplReady() : boolean\limplClose() : void\lclinit() : void\l}"]
 edge [arrowhead = "vee" style = "dashed" label = ""]
-ClassTInputStreamReader -> ClassTInputStream
+
+ClassTInputStreamReader -> ClassTStreamDecoder
 edge [arrowhead = "onormal" style = "solid" label = ""]
-ClassTStreamDecoder -> ClassTReader
-edge [arrowhead = "vee" style = "dashed" label = "\<\<adapts\>\>"]
-ClassTStreamDecoder -> ClassTInputStream
+
+ClassTInputStreamReader -> ClassTReader
 edge [arrowhead = "vee" style = "solid" label = ""]
+
 ClassTStreamDecoder -> ClassTStreamDecoder
+edge [arrowhead = "vee" style = "dashed" label = ""]
+
+ClassTStreamDecoder -> ClassTInputStream
+edge [arrowhead = "onormal" style = "solid" label = ""]
+
+ClassTStreamDecoder -> ClassTReader
 }

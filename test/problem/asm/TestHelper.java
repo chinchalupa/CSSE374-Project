@@ -1,5 +1,9 @@
 package problem.asm;
 
+import problem.asm.structures.Config;
+import problem.asm.structures.FileGenerator;
+import problem.asm.structures.UMLGenerator;
+
 /**
  * Created by jared on 2/3/2016.
  */

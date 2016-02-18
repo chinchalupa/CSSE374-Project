@@ -1,16 +1,21 @@
 {
-
+  "dot_output": "input_output\/composite_test.dot",
+  "excludes": [],
+  "png_output": "input_output\/composite_test.png",
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  },
   "detectors": [
     "problem.asm.CompositeDetector"
   ],
-
-  "dot_output": "input_output/composite_test.dot",
   "packages": [
-    "./src/composite"
+    ".\/src\/composite"
   ],
-
-
-  "adapterSettings": {
-    "minimumMethodCalls": 6
-  }
+  "phases": [
+    "problem.asm.PhaseClassGeneration",
+    "problem.asm.PhaseNodeGeneration",
+    "problem.asm.PhaseDecoration",
+    "problem.asm.PhaseWrite",
+    "problem.asm.RunDotExecutable"
+  ]
 }

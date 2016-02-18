@@ -5,25 +5,36 @@ fontsize = 8
 rankdir=BT
 
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTMouseAdapter [label = "{MouseAdapter\l||init() : void\lmouseClicked(MouseEvent) : void\lmousePressed(MouseEvent) : void\lmouseReleased(MouseEvent) : void\lmouseEntered(MouseEvent) : void\lmouseExited(MouseEvent) : void\lmouseWheelMoved(MouseWheelEvent) : void\lmouseDragged(MouseEvent) : void\lmouseMoved(MouseEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTMouseListener [label = "{MouseListener\l||mouseClicked(MouseEvent) : void\lmousePressed(MouseEvent) : void\lmouseReleased(MouseEvent) : void\lmouseEntered(MouseEvent) : void\lmouseExited(MouseEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTMouseWheelListener [label = "{MouseWheelListener\l||mouseWheelMoved(MouseWheelEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTMouseMotionListener [label = "{MouseMotionListener\l||mouseDragged(MouseEvent) : void\lmouseMoved(MouseEvent) : void\l}"]
 node [shape = "record" color = "#000000" fillcolor = "#000000" style=""]
+
 ClassTEventListener [label = "{EventListener\l||}"]
 edge [arrowhead = "onormal" style = "dashed" label = ""]
-ClassTMouseAdapter -> ClassTMouseListener
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-ClassTMouseAdapter -> ClassTMouseWheelListener
-edge [arrowhead = "onormal" style = "dashed" label = ""]
-ClassTMouseAdapter -> ClassTMouseMotionListener
-edge [arrowhead = "onormal" style = "dashed" label = ""]
+
 ClassTMouseListener -> ClassTEventListener
 edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTMouseAdapter -> ClassTMouseWheelListener
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTMouseMotionListener -> ClassTEventListener
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
+ClassTMouseAdapter -> ClassTMouseMotionListener
+edge [arrowhead = "onormal" style = "dashed" label = ""]
+
 ClassTMouseWheelListener -> ClassTEventListener
 edge [arrowhead = "onormal" style = "dashed" label = ""]
-ClassTMouseMotionListener -> ClassTEventListener
+
+ClassTMouseAdapter -> ClassTMouseListener
 }

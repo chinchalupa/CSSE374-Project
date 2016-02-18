@@ -1,6 +1,7 @@
 package problem.asm;
 
 import org.junit.Test;
+import problem.asm.structures.Config;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -54,6 +55,13 @@ public class ConfigTest {
         assertEquals(2, config.getStringList("excludes").size());
 
         config.removeListFromStringList("excludes", config.getStringList("excludes"));
+    }
 
+    @Test
+    public void testSameAfterNew() {
+        Config config = Config.newInstance("configurations/no_excludes_test.json");
+        Config newConfig = Config.newInstance("configurations/excludes_test.json");
+
+        assertEquals(config, newConfig);
     }
 }

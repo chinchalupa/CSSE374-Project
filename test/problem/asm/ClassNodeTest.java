@@ -3,6 +3,8 @@ package problem.asm;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import problem.asm.file_elements.ClassNode;
+import problem.asm.file_elements.NodeField;
 
 import static org.junit.Assert.*;
 
