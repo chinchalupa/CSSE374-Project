@@ -3,8 +3,6 @@ package problem.asm;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -45,8 +43,8 @@ public class ButtonAnalyze extends Button implements Observer {
 
         this.frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         System.out.println("ENABLED");
-        Config config = Config.getInstance();
-        config.callbothshits();
+        Config config = Config.newInstance(Config.getInstance().getConfigurationLocation().getPath());
+        config.notifyOthers();
         this.newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.newFrame.setVisible(true);
     }

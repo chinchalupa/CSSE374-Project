@@ -1,1 +1,30 @@
-{"dot_output":"input_output\/our_project.dot","excludes":["problem.asm.AdapterDetector","problem.asm.CompositeDetector","problem.asm.UMLDecorator","problem.asm.Button","problem.asm.FileGenerator","problem.asm.Button","org.objectweb.asm.ClassVisitor","problem.asm.ITraversable","No Pattern"],"png_output":"input_output\/our_project.png","classes":["org.objectweb.asm.ClassVisitor"],"adapterSettings":{"minimumMethodCalls":6},"detectors":["problem.asm.AdapterDetector","problem.asm.DecoratorDetector","problem.asm.SingletonDetector","problem.asm.CompositeDetector"],"packages":[".\/src\/problem\/asm"],"phases":["problem.asm.PhaseClassGeneration","problem.asm.PhaseNodeGeneration","problem.asm.PhaseDecoration","problem.asm.PhaseWrite","problem.asm.RunDotExecutable"]}
+{
+  "dot_output": "input_output\/our_project.dot",
+  "excludes": [
+    "problem.asm.FileGenerator",
+    "problem.asm.ExecuteCapable"
+  ],
+  "png_output": "input_output\/our_project.png",
+  "classes": [
+    "org.objectweb.asm.ClassVisitor"
+  ],
+  "adapterSettings": {
+    "minimumMethodCalls": 6
+  },
+  "detectors": [
+    "problem.asm.AdapterDetector",
+    "problem.asm.DecoratorDetector",
+    "problem.asm.SingletonDetector",
+    "problem.asm.CompositeDetector"
+  ],
+  "packages": [
+    ".\/src\/problem\/asm"
+  ],
+  "phases": [
+    "problem.asm.PhaseClassGeneration",
+    "problem.asm.PhaseNodeGeneration",
+    "problem.asm.PhaseDecoration",
+    "problem.asm.PhaseWrite",
+    "problem.asm.RunDotExecutable"
+  ]
+}

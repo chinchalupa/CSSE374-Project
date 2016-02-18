@@ -9,7 +9,6 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -97,6 +96,9 @@ public class CheckboxTreeFactory implements ExecuteCapable, TreeSelectionListene
 
     @Override
     public void valueChanged(TreeSelectionEvent e) {
+        String node = e.getPath().getLastPathComponent().toString();
+        String onOrOff = node.substring(node.lastIndexOf("/") + 1, node.lastIndexOf("]"));
+
         System.out.println(e.getPath().getLastPathComponent().toString());
         Pattern p = Pattern.compile("\\[[^/]*");
         Matcher m = p.matcher(e.getPath().getLastPathComponent().toString());
@@ -104,7 +106,11 @@ public class CheckboxTreeFactory implements ExecuteCapable, TreeSelectionListene
         if(m.find()) {
             String entry = m.group(0).replace("[", "");
             System.out.println(entry);
-            Config.getInstance().addToStringList("excludes", entry);
+            if(onOrOff.equals("true")) {
+                Config.getInstance().addToStringList("excludes", entry);
+            } else {
+                Config.getInstance().removeFromStringList("excludes", entry);
+            }
             System.out.println("Configing");
             Config.newInstance(Config.getInstance().getConfigurationLocation().getPath());
             System.out.println("Making phases");
@@ -114,7 +120,7 @@ public class CheckboxTreeFactory implements ExecuteCapable, TreeSelectionListene
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Config.getInstance().callbothshits();
+            Config.getInstance().notifyOthers();
         }
 
     }

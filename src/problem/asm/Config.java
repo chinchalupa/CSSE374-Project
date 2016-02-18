@@ -1,14 +1,10 @@
 package problem.asm;
 
 import com.sun.istack.internal.NotNull;
-import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -37,7 +33,7 @@ public class Config extends Observable {
             instance.setNewJsonObject(s);
             instance.allclasses = instance.getFormattedListOfClasses();
             instance.configuration = new File(s);
-            instance.callbothshits();
+            instance.notifyOthers();
         }
         return instance;
     }
@@ -55,7 +51,7 @@ public class Config extends Observable {
         return pkg;
     }
 
-    public void callbothshits() {
+    public void notifyOthers() {
         this.setChanged();
         this.notifyObservers();
     }
@@ -83,38 +79,6 @@ public class Config extends Observable {
         Config config = Config.getInstance();
 
         return config.getFormattedListOfClasses().contains(formattedClass);
-//        String incomingClass = classInQuestion.replace("/", ".");
-//        if(Config.getInstance().getStringList("classes") != null) {
-//            for (String cls : Config.getInstance().getStringList("classes")) {
-//                String shortCls = cls.substring(cls.lastIndexOf(".") + 1);
-//                if (cls.equals(incomingClass) || shortCls.equals(incomingClass)) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        if(Config.getInstance().getStringList("packages") != null) {
-//            if(Config.getInstance().getPackage() != null) {
-//                if (incomingClass.contains(Config.getInstance().getPackage())) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        if(Config.getInstance().getStringList("packages") != null) {
-//            for(String pkg : Config.getInstance().getStringList("packages")) {
-//                File directory = new File(pkg);
-//
-//                for (File file : directory.listFiles()) {
-//                    String name = file.getName().substring(0, file.getName().indexOf("."));
-//                    if (name.equals(incomingClass)) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return false;
     }
 
     public String getDotFileOutputLocation() {
