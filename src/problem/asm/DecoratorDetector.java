@@ -2,6 +2,7 @@ package problem.asm;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Jeremy on 1/26/2016.
@@ -26,7 +27,7 @@ public class DecoratorDetector extends UMLDecorator {
     }
 
     @Override
-    public List<IEdge> getEdges() {
+    public Set<IEdge> getEdges() {
         return super.getEdges();
     }
 
@@ -38,7 +39,6 @@ public class DecoratorDetector extends UMLDecorator {
                 // Find a uses edge that goes to the extends
                 for (IEdge edge : super.getEdges()) {
 
-                    System.out.println("EDGE: " + edge.getLineName());
 
                     if (edge.getTo().equals(node.getMiniName()) && edge.getFrom().equals(extension)
                         && edge.getLineName().equals("USES")) {

@@ -4,6 +4,7 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Opcodes;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
@@ -15,13 +16,13 @@ import java.util.*;
 public class UMLGenerator extends FileGenerator {
 
 
-    public UMLGenerator(String outputLocation, String inputFile) {
-        super(outputLocation, inputFile);
-    }
-
+    /**
+     * UML Generators take in an ItemHandler that handles added nodes and edges.
+     */
+    //TODO: Get item handler in.
     public UMLGenerator() {
+
         super();
-        this.outputLocation = Config.getInstance().getDotFileOutputLocation();
     }
 
     @Override
@@ -35,9 +36,12 @@ public class UMLGenerator extends FileGenerator {
 
         int maxNodes = getTotalStartingClassSize();
 
+        System.out.println(this.itemHandler.getNodeStack());
+
         while(!this.itemHandler.getNodeStack().isEmpty() && maxNodes != 0) {
 
             INode node = this.itemHandler.poll();
+            System.out.println("Error on node: " + node.getName());
 
             ClassReader reader = new ClassReader(node.getName());
 
@@ -50,17 +54,23 @@ public class UMLGenerator extends FileGenerator {
             reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
 
             this.itemHandler.getCreatedNodes().add(node);
-//            System.out.println("ADDED: " + node);
 
             maxNodes--;
-
-//            System.out.println("NODE: " + node + " " + maxNodes);
         }
     }
 
     public void createAllClassNodes() {
 
+        this.itemHandler.clearEdges();
+
+        while(!this.itemHandler.getNodeStack().isEmpty()) {
+            this.itemHandler.poll();
+        }
+
+
+
         for(String file : this.startingClassStrings) {
+            System.out.println(file);
             INode node = new ClassNode(file);
             String miniName = file.substring(file.lastIndexOf(".") + 1);
             node.setMiniName(miniName);
@@ -69,15 +79,12 @@ public class UMLGenerator extends FileGenerator {
     }
 
     public void write() throws Exception {
-        OutputStream outputStream = new FileOutputStream(this.outputLocation);
-        OutputDotFile visitor = new OutputDotFile(outputStream, this);
-
-        ArrayList<String> patterns = Config.getInstance().detectedPatterns();
-        for(String pattern : patterns) {
-            Constructor detector = Class.forName(pattern).getConstructor(FileGenerator.class);
-            UMLDecorator decorator = (UMLDecorator) detector.newInstance(this);
-            visitor.visitDecorator(decorator);
+        if(this.outputLocation == null) {
+            this.outputLocation = Config.getInstance().getDotFileOutputLocation();
         }
+        OutputStream outputStream = new FileOutputStream(this.outputLocation);
+        visitor = new OutputDotFile(outputStream, this);
+
 
         for(INode node : this.itemHandler.getCreatedNodes()) {
             node.accept(visitor);
@@ -86,7 +93,6 @@ public class UMLGenerator extends FileGenerator {
         for(IEdge edge : this.itemHandler.getEdges()) {
             edge.accept(visitor);
         }
-
         visitor.end();
     }
 

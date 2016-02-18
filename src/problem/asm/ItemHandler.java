@@ -1,27 +1,24 @@
 package problem.asm;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Jeremy on 2/9/2016.
  */
 public class ItemHandler {
 
-    private List<IEdge> edges;
+    private Set<IEdge> edges;
     private LinkedList<INode> nodes;
     private List<INode> createdNodes;
     private INode activeNode;
 
-    public ItemHandler(List<IEdge> edges, LinkedList<INode> nodes) {
+    public ItemHandler(Set<IEdge> edges, LinkedList<INode> nodes) {
         this.edges = edges;
         this.nodes = nodes;
     }
 
     public ItemHandler() {
-        this.edges = new ArrayList<>();
+        this.edges = new HashSet<>();
         this.nodes = new LinkedList<>();
         this.createdNodes = new ArrayList<>();
     }
@@ -44,7 +41,7 @@ public class ItemHandler {
         this.nodes.offer(node);
     }
 
-    public List<IEdge> getEdges() {
+    public Set<IEdge> getEdges() {
         return this.edges;
     }
 
@@ -90,7 +87,6 @@ public class ItemHandler {
             }
         }
         else if(name.equals("AGGREGATES")) {
-            System.out.println("ADDED AGGREGATES");
             for(IEdge oldEdge : this.getEdges()) {
                 if(oldEdge.equals(edge)) {
                     if(oldEdge.getLineName().equals("ASSOCIATES") || oldEdge.getLineName().equals("USES")) {
@@ -142,5 +138,9 @@ public class ItemHandler {
             }
         }
         return true;
+    }
+
+    public void clearEdges() {
+        this.edges = new HashSet<>();
     }
 }

@@ -32,26 +32,11 @@ public class ClassFieldVisitor extends ClassVisitor{
         }
 
         if(signature != null) {
-            System.out.println("NAME: " + name + " " + signature + " " + type);
             addFieldToNode(name, type, signature);
         }
         else {
             addFieldToNode(name, type);
         }
-//        String type = Type.getType(desc).getInternalName();
-//        type = type.substring(type.lastIndexOf("/") + 1, type.length());
-//        signature = getCollectionType(signature);
-//
-//        if(signature != null) {
-//            NodeField newField = new NodeField(name, type + "\\<" + signature + "\\>");
-//            this.classNode.addField(newField);
-//            addNewUses(this.classNode.getName(), signature);
-//        } else {
-//            NodeField newField = new NodeField(name, type);
-//            this.classNode.addField(newField);
-//
-//            addNewUses(this.classNode.getName(), type);
-//        }
 
         return toDecorate;
     }
@@ -72,7 +57,6 @@ public class ClassFieldVisitor extends ClassVisitor{
 
         String cleanName = name.substring(name.lastIndexOf("/") + 1, name.length());
         String cleanReturnType = returnType.substring(returnType.lastIndexOf("/") + 1, returnType.length());
-        System.out.println("SIGNATURE: " + signature);
         String cleanSignature = signature.substring(signature.lastIndexOf("/") + 1, signature.lastIndexOf(";") - 3);
         String cleanReturn = cleanReturnType + "\\<" + cleanSignature + "\\>";
         NodeField nodeField = new NodeField(cleanName, cleanReturn, cleanSignature);
@@ -91,7 +75,6 @@ public class ClassFieldVisitor extends ClassVisitor{
 
     private void addNewAggregates(String name, String returnType) {
         // Aggregates arrow
-        System.out.println("Return type " + returnType);
         if(Config.inPackageConfiguration(returnType)) {
             System.out.println("PUSHING AGGREGATES ARROW");
             this.itemHandler.createEdge(name, returnType, "\"odiamond\"", "\"solid\"", "AGGREGATES");

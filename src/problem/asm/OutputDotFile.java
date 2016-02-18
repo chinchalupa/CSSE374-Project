@@ -33,18 +33,18 @@ public class OutputDotFile implements IVisitor {
         this.write(s);
     }
 
+    @Override
     public void end() {
         String s = "}";
         this.write(s);
     }
 
     @Override
-    public void visitNodes(INode node) {
+    public void visitNode(INode node) {
 
         if(this.inOurPackage(node.getName())) {
 
-            String s = "node [shape = \"record\" color = \"#000000\" fillcolor = \"" + node.getOutlineColor() + "\" style=\"" + node.getStyle() + "\"]\n";
-            s += "ClassT" + node.getMiniName() + " [label = \"{" + node.getMiniName();
+            String s = "ClassT" + node.getMiniName() + " [label = \"{" + node.getMiniName();
             if(node.getPatternIdentifier() != null) {
                 s += "\\l";
                 for(String identifier : node.getPatternIdentifier()) {
@@ -78,14 +78,42 @@ public class OutputDotFile implements IVisitor {
     }
 
     @Override
-    public void visitEdges(IEdge edge) {
+    public void visitEdge(IEdge edge) {
         String to = edge.getTo();
         String parsedTo = to.substring(to.lastIndexOf("/") + 1, to.length());
-        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() +
-                " label = \"" + edge.getText() + "\"]\n";
-        s += "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
+
+        String s = "ClassT" + parsedTo + " -> ClassT" + edge.getFrom();
         this.write(s);
     }
+
+    @Override
+    public void preVisitNode(INode node) {
+        String s = "node [shape = \"record\" color = \"#000000\" fillcolor = \"" + node.getOutlineColor() + "\" style=\"" + node.getStyle() + "\"]\n";
+        this.write(s);
+    }
+
+    @Override
+    public void postVisitEdge(IEdge edge) {
+
+    }
+
+    @Override
+    public void preVisitEdge(IEdge edge) {
+        String s = "edge [arrowhead = " + edge.getArrow() + " style = " + edge.getLine() +
+                " label = \"" + edge.getText() + "\"]\n";
+        this.write(s);
+    }
+
+    @Override
+    public void postVisitNode(INode node) {
+
+    }
+
+    @Override
+    public void separateNodeEdges() {
+
+    }
+
     @Override
     public void visitDecorator(UMLDecorator umlDecorator) {
         umlDecorator.updateNodes();

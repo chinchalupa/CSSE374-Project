@@ -1,42 +1,44 @@
 package problem.asm;
 
+import com.sun.istack.internal.NotNull;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by Jeremy on 2/2/2016.
  */
-public class Config {
+public class Config extends Observable {
 
-    private static Config instance = null;
+    private static Config instance = new Config("configurations/our_project.json");
 
     private JSONParser parser;
     private JSONObject jsonObject;
+    private List<String> allclasses;
+    private File configuration;
 
     private Config(String s) {
-        parser = new JSONParser();
-        Object obj = null;
-        try {
-            obj = parser.parse(new FileReader(s));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        jsonObject = (JSONObject) obj;
+        this.setNewJsonObject(s);
+        this.allclasses = this.getFormattedListOfClasses();
+        this.configuration = new File(s);
+
     }
 
     public static Config newInstance(String s) {
-        instance = new Config(s);
+        if (instance != null) {
+            instance.setNewJsonObject(s);
+            instance.allclasses = instance.getFormattedListOfClasses();
+            instance.configuration = new File(s);
+            instance.callbothshits();
+        }
         return instance;
     }
 
@@ -46,47 +48,73 @@ public class Config {
 
     public String getPackage() {
         String pkg = null;
-        if(getPackageList().size() > 0) {
-            pkg = getPackageList().get(0);
+        if(getStringList("packages").size() > 0) {
+            pkg = getStringList("packages").get(0);
             pkg = pkg.replace("./src/", "").replace("/", ".").replace(".java", "");
         }
         return pkg;
     }
 
+    public void callbothshits() {
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    private void setNewJsonObject(String fileLocation) {
+        try {
+            parser = new JSONParser();
+            this.jsonObject = (JSONObject) parser.parse(new FileReader(fileLocation));
+            this.setChanged();
+            this.notifyObservers();
+            System.out.println("Notified observers");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Determines if the class in question is a part of the package.
+     * @param classInQuestion - The class in question.
+     * @return - True if the class is in the package.
+     */
     public static boolean inPackageConfiguration(String classInQuestion) {
-        String incomingClass = classInQuestion.replace("/", ".");
-        if(Config.getInstance().getClassList() != null) {
-            for (String cls : Config.getInstance().getClassList()) {
-                String shortCls = cls.substring(cls.lastIndexOf(".") + 1);
-                if (cls.equals(incomingClass) || shortCls.equals(incomingClass)) {
-                    return true;
-                }
-            }
-        }
 
-        if(Config.getInstance().getPackageList() != null) {
-            if(Config.getInstance().getPackage() != null) {
-                if (incomingClass.contains(Config.getInstance().getPackage())) {
-                    return true;
-                }
-            }
-        }
+        String formattedClass = classInQuestion.replace("/", ".");
+        Config config = Config.getInstance();
 
-//TODO: Leave uncommented if you want a summarized document that is legible
-        if(Config.getInstance().getPackageList() != null) {
-            for(String pkg : Config.getInstance().getPackageList()) {
-                File directory = new File(pkg);
-
-                for (File file : directory.listFiles()) {
-                    String name = file.getName().substring(0, file.getName().indexOf("."));
-                    if (name.equals(incomingClass)) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
+        return config.getFormattedListOfClasses().contains(formattedClass);
+//        String incomingClass = classInQuestion.replace("/", ".");
+//        if(Config.getInstance().getStringList("classes") != null) {
+//            for (String cls : Config.getInstance().getStringList("classes")) {
+//                String shortCls = cls.substring(cls.lastIndexOf(".") + 1);
+//                if (cls.equals(incomingClass) || shortCls.equals(incomingClass)) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        if(Config.getInstance().getStringList("packages") != null) {
+//            if(Config.getInstance().getPackage() != null) {
+//                if (incomingClass.contains(Config.getInstance().getPackage())) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        if(Config.getInstance().getStringList("packages") != null) {
+//            for(String pkg : Config.getInstance().getStringList("packages")) {
+//                File directory = new File(pkg);
+//
+//                for (File file : directory.listFiles()) {
+//                    String name = file.getName().substring(0, file.getName().indexOf("."));
+//                    if (name.equals(incomingClass)) {
+//                        return true;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return false;
     }
 
     public String getDotFileOutputLocation() {
@@ -94,54 +122,115 @@ public class Config {
         return outputLocation;
     }
 
-    public List<String> getPackageList() {
-        JSONArray packageValue = (JSONArray) jsonObject.get("packages");
-        if(packageValue != null) {
-            List<String> packages = new ArrayList<>();
-            packages.addAll(packageValue);
-            return packages;
+
+    /**
+     * Recurse down the file structure to get all the files necessary.
+     * @param directory - The directory to start at.
+     * @param files - The files to view.
+     * @return - The list of files.
+     */
+    public List<File> recurseFilesInDirectory(File directory, List<File> files) {
+        if(directory.isFile()) {
+            files.add(directory);
+            return files;
         }
-        return null;
-    }
-
-    public List<String> getClassList() {
-        JSONArray packageValue = (JSONArray) jsonObject.get("classes");
-        if(packageValue != null) {
-            List<String> packages = new ArrayList<>();
-            packages.addAll(packageValue);
-            return packages;
-        }
-        return null;
-    }
-
-    public List<String> getClassesAndPackageClassesList() {
-        List<String> files = new ArrayList<>();
-
-        if(this.getPackageList() != null) {
-            for (String s : this.getPackageList()) {
-                File directory = new File(s);
-                File packageFiles[] = directory.listFiles();
-                for (File packageFile : packageFiles) {
-                    files.add(packageFile.getPath().replace(".\\src\\", "").replace("\\", ".").replace(".java", ""));
-                }
-            }
-        }
-
-        if(this.getClassList() != null) {
-            for (String s : this.getClassList()) {
-                files.add(s.replace("\\", "."));
+        else if (directory.isDirectory()) {
+            for (File newFile : directory.listFiles()) {
+                recurseFilesInDirectory(newFile, files);
             }
         }
         return files;
     }
 
-    public ArrayList<String> detectedPatterns() {
-        ArrayList<String> patterns = (ArrayList<String>) this.jsonObject.get("detectors");
-        return patterns;
+    public List<String> getFormattedListOfClasses() {
+        List<String> files = new ArrayList<>();
+
+        // Get all the packages.
+        List<String> packages = this.getStringList("packages");
+        if(packages != null) {
+            for(String s : packages) {
+                File file = new File(s);
+                List<File> directoryFiles = recurseFilesInDirectory(file, new ArrayList<>());
+                for(File packageFile : directoryFiles) {
+                    String path = packageFile.getPath().replace(".\\src\\", "").replace("\\", ".").replace(".java", "");
+                    files.add(path);
+                }
+            }
+        }
+
+        // Get all the class strings.
+        List<String> classes = this.getStringList("classes");
+        if(classes != null) {
+            files.addAll(classes);
+        }
+
+        // Get all files that should be removed.
+        List<String> excludes = this.getStringList("excludes");
+        if(excludes != null) {
+            files.removeAll(excludes);
+        }
+
+        return files;
+    }
+
+    public void addToStringList(String key, String addIn) {
+        List<String> excludes = this.getStringList(key);
+        if(excludes == null) {
+            excludes = new ArrayList<>();
+        }
+        excludes.add(addIn);
+        this.jsonObject.put(key, excludes);
+        writeObject();
+    }
+
+    private void writeObject() {
+        try {
+            FileWriter writer = new FileWriter(this.getConfigurationLocation().getAbsolutePath());
+            writer.write(this.jsonObject.toJSONString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeFromStringList(String key, String removedValue) {
+        List<String> list = this.getStringList(key);
+        list.remove(removedValue);
+        this.jsonObject.put(key, list);
+        writeObject();
+    }
+
+    public void removeListFromStringList(String key, List<String> removedValues) {
+        List<String> list = this.getStringList(key);
+        list.removeAll(removedValues);
+        this.jsonObject.put(key, list);
+        writeObject();
+    }
+
+    /**
+     * Returns the object at the key as a list of strings.
+     * @param key - The key to search the json for.
+     * @return - The returned String list.
+     */
+    public List<String> getStringList(@NotNull String key) {
+        if(this.jsonObject.get(key) != null) {
+            return (List<String>) this.jsonObject.get(key);
+        }
+        return null;
     }
 
     public long getAdapterMinimumCount() {
         JSONObject adapterSettings = (JSONObject) this.jsonObject.get("adapterSettings");
         return (long) adapterSettings.get("minimumMethodCalls");
+    }
+
+    public String getImageLocation() {
+        String imageLocation = (String) this.jsonObject.get("png_output");
+        return imageLocation;
+    }
+
+    public File getConfigurationLocation() {
+        return this.configuration;
     }
 }

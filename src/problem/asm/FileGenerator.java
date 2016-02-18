@@ -12,12 +12,16 @@ public abstract class FileGenerator {
     protected ItemHandler itemHandler;
 
     protected List<String> startingClassStrings;
+    protected IVisitor visitor;
 
-
-    public FileGenerator(String outputLocation, String inputFile) {
-        this.outputLocation = outputLocation;
-        this.inputFile = inputFile;
-    }
+    //TODO: DELETE
+//    public FileGenerator(String outputLocation, String inputFile) {
+//        this.outputLocation = outputLocation;
+//        this.inputFile = inputFile;
+//        if(Config.getInstance() != null) {
+//            this.outputLocation = Config.getInstance().getDotFileOutputLocation();
+//        }
+//    }
 
     public FileGenerator() {
         this.startingClassStrings = new ArrayList<>();
@@ -32,11 +36,19 @@ public abstract class FileGenerator {
 
 
     public void generateClassList() {
-        this.startingClassStrings = Config.getInstance().getClassesAndPackageClassesList();
+        this.startingClassStrings = Config.getInstance().getFormattedListOfClasses();
         System.out.println(this.startingClassStrings.size());
     }
 
     public abstract void generateNodes() throws Exception;
 
     public abstract void write() throws Exception;
+
+    public IVisitor getVisitor() {
+        return this.visitor;
+    }
+
+    public void setVisitor(IVisitor visitor) {
+        this.visitor = visitor;
+    }
 }
